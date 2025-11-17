@@ -1,0 +1,53 @@
+{
+  "name": "birdsey-group",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "app:dev": "next dev -p 8000",
+    "app:build": "next build",
+    "app:start": "next start",
+    "app:lint": "next lint",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "storybook:build": "storybook build --output-dir public/storybook --webpack-stats-json",
+    "build": "npm run storybook:build && npm run app:build",
+    "script:dev-resources": "cd scripts/dev-resources; node --env-file=../../.env app.mjs; cd -;",
+    "script:icons": "cd scripts/icons; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
+    "script:icons:rest": "cd scripts/icons; node --env-file=../../.env app.mjs; cd -;",
+    "script:tokens": "cd scripts/tokens; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
+    "script:tokens:rest": "cd scripts/tokens; node --env-file=../../.env app.mjs; cd -;"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-organize-imports"
+    ]
+  },
+  "devDependencies": {
+    "@figma/code-connect": "^1.3.3",
+    "@react-types/shared": "^3.23.0",
+    "@storybook/addon-links": "^10.0.6",
+    "@storybook/nextjs": "^10.0.6",
+    "@storybook/react": "^10.0.6",
+    "@types/node": "24.10.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "clsx": "^2.1.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint-plugin-storybook": "^10.0.6",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "react": "^18.2.0",
+    "react-aria-components": "^1.10.1",
+    "react-dom": "^18.2.0",
+    "storybook": "^10.0.6",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
+    "next": "^16.0.1"
+  }
+}
