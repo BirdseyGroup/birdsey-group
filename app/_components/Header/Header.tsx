@@ -11,13 +11,22 @@ export function Header() {
   const [activePage, setActivePage] = useState("home");
 
   const navItems = [
-    "About",
-    "Services",
-    "Affiliates",
-    "News",
-    "Careers",
-    "Contact",
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Affiliates", href: "#affiliates" },
+    { label: "News", href: "#news" },
+    { label: "Careers", href: "#careers" },
+    { label: "Contact", href: "#contact" },
   ];
+
+  const handleNavClick = (href: string) => {
+    const id = href.replace("#", "");
+    setActivePage(id);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <Section elementType="header" variant="brand" className={styles.header}>
@@ -36,12 +45,12 @@ export function Header() {
             <Navigation direction="row">
               {navItems.map((item) => (
                 <NavigationPill
-                  key={item}
-                  onPress={() => setActivePage(item.toLowerCase())}
-                  isSelected={activePage === item.toLowerCase()}
+                  key={item.label}
+                  onPress={() => handleNavClick(item.href)}
+                  isSelected={activePage === item.href.replace("#", "")}
                   className={styles.navigationPill}
                 >
-                  {item}
+                  {item.label}
                 </NavigationPill>
               ))}
             </Navigation>

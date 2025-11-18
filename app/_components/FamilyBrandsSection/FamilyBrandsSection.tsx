@@ -7,7 +7,7 @@ import styles from "./familyBrandsSection.module.css";
 
 export function FamilyBrandsSection() {
   return (
-    <Section className={styles.family}>
+    <Section id="services" className={styles.family}>
       <Flex container gap="600" alignSecondary="center">
         <FlexItem size="major">
           <div className={sharedStyles.imagePlaceholder} />

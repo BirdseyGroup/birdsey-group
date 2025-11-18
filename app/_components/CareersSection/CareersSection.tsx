@@ -6,7 +6,7 @@ import styles from "./careersSection.module.css";
 
 export function CareersSection() {
   return (
-    <Section className={styles.careers}>
+    <Section id="careers" className={styles.careers}>
       <Flex container gap="1200" alignSecondary="center">
         <FlexItem size="major">
           <div className={sharedStyles.imagePlaceholder} />

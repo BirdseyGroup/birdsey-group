@@ -15,7 +15,7 @@ export function AffiliatesSection() {
   ];
 
   return (
-    <Section className={styles.affiliates}>
+    <Section id="affiliates" className={styles.affiliates}>
       <Flex direction="column" gap="1200" alignSecondary="center">
         <h2 className={sharedStyles.sectionTitle}>From Capital to Completion</h2>
         <div className={styles.affiliatesLogos}>

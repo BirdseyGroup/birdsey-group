@@ -6,7 +6,7 @@ import styles from "./subHeroSection.module.css";
 
 export function SubHeroSection() {
   return (
-    <Section variant="brand" className={styles.subHero}>
+    <Section id="about" variant="brand" className={styles.subHero}>
       <Flex container gap="600" alignSecondary="center">
         <FlexItem>
           <h2 className={`${sharedStyles.subtitle} ${styles.subtitle}`}>

@@ -29,7 +29,7 @@ export function NewsSection() {
   ];
 
   return (
-    <Section className={styles.news}>
+    <Section id="news" className={styles.news}>
       <Flex direction="column" gap="1200">
         <h2 className={sharedStyles.sectionTitle}>Insights & Recognition.</h2>
         <Flex direction="column">
