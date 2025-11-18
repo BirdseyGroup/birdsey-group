@@ -8,10 +8,11 @@ import { PerformanceSection } from './_components/PerformanceSection';
 import { NewsSection } from './_components/NewsSection';
 import { CareersSection } from './_components/CareersSection';
 import { ContactSection } from './_components/ContactSection';
+import styles from './page.module.css';
 
 export default function HomePage() {
   return (
-    <div className="birdsey-page">
+    <div className={styles.birdseyPage}>
       <Header />
       <HeroSection />
       <SubHeroSection />

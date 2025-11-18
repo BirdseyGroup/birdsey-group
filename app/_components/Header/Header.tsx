@@ -26,15 +26,34 @@ export function Header() {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const headerOffset = 72; // Height of fixed header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
+  };
+
+  const handleLogoClick = () => {
+    setActivePage("home");
+    setMobileMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
 
   return (
     <Section elementType="header" variant="brand" className={styles.header}>
       <Flex container alignPrimary="space-between" alignSecondary="center">
         <FlexItem size="minor">
-          <div style={{ position: "relative", width: "99px", height: "40px" }}>
+          <div
+            style={{ position: "relative", width: "99px", height: "40px", cursor: "pointer" }}
+            onClick={handleLogoClick}
+          >
             <Image
               src="/images/birdsey-group-logo.svg"
               alt="Birdsey Group"
