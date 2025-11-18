@@ -1,0 +1,26 @@
+.careers {
+  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
+  border-left: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+  border-right: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+}
+
+.careersText {
+  font-family: var(
+    --sds-typography-subheading-font-family,
+    "Inter",
+    sans-serif
+  );
+  font-size: var(--sds-typography-subheading-size-medium, 20px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+}
+
+.careersText p {
+  margin-bottom: var(--sds-size-space-400, 16px);
+}
+
+.careersText strong {
+  color: var(--sds-color-background-brand-secondary, #29305a);
+}

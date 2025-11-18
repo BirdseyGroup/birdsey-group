@@ -1,0 +1,43 @@
+.contact {
+  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
+  border-left: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+  border-right: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+}
+
+.contactForm {
+  background-color: var(--sds-color-background-default-default, #ffffff);
+  padding: var(--sds-size-space-600, 24px);
+  border-radius: var(--sds-size-radius-200, 8px);
+  box-shadow:
+    0 16px 32px -4px rgba(54, 53, 52, 0.1),
+    0 4px 4px -4px rgba(54, 53, 52, 0.05);
+  min-width: 506px;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-200, 8px);
+}
+
+.formAccent {
+  width: 32px;
+  height: 2px;
+  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+}
+
+.formTitle {
+  font-family: var(--sds-typography-heading-font-family, "Merriweather", serif);
+  font-size: var(--sds-typography-heading-size-base, 24px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+}
+
+.formHeader p {
+  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
+  font-size: var(--sds-typography-body-size-medium, 16px);
+  line-height: 1.4;
+  color: var(--sds-color-text-default-default, #363534);
+}

@@ -1,0 +1,13 @@
+.subHero {
+  background-color: var(--sds-color-background-brand-secondary, #29305a);
+  padding: var(--sds-size-space-2400, 96px) var(--sds-size-space-600, 24px);
+}
+
+.subtitle {
+  color: var(--text-default-alternative, #ffffff);
+  white-space: nowrap;
+}
+
+.subheading {
+  color: var(--text-default-alternative, #ffffff);
+}

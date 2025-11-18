@@ -1,0 +1,50 @@
+.news {
+  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
+  border-left: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+  border-right: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+}
+
+.article {
+  display: flex;
+  gap: var(--sds-size-space-600, 24px);
+  align-items: flex-start;
+  padding: var(--sds-size-space-600, 24px) 0 var(--sds-size-space-1200, 48px);
+  border-bottom: 1px solid var(--sds-color-border-brand-tertiary, #29305a);
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.articleDate {
+  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
+  font-size: var(--sds-typography-body-size-medium, 16px);
+  color: var(--sds-color-text-default-default, #363534);
+  width: 188px;
+}
+
+.articleImage {
+  width: 188px;
+  height: 160px;
+  background-color: var(--sds-color-background-default-tertiary, #d9d9d9);
+  border-radius: 16px;
+}
+
+.articleCategory {
+  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
+  font-size: var(--sds-typography-body-size-medium, 16px);
+  color: var(--sds-color-text-default-default, #363534);
+}
+
+.articleTitle {
+  font-family: var(
+    --sds-typography-subtitle-font-family,
+    "Merriweather",
+    serif
+  );
+  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+}

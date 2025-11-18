@@ -1,0 +1,47 @@
+/* Shared typography and common elements */
+.subtitle {
+  font-family: var(
+    --sds-typography-subtitle-font-family,
+    "Merriweather",
+    serif
+  );
+  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+}
+
+.subheading {
+  font-family: var(
+    --sds-typography-subheading-font-family,
+    "Inter",
+    sans-serif
+  );
+  font-size: var(--sds-typography-subheading-size-medium, 20px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+}
+
+.sectionTitle {
+  font-family: var(
+    --sds-typography-subtitle-font-family,
+    "Merriweather",
+    serif
+  );
+  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default, #363534);
+  text-align: center;
+}
+
+.divider {
+  width: 24px;
+  height: 2px;
+  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+}
+
+.imagePlaceholder {
+  width: 506px;
+  height: 506px;
+  background-color: var(--sds-color-background-default-tertiary, #d9d9d9);
+  border-radius: 16px;
+}

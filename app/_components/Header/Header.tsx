@@ -5,7 +5,7 @@ import { Flex, FlexItem, Section } from "@/components/layout";
 import { Navigation, NavigationPill } from "@/components/primitives";
 import Image from "next/image";
 import { useState } from "react";
-import styles from "./birdsey.module.css";
+import styles from "./header.module.css";
 
 export function Header() {
   const [activePage, setActivePage] = useState("home");

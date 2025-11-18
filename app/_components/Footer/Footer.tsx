@@ -3,7 +3,7 @@
 import { Flex, FlexItem, Section } from "@/components/layout";
 import { TextLink, TextLinkList, TextListItem } from "@/components/primitives";
 import Image from "next/image";
-import styles from "./birdsey.module.css";
+import styles from "./footer.module.css";
 
 export function Footer() {
   return (

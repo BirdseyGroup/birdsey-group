@@ -1,0 +1,7 @@
+.performance {
+  padding: var(--sds-size-space-2400, 96px) var(--sds-size-space-600, 24px);
+  border-left: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+  border-right: var(--sds-size-stroke-border, 1px) solid
+    var(--sds-color-border-default-default, #d9d9d9);
+}
