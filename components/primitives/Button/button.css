@@ -61,9 +61,7 @@
   --button-border-color: var(--sds-color-border-brand-default);
   --button-color: var(--sds-color-text-brand-on-brand);
   &[data-hovered]:not([data-disabled]) {
-    --button-background-color: var(--sds-color-background-brand-hover);
-    --button-border-color: var(--sds-color-border-brand-default);
-    filter: brightness(1.15);
+    --button-background-color: #f5d563;
   }
 }
 .button-variant-neutral {
