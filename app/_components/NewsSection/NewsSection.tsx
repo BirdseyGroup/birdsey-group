@@ -32,7 +32,7 @@ export function NewsSection() {
     <Section className={styles.news}>
       <Flex direction="column" gap="1200">
         <h2 className={sharedStyles.sectionTitle}>Insights & Recognition.</h2>
-        <Flex direction="column" gap="0">
+        <Flex direction="column">
           {articles.map((article, i) => (
             <article key={i} className={styles.article}>
               <div className={styles.articleImage} />
