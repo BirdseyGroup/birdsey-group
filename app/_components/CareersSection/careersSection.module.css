@@ -24,3 +24,13 @@
 .careersText strong {
   color: var(--sds-color-background-brand-secondary, #29305a);
 }
+
+@media (max-width: 768px) {
+  .careers :global(.flex-container) {
+    flex-direction: column !important;
+  }
+
+  .careers {
+    padding: var(--sds-size-space-600, 24px);
+  }
+}
