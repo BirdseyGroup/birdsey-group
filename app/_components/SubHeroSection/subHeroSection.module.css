@@ -13,3 +13,20 @@
 .subheading {
   color: var(--text-default-alternative, #ffffff);
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .subHero {
+    padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-600, 24px);
+  }
+
+  .subHero :global(.flex-container) {
+    flex-direction: column !important;
+    gap: var(--sds-size-space-400, 16px) !important;
+  }
+
+  .subtitle {
+    width: 100%;
+    white-space: normal;
+  }
+}

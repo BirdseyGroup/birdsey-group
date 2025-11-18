@@ -42,3 +42,19 @@
   line-height: 1.4;
   color: var(--sds-color-text-default-default, #363534);
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .contact {
+    padding: var(--sds-size-space-600, 24px);
+  }
+
+  .contact :global(.flex-container) {
+    flex-direction: column !important;
+  }
+
+  .contactForm {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

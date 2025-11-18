@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, FlexItem, Section } from "@/components/layout";
-import sharedStyles from "../shared.module.css";
+import { TextSubheading, TextSubtitle } from "@/components/primitives";
 import styles from "./subHeroSection.module.css";
 
 export function SubHeroSection() {
@@ -9,16 +9,16 @@ export function SubHeroSection() {
     <Section id="about" variant="brand" className={styles.subHero}>
       <Flex container gap="600" alignSecondary="center">
         <FlexItem>
-          <h2 className={`${sharedStyles.subtitle} ${styles.subtitle}`}>
+          <TextSubtitle elementType="h2" className={styles.subtitle}>
             The Birdsey Standard
-          </h2>
+          </TextSubtitle>
         </FlexItem>
         <FlexItem size="major">
-          <p className={`${sharedStyles.subheading} ${styles.subheading}`}>
+          <TextSubheading className={styles.subheading}>
             Building relationships. Bringing discipline to execution. Every
             Birdsey affiliate operates under the same promise: Quality, Urgency,
             Accountability, Resilience, Transparency.
-          </p>
+          </TextSubheading>
         </FlexItem>
       </Flex>
     </Section>

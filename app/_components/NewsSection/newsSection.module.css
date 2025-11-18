@@ -61,3 +61,25 @@
   line-height: 1.5;
   color: var(--sds-color-text-default-default, #363534);
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .news {
+    padding: var(--sds-size-space-600, 24px);
+  }
+
+  .article {
+    flex-direction: column;
+    padding: var(--sds-size-space-400, 16px) 0 var(--sds-size-space-600, 24px);
+  }
+
+  .articleImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 188 / 160;
+  }
+
+  .articleTitle {
+    font-size: 24px;
+  }
+}

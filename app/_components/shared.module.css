@@ -50,7 +50,24 @@
 .imagePlaceholder {
   width: 100%;
   max-width: 506px;
+  min-height: 506px;
   aspect-ratio: 1;
   background-color: var(--sds-color-background-default-tertiary, #d9d9d9);
   border-radius: 16px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .subtitle,
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .subheading {
+    font-size: 18px;
+  }
+
+  .imagePlaceholder {
+    min-height: 200px;
+  }
 }

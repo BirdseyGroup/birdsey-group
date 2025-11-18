@@ -22,3 +22,18 @@
   border-radius: var(--sds-size-radius-200, 8px);
   overflow: hidden;
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .affiliatesLogos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sds-size-space-400, 16px);
+  }
+
+  .affiliateLogo {
+    width: calc((100% - 32px) / 3);
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
