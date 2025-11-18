@@ -9,6 +9,7 @@ import styles from "./header.module.css";
 
 export function Header() {
   const [activePage, setActivePage] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { label: "About", href: "#about" },
@@ -22,6 +23,7 @@ export function Header() {
   const handleNavClick = (href: string) => {
     const id = href.replace("#", "");
     setActivePage(id);
+    setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -42,7 +44,7 @@ export function Header() {
         </FlexItem>
         <FlexItem size="major">
           <Flex gap="400" alignPrimary="end" alignSecondary="center">
-            <Navigation direction="row">
+            <Navigation direction="row" className={styles.desktopNav}>
               {navItems.map((item) => (
                 <NavigationPill
                   key={item.label}
@@ -55,9 +57,35 @@ export function Header() {
               ))}
             </Navigation>
             <IconSearch className={styles.searchIcon} />
+            <button
+              className={styles.hamburger}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span className={styles.hamburgerLine}></span>
+              <span className={styles.hamburgerLine}></span>
+              <span className={styles.hamburgerLine}></span>
+            </button>
           </Flex>
         </FlexItem>
       </Flex>
+
+      {mobileMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <Navigation direction="column">
+            {navItems.map((item) => (
+              <NavigationPill
+                key={item.label}
+                onPress={() => handleNavClick(item.href)}
+                isSelected={activePage === item.href.replace("#", "")}
+                className={styles.mobileNavigationPill}
+              >
+                {item.label}
+              </NavigationPill>
+            ))}
+          </Navigation>
+        </div>
+      )}
     </Section>
   );
 }
