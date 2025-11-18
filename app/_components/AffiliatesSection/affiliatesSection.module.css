@@ -11,7 +11,7 @@
   gap: var(--sds-size-space-600, 24px);
   justify-content: space-between;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1200px;
 }
 
 .affiliateLogo {
