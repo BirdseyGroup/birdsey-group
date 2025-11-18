@@ -6,6 +6,10 @@
     var(--sds-color-border-default-default, #d9d9d9);
 }
 
+.contact :global(.flex-container) {
+  justify-content: end;
+}
+
 .contactForm {
   background-color: var(--sds-color-background-default-default, #ffffff);
   padding: var(--sds-size-space-600, 24px);

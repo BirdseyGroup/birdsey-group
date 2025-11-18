@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "SDS",
-  description: "Design System",
+  title: "The Birdsey Group, LLC | Real Estate Consulting",
+  description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
 };
 
 export default function RootLayout({
