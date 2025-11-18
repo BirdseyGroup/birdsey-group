@@ -8,7 +8,7 @@ import styles from "./contactSection.module.css";
 export function ContactSection() {
   return (
     <Section className={styles.contact}>
-      <Flex container gap="600" alignSecondary="start">
+      <Flex container gap="600" alignSecondary="center">
         <FlexItem size="major">
           <h2 className={sharedStyles.sectionTitle}>
             Let's Move Real Estate Forward.

@@ -21,6 +21,14 @@
   color: var(--sds-color-text-default-default, #363534);
 }
 
+.subheadingUppercase {
+  text-transform: uppercase;
+}
+
+.subtitleCentered {
+  text-align: center;
+}
+
 .sectionTitle {
   font-family: var(
     --sds-typography-subtitle-font-family,

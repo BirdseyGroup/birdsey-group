@@ -11,7 +11,6 @@ export function Header() {
   const [activePage, setActivePage] = useState("home");
 
   const navItems = [
-    "Home",
     "About",
     "Services",
     "Affiliates",

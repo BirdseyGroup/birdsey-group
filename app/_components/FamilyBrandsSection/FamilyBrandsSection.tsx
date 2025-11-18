@@ -1,6 +1,7 @@
 "use client";
 
 import { Flex, FlexItem, Section } from "@/components/layout";
+import { clsx } from "clsx";
 import sharedStyles from "../shared.module.css";
 import styles from "./familyBrandsSection.module.css";
 
@@ -13,8 +14,13 @@ export function FamilyBrandsSection() {
         </FlexItem>
         <FlexItem size="major">
           <Flex direction="column" gap="400" alignSecondary="center">
-            <h2 className={sharedStyles.subtitle}>
-              Build with Certainty. Deliver with Discipline.
+            <h2
+              className={clsx(
+                sharedStyles.subtitle,
+                sharedStyles.subtitleCentered,
+              )}
+            >
+              Build with Certainty. <br></br>Deliver with Discipline.
             </h2>
             <div className={sharedStyles.divider} />
             <p className={sharedStyles.subheading}>

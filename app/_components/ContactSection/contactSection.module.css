@@ -14,6 +14,7 @@
     0 16px 32px -4px rgba(54, 53, 52, 0.1),
     0 4px 4px -4px rgba(54, 53, 52, 0.05);
   min-width: 506px;
+  max-width: 458px;
 }
 
 .formHeader {

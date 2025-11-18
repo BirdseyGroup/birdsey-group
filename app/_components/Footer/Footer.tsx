@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, FlexItem, Section } from "@/components/layout";
-import { TextLink, TextLinkList, TextListItem } from "@/components/primitives";
+import { TextLink } from "@/components/primitives";
 import Image from "next/image";
 import styles from "./footer.module.css";
 
@@ -9,52 +9,53 @@ export function Footer() {
   return (
     <Section elementType="footer" variant="brand" className={styles.footer}>
       <Flex container gap="600">
-        <FlexItem size="equal">
+        <FlexItem className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Company</h3>
-            <TextLinkList density="tight">
-              <TextListItem>
-                <TextLink href="#">Home</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">About</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">Affiliates</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">News</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">Careers</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">Contact</TextLink>
-              </TextListItem>
-            </TextLinkList>
+            <Flex direction="column" gap="200">
+              <TextLink href="#" className={styles.navigationPill}>
+                About
+              </TextLink>
+              <TextLink href="#" className={styles.navigationPill}>
+                Affiliates
+              </TextLink>
+              <TextLink href="#" className={styles.navigationPill}>
+                News
+              </TextLink>
+              <TextLink href="#" className={styles.navigationPill}>
+                Careers
+              </TextLink>
+              <TextLink href="#" className={styles.navigationPill}>
+                Contact
+              </TextLink>
+            </Flex>
           </Flex>
         </FlexItem>
 
-        <FlexItem size="equal">
+        <FlexItem className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Contact Us</h3>
-            <TextLinkList density="tight">
-              <TextListItem>
-                <TextLink href="tel:404-961-3500">404-961-3500</TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="mailto:mail@birdseygroup.com">
-                  mail@birdseygroup.com
-                </TextLink>
-              </TextListItem>
-              <TextListItem>
-                <TextLink href="#">Contact Form</TextLink>
-              </TextListItem>
-            </TextLinkList>
+            <Flex direction="column" gap="200">
+              <TextLink
+                href="tel:404-961-3500"
+                className={styles.navigationPill}
+              >
+                404-961-3500
+              </TextLink>
+              <TextLink
+                href="mailto:mail@birdseygroup.com"
+                className={styles.navigationPill}
+              >
+                mail@birdseygroup.com
+              </TextLink>
+              <TextLink href="#" className={styles.navigationPill}>
+                Contact Form
+              </TextLink>
+            </Flex>
           </Flex>
         </FlexItem>
 
-        <FlexItem size="equal">
+        <FlexItem className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Location</h3>
             <p className={styles.footerText}>
@@ -69,7 +70,7 @@ export function Footer() {
           </Flex>
         </FlexItem>
 
-        <FlexItem size="equal">
+        <FlexItem className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <div
               style={{ position: "relative", width: "99px", height: "40px" }}
