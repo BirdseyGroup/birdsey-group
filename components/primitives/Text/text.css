@@ -22,13 +22,13 @@
 
 .text-body-link {
   --border-radius: var(--sds-size-radius-100);
-  color: inherit;
+  color: #2C43CA;
   cursor: pointer;
   font: var(--sds-font-body-link);
   position: relative;
   /* Override */
   &.link {
-    text-decoration: underline;
+    text-decoration: none;
   }
   &:focus-visible {
     outline: none;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, FlexItem, Section } from "@/components/layout";
+import { Flex, Section } from "@/components/layout";
 import { TextLink } from "@/components/primitives";
 import Image from "next/image";
 import styles from "./footer.module.css";
@@ -8,8 +8,8 @@ import styles from "./footer.module.css";
 export function Footer() {
   return (
     <Section elementType="footer" variant="brand" className={styles.footer}>
-      <Flex container gap="600">
-        <FlexItem className={styles.footerColumn}>
+      <div className={styles.footerInner}>
+        <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Company</h3>
             <Flex direction="column" gap="200">
@@ -30,9 +30,9 @@ export function Footer() {
               </TextLink>
             </Flex>
           </Flex>
-        </FlexItem>
+        </div>
 
-        <FlexItem className={styles.footerColumn}>
+        <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Contact Us</h3>
             <Flex direction="column" gap="200">
@@ -53,9 +53,9 @@ export function Footer() {
               </TextLink>
             </Flex>
           </Flex>
-        </FlexItem>
+        </div>
 
-        <FlexItem className={styles.footerColumn}>
+        <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Location</h3>
             <p className={styles.footerText}>
@@ -68,9 +68,9 @@ export function Footer() {
               Atlanta, Georgia, 30305
             </p>
           </Flex>
-        </FlexItem>
+        </div>
 
-        <FlexItem className={styles.footerColumn}>
+        <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <div
               style={{ position: "relative", width: "99px", height: "40px" }}
@@ -88,8 +88,8 @@ export function Footer() {
               2025 - All Rights Reserved.
             </p>
           </Flex>
-        </FlexItem>
-      </Flex>
+        </div>
+      </div>
     </Section>
   );
 }

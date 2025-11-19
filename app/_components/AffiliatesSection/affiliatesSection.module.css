@@ -16,7 +16,7 @@
 
 .affiliateLogo {
   position: relative;
-  width: 165px;
+  width: 100%;
   height: 165px;
   background-color: transparent;
   border-radius: var(--sds-size-radius-200, 8px);

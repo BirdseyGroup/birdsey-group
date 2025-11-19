@@ -3,7 +3,7 @@ import { Footer } from './_components/Footer';
 import { HeroSection } from './_components/HeroSection';
 import { SubHeroSection } from './_components/SubHeroSection';
 import { AffiliatesSection } from './_components/AffiliatesSection';
-import { FamilyBrandsSection } from './_components/FamilyBrandsSection';
+import { BrandCarousel } from './_components/BrandCarousel';
 import { PerformanceSection } from './_components/PerformanceSection';
 import { NewsSection } from './_components/NewsSection';
 import { CareersSection } from './_components/CareersSection';
@@ -17,7 +17,7 @@ export default function HomePage() {
       <HeroSection />
       <SubHeroSection />
       <AffiliatesSection />
-      <FamilyBrandsSection />
+      <BrandCarousel />
       <PerformanceSection />
       <NewsSection />
       <CareersSection />

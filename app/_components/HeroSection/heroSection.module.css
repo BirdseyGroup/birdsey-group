@@ -86,4 +86,12 @@
     padding: var(--sds-size-space-600, 24px);
     gap: var(--sds-size-space-600, 24px);
   }
+
+  .heroButtons :global(.button-group) {
+    flex-direction: column;
+  }
+
+  .heroButtons :global(.button) {
+    width: 100%;
+  }
 }

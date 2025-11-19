@@ -25,6 +25,25 @@
   color: var(--sds-color-background-brand-secondary, #29305a);
 }
 
+.emailLink {
+  color: var(--sds-color-background-brand-secondary, #29305a);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.emailLink:hover {
+  color: var(--sds-color-background-brand-default, #f1cb3b);
+}
+
+.emailLink strong {
+  transition: color 0.3s ease;
+}
+
+.emailLink:hover strong {
+  color: var(--sds-color-background-brand-default, #f1cb3b);
+}
+
 @media (max-width: 768px) {
   .careers :global(.flex-container) {
     flex-direction: column !important;

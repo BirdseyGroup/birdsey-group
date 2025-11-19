@@ -52,7 +52,7 @@ export function HeroSection() {
         <p className={styles.heroSubtitle}>
           One ecosystem. Trusted expertise. Results from capital to completion.
         </p>
-        <ButtonGroup>
+        <ButtonGroup className={styles.heroButtons}>
           <Button variant="primary" size="medium">
             Explore our expertise
           </Button>

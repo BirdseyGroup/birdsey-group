@@ -30,7 +30,12 @@ export function CareersSection() {
                 resume, cover letter, salary requirements and references to:
               </p>
               <p>
-                <strong>careers@birdseygroup.com</strong>
+                <a
+                  href="mailto:careers@birdseygroup.com"
+                  className={styles.emailLink}
+                >
+                  <strong>careers@birdseygroup.com</strong>
+                </a>
               </p>
             </div>
           </Flex>

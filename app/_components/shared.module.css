@@ -25,6 +25,10 @@
   text-transform: uppercase;
 }
 
+.subheadingCentered {
+  text-align: center;
+}
+
 .subtitleCentered {
   text-align: center;
 }
