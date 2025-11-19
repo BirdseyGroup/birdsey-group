@@ -37,7 +37,7 @@ const carouselSlides = [
     subtitle: "Renovation Contractor",
     description:
       "A turnkey residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
-    logo: "https://birdseygroup.com/wp-content/uploads/2014/09/Birdsey_CMLogo_Vertical_RGB.png",
+    logo: "/images/birdsey-construction-management-squarejpg.jpg",
     website: "https://www.birdseyconstruction.com",
   },
   {
