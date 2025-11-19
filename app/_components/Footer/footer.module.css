@@ -19,7 +19,7 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: var(--sds-size-space-600, 24px);
+    padding: var(--sds-size-space-800, 32px) var(--sds-size-space-1200, 48px);
   }
 
   .footerInner {

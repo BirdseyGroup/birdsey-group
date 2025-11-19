@@ -2,14 +2,32 @@
 
 import { Section } from "@/components/layout";
 import { Button, ButtonGroup } from "@/components/primitives";
-import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 import styles from "./heroSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function HeroSection() {
+interface HeroSectionProps {
+  title: string;
+  subtitle: string;
+  primaryButton?: {
+    text?: string | null;
+    href?: string | null;
+  } | null;
+  secondaryButton?: {
+    text?: string | null;
+    href?: string | null;
+  } | null;
+}
+
+export function HeroSection({
+  title,
+  subtitle,
+  primaryButton,
+  secondaryButton,
+}: HeroSectionProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,19 +64,27 @@ export function HeroSection() {
   return (
     <Section variant="brand" className={styles.hero}>
       <div className={styles.heroContent} ref={contentRef}>
-        <h1 className={styles.heroTitle}>
-          The Standard of Excellence in Real Estate Investment Services.
-        </h1>
-        <p className={styles.heroSubtitle}>
-          One ecosystem. Trusted expertise. Results from capital to completion.
-        </p>
-        <ButtonGroup className={styles.heroButtons}>
-          <Button variant="primary" size="medium">
-            Explore our expertise
-          </Button>
-          <Button variant="neutral" size="medium">
-            Meet the affiliates
-          </Button>
+        <h1 className={styles.heroTitle}>{title}</h1>
+        <p className={styles.heroSubtitle}>{subtitle}</p>
+        <ButtonGroup align="stack" className={styles.heroButtonGroup}>
+          {primaryButton?.text && (
+            <Button
+              variant="primary"
+              size="medium"
+              href={primaryButton.href || undefined}
+            >
+              {primaryButton.text}
+            </Button>
+          )}
+          {secondaryButton?.text && (
+            <Button
+              variant="neutral"
+              size="medium"
+              href={secondaryButton.href || undefined}
+            >
+              {secondaryButton.text}
+            </Button>
+          )}
         </ButtonGroup>
       </div>
     </Section>

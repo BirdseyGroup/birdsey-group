@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev": "tinacms dev -c \"next dev -p 8000\"",
     "app:dev": "next dev -p 8000",
     "app:build": "next build",
     "app:start": "next start",
     "app:lint": "next lint",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build --output-dir public/storybook --webpack-stats-json",
-    "build": "npm run storybook:build && npm run app:build",
+    "build": "tinacms build --local --skip-cloud-checks && npm run storybook:build && npm run app:build",
     "script:dev-resources": "cd scripts/dev-resources; node --env-file=../../.env app.mjs; cd -;",
     "script:icons": "cd scripts/icons; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
     "script:icons:rest": "cd scripts/icons; node --env-file=../../.env app.mjs; cd -;",
@@ -46,10 +47,12 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
+    "@tinacms/cli": "^1.12.4",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "embla-carousel-react": "^8.6.0",
     "gsap": "^3.13.0",
-    "next": "^16.0.1"
+    "next": "^16.0.1",
+    "tinacms": "^2.9.5"
   }
 }

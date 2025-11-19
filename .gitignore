@@ -21,6 +21,10 @@ out
 # Storybook build
 public/storybook
 
+# Tina CMS
+tina/__generated__
+.tina
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -133,10 +133,13 @@
       flex: 1;
     }
   }
-  &.button-group-align-stack {
-    flex-direction: column;
-    > .button {
-      width: 100%;
+
+  @media all and (max-width: 480px) {
+    &.button-group-align-stack {
+      flex-direction: column;
+      > .button {
+        width: 100%;
+      }
     }
   }
 }

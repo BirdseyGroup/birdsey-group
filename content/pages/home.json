@@ -1,0 +1,15 @@
+{
+  "title": "Home",
+  "hero": {
+    "title": "The Standard of Excellence in Real Estate Investment Services.",
+    "subtitle": "One ecosystem. Trusted expertise. Results from capital to completion.",
+    "primaryButton": {
+      "text": "Explore our expertise",
+      "href": "#services"
+    },
+    "secondaryButton": {
+      "text": "Meet the affiliates",
+      "href": "#services"
+    }
+  }
+}
