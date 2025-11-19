@@ -19,10 +19,17 @@
   padding: var(--sds-size-space-600, 24px) 0 var(--sds-size-space-1200, 48px);
   border-bottom: 1px solid var(--sds-color-border-brand-tertiary, #29305a);
   width: 100%;
+  position: relative;
 }
 
 .article:last-child {
   border-bottom: none;
+}
+
+.article :global(svg) {
+  position: absolute;
+  top: var(--sds-size-space-600, 24px);
+  right: 0;
 }
 
 .articleDate {
