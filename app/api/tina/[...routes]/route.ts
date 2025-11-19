@@ -15,6 +15,7 @@ export const GET = async (request: NextRequest) => {
     const { TinaNodeBackend, LocalBackendAuthProvider } = await import(
       "@tinacms/datalayer"
     );
+    // @ts-ignore - Generated file only exists in local development
     const { default: databaseClient } = await import(
       "../../../../../tina/__generated__/databaseClient"
     );
@@ -24,6 +25,7 @@ export const GET = async (request: NextRequest) => {
       databaseClient,
     });
 
+    // @ts-ignore - Handler signature varies between versions
     return handler(request);
   } catch (error) {
     return NextResponse.json(
@@ -46,6 +48,7 @@ export const POST = async (request: NextRequest) => {
     const { TinaNodeBackend, LocalBackendAuthProvider } = await import(
       "@tinacms/datalayer"
     );
+    // @ts-ignore - Generated file only exists in local development
     const { default: databaseClient } = await import(
       "../../../../../tina/__generated__/databaseClient"
     );
@@ -55,6 +58,7 @@ export const POST = async (request: NextRequest) => {
       databaseClient,
     });
 
+    // @ts-ignore - Handler signature varies between versions
     return handler(request);
   } catch (error) {
     return NextResponse.json(
