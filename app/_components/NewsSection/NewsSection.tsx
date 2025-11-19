@@ -2,7 +2,6 @@
 
 import { IconArrowUpRight } from "@/components/icons";
 import { Flex, Section } from "@/components/layout";
-import { TextLink } from "@/components/primitives";
 import sharedStyles from "../shared.module.css";
 import styles from "./newsSection.module.css";
 

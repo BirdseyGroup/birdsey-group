@@ -32,6 +32,81 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "global",
+        label: "Global Settings",
+        path: "content/global",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "navigation",
+            label: "Navigation",
+            fields: [
+              {
+                type: "object",
+                name: "items",
+                label: "Navigation Items",
+                list: true,
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "Link",
+                    required: true,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "footer",
+            label: "Footer",
+            fields: [
+              {
+                type: "string",
+                name: "phone",
+                label: "Phone Number",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "email",
+                label: "Email Address",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "address",
+                label: "Address",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "string",
+                name: "copyright",
+                label: "Copyright Text",
+                required: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: "page",
         label: "Pages",
         path: "content/pages",
@@ -332,67 +407,6 @@ export default defineConfig({
                 name: "submitButtonText",
                 label: "Submit Button Text",
                 required: true,
-              },
-            ],
-          },
-          {
-            type: "object",
-            name: "footer",
-            label: "Footer",
-            fields: [
-              {
-                type: "string",
-                name: "phone",
-                label: "Phone Number",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "email",
-                label: "Email Address",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "address",
-                label: "Address",
-                required: true,
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "string",
-                name: "copyright",
-                label: "Copyright Text",
-                required: true,
-              },
-            ],
-          },
-          {
-            type: "object",
-            name: "navigation",
-            label: "Navigation",
-            fields: [
-              {
-                type: "object",
-                name: "items",
-                label: "Navigation Items",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "label",
-                    label: "Label",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "Link",
-                    required: true,
-                  },
-                ],
               },
             ],
           },

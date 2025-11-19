@@ -1,0 +1,36 @@
+{
+  "navigation": {
+    "items": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Affiliates",
+        "href": "#affiliates"
+      },
+      {
+        "label": "News",
+        "href": "#news"
+      },
+      {
+        "label": "Careers",
+        "href": "#careers"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ]
+  },
+  "footer": {
+    "phone": "404-961-3500",
+    "email": "mail@birdseygroup.com",
+    "address": "Corporate Office\n3565 Piedmont Road N.E.\nPiedmont Center | Building 4 | Suite 460\nAtlanta, Georgia, 30305",
+    "copyright": "The Birdsey Group LLC.\n2025 - All Rights Reserved."
+  }
+}

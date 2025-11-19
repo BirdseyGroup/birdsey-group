@@ -13,10 +13,16 @@ import { SubHeroSection } from "./_components/SubHeroSection";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
-  // Read content directly from the file system
+  // Read page content
   const contentPath = path.join(process.cwd(), "content/pages/home.json");
   const contentFile = await fs.readFile(contentPath, "utf-8");
   const content = JSON.parse(contentFile);
+
+  // Read global settings
+  const globalPath = path.join(process.cwd(), "content/global/settings.json");
+  const globalFile = await fs.readFile(globalPath, "utf-8");
+  const globalSettings = JSON.parse(globalFile);
+
   const heroContent = content.hero;
   const subHeroContent = content.subHero;
   const affiliatesContent = content.affiliates;
@@ -24,8 +30,8 @@ export default async function HomePage() {
   const newsContent = content.news;
   const careersContent = content.careers;
   const contactContent = content.contact;
-  const footerContent = content.footer;
-  const navigationContent = content.navigation;
+  const footerContent = globalSettings.footer;
+  const navigationContent = globalSettings.navigation;
 
   return (
     <div className={styles.birdseyPage}>
