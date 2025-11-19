@@ -13,7 +13,7 @@ const carouselSlides = [
     subtitle: "Diligence & Underwriting",
     description:
       "Provides a full range of commercial mortgage diligence and underwriting services. With experience in all property types, BGC has provided services on over 60,000 loans representing a loan balance of over $250 Billion.",
-    logo: "https://birdseygroup.com/wp-content/uploads/2014/09/Birdsey-Commercial_Vertical.png",
+    logo: "/images/birdsey-construction-management-squarejpg.jpg",
     website: "https://birdseycommercial.com",
   },
   {
@@ -21,7 +21,7 @@ const carouselSlides = [
     subtitle: "& Due Diligence",
     description:
       "Provides quality control and due diligence services to the residential mortgage market. With a full suite of loan review services we help mortgage originators and buyers manage risk.",
-    logo: "https://birdseygroup.com/wp-content/uploads/2018/04/Birdsey-Residential-PNG.png",
+    logo: "/images/birdsey-construction-management-squarejpg.jpg",
     website: "https://birdseyresidential.com",
   },
   {
@@ -29,7 +29,7 @@ const carouselSlides = [
     subtitle: "Preservation Services",
     description:
       "Provides commercial and residential REO preservation services. BPS provides a full range of property preservation services to lenders and managers of REO properties throughout the United States.",
-    logo: "https://birdseygroup.com/wp-content/uploads/2014/09/bps-logo.png",
+    logo: "/images/birdsey-construction-management-squarejpg.jpg",
     website: "https://www.birdseypropertysolutions.com",
   },
   {
@@ -45,7 +45,7 @@ const carouselSlides = [
     subtitle: "Debt Products",
     description:
       "Offers a full complement of commercial real estate debt products for commercial real estate owners and investors through a dedicated and direct capital channel.",
-    logo: "https://birdseygroup.com/wp-content/uploads/2014/09/birdseycapital.png",
+    logo: "/images/birdsey-construction-management-squarejpg.jpg",
     website: "http://www.birdseycapital.com",
   },
 ];
