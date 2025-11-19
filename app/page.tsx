@@ -18,24 +18,59 @@ export default async function HomePage() {
   const contentFile = await fs.readFile(contentPath, "utf-8");
   const content = JSON.parse(contentFile);
   const heroContent = content.hero;
+  const subHeroContent = content.subHero;
+  const affiliatesContent = content.affiliates;
+  const performanceContent = content.performance;
+  const newsContent = content.news;
+  const careersContent = content.careers;
+  const contactContent = content.contact;
+  const footerContent = content.footer;
+  const navigationContent = content.navigation;
 
   return (
     <div className={styles.birdseyPage}>
-      <Header />
+      <Header navItems={navigationContent?.items || []} />
       <HeroSection
         title={heroContent?.title || ""}
         subtitle={heroContent?.subtitle || ""}
         primaryButton={heroContent?.primaryButton}
         secondaryButton={heroContent?.secondaryButton}
       />
-      <SubHeroSection />
-      <AffiliatesSection />
-      <BrandCarousel />
-      <PerformanceSection /> d
-      <NewsSection />
-      <CareersSection />
-      <ContactSection />
-      <Footer />
+      <SubHeroSection
+        title={subHeroContent?.title || ""}
+        description={subHeroContent?.description || ""}
+      />
+      <AffiliatesSection
+        sectionTitle={affiliatesContent?.sectionTitle || ""}
+        items={affiliatesContent?.items || []}
+      />
+      <BrandCarousel items={affiliatesContent?.items || []} />
+      <PerformanceSection
+        title={performanceContent?.title || ""}
+        stats={performanceContent?.stats || []}
+      />
+      <NewsSection
+        title={newsContent?.title || ""}
+        articles={newsContent?.articles || []}
+      />
+      <CareersSection
+        title={careersContent?.title || ""}
+        content={careersContent?.content || ""}
+        email={careersContent?.email || ""}
+      />
+      <ContactSection
+        title={contactContent?.title || ""}
+        formTitle={contactContent?.formTitle || ""}
+        formDescription={contactContent?.formDescription || ""}
+        submitButtonText={contactContent?.submitButtonText || ""}
+      />
+      <Footer
+        phone={footerContent?.phone || ""}
+        email={footerContent?.email || ""}
+        address={footerContent?.address || ""}
+        copyright={footerContent?.copyright || ""}
+        navItems={navigationContent?.items || []}
+      />
     </div>
   );
 }

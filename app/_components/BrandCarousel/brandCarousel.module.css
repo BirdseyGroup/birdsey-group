@@ -36,6 +36,7 @@
   min-height: 100%;
   display: flex;
   align-items: center;
+  padding-right: 50px;
 }
 
 .emblaDots {
@@ -129,6 +130,7 @@
   .emblaSlide {
     flex: 0 0 100%;
     min-height: auto;
+    padding-right: 0;
   }
 
   .emblaSlide :global(.flex-container) {

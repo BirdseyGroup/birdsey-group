@@ -5,27 +5,35 @@ import { clsx } from "clsx";
 import sharedStyles from "../shared.module.css";
 import styles from "./performanceSection.module.css";
 
-export function PerformanceSection() {
-  const items = [
-    { title: "$XB+", description: "Assets managed" },
-    { title: "25+", description: "Years" },
-    { title: "5", description: "Affiliates" },
-    { title: "Nationwide", description: "Reach" },
-  ];
+interface Stat {
+  value: string;
+  label: string;
+}
 
+interface PerformanceSectionProps {
+  title: string;
+  stats: Stat[];
+}
+
+export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
   return (
     <Section className={styles.performance}>
       <Flex direction="column" gap="1200" alignSecondary="center">
-        <h2 className={sharedStyles.sectionTitle}>
-          Performance that Build Trust
-        </h2>
+        <h2 className={sharedStyles.sectionTitle}>{title}</h2>
         <Flex container gap="600">
-          {items.map((item, i) => (
+          {stats.map((stat, i) => (
             <FlexItem key={i} className={styles.performanceItem}>
               <Flex direction="column" gap="400" alignSecondary="center">
-                <h3 className={sharedStyles.subtitle}>{item.title}</h3>
+                <h3 className={sharedStyles.subtitle}>{stat.value}</h3>
                 <div className={sharedStyles.divider} />
-                <p className={clsx(sharedStyles.subheading, sharedStyles.subheadingUppercase)}>{item.description}</p>
+                <p
+                  className={clsx(
+                    sharedStyles.subheading,
+                    sharedStyles.subheadingUppercase,
+                  )}
+                >
+                  {stat.label}
+                </p>
               </Flex>
             </FlexItem>
           ))}

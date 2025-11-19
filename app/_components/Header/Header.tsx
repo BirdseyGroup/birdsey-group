@@ -7,18 +7,18 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./header.module.css";
 
-export function Header() {
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface HeaderProps {
+  navItems: NavItem[];
+}
+
+export function Header({ navItems }: HeaderProps) {
   const [activePage, setActivePage] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Affiliates", href: "#affiliates" },
-    { label: "News", href: "#news" },
-    { label: "Careers", href: "#careers" },
-    { label: "Contact", href: "#contact" },
-  ];
 
   const handleNavClick = (href: string) => {
     const id = href.replace("#", "");

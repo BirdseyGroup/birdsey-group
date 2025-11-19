@@ -5,13 +5,20 @@ import { Button, Input, Textarea } from "@/components/primitives";
 import sharedStyles from "../shared.module.css";
 import styles from "./contactSection.module.css";
 
-export function ContactSection() {
+interface ContactSectionProps {
+  title: string;
+  formTitle: string;
+  formDescription: string;
+  submitButtonText: string;
+}
+
+export function ContactSection({ title, formTitle, formDescription, submitButtonText }: ContactSectionProps) {
   return (
     <Section id="contact" className={styles.contact}>
       <Flex container gap="600" alignSecondary="center">
         <FlexItem size="major">
           <h2 className={sharedStyles.sectionTitle}>
-            Let's Move Real Estate Forward.
+            {title}
           </h2>
         </FlexItem>
         <FlexItem>
@@ -20,11 +27,10 @@ export function ContactSection() {
               <div className={styles.formHeader}>
                 <div className={styles.formAccent} />
                 <h3 className={styles.formTitle}>
-                  Thank you for your interest in Birdsey.
+                  {formTitle}
                 </h3>
                 <p>
-                  Please complete the form below, and we will get back with you
-                  as soon as possible.
+                  {formDescription}
                 </p>
               </div>
 
@@ -35,7 +41,7 @@ export function ContactSection() {
               <Textarea placeholder="Comments" />
 
               <Button variant="primary" size="medium">
-                SUBMIT
+                {submitButtonText}
               </Button>
             </Flex>
           </div>

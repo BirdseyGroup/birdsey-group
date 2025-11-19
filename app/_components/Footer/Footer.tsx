@@ -5,7 +5,20 @@ import { TextLink } from "@/components/primitives";
 import Image from "next/image";
 import styles from "./footer.module.css";
 
-export function Footer() {
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface FooterProps {
+  phone: string;
+  email: string;
+  address: string;
+  copyright: string;
+  navItems: NavItem[];
+}
+
+export function Footer({ phone, email, address, copyright, navItems }: FooterProps) {
   return (
     <Section elementType="footer" variant="brand" className={styles.footer}>
       <div className={styles.footerInner}>
@@ -13,21 +26,11 @@ export function Footer() {
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Company</h3>
             <Flex direction="column" gap="200">
-              <TextLink href="#" className={styles.navigationPill}>
-                About
-              </TextLink>
-              <TextLink href="#" className={styles.navigationPill}>
-                Affiliates
-              </TextLink>
-              <TextLink href="#" className={styles.navigationPill}>
-                News
-              </TextLink>
-              <TextLink href="#" className={styles.navigationPill}>
-                Careers
-              </TextLink>
-              <TextLink href="#" className={styles.navigationPill}>
-                Contact
-              </TextLink>
+              {navItems.map((item, i) => (
+                <TextLink key={i} href={item.href} className={styles.navigationPill}>
+                  {item.label}
+                </TextLink>
+              ))}
             </Flex>
           </Flex>
         </div>
@@ -37,18 +40,18 @@ export function Footer() {
             <h3 className={styles.footerHeading}>Contact Us</h3>
             <Flex direction="column" gap="200">
               <TextLink
-                href="tel:404-961-3500"
+                href={`tel:${phone}`}
                 className={styles.navigationPill}
               >
-                404-961-3500
+                {phone}
               </TextLink>
               <TextLink
-                href="mailto:mail@birdseygroup.com"
+                href={`mailto:${email}`}
                 className={styles.navigationPill}
               >
-                mail@birdseygroup.com
+                {email}
               </TextLink>
-              <TextLink href="#" className={styles.navigationPill}>
+              <TextLink href="#contact" className={styles.navigationPill}>
                 Contact Form
               </TextLink>
             </Flex>
@@ -59,13 +62,12 @@ export function Footer() {
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Location</h3>
             <p className={styles.footerText}>
-              Corporate Office
-              <br />
-              3565 Piedmont Road N.E.
-              <br />
-              Piedmont Center | Building 4 | Suite 460
-              <br />
-              Atlanta, Georgia, 30305
+              {address.split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < address.split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </p>
           </Flex>
         </div>
@@ -83,9 +85,12 @@ export function Footer() {
               />
             </div>
             <p className={styles.footerText}>
-              The Birdsey Group LLC.
-              <br />
-              2025 - All Rights Reserved.
+              {copyright.split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < copyright.split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </p>
           </Flex>
         </div>

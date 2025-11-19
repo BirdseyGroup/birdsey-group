@@ -1,7 +1,7 @@
 {
   "title": "Home",
   "hero": {
-    "title": "The Standard of Excellence in Real Estate Investment Services.",
+    "title": "The Standard of Excellence in Real Estate Investment Services",
     "subtitle": "One ecosystem. Trusted expertise. Results from capital to completion.",
     "primaryButton": {
       "text": "Explore our expertise",
@@ -11,5 +11,146 @@
       "text": "Meet the affiliates",
       "href": "#services"
     }
+  },
+  "subHero": {
+    "title": "The Birdsey Standard",
+    "description": "Building relationships. Bringing discipline to execution. Every Birdsey affiliate operates under the same promise: Quality, Urgency, Accountability, Resilience, Transparency."
+  },
+  "affiliates": {
+    "sectionTitle": "From Capital to Completion",
+    "items": [
+      {
+        "title": "Commercial Mortgage",
+        "subtitle": "Diligence & Underwriting",
+        "description": "Provides a full range of commercial mortgage diligence and underwriting services. With experience in all property types, BGC has provided services on over 60,000 loans representing a loan balance of over $250 Billion.",
+        "logo": "/images/affiliate-1.png",
+        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "website": "https://birdseycommercial.com"
+      },
+      {
+        "title": "Residential Quality Control",
+        "subtitle": "& Due Diligence",
+        "description": "Provides quality control and due diligence services to the residential mortgage market. With a full suite of loan review services we help mortgage originators and buyers manage risk.",
+        "logo": "/images/construction-logo.png",
+        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "website": "https://birdseyresidential.com"
+      },
+      {
+        "title": "REO Property",
+        "subtitle": "Preservation Services",
+        "description": "Provides commercial and residential REO preservation services. BPS provides a full range of property preservation services to lenders and managers of REO properties throughout the United States.",
+        "logo": "/images/affiliate-2.png",
+        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "website": "https://www.birdseypropertysolutions.com"
+      },
+      {
+        "title": "Turnkey Residential",
+        "subtitle": "Renovation Contractor",
+        "description": "A turnkey residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
+        "logo": "/images/affiliate-3.png",
+        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "website": "https://www.birdseyconstruction.com"
+      },
+      {
+        "title": "Commercial Real Estate",
+        "subtitle": "Debt Products",
+        "description": "Offers a full complement of commercial real estate debt products for commercial real estate owners and investors through a dedicated and direct capital channel.",
+        "logo": "/images/affiliate-4.png",
+        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "website": "http://www.birdseycapital.com"
+      }
+    ]
+  },
+  "performance": {
+    "title": "Performance that Build Trust",
+    "stats": [
+      {
+        "value": "$XB+",
+        "label": "Assets managed"
+      },
+      {
+        "value": "25+",
+        "label": "Years"
+      },
+      {
+        "value": "5",
+        "label": "Affiliates"
+      },
+      {
+        "value": "Nationwide",
+        "label": "Reach"
+      }
+    ]
+  },
+  "news": {
+    "title": "Insights & Recognition.",
+    "articles": [
+      {
+        "date": "22 OCTOBER 2025",
+        "category": "ARTICLE",
+        "title": "Lorem ipsum dolor sit amet consectetur adipiscing",
+        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+        "url": "#"
+      },
+      {
+        "date": "15 OCTOBER 2025",
+        "category": "ARTICLE",
+        "title": "Sed do eiusmod tempor incididunt ut labore",
+        "excerpt": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...",
+        "url": "#"
+      },
+      {
+        "date": "08 OCTOBER 2025",
+        "category": "ARTICLE",
+        "title": "Duis aute irure dolor in reprehenderit voluptate",
+        "excerpt": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...",
+        "url": "#"
+      }
+    ]
+  },
+  "careers": {
+    "title": "Build Your Career on Trust.",
+    "content": "Every Birdsey company shares the same foundation: integrity, precision, and partnership. Whether you're managing assets, building projects, or structuring deals, you're part of something bigger.\n\nJoin a team that values precision, partnership, and purpose.\n\nWe are always interested in hearing from talented people. Send resume, cover letter, salary requirements and references to:",
+    "email": "careers@birdseygroup.com"
+  },
+  "contact": {
+    "title": "Let's Move Real Estate Forward.",
+    "formTitle": "Thank you for your interest in Birdsey.",
+    "formDescription": "Please complete the form below, and we will get back with you as soon as possible.",
+    "submitButtonText": "SUBMIT"
+  },
+  "footer": {
+    "phone": "404-961-3500",
+    "email": "mail@birdseygroup.com",
+    "address": "Corporate Office\n3565 Piedmont Road N.E.\nPiedmont Center | Building 4 | Suite 460\nAtlanta, Georgia, 30305",
+    "copyright": "The Birdsey Group LLC.\n2025 - All Rights Reserved."
+  },
+  "navigation": {
+    "items": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Affiliates",
+        "href": "#affiliates"
+      },
+      {
+        "label": "News",
+        "href": "#news"
+      },
+      {
+        "label": "Careers",
+        "href": "#careers"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ]
   }
 }

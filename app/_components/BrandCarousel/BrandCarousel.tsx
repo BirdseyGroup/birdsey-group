@@ -7,50 +7,20 @@ import { useCallback, useEffect, useState } from "react";
 import sharedStyles from "../shared.module.css";
 import styles from "./brandCarousel.module.css";
 
-const carouselSlides = [
-  {
-    title: "Commercial Mortgage",
-    subtitle: "Diligence & Underwriting",
-    description:
-      "Provides a full range of commercial mortgage diligence and underwriting services. With experience in all property types, BGC has provided services on over 60,000 loans representing a loan balance of over $250 Billion.",
-    logo: "/images/birdsey-construction-management-squarejpg.jpg",
-    website: "https://birdseycommercial.com",
-  },
-  {
-    title: "Residential Quality Control",
-    subtitle: "& Due Diligence",
-    description:
-      "Provides quality control and due diligence services to the residential mortgage market. With a full suite of loan review services we help mortgage originators and buyers manage risk.",
-    logo: "/images/birdsey-construction-management-squarejpg.jpg",
-    website: "https://birdseyresidential.com",
-  },
-  {
-    title: "REO Property",
-    subtitle: "Preservation Services",
-    description:
-      "Provides commercial and residential REO preservation services. BPS provides a full range of property preservation services to lenders and managers of REO properties throughout the United States.",
-    logo: "/images/birdsey-construction-management-squarejpg.jpg",
-    website: "https://www.birdseypropertysolutions.com",
-  },
-  {
-    title: "Turnkey Residential",
-    subtitle: "Renovation Contractor",
-    description:
-      "A turnkey residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
-    logo: "/images/birdsey-construction-management-squarejpg.jpg",
-    website: "https://www.birdseyconstruction.com",
-  },
-  {
-    title: "Commercial Real Estate",
-    subtitle: "Debt Products",
-    description:
-      "Offers a full complement of commercial real estate debt products for commercial real estate owners and investors through a dedicated and direct capital channel.",
-    logo: "/images/birdsey-construction-management-squarejpg.jpg",
-    website: "http://www.birdseycapital.com",
-  },
-];
+interface Affiliate {
+  title: string;
+  subtitle: string;
+  description: string;
+  logo: string;
+  slideImage: string;
+  website: string;
+}
 
-export function BrandCarousel() {
+interface BrandCarouselProps {
+  items: Affiliate[];
+}
+
+export function BrandCarousel({ items }: BrandCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     axis: "y",
     loop: true,
@@ -111,20 +81,20 @@ export function BrandCarousel() {
       <div className={styles.carouselWrapper}>
         <div className={styles.embla} ref={emblaRef}>
           <div className={styles.emblaContainer}>
-            {carouselSlides.map((slide, index) => (
+            {items.map((item, index) => (
               <div className={styles.emblaSlide} key={index}>
                 <Flex container gap="600" alignSecondary="center">
                   <FlexItem size="major">
                     <a
-                      href={slide.website}
+                      href={item.website}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.logoLink}
                     >
                       <div className={styles.logoContainer}>
                         <img
-                          src={slide.logo}
-                          alt={`${slide.title} ${slide.subtitle} logo`}
+                          src={item.slideImage}
+                          alt={`${item.title} ${item.subtitle}`}
                           className={styles.brandLogo}
                         />
                       </div>
@@ -138,8 +108,8 @@ export function BrandCarousel() {
                           sharedStyles.subtitleCentered,
                         )}
                       >
-                        {slide.title} <br />
-                        {slide.subtitle}
+                        {item.title} <br />
+                        {item.subtitle}
                       </h2>
                       <div className={sharedStyles.divider} />
                       <p
@@ -148,7 +118,7 @@ export function BrandCarousel() {
                           sharedStyles.subheadingCentered,
                         )}
                       >
-                        {slide.description}
+                        {item.description}
                       </p>
                     </Flex>
                   </FlexItem>
@@ -159,7 +129,7 @@ export function BrandCarousel() {
         </div>
 
         <div className={styles.emblaDots}>
-          {carouselSlides.map((_, index) => (
+          {items.map((_, index) => (
             <button
               key={index}
               className={clsx(styles.emblaDot, {

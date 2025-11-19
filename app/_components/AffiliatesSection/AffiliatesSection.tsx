@@ -5,25 +5,34 @@ import Image from "next/image";
 import sharedStyles from "../shared.module.css";
 import styles from "./affiliatesSection.module.css";
 
-export function AffiliatesSection() {
-  const logos = [
-    "/images/affiliate-1.png",
-    "/images/construction-logo.png",
-    "/images/affiliate-2.png",
-    "/images/affiliate-3.png",
-    "/images/affiliate-4.png",
-  ];
+interface Affiliate {
+  title: string;
+  subtitle: string;
+  description: string;
+  logo: string;
+  slideImage: string;
+  website: string;
+}
 
+interface AffiliatesSectionProps {
+  sectionTitle: string;
+  items: Affiliate[];
+}
+
+export function AffiliatesSection({
+  sectionTitle,
+  items,
+}: AffiliatesSectionProps) {
   return (
     <Section id="affiliates" className={styles.affiliates}>
       <Flex direction="column" gap="1200" alignSecondary="center">
-        <h2 className={sharedStyles.sectionTitle}>From Capital to Completion</h2>
+        <h2 className={sharedStyles.sectionTitle}>{sectionTitle}</h2>
         <div className={styles.affiliatesLogos}>
-          {logos.map((logo, i) => (
+          {items.map((affiliate, i) => (
             <div key={i} className={styles.affiliateLogo}>
               <Image
-                src={logo}
-                alt={`Affiliate logo ${i + 1}`}
+                src={affiliate.logo}
+                alt={`${affiliate.title} ${affiliate.subtitle}`}
                 fill
                 style={{ objectFit: "contain" }}
               />
