@@ -25,6 +25,15 @@ const nextConfig = {
       },
     ];
   },
+  webpack: (config, { webpack }) => {
+    // Ignore missing Tina generated files in production (using Tina Cloud)
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /tina\/__generated__\/databaseClient$/,
+      })
+    );
+    return config;
+  },
 };
 
 export default nextConfig;
