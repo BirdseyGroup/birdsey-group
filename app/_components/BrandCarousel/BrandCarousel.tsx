@@ -77,8 +77,34 @@ export function BrandCarousel() {
     [emblaApi],
   );
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        scrollPrev();
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        scrollNext();
+      }
+    },
+    [scrollPrev, scrollNext],
+  );
+
   return (
-    <Section id="services" className={styles.brandCarousel}>
+    <Section
+      id="services"
+      className={styles.brandCarousel}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
       <h2 className={clsx(sharedStyles.subtitle, styles.sectionTitle)}>
         Birdsey Group Affiliates
       </h2>
