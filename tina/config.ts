@@ -11,9 +11,9 @@ export default defineConfig({
   branch,
 
   // Get this from tina.io
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || null,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   // Get this from tina.io
-  token: process.env.TINA_TOKEN || null,
+  token: process.env.TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
@@ -25,7 +25,9 @@ export default defineConfig({
       publicFolder: "public",
     },
   },
-  contentApiUrlOverride: "/api/tina/gql",
+  contentApiUrlOverride: process.env.TINA_PUBLIC_IS_LOCAL
+    ? "http://localhost:4001/graphql"
+    : "/api/tina/gql",
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
