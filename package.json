@@ -11,7 +11,7 @@
     "app:lint": "next lint",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build --output-dir public/storybook --webpack-stats-json",
-    "build": "tinacms build && npm run storybook:build && npm run app:build",
+    "build": "npm run storybook:build && npm run app:build",
     "script:dev-resources": "cd scripts/dev-resources; node --env-file=../../.env app.mjs; cd -;",
     "script:icons": "cd scripts/icons; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
     "script:icons:rest": "cd scripts/icons; node --env-file=../../.env app.mjs; cd -;",
