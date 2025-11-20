@@ -57,10 +57,10 @@ export function BrandCarousel({ items }: BrandCarouselProps) {
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.key === "ArrowUp") {
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
         event.preventDefault();
         scrollPrev();
-      } else if (event.key === "ArrowDown") {
+      } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
         event.preventDefault();
         scrollNext();
       }
