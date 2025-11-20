@@ -15,14 +15,14 @@
   font-size: var(--sds-typography-subheading-size-medium, 20px);
   line-height: 1.2;
   color: var(--sds-color-text-default-default, #363534);
-}
 
-.careersText p {
-  margin-bottom: var(--sds-size-space-400, 16px);
-}
+  p {
+    margin-bottom: var(--sds-size-space-400, 16px);
+  }
 
-.careersText strong {
-  color: var(--sds-color-background-brand-secondary, #29305a);
+  strong {
+    color: var(--sds-color-background-brand-secondary, #29305a);
+  }
 }
 
 .emailLink {
@@ -30,26 +30,26 @@
   text-decoration: none;
   transition: color 0.3s ease;
   cursor: pointer;
-}
 
-.emailLink:hover {
-  color: var(--sds-color-background-brand-default, #f1cb3b);
-}
+  &:hover {
+    color: var(--sds-color-background-brand-default, #f1cb3b);
 
-.emailLink strong {
-  transition: color 0.3s ease;
-}
+    strong {
+      color: var(--sds-color-background-brand-default, #f1cb3b);
+    }
+  }
 
-.emailLink:hover strong {
-  color: var(--sds-color-background-brand-default, #f1cb3b);
+  strong {
+    transition: color 0.3s ease;
+  }
 }
 
 @media (max-width: 768px) {
-  .careers :global(.flex-container) {
-    flex-direction: column !important;
-  }
-
   .careers {
     padding: var(--sds-size-space-600, 24px);
+
+    :global(.flex-container) {
+      flex-direction: column !important;
+    }
   }
 }

@@ -29,11 +29,57 @@ export function HeroSection({
   secondaryButton,
 }: HeroSectionProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!contentRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Initial fade-in timeline for hero elements
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      // Set initial states
+      gsap.set(contentRef.current, { opacity: 0 });
+      gsap.set(titleRef.current, { opacity: 0, y: 30 });
+      gsap.set(subtitleRef.current, { opacity: 0, y: 30 });
+      gsap.set(buttonsRef.current, { opacity: 0, y: 30 });
+
+      // Sequential fade-in animation
+      tl.to(contentRef.current, {
+        opacity: 1,
+        duration: 1.2,
+        delay: 0.2,
+      })
+        .to(
+          titleRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+          },
+          "-=0.6"
+        )
+        .to(
+          subtitleRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+          },
+          "-=0.4"
+        )
+        .to(
+          buttonsRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+          },
+          "-=0.4"
+        );
+
       // Animate hero section height shrinking
       gsap.to(contentRef.current, {
         minHeight: "400px",
@@ -64,9 +110,17 @@ export function HeroSection({
   return (
     <Section variant="brand" className={styles.hero}>
       <div className={styles.heroContent} ref={contentRef}>
-        <h1 className={styles.heroTitle}>{title}</h1>
-        <p className={styles.heroSubtitle}>{subtitle}</p>
-        <ButtonGroup align="stack" className={styles.heroButtonGroup}>
+        <h1 className={styles.heroTitle} ref={titleRef}>
+          {title}
+        </h1>
+        <p className={styles.heroSubtitle} ref={subtitleRef}>
+          {subtitle}
+        </p>
+        <ButtonGroup
+          align="stack"
+          className={styles.heroButtonGroup}
+          ref={buttonsRef}
+        >
           {primaryButton?.text && (
             <Button
               variant="primary"
