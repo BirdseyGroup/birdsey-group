@@ -109,30 +109,28 @@ export function HeroSection({
         <p className={styles.heroSubtitle} ref={subtitleRef}>
           {subtitle}
         </p>
-        <ButtonGroup
-          align="stack"
-          className={styles.heroButtonGroup}
-          ref={buttonsRef}
-        >
-          {primaryButton?.text && (
-            <Button
-              variant="primary"
-              size="medium"
-              href={primaryButton.href || undefined}
-            >
-              {primaryButton.text}
-            </Button>
-          )}
-          {secondaryButton?.text && (
-            <Button
-              variant="neutral"
-              size="medium"
-              href={secondaryButton.href || undefined}
-            >
-              {secondaryButton.text}
-            </Button>
-          )}
-        </ButtonGroup>
+        <div ref={buttonsRef} className={styles.heroButtonGroup}>
+          <ButtonGroup align="stack">
+            {primaryButton?.text && (
+              <Button
+                variant="primary"
+                size="medium"
+                href={primaryButton.href || undefined}
+              >
+                {primaryButton.text}
+              </Button>
+            )}
+            {secondaryButton?.text && (
+              <Button
+                variant="neutral"
+                size="medium"
+                href={secondaryButton.href || undefined}
+              >
+                {secondaryButton.text}
+              </Button>
+            )}
+          </ButtonGroup>
+        </div>
       </div>
     </Section>
   );
