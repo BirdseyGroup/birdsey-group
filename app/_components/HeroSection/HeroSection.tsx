@@ -80,28 +80,21 @@ export function HeroSection({
           "-=0.4"
         );
 
-      // Animate hero section height shrinking
-      gsap.to(contentRef.current, {
-        minHeight: "400px",
+      // Create a wrapper timeline for the scroll-triggered fade out
+      const scrollTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: contentRef.current,
           start: "top top",
-          end: "bottom top",
+          end: "+=600",
           scrub: 1,
         },
       });
 
-      // Animate content fade out
-      gsap.to(contentRef.current?.children || [], {
-        opacity: 0,
-        y: -50,
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
+      // Animate each child element fading out and scaling down
+      scrollTimeline
+        .to(titleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+        .to(subtitleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+        .to(buttonsRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
     }, contentRef);
 
     return () => ctx.revert();

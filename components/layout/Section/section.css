@@ -86,5 +86,5 @@
   }
 }
 .section-variant-subtle {
-  background: transparent;
+  background: var(--sds-color-background-default-default, #ffffff);
 }
