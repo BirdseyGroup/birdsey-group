@@ -75,11 +75,11 @@ export function ContactSection({ title, formTitle, formDescription, submitButton
                   </p>
                 </div>
 
-                <Input placeholder="Name" isRequired />
-                <Input placeholder="Phone" type="tel" isRequired />
-                <Input placeholder="Email" type="email" isRequired />
+                <Input placeholder="Name" required />
+                <Input placeholder="Phone" type="tel" required />
+                <Input placeholder="Email" type="email" required />
                 <Input placeholder="Company" />
-                <Textarea placeholder="Comments" isRequired />
+                <Textarea placeholder="Comments" required />
 
                 <Button variant="primary" size="medium" type="submit">
                   {submitButtonText}

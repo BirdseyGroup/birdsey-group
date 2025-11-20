@@ -64,6 +64,10 @@
   color: var(--sds-color-text-default-default);
 }
 
+.contactForm :global(.button) {
+  width: 100%;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .contact {
