@@ -13,6 +13,7 @@
   padding: var(--button-padding-y) var(--button-padding-x);
   position: relative;
   white-space: nowrap;
+  transition: background-color 0.2s ease-in-out, filter 0.2s ease-in-out;
 
   > .icon {
     --icon-color: var(--button-color);
