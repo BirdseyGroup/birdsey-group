@@ -65,15 +65,12 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
               <h2 className={sharedStyles.subtitle}>{title}</h2>
               <div className={sharedStyles.divider} />
               <div className={styles.careersText}>
-                {content.split('\n\n').map((paragraph, i) => (
+                {content.split("\n\n").map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
                 <p>
-                  <a
-                    href={`mailto:${email}`}
-                    className={styles.emailLink}
-                  >
-                    <strong>{email}</strong>
+                  <a href={`mailto:${email}`} className={styles.emailLink}>
+                    {email}
                   </a>
                 </p>
               </div>
