@@ -63,24 +63,26 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
         <h2 className={sharedStyles.sectionTitle} ref={titleRef}>
           {title}
         </h2>
-        <Flex container gap="600" ref={statsRef}>
-          {stats.map((stat, i) => (
-            <FlexItem key={i} className={styles.performanceItem}>
-              <Flex direction="column" gap="400" alignSecondary="center">
-                <h3 className={sharedStyles.subtitle}>{stat.value}</h3>
-                <div className={sharedStyles.divider} />
-                <p
-                  className={clsx(
-                    sharedStyles.subheading,
-                    sharedStyles.subheadingUppercase,
-                  )}
-                >
-                  {stat.label}
-                </p>
-              </Flex>
-            </FlexItem>
-          ))}
-        </Flex>
+        <div ref={statsRef}>
+          <Flex container gap="600">
+            {stats.map((stat, i) => (
+              <FlexItem key={i} className={styles.performanceItem}>
+                <Flex direction="column" gap="400" alignSecondary="center">
+                  <h3 className={sharedStyles.subtitle}>{stat.value}</h3>
+                  <div className={sharedStyles.divider} />
+                  <p
+                    className={clsx(
+                      sharedStyles.subheading,
+                      sharedStyles.subheadingUppercase,
+                    )}
+                  >
+                    {stat.label}
+                  </p>
+                </Flex>
+              </FlexItem>
+            ))}
+          </Flex>
+        </div>
       </Flex>
     </Section>
   );

@@ -40,18 +40,20 @@ export function SubHeroSection({ title, description }: SubHeroSectionProps) {
 
   return (
     <Section id="about" variant="brand" className={styles.subHero}>
-      <Flex container gap="600" alignSecondary="center" ref={sectionRef}>
-        <FlexItem>
-          <TextSubtitle elementType="h2" className={styles.subtitle}>
-            {title}
-          </TextSubtitle>
-        </FlexItem>
-        <FlexItem size="major">
-          <TextSubheading className={styles.subheading}>
-            {description}
-          </TextSubheading>
-        </FlexItem>
-      </Flex>
+      <div ref={sectionRef}>
+        <Flex container gap="600" alignSecondary="center">
+          <FlexItem>
+            <TextSubtitle elementType="h2" className={styles.subtitle}>
+              {title}
+            </TextSubtitle>
+          </FlexItem>
+          <FlexItem size="major">
+            <TextSubheading className={styles.subheading}>
+              {description}
+            </TextSubheading>
+          </FlexItem>
+        </Flex>
+      </div>
     </Section>
   );
 }

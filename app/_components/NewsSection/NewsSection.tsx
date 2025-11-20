@@ -67,21 +67,23 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
         <h2 className={sharedStyles.sectionTitle} ref={titleRef}>
           {title}
         </h2>
-        <Flex direction="column" ref={articlesRef}>
-          {articles.map((article, i) => (
-            <article key={i} className={styles.article}>
-              <a href={article.url} className={styles.articleLink}>
-                <div className={styles.articleImage} />
-                <Flex direction="column" gap="400">
-                  <p className={styles.articleDate}>{article.date}</p>
-                  <h3 className={styles.articleTitle}>{article.title}</h3>
-                  <p className={styles.articleExcerpt}>{article.excerpt}</p>
-                </Flex>
-                <IconArrowUpRight />
-              </a>
-            </article>
-          ))}
-        </Flex>
+        <div ref={articlesRef}>
+          <Flex direction="column">
+            {articles.map((article, i) => (
+              <article key={i} className={styles.article}>
+                <a href={article.url} className={styles.articleLink}>
+                  <div className={styles.articleImage} />
+                  <Flex direction="column" gap="400">
+                    <p className={styles.articleDate}>{article.date}</p>
+                    <h3 className={styles.articleTitle}>{article.title}</h3>
+                    <p className={styles.articleExcerpt}>{article.excerpt}</p>
+                  </Flex>
+                  <IconArrowUpRight />
+                </a>
+              </article>
+            ))}
+          </Flex>
+        </div>
       </Flex>
     </Section>
   );
