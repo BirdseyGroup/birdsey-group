@@ -1,9 +1,14 @@
 "use client";
 
 import { Flex, Section } from "@/components/layout";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import sharedStyles from "../shared.module.css";
 import styles from "./affiliatesSection.module.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Affiliate {
   title: string;
@@ -23,13 +28,52 @@ export function AffiliatesSection({
   sectionTitle,
   items,
 }: AffiliatesSectionProps) {
+  const logoRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Set initial state for all logos
+      logoRefs.current.forEach((logo) => {
+        if (logo) {
+          gsap.set(logo, { opacity: 0, y: 20 });
+        }
+      });
+
+      // Animate logos sequentially when they come into view
+      logoRefs.current.forEach((logo, index) => {
+        if (logo) {
+          gsap.to(logo, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: index * 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: logo,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, [items.length]);
+
   return (
     <Section id="affiliates" className={styles.affiliates}>
       <Flex direction="column" gap="1200" alignSecondary="center">
         <h2 className={sharedStyles.sectionTitle}>{sectionTitle}</h2>
         <div className={styles.affiliatesLogos}>
           {items.map((affiliate, i) => (
-            <div key={i} className={styles.affiliateLogo}>
+            <div
+              key={i}
+              className={styles.affiliateLogo}
+              ref={(el) => {
+                logoRefs.current[i] = el;
+              }}
+            >
               <Image
                 src={affiliate.logo}
                 alt={`${affiliate.title} ${affiliate.subtitle}`}
