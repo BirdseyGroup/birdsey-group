@@ -2,7 +2,7 @@
   --text-area-background-color: var(--sds-color-background-default-default);
   --text-area-text-color: var(--sds-color-text-default-default);
   --text-area-border-color: var(--sds-color-border-default-default);
-  --text-area-placeholder-color: var(--sds-color-text-default-tertiary);
+  --text-area-placeholder-color: var(--sds-color-text-default-default);
   align-items: center;
   background-color: var(--text-area-background-color);
   border-radius: var(--sds-size-radius-200);
@@ -12,11 +12,14 @@
   display: flex;
   line-height: var(--global-line-height-paragraph);
   padding: var(--sds-size-space-300) var(--sds-size-space-400);
+  transition: color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   width: 100%;
+  min-height: 80px;
 
   &::placeholder {
     color: var(--text-area-placeholder-color);
+    transition: color 0.2s ease;
   }
 
   &.text-area-resizable {
@@ -33,7 +36,14 @@
     --text-area-border-color: var(--sds-color-border-danger-default);
   }
 
+  &:focus,
   &[data-focus-visible] {
     --text-area-border-color: var(--sds-color-border-brand-secondary);
+    --text-area-text-color: var(--sds-color-text-default-tertiary);
+    --text-area-placeholder-color: var(--sds-color-text-default-tertiary);
+  }
+
+  &:not(:placeholder-shown) {
+    --text-area-text-color: var(--sds-color-text-default-default);
   }
 }

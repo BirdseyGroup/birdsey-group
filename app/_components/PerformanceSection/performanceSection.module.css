@@ -7,9 +7,14 @@
   background-color: var(--sds-color-background-default-default);
 }
 
+.performance :global(.flex-container) {
+  width: 100%;
+}
+
 .performanceItem {
   flex: 1 1 25%;
   min-width: 0;
+  max-width: 25%;
 }
 
 /* Mobile styles */
