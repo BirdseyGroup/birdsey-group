@@ -17,8 +17,7 @@
   justify-content: center;
   padding: var(--sds-size-space-100) var(--sds-size-space-200) 0
     var(--sds-size-space-300);
-  border-radius: var(--sds-size-radius-100) var(--sds-size-radius-100)
-    0 0;
+  border-radius: var(--sds-size-radius-100) var(--sds-size-radius-100) 0 0;
   color: var(--text-default-alternative, #ffffff);
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
@@ -33,7 +32,7 @@
 }
 
 .header .navigationPill[data-selected] {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 .header .navigationPill::after {
@@ -81,7 +80,8 @@
 
 .mobileNavigationPill {
   width: 100%;
-  padding: var(--sds-size-space-300) var(--sds-size-space-400);
+  padding: var(--sds-size-space-300) var(--sds-size-space-400)
+    var(--sds-size-space-300) calc(var(--sds-size-space-400) - 3px);
   color: var(--text-default-alternative, #ffffff);
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
@@ -92,7 +92,6 @@
 
 .mobileNavigationPill[data-selected] {
   border-left-color: var(--sds-color-background-brand-default);
-  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .mobileNavigationPill[data-hovered]:not([data-selected]) {
