@@ -66,6 +66,7 @@
 
 .contactForm :global(.button) {
   width: 100%;
+  text-transform: none;
 }
 
 /* Mobile styles */
