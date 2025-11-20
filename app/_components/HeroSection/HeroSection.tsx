@@ -32,6 +32,7 @@ export function HeroSection({
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const heroContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -95,6 +96,26 @@ export function HeroSection({
         .to(titleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
         .to(subtitleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
         .to(buttonsRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
+
+      // Background zoom effect on scroll - zoom in from 110% to 130%
+      if (heroContainerRef.current) {
+        gsap.fromTo(
+          heroContainerRef.current,
+          {
+            backgroundSize: "110%",
+          },
+          {
+            backgroundSize: "130%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: heroContainerRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 1,
+            },
+          }
+        );
+      }
     }, contentRef);
 
     return () => ctx.revert();
@@ -102,34 +123,36 @@ export function HeroSection({
 
   return (
     <Section variant="brand" className={styles.hero}>
-      <div className={styles.heroContent} ref={contentRef}>
-        <h1 className={styles.heroTitle} ref={titleRef}>
-          {title}
-        </h1>
-        <p className={styles.heroSubtitle} ref={subtitleRef}>
-          {subtitle}
-        </p>
-        <div ref={buttonsRef} className={styles.heroButtonGroup}>
-          <ButtonGroup align="stack">
-            {primaryButton?.text && (
-              <Button
-                variant="primary"
-                size="medium"
-                href={primaryButton.href || undefined}
-              >
-                {primaryButton.text}
-              </Button>
-            )}
-            {secondaryButton?.text && (
-              <Button
-                variant="neutral"
-                size="medium"
-                href={secondaryButton.href || undefined}
-              >
-                {secondaryButton.text}
-              </Button>
-            )}
-          </ButtonGroup>
+      <div className={styles.heroContent} ref={heroContainerRef}>
+        <div ref={contentRef} className={styles.heroContentInner}>
+          <h1 className={styles.heroTitle} ref={titleRef}>
+            {title}
+          </h1>
+          <p className={styles.heroSubtitle} ref={subtitleRef}>
+            {subtitle}
+          </p>
+          <div ref={buttonsRef} className={styles.heroButtonGroup}>
+            <ButtonGroup align="stack">
+              {primaryButton?.text && (
+                <Button
+                  variant="primary"
+                  size="medium"
+                  href={primaryButton.href || undefined}
+                >
+                  {primaryButton.text}
+                </Button>
+              )}
+              {secondaryButton?.text && (
+                <Button
+                  variant="neutral"
+                  size="medium"
+                  href={secondaryButton.href || undefined}
+                >
+                  {secondaryButton.text}
+                </Button>
+              )}
+            </ButtonGroup>
+          </div>
         </div>
       </div>
     </Section>
