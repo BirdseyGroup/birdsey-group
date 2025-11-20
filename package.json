@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev -p 8000\"",
     "app:dev": "next dev -p 8000",
-    "app:build": "next build --webpack",
+    "app:build": "next build",
     "app:start": "next start",
     "app:lint": "next lint",
     "storybook": "storybook dev -p 6006 --no-open",
