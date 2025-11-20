@@ -23,6 +23,7 @@ public/storybook
 
 # Tina CMS
 tina/__generated__
+!tina/__generated__/databaseClient.d.ts
 .tina
 
 # Editor directories and files
