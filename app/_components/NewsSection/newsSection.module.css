@@ -1,10 +1,10 @@
 .news {
-  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
-  border-left: var(--sds-size-stroke-border, 1px) solid
-    var(--sds-color-border-default-default, #d9d9d9);
-  border-right: var(--sds-size-stroke-border, 1px) solid
-    var(--sds-color-border-default-default, #d9d9d9);
-  background-color: var(--sds-color-background-default-default, #ffffff);
+  padding: var(--sds-size-space-1200) var(--sds-size-space-2400);
+  border-left: var(--sds-size-stroke-border) solid
+    var(--sds-color-border-default-default);
+  border-right: var(--sds-size-stroke-border) solid
+    var(--sds-color-border-default-default);
+  background-color: var(--sds-color-background-default-default);
 }
 
 .news > * {
@@ -14,8 +14,8 @@
 }
 
 .article {
-  padding: var(--sds-size-space-600, 24px) 0 var(--sds-size-space-1200, 48px);
-  border-bottom: 1px solid var(--sds-color-border-brand-tertiary, #29305a);
+  padding: var(--sds-size-space-600) 0 var(--sds-size-space-1200);
+  border-bottom: 1px solid var(--sds-color-border-brand-tertiary);
   width: 100%;
   position: relative;
 }
@@ -26,7 +26,7 @@
 
 .articleLink {
   display: flex;
-  gap: var(--sds-size-space-600, 24px);
+  gap: var(--sds-size-space-600);
   align-items: flex-start;
   width: 100%;
   text-decoration: none;
@@ -41,29 +41,29 @@
 
 .article :global(svg) {
   position: absolute;
-  top: var(--sds-size-space-600, 24px);
+  top: var(--sds-size-space-600);
   right: 0;
   width: 24px;
   height: 24px;
 }
 
 .articleDate {
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
-  color: var(--sds-color-text-default-default, #363534);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  color: var(--sds-color-text-default-default);
 }
 
 .articleImage {
   width: 188px;
   height: 160px;
-  background-color: var(--sds-color-background-default-tertiary, #d9d9d9);
+  background-color: var(--sds-color-background-default-tertiary);
   border-radius: 16px;
 }
 
 .articleCategory {
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
-  color: var(--sds-color-text-default-default, #363534);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  color: var(--sds-color-text-default-default);
 }
 
 .articleTitle {
@@ -72,26 +72,26 @@
     "Merriweather",
     serif
   );
-  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  font-size: var(--sds-typography-subtitle-size-base);
   line-height: 1.2;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
 }
 
 .articleExcerpt {
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
   line-height: 1.5;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .news {
-    padding: var(--sds-size-space-600, 24px);
+    padding: var(--sds-size-space-600);
   }
 
   .article {
-    padding: var(--sds-size-space-400, 16px) 0 var(--sds-size-space-600, 24px);
+    padding: var(--sds-size-space-400) 0 var(--sds-size-space-600);
   }
 
   .articleLink {

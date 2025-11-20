@@ -32,7 +32,7 @@
 
 html {
   font-size: 16px;
-  background: var(--sds-color-background-brand-secondary, #29305a);
+  background: var(--sds-color-background-brand-secondary);
 }
 
 body {

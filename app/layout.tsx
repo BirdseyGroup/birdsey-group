@@ -5,6 +5,13 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "The Birdsey Group, LLC | Real Estate Consulting",
   description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+  icons: {
+    icon: [
+      { url: "/images/favicons/favicon16.jpg", sizes: "16x16", type: "image/jpeg" },
+      { url: "/images/favicons/favicon32.jpg", sizes: "32x32", type: "image/jpeg" },
+      { url: "/images/favicons/favicon48.jpg", sizes: "48x48", type: "image/jpeg" },
+    ],
+  },
   openGraph: {
     title: "The Birdsey Group, LLC | Real Estate Consulting",
     description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",

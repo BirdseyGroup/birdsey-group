@@ -86,5 +86,5 @@
   }
 }
 .section-variant-subtle {
-  background: var(--sds-color-background-default-default, #ffffff);
+  background: var(--sds-color-background-default-default);
 }

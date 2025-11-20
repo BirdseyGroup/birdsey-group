@@ -1,10 +1,10 @@
 .contact {
-  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
-  border-left: var(--sds-size-stroke-border, 1px) solid
-    var(--sds-color-border-default-default, #d9d9d9);
-  border-right: var(--sds-size-stroke-border, 1px) solid
-    var(--sds-color-border-default-default, #d9d9d9);
-  background-color: var(--sds-color-background-default-default, #ffffff);
+  padding: var(--sds-size-space-1200) var(--sds-size-space-2400);
+  border-left: var(--sds-size-stroke-border) solid
+    var(--sds-color-border-default-default);
+  border-right: var(--sds-size-stroke-border) solid
+    var(--sds-color-border-default-default);
+  background-color: var(--sds-color-background-default-default);
 }
 
 .contact :global(.flex-container) {
@@ -17,9 +17,9 @@
 }
 
 .contactForm {
-  background-color: var(--sds-color-background-default-default, #ffffff);
-  padding: var(--sds-size-space-600, 24px);
-  border-radius: var(--sds-size-radius-200, 8px);
+  background-color: var(--sds-color-background-default-default);
+  padding: var(--sds-size-space-600);
+  border-radius: var(--sds-size-radius-200);
   box-shadow:
     0 16px 32px -4px rgba(54, 53, 52, 0.1),
     0 4px 4px -4px rgba(54, 53, 52, 0.05);
@@ -30,44 +30,44 @@
 .formHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--sds-size-space-200, 8px);
+  gap: var(--sds-size-space-200);
 }
 
 .formAccent {
   width: 32px;
   height: 2px;
-  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+  background-color: var(--sds-color-background-brand-default);
 }
 
 .formTitle {
-  font-family: var(--sds-typography-heading-font-family, "Merriweather", serif);
-  font-size: var(--sds-typography-heading-size-base, 24px);
+  font-family: var(--sds-typography-heading-font-family);
+  font-size: var(--sds-typography-heading-size-base);
   line-height: 1.2;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
   display: flex;
   align-items: center;
-  gap: var(--sds-size-space-400, 16px);
+  gap: var(--sds-size-space-400);
 }
 
 .formTitle::before {
   content: "";
   width: 2px;
   height: 48px;
-  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+  background-color: var(--sds-color-background-brand-default);
   flex-shrink: 0;
 }
 
 .formHeader p {
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
   line-height: 1.4;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .contact {
-    padding: var(--sds-size-space-600, 24px);
+    padding: var(--sds-size-space-600);
   }
 
   .contact :global(.flex-container) {

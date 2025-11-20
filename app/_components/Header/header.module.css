@@ -5,24 +5,24 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: var(--sds-color-background-brand-secondary, #29305a);
-  padding: var(--sds-size-space-400, 16px) var(--sds-size-space-600, 24px);
+  background-color: var(--sds-color-background-brand-secondary);
+  padding: var(--sds-size-space-400) var(--sds-size-space-600);
 }
 
 .header .navigationPill {
   display: flex;
   flex-direction: column;
-  gap: var(--sds-size-space-100, 4px);
+  gap: var(--sds-size-space-100);
   align-items: center;
   justify-content: center;
-  padding: var(--sds-size-space-100, 4px) var(--sds-size-space-200, 8px) 0
-    var(--sds-size-space-300, 12px);
-  border-radius: var(--sds-size-radius-100, 4px) var(--sds-size-radius-100, 4px)
+  padding: var(--sds-size-space-100) var(--sds-size-space-200) 0
+    var(--sds-size-space-300);
+  border-radius: var(--sds-size-radius-100) var(--sds-size-radius-100)
     0 0;
   color: var(--text-default-alternative, #ffffff);
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
-  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  font-weight: var(--sds-typography-body-font-weight-regular);
   line-height: 1.4;
   text-align: center;
   background-color: transparent;
@@ -45,7 +45,7 @@
 }
 
 .header .navigationPill[data-selected]::after {
-  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+  background-color: var(--sds-color-background-brand-default);
 }
 
 .searchIcon {
@@ -75,23 +75,23 @@
 /* Mobile menu */
 .mobileMenu {
   display: none;
-  padding: var(--sds-size-space-400, 16px) 0;
-  background-color: var(--sds-color-background-brand-secondary, #29305a);
+  padding: var(--sds-size-space-400) 0;
+  background-color: var(--sds-color-background-brand-secondary);
 }
 
 .mobileNavigationPill {
   width: 100%;
-  padding: var(--sds-size-space-300, 12px) var(--sds-size-space-400, 16px);
+  padding: var(--sds-size-space-300) var(--sds-size-space-400);
   color: var(--text-default-alternative, #ffffff);
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
   text-align: left;
   background-color: transparent;
   border-left: 3px solid transparent;
 }
 
 .mobileNavigationPill[data-selected] {
-  border-left-color: var(--sds-color-background-brand-default, #f1cb3b);
+  border-left-color: var(--sds-color-background-brand-default);
   background-color: rgba(255, 255, 255, 0.05);
 }
 

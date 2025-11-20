@@ -1,12 +1,12 @@
 /* Footer */
 .footer {
-  background-color: var(--sds-color-background-brand-secondary, #29305a);
-  padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-2400, 96px);
+  background-color: var(--sds-color-background-brand-secondary);
+  padding: var(--sds-size-space-1200) var(--sds-size-space-2400);
 }
 
 .footerInner {
   display: flex;
-  gap: var(--sds-size-space-600, 24px);
+  gap: var(--sds-size-space-600);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -19,13 +19,13 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: var(--sds-size-space-800, 32px) var(--sds-size-space-1200, 48px);
+    padding: var(--sds-size-space-800) var(--sds-size-space-1200);
   }
 
   .footerInner {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--sds-size-space-600, 24px);
+    gap: var(--sds-size-space-600);
   }
 }
 
@@ -33,7 +33,7 @@
   .footerInner {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--sds-size-space-600, 24px);
+    gap: var(--sds-size-space-600);
   }
 }
 
@@ -41,42 +41,42 @@
   .footerInner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--sds-size-space-600, 24px);
+    gap: var(--sds-size-space-600);
   }
 }
 
 .footerHeading {
-  font-family: var(--sds-typography-heading-font-family, "Merriweather", serif);
-  font-size: var(--sds-typography-heading-size-base, 24px);
+  font-family: var(--sds-typography-heading-font-family);
+  font-size: var(--sds-typography-heading-size-base);
   line-height: 1.2;
   color: var(--text-default-alternative, #ffffff);
-  margin-bottom: var(--sds-size-space-400, 16px);
+  margin-bottom: var(--sds-size-space-400);
 }
 
 .footerText {
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-small, 14px);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small);
   line-height: 1.4;
-  color: var(--sds-color-text-default-tertiary, #b3b3b3);
+  color: var(--sds-color-text-default-tertiary);
 }
 
 .footer .textLinkList {
-  gap: var(--sds-size-space-200, 8px);
+  gap: var(--sds-size-space-200);
 }
 
 .footer .textListItem {
   display: flex;
   align-items: center;
-  padding: var(--sds-size-space-200, 8px);
-  border-radius: var(--sds-size-radius-200, 8px);
+  padding: var(--sds-size-space-200);
+  border-radius: var(--sds-size-radius-200);
   width: 100%;
 }
 
 .footer .textBodyLink {
   color: var(--text-default-alternative, #ffffff) !important;
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
-  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  font-weight: var(--sds-typography-body-font-weight-regular);
   line-height: 1;
   text-decoration: none !important;
   text-transform: none;
@@ -92,11 +92,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: var(--sds-size-space-200, 8px);
-  border-radius: var(--sds-size-radius-200, 8px);
-  font-family: var(--sds-typography-body-font-family, "Inter", sans-serif);
-  font-size: var(--sds-typography-body-size-medium, 16px);
-  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+  padding: var(--sds-size-space-200);
+  border-radius: var(--sds-size-radius-200);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  font-weight: var(--sds-typography-body-font-weight-regular);
   line-height: 1;
   color: var(--text-default-alternative, #ffffff) !important;
   text-decoration: none !important;

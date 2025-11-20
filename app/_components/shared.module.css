@@ -5,9 +5,9 @@
     "Merriweather",
     serif
   );
-  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  font-size: var(--sds-typography-subtitle-size-base);
   line-height: 1.2;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
 }
 
 .subheading {
@@ -16,9 +16,9 @@
     "Inter",
     sans-serif
   );
-  font-size: var(--sds-typography-subheading-size-medium, 20px);
+  font-size: var(--sds-typography-subheading-size-medium);
   line-height: 1.2;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
 }
 
 .subheadingUppercase {
@@ -39,16 +39,16 @@
     "Merriweather",
     serif
   );
-  font-size: var(--sds-typography-subtitle-size-base, 32px);
+  font-size: var(--sds-typography-subtitle-size-base);
   line-height: 1.2;
-  color: var(--sds-color-text-default-default, #363534);
+  color: var(--sds-color-text-default-default);
   text-align: center;
 }
 
 .divider {
   width: 24px;
   height: 2px;
-  background-color: var(--sds-color-background-brand-default, #f1cb3b);
+  background-color: var(--sds-color-background-brand-default);
 }
 
 .imagePlaceholder {
@@ -56,7 +56,7 @@
   max-width: 506px;
   min-height: 506px;
   aspect-ratio: 1;
-  background-color: var(--sds-color-background-default-tertiary, #d9d9d9);
+  background-color: var(--sds-color-background-default-tertiary);
   border-radius: 16px;
 }
 

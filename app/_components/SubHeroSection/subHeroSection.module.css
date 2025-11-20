@@ -1,6 +1,6 @@
 .subHero {
-  background-color: var(--sds-color-background-brand-secondary, #29305a);
-  padding: var(--sds-size-space-2400, 96px);
+  background-color: var(--sds-color-background-brand-secondary);
+  padding: var(--sds-size-space-2400);
 }
 
 .subtitle {
@@ -17,12 +17,12 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .subHero {
-    padding: var(--sds-size-space-1200, 48px) var(--sds-size-space-600, 24px);
+    padding: var(--sds-size-space-1200) var(--sds-size-space-600);
   }
 
   .subHero :global(.flex-container) {
     flex-direction: column !important;
-    gap: var(--sds-size-space-400, 16px) !important;
+    gap: var(--sds-size-space-400) !important;
   }
 
   .subtitle {
