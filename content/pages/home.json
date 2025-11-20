@@ -24,7 +24,7 @@
         "subtitle": "Diligence & Underwriting",
         "description": "Provides a full range of commercial mortgage diligence and underwriting services. With experience in all property types, BGC has provided services on over 60,000 loans representing a loan balance of over $250 Billion.",
         "logo": "/images/affiliate-1.png",
-        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "slideImage": "/images/teasers/birdsey-commercial-teaser.jpg",
         "website": "https://birdseycommercial.com"
       },
       {
@@ -32,7 +32,7 @@
         "subtitle": "& Due Diligence",
         "description": "Provides quality control and due diligence services to the residential mortgage market. With a full suite of loan review services we help mortgage originators and buyers manage risk.",
         "logo": "/images/construction-logo.png",
-        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "slideImage": "/images/teasers/birdsey-residential-teaser.jpg",
         "website": "https://birdseyresidential.com"
       },
       {
@@ -40,7 +40,7 @@
         "subtitle": "Preservation Services",
         "description": "Provides commercial and residential REO preservation services. BPS provides a full range of property preservation services to lenders and managers of REO properties throughout the United States.",
         "logo": "/images/affiliate-2.png",
-        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "slideImage": "/images/teasers/birdsey-property-solutions-teaser.jpg",
         "website": "https://www.birdseypropertysolutions.com"
       },
       {
@@ -48,7 +48,7 @@
         "subtitle": "Renovation Contractor",
         "description": "A turnkey residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
         "logo": "/images/affiliate-3.png",
-        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "slideImage": "/images/teasers/birdsey-construction-management-teaser.jpg",
         "website": "https://www.birdseyconstruction.com"
       },
       {
@@ -56,7 +56,7 @@
         "subtitle": "Debt Products",
         "description": "Offers a full complement of commercial real estate debt products for commercial real estate owners and investors through a dedicated and direct capital channel.",
         "logo": "/images/affiliate-4.png",
-        "slideImage": "/images/birdsey-construction-management-squarejpg.jpg",
+        "slideImage": "/images/teasers/birdsey-capital-teaser.jpg",
         "website": "http://www.birdseycapital.com"
       }
     ]
