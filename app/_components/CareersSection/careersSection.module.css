@@ -7,6 +7,15 @@
   background-color: var(--sds-color-background-default-default);
 }
 
+.imageContainer {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--sds-size-radius-400);
+  overflow: hidden;
+}
+
 .careersText {
   font-family: var(
     --sds-typography-subheading-font-family,
@@ -50,10 +59,10 @@
     :global(.flex-container) {
       flex-direction: column !important;
     }
+  }
 
-    :global(.imagePlaceholder) {
-      width: 100%;
-      max-width: 100%;
-    }
+  .imageContainer {
+    width: 100%;
+    max-width: 100%;
   }
 }

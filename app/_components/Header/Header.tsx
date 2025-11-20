@@ -3,6 +3,7 @@
 import { IconSearch } from "@/components/icons";
 import { Flex, FlexItem, Section } from "@/components/layout";
 import { Navigation, NavigationPill } from "@/components/primitives";
+import { useNavigation } from "@/app/_contexts/NavigationContext";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./header.module.css";
@@ -17,7 +18,7 @@ interface HeaderProps {
 }
 
 export function Header({ navItems }: HeaderProps) {
-  const [activePage, setActivePage] = useState("home");
+  const { activePage, setActivePage } = useNavigation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (href: string) => {

@@ -2,6 +2,7 @@
 
 import { Flex, Section } from "@/components/layout";
 import { TextLink } from "@/components/primitives";
+import { useNavigation } from "@/app/_contexts/NavigationContext";
 import Image from "next/image";
 import styles from "./footer.module.css";
 
@@ -19,6 +20,25 @@ interface FooterProps {
 }
 
 export function Footer({ phone, email, address, copyright, navItems }: FooterProps) {
+  const { activePage, setActivePage } = useNavigation();
+
+  const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    setActivePage(id);
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 72;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <Section elementType="footer" variant="brand" className={styles.footer}>
       <div className={styles.footerInner}>
@@ -27,7 +47,13 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
             <h3 className={styles.footerHeading}>Company</h3>
             <Flex direction="column" gap="200">
               {navItems.map((item, i) => (
-                <TextLink key={i} href={item.href} className={styles.navigationPill}>
+                <TextLink
+                  key={i}
+                  href={item.href}
+                  className={styles.navigationPill}
+                  onClick={(e) => handleNavClick(item.href, e)}
+                  data-selected={activePage === item.href.replace("#", "") ? "" : undefined}
+                >
                   {item.label}
                 </TextLink>
               ))}
@@ -51,7 +77,12 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
               >
                 {email}
               </TextLink>
-              <TextLink href="#contact" className={styles.navigationPill}>
+              <TextLink
+                href="#contact"
+                className={styles.navigationPill}
+                onClick={(e) => handleNavClick("#contact", e)}
+                data-selected={activePage === "contact" ? "" : undefined}
+              >
                 Contact Form
               </TextLink>
             </Flex>

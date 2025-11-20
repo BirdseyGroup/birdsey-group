@@ -3,6 +3,7 @@
 import { Flex, FlexItem, Section } from "@/components/layout";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import sharedStyles from "../shared.module.css";
 import styles from "./careersSection.module.css";
@@ -57,7 +58,15 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
     <Section id="careers" className={styles.careers}>
       <Flex container gap="1200" alignSecondary="center">
         <FlexItem size="major">
-          <div className={sharedStyles.imagePlaceholder} ref={imageRef} />
+          <div className={styles.imageContainer} ref={imageRef}>
+            <Image
+              src="/images/birdsey-office.jpg"
+              alt="Birdsey Group Office"
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
         </FlexItem>
         <FlexItem size="major">
           <div ref={contentRef}>

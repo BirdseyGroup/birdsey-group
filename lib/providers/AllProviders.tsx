@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from "react";
+import { NavigationProvider } from "@/app/_contexts/NavigationContext";
 import { AuthProvider } from "./AuthProvider";
 import { PricingProvider } from "./PricingProvider";
 import { ProductsProvider } from "./ProductsProvider";
@@ -22,11 +23,13 @@ import { ProductsProvider } from "./ProductsProvider";
  */
 export function AllProviders({ children }: { children?: ReactNode }) {
   return (
-    <AuthProvider>
-      <PricingProvider>
-        <ProductsProvider>{children}</ProductsProvider>
-      </PricingProvider>
-    </AuthProvider>
+    <NavigationProvider>
+      <AuthProvider>
+        <PricingProvider>
+          <ProductsProvider>{children}</ProductsProvider>
+        </PricingProvider>
+      </AuthProvider>
+    </NavigationProvider>
   );
 }
 
