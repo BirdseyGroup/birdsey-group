@@ -68,7 +68,7 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
             {stats.map((stat, i) => (
               <FlexItem key={i} className={styles.performanceItem}>
                 <Flex direction="column" gap="400" alignSecondary="center">
-                  <h3 className={sharedStyles.subtitle}>{stat.value}</h3>
+                  <div className={sharedStyles.subtitle}>{stat.value}</div>
                   <div className={sharedStyles.divider} />
                   <p
                     className={clsx(
