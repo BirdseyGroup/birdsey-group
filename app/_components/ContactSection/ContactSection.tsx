@@ -64,26 +64,28 @@ export function ContactSection({ title, formTitle, formDescription, submitButton
         </FlexItem>
         <FlexItem>
           <div className={styles.contactForm} ref={formRef}>
-            <Flex direction="column" gap="600">
-              <div className={styles.formHeader}>
-                <h3 className={styles.formTitle}>
-                  {formTitle}
-                </h3>
-                <p>
-                  {formDescription}
-                </p>
-              </div>
+            <form>
+              <Flex direction="column" gap="600">
+                <div className={styles.formHeader}>
+                  <h3 className={styles.formTitle}>
+                    {formTitle}
+                  </h3>
+                  <p>
+                    {formDescription}
+                  </p>
+                </div>
 
-              <Input placeholder="Name" />
-              <Input placeholder="Phone" />
-              <Input placeholder="Email" />
-              <Input placeholder="Company" />
-              <Textarea placeholder="Comments" />
+                <Input placeholder="Name" isRequired />
+                <Input placeholder="Phone" type="tel" isRequired />
+                <Input placeholder="Email" type="email" isRequired />
+                <Input placeholder="Company" />
+                <Textarea placeholder="Comments" isRequired />
 
-              <Button variant="primary" size="medium">
-                {submitButtonText}
-              </Button>
-            </Flex>
+                <Button variant="primary" size="medium" type="submit">
+                  {submitButtonText}
+                </Button>
+              </Flex>
+            </form>
           </div>
         </FlexItem>
       </Flex>
