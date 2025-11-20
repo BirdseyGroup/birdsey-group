@@ -27,14 +27,12 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .affiliatesLogos {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--sds-size-space-400);
+    flex-direction: column;
+    gap: var(--sds-size-space-800);
   }
 
   .affiliateLogo {
-    width: calc((100% - 32px) / 3);
-    height: auto;
-    aspect-ratio: 1;
+    width: 100%;
+    height: 165px;
   }
 }

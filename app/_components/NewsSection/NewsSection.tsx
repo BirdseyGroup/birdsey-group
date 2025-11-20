@@ -77,8 +77,12 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
                     <p className={styles.articleDate}>{article.date}</p>
                     <h3 className={styles.articleTitle}>{article.title}</h3>
                     <p className={styles.articleExcerpt}>{article.excerpt}</p>
+                    <div className={styles.readMoreLink}>Read More</div>
                   </Flex>
-                  <IconArrowUpRight />
+
+                  <div className={styles.readMoreIcon}>
+                    <IconArrowUpRight />
+                  </div>
                 </a>
               </article>
             ))}

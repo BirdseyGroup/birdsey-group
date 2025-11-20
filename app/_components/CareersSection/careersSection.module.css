@@ -23,7 +23,8 @@
 }
 
 .emailLink {
-  color: var(--sds-color-background-brand-tertiary);
+  color: var(--sds-color-border-brand-secondary);
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
   cursor: pointer;
@@ -48,6 +49,11 @@
 
     :global(.flex-container) {
       flex-direction: column !important;
+    }
+
+    :global(.imagePlaceholder) {
+      width: 100%;
+      max-width: 100%;
     }
   }
 }
