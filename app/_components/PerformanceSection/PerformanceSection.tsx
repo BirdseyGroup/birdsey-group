@@ -63,7 +63,7 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
         <h2 className={sharedStyles.sectionTitle} ref={titleRef}>
           {title}
         </h2>
-        <div ref={statsRef}>
+        <div className={styles.performanceInner} ref={statsRef}>
           <Flex container gap="600">
             {stats.map((stat, i) => (
               <FlexItem key={i} className={styles.performanceItem}>
