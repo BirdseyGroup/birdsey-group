@@ -2,6 +2,7 @@
 
 import { clsx } from "clsx";
 import React, { useEffect, useRef } from "react";
+import { AnimatedWord } from "../AnimatedWord";
 import sharedStyles from "../shared.module.css";
 import styles from "./brandShowcase.module.css";
 
@@ -62,6 +63,13 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
     <div className={styles.container}>
       <div ref={containerRef} className={styles.scrollContainer}>
         <section id="services" className={styles.stickySection}>
+          <AnimatedWord
+            imagePath="/images/words/Trust.svg"
+            alt="Trust"
+            direction="left-to-right"
+            speed={0.5}
+            className={styles.trustWord}
+          />
           {/* Left Column - Sticky Images with Heading */}
           <div className={styles.imageColumn}>
             <div className={styles.stickyWrapper}>

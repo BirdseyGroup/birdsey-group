@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   background-color: #ffffff;
+  overflow: visible;
 }
 
 /* Sticky section that pins while scrolling */
@@ -80,9 +81,24 @@
 
 /* Right Column - Scrolling Content */
 .contentColumn {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--sds-size-space-2400);
+  overflow: visible;
+}
+
+.trustWord {
+  position: fixed;
+  top: 25vh;
+  left: 50%;
+  z-index: 0;
+}
+
+/* Ensure sticky content is above the animated word */
+.stickySection {
+  position: relative;
+  z-index: 1;
 }
 
 .contentItem {
