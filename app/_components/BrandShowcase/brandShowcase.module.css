@@ -63,6 +63,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .brandImage.activeImage {
@@ -91,6 +92,11 @@
   justify-content: center;
   gap: var(--sds-size-space-400);
   padding: var(--sds-size-space-1200) 0;
+}
+
+.contentItem :global(.divider) {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
