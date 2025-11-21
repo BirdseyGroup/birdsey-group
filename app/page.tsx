@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { AffiliatesSection } from "./_components/AffiliatesSection";
-import { BrandCarousel } from "./_components/BrandCarousel";
+import { BrandShowcase } from "./_components/BrandShowcase";
 import { CareersSection } from "./_components/CareersSection";
 import { ContactSection } from "./_components/ContactSection";
 import { Footer } from "./_components/Footer";
@@ -50,7 +50,10 @@ export default async function HomePage() {
         sectionTitle={affiliatesContent?.sectionTitle || ""}
         items={affiliatesContent?.items || []}
       />
-      <BrandCarousel items={affiliatesContent?.items || []} />
+      <BrandShowcase
+        heading={affiliatesContent?.sectionHeading || ""}
+        items={affiliatesContent?.items || []}
+      />
       <PerformanceSection
         title={performanceContent?.title || ""}
         stats={performanceContent?.stats || []}

@@ -1,0 +1,141 @@
+/* Container wraps everything */
+.container {
+  position: relative;
+}
+
+/* Scroll container creates the scroll height */
+.scrollContainer {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+/* Sticky section that pins while scrolling */
+.stickySection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sds-size-space-2400);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sds-size-space-1200) var(--sds-size-space-600);
+  min-height: 100vh;
+}
+
+/* Left Column - Sticky Image */
+.imageColumn {
+  position: relative;
+  /* Remove height constraint to allow sticky to work properly */
+}
+
+.stickyWrapper {
+  position: sticky;
+  top: 120px; /* Below header with some spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.stickyHeading {
+  margin: 0;
+  text-align: left;
+  font-size: var(--sds-typography-heading-size-large);
+  font-weight: var(--sds-typography-heading-font-weight);
+  color: var(--sds-color-text-default-default);
+}
+
+.stickyImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--sds-size-radius-400);
+  overflow: hidden;
+}
+
+.brandImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.brandImage.activeImage {
+  opacity: 1;
+}
+
+.brandLogo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Right Column - Scrolling Content */
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-2400);
+}
+
+.contentItem {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sds-size-space-400);
+  padding: var(--sds-size-space-1200) 0;
+}
+
+.title {
+  margin: 0;
+  text-align: left;
+}
+
+.subtitle {
+  margin: 0;
+  text-align: left;
+}
+
+.description {
+  margin: 0;
+  text-align: left;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .stickySection {
+    grid-template-columns: 1fr;
+    gap: var(--sds-size-space-1200);
+    padding: var(--sds-size-space-600);
+  }
+
+  .imageColumn {
+    display: none;
+  }
+
+  .contentItem {
+    min-height: auto;
+    padding: var(--sds-size-space-1200) 0;
+  }
+
+  .contentItem:first-child {
+    padding-top: 0;
+  }
+
+  .title,
+  .subtitle,
+  .description {
+    text-align: center;
+  }
+
+  .topBar {
+    display: none;
+  }
+}
