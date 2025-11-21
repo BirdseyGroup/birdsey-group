@@ -24,18 +24,10 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeSlide, setActiveSlide] = React.useState(0);
-  const [showTopBar, setShowTopBar] = React.useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
-
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
-
-      // Show topbar when section is in view
-      const inView = rect.top <= 100;
-      setShowTopBar(inView);
 
       // Determine active slide based on which content item is near the middle
       contentRefs.current.forEach((ref, index) => {
