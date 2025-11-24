@@ -189,7 +189,7 @@ export function TeamMemberModal({
             onClick={onClose}
             aria-label="Close modal"
           >
-            <IconX size={24} />
+            <IconX size="24" />
           </button>
 
           {/* Profile photo */}
@@ -225,7 +225,7 @@ export function TeamMemberModal({
                       className={styles.contactButton}
                       aria-label="Call"
                     >
-                      <IconPhone size={20} />
+                      <IconPhone size="20" />
                     </a>
                   )}
                   {member.email && (
@@ -234,7 +234,7 @@ export function TeamMemberModal({
                       className={styles.contactButton}
                       aria-label="Email"
                     >
-                      <IconMail size={20} />
+                      <IconMail size="20" />
                     </a>
                   )}
                   {member.linkedIn && (
@@ -245,7 +245,7 @@ export function TeamMemberModal({
                       className={styles.contactButton}
                       aria-label="LinkedIn"
                     >
-                      <IconLinkedin size={20} />
+                      <IconLinkedin size="20" />
                     </a>
                   )}
                 </div>
