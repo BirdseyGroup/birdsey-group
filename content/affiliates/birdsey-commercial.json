@@ -1,5 +1,7 @@
 {
   "name": "Birdsey Group Commercial",
+  "shortName": "Commercial",
   "slug": "birdsey-commercial",
-  "description": "Birdsey Group Commercial specializes in commercial real estate services including property management, leasing, and investment strategies."
+  "description": "Birdsey Group Commercial specializes in commercial real estate services including property management, leasing, and investment strategies.",
+  "order": 2
 }

@@ -1,0 +1,28 @@
+{
+  "title": "About Us",
+  "hero": {
+    "title": "About Birdsey Group",
+    "subtitle": "Many of our clients consider our company as an extension of their own staff.",
+    "backgroundImage": "/images/birdsey-board-room-with-city-views.jpg"
+  },
+  "heading": "About The Birdsey Group",
+  "accordionItems": [
+    {
+      "title": "Mission Statement",
+      "content": "At Birdsey Group, we commit the highest levels of experience, efficiency and enthusiasm in order to exceed our client's expectations and develop the trust necessary to be a valued addition of their real estate deal team."
+    },
+    {
+      "title": "Experience",
+      "content": "Our project managers and leaders are committed industry professionals with an average of over 20 years experience each in real estate valuation and finance. The director group alone has over 100 years combined experience in the commercial and residential real estate industry. Birdsey Group leadership has vast experience working on single as well as large portfolio transactions that includes over 60,000 loans with over $250 billion in loan balance."
+    },
+    {
+      "title": "Urgency",
+      "content": "Our managers and staff know that deadlines are not just \"goals\", but rather, one of the many critical events on a project timeline constructed for the successful completion of a real estate transaction. Many of our clients consider our company as an extension of their own staff. This has been achieved by consistently providing quality analysis within the agreed upon due date."
+    },
+    {
+      "title": "Clients",
+      "content": "Our clients represent a broad industry base including Financial Institutions, Government Agencies, Investment Banks, Rating Agencies, B-Piece Investors, and Standard Banks."
+    }
+  ],
+  "teamSectionTitle": "Our Team"
+}

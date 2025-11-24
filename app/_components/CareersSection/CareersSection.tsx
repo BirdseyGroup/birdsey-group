@@ -60,7 +60,7 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
         <FlexItem size="major">
           <div className={styles.imageContainer} ref={imageRef}>
             <Image
-              src="/images/birdsey-office.jpg"
+              src="/images/birdsey-board-room-with-city-views.jpg"
               alt="Birdsey Group Office"
               fill
               style={{ objectFit: "cover" }}

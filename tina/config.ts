@@ -107,9 +107,95 @@ export default defineConfig({
         ],
       },
       {
+        name: "aboutPage",
+        label: "About Page",
+        path: "content/pages",
+        match: {
+          include: "about",
+        },
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Page Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero Section",
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Hero Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "subtitle",
+                label: "Hero Subtitle",
+                required: true,
+              },
+              {
+                type: "image",
+                name: "backgroundImage",
+                label: "Background Image",
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "heading",
+            label: "Page Heading",
+            required: true,
+          },
+          {
+            type: "object",
+            name: "accordionItems",
+            label: "Accordion Sections",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Section Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "content",
+                label: "Section Content",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "teamSectionTitle",
+            label: "Team Section Title",
+            required: true,
+          },
+        ],
+      },
+      {
         name: "page",
         label: "Pages",
         path: "content/pages",
+        match: {
+          exclude: "about",
+        },
         format: "json",
         fields: [
           {
@@ -427,6 +513,12 @@ export default defineConfig({
           },
           {
             type: "string",
+            name: "shortName",
+            label: "Short Name (for tabs)",
+            required: true,
+          },
+          {
+            type: "string",
             name: "slug",
             label: "Slug",
             required: true,
@@ -438,6 +530,12 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Display Order",
+            required: true,
           },
         ],
       },
@@ -477,6 +575,16 @@ export default defineConfig({
             name: "bio",
             label: "Biography",
             required: true,
+          },
+          {
+            type: "string",
+            name: "email",
+            label: "Email",
+          },
+          {
+            type: "string",
+            name: "phone",
+            label: "Phone",
           },
           {
             type: "string",

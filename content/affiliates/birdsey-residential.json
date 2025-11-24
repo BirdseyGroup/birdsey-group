@@ -1,5 +1,7 @@
 {
   "name": "Birdsey Group Residential",
+  "shortName": "Residential",
   "slug": "birdsey-residential",
-  "description": "Birdsey Group Residential provides comprehensive residential real estate services and property management solutions."
+  "description": "Birdsey Group Residential provides comprehensive residential real estate services and property management solutions.",
+  "order": 3
 }

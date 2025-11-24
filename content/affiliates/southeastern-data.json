@@ -1,5 +1,7 @@
 {
   "name": "Southeastern Data Cooperative",
+  "shortName": "Property Solutions",
   "slug": "southeastern-data",
-  "description": "Southeastern Data Cooperative provides comprehensive data and research services for the real estate industry."
+  "description": "Southeastern Data Cooperative provides comprehensive data and research services for the real estate industry.",
+  "order": 5
 }

@@ -1,0 +1,17 @@
+.aboutPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 0;
+  background-color: var(--sds-color-background-default-default);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+

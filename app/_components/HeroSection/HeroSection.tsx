@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface HeroSectionProps {
   title: string;
   subtitle: string;
+  backgroundImage?: string;
   primaryButton?: {
     text?: string | null;
     href?: string | null;
@@ -20,13 +21,16 @@ interface HeroSectionProps {
     text?: string | null;
     href?: string | null;
   } | null;
+  variant?: "default" | "simple";
 }
 
 export function HeroSection({
   title,
   subtitle,
+  backgroundImage,
   primaryButton,
   secondaryButton,
+  variant = "default",
 }: HeroSectionProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -34,8 +38,11 @@ export function HeroSection({
   const buttonsRef = useRef<HTMLDivElement>(null);
   const heroContainerRef = useRef<HTMLDivElement>(null);
 
+  const hasButtons = primaryButton?.text || secondaryButton?.text;
+  const isSimple = variant === "simple";
+
   useEffect(() => {
-    if (!contentRef.current) return;
+    if (!contentRef.current || isSimple) return;
 
     const ctx = gsap.context(() => {
       // Initial fade-in timeline for hero elements
@@ -99,13 +106,15 @@ export function HeroSection({
 
       // Background zoom effect on scroll - zoom in from 110% to 130%
       if (heroContainerRef.current) {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
         gsap.fromTo(
           heroContainerRef.current,
           {
-            backgroundSize: "110%",
+            backgroundSize: isMobile ? "cover" : "110%",
           },
           {
-            backgroundSize: "130%",
+            backgroundSize: isMobile ? "cover" : "130%",
             ease: "none",
             scrollTrigger: {
               trigger: heroContainerRef.current,
@@ -119,11 +128,22 @@ export function HeroSection({
     }, contentRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isSimple]);
+
+  const heroStyle = backgroundImage
+    ? { backgroundImage: `url(${backgroundImage})` }
+    : undefined;
 
   return (
-    <Section variant="brand" className={styles.hero}>
-      <div className={styles.heroContent} ref={heroContainerRef}>
+    <Section
+      variant="brand"
+      className={`${styles.hero} ${isSimple ? styles.heroSimple : ""}`}
+    >
+      <div
+        className={styles.heroContent}
+        ref={heroContainerRef}
+        style={heroStyle}
+      >
         <div ref={contentRef} className={styles.heroContentInner}>
           <h1 className={styles.heroTitle} ref={titleRef}>
             {title}
@@ -131,28 +151,30 @@ export function HeroSection({
           <p className={styles.heroSubtitle} ref={subtitleRef}>
             {subtitle}
           </p>
-          <div ref={buttonsRef} className={styles.heroButtonGroup}>
-            <ButtonGroup align="stack">
-              {primaryButton?.text && (
-                <Button
-                  variant="primary"
-                  size="medium"
-                  href={primaryButton.href || undefined}
-                >
-                  {primaryButton.text}
-                </Button>
-              )}
-              {secondaryButton?.text && (
-                <Button
-                  variant="neutral"
-                  size="medium"
-                  href={secondaryButton.href || undefined}
-                >
-                  {secondaryButton.text}
-                </Button>
-              )}
-            </ButtonGroup>
-          </div>
+          {hasButtons && (
+            <div ref={buttonsRef} className={styles.heroButtonGroup}>
+              <ButtonGroup align="stack">
+                {primaryButton?.text && (
+                  <Button
+                    variant="primary"
+                    size="medium"
+                    href={primaryButton.href || undefined}
+                  >
+                    {primaryButton.text}
+                  </Button>
+                )}
+                {secondaryButton?.text && (
+                  <Button
+                    variant="neutral"
+                    size="medium"
+                    href={secondaryButton.href || undefined}
+                  >
+                    {secondaryButton.text}
+                  </Button>
+                )}
+              </ButtonGroup>
+            </div>
+          )}
         </div>
       </div>
     </Section>

@@ -23,6 +23,16 @@
   overflow: hidden;
 }
 
+.heroSimple .heroContent {
+  min-height: 400px;
+  background-size: cover;
+}
+
+.heroSimple .heroContentInner {
+  min-height: 400px;
+  gap: var(--sds-size-space-600);
+}
+
 .heroContent::before {
   content: '';
   position: absolute;
@@ -119,6 +129,7 @@
 
   .heroContent {
     min-height: 600px;
+    background-size: cover;
   }
 
   .heroContentInner {

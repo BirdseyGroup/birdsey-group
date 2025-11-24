@@ -1,0 +1,246 @@
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.backdropVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal container */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 1000;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.modalVisible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Modal content card */
+.modalContent {
+  background: var(--sds-color-background-default-default, #ffffff);
+  border-radius: var(--sds-size-radius-400);
+  box-shadow: var(--sds-effects-shadows-400);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Close button */
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sds-color-background-brand-default);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  opacity: 0.8;
+}
+
+.closeButton svg {
+  color: #363534 !important;
+  fill: #363534 !important;
+}
+
+.closeButton svg path,
+.closeButton svg line,
+.closeButton svg circle {
+  stroke: #363534 !important;
+  fill: none !important;
+}
+
+/* Photo */
+.photoContainer {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--sds-size-radius-400) var(--sds-size-radius-400) 0 0;
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content section */
+.content {
+  padding: var(--sds-size-space-600);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-400);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Header row: name on left, buttons on right */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sds-size-space-400);
+  flex-shrink: 0;
+}
+
+/* Header left: yellow accent + name */
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-size-space-400);
+  flex: 1;
+  min-width: 0;
+}
+
+.yellowAccent {
+  width: 2px;
+  height: 32px;
+  background: var(--sds-color-background-brand-default);
+  flex-shrink: 0;
+}
+
+.name {
+  font-family: var(--sds-typography-heading-font-family-default);
+  font-size: var(--sds-typography-heading-large-font-size);
+  font-weight: var(--sds-typography-heading-font-weight-bold);
+  line-height: var(--sds-typography-heading-large-line-height);
+  color: var(--sds-color-text-default);
+  margin: 0;
+}
+
+/* Contact actions */
+.contactActions {
+  display: flex;
+  gap: var(--sds-size-space-200);
+  flex-shrink: 0;
+}
+
+/* Description section */
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-600);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.contactButton {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--sds-size-radius-200);
+  background: var(--sds-color-background-brand-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.contactButton:hover {
+  opacity: 0.8;
+}
+
+.contactButton svg {
+  color: var(--sds-color-text-on-brand);
+}
+
+/* Job title */
+.title {
+  font-family: var(--sds-typography-body-font-family-default);
+  font-size: var(--sds-typography-body-default-font-size);
+  font-weight: var(--sds-typography-body-font-weight-regular);
+  line-height: var(--sds-typography-body-default-line-height);
+  color: var(--sds-color-text-default);
+  margin: 0;
+}
+
+/* Biography */
+.bio {
+  font-family: var(--sds-typography-body-font-family-default);
+  font-size: var(--sds-typography-body-default-font-size);
+  font-weight: var(--sds-typography-body-font-weight-regular);
+  line-height: 1.4;
+  color: var(--sds-color-text-default-default);
+}
+
+.bio p {
+  margin: 0;
+}
+
+.bio p + p {
+  margin-top: var(--sds-size-space-400);
+}
+
+/* Empty paragraphs (blank lines) */
+.bio p:empty {
+  line-height: 0.5;
+}
+
+.noBio {
+  font-family: var(--sds-typography-body-font-family-default);
+  font-size: var(--sds-typography-body-default-font-size);
+  line-height: var(--sds-typography-body-default-line-height);
+  color: var(--sds-color-text-subtle);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .photoContainer {
+    height: 240px;
+  }
+
+  .content {
+    padding: var(--sds-size-space-300);
+  }
+
+  .name {
+    font-size: var(--sds-typography-heading-default-font-size);
+  }
+}

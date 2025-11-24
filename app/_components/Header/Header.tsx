@@ -1,9 +1,8 @@
 "use client";
 
-import { IconSearch } from "@/components/icons";
+import { useNavigation } from "@/app/_contexts/NavigationContext";
 import { Flex, FlexItem, Section } from "@/components/layout";
 import { Navigation, NavigationPill } from "@/components/primitives";
-import { useNavigation } from "@/app/_contexts/NavigationContext";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./header.module.css";
@@ -29,11 +28,12 @@ export function Header({ navItems }: HeaderProps) {
     if (element) {
       const headerOffset = 72; // Height of fixed header
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -43,7 +43,7 @@ export function Header({ navItems }: HeaderProps) {
     setMobileMenuOpen(false);
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -52,14 +52,15 @@ export function Header({ navItems }: HeaderProps) {
       <Flex container alignPrimary="space-between" alignSecondary="center">
         <FlexItem size="minor">
           <div
-            style={{ position: "relative", width: "99px", height: "40px", cursor: "pointer" }}
+            style={{
+              position: "relative",
+              width: "99px",
+              height: "40px",
+              cursor: "pointer",
+            }}
             onClick={handleLogoClick}
           >
-            <Image
-              src="/images/birdsey-group-logo.svg"
-              alt="Birdsey Group"
-              fill
-            />
+            <Image src="/images/birdsey-logo.svg" alt="Birdsey Group" fill />
           </div>
         </FlexItem>
         <FlexItem size="major">
@@ -76,7 +77,6 @@ export function Header({ navItems }: HeaderProps) {
                 </NavigationPill>
               ))}
             </Navigation>
-            <IconSearch className={styles.searchIcon} />
             <button
               className={styles.hamburger}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
