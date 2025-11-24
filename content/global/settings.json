@@ -3,7 +3,7 @@
     "items": [
       {
         "label": "About",
-        "href": "#about"
+        "href": "/about"
       },
       {
         "label": "Services",
