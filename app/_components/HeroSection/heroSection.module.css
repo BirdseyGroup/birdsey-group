@@ -58,6 +58,26 @@
   z-index: 2;
 }
 
+/* Hide content initially for animated hero (not simple variant) */
+.hero:not(.heroSimple) .heroContentInner {
+  opacity: 0;
+}
+
+.hero:not(.heroSimple) .heroTitle {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero:not(.heroSimple) .heroSubtitle {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero:not(.heroSimple) .heroButtonGroup {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 .heroTitle {
   font-family: var(
     --sds-typography-title-hero-font-family,
