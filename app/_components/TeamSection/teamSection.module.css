@@ -6,6 +6,9 @@
 
 .container {
   padding: var(--sds-size-space-1200) 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .contentLayout {

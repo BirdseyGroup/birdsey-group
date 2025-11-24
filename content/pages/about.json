@@ -24,5 +24,11 @@
       "content": "Our clients represent a broad industry base including Financial Institutions, Government Agencies, Investment Banks, Rating Agencies, B-Piece Investors, and Standard Banks."
     }
   ],
-  "teamSectionTitle": "Our Team"
+  "teamSectionTitle": "Our Team",
+  "contact": {
+    "title": "Let's Move Real Estate Forward.",
+    "formTitle": "Thank you for your interest in Birdsey.",
+    "formDescription": "Please complete the form below, and we will get back with you as soon as possible.",
+    "submitButtonText": "Submit"
+  }
 }

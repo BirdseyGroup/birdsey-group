@@ -44,6 +44,16 @@ export function HeroSection({
   useEffect(() => {
     if (!contentRef.current || isSimple) return;
 
+    // Kill any existing ScrollTriggers for this element
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === contentRef.current ||
+        trigger.trigger === heroContainerRef.current
+      ) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       // Initial fade-in timeline for hero elements
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -127,7 +137,11 @@ export function HeroSection({
       }
     }, contentRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // Refresh ScrollTrigger after cleanup
+      ScrollTrigger.refresh();
+    };
   }, [isSimple]);
 
   const heroStyle = backgroundImage

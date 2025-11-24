@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { Suspense } from "react";
+import { ContactSection } from "../_components/ContactSection";
 import { Footer } from "../_components/Footer";
 import { Header } from "../_components/Header";
 import { HeroSection } from "../_components/HeroSection";
@@ -84,6 +85,15 @@ export default async function AboutPage() {
           </Suspense>
         </div>
       </main>
+
+      {aboutContent.contact && (
+        <ContactSection
+          title={aboutContent.contact.title}
+          formTitle={aboutContent.contact.formTitle}
+          formDescription={aboutContent.contact.formDescription}
+          submitButtonText={aboutContent.contact.submitButtonText}
+        />
+      )}
 
       <Footer
         phone={footerContent?.phone || ""}

@@ -20,6 +20,13 @@ export function SubHeroSection({ title, description }: SubHeroSectionProps) {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Kill any existing ScrollTriggers for this element
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger === sectionRef.current) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       gsap.from(sectionRef.current?.children || [], {
         opacity: 0,
@@ -35,7 +42,11 @@ export function SubHeroSection({ title, description }: SubHeroSectionProps) {
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // Refresh ScrollTrigger after cleanup
+      ScrollTrigger.refresh();
+    };
   }, []);
 
   return (

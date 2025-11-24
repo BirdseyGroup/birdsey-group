@@ -3,6 +3,7 @@
 import { Flex, Section } from "@/components/layout";
 import { TextLink } from "@/components/primitives";
 import { useNavigation } from "@/app/_contexts/NavigationContext";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./footer.module.css";
 
@@ -21,11 +22,10 @@ interface FooterProps {
 
 export function Footer({ phone, email, address, copyright, navItems }: FooterProps) {
   const { activePage, setActivePage } = useNavigation();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const id = href.replace("#", "");
-    setActivePage(id);
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       const headerOffset = 72;
@@ -39,6 +39,35 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
     }
   };
 
+  const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    // If it's the About page link
+    if (href === "/about") {
+      setActivePage("about");
+      router.push("/about");
+      return;
+    }
+
+    // If it's a hash link (section on homepage)
+    if (href.startsWith("#")) {
+      const id = href.replace("#", "");
+      setActivePage(id);
+
+      // If we're on the about page, navigate to home first
+      if (pathname === "/about") {
+        router.push("/");
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          scrollToSection(id);
+        }, 100);
+      } else {
+        // Already on homepage, just scroll
+        scrollToSection(id);
+      }
+    }
+  };
+
   return (
     <Section elementType="footer" variant="brand" className={styles.footer}>
       <div className={styles.footerInner}>
@@ -46,17 +75,24 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Company</h3>
             <Flex direction="column" gap="200">
-              {navItems.map((item, i) => (
-                <TextLink
-                  key={i}
-                  href={item.href}
-                  className={styles.navigationPill}
-                  onClick={(e) => handleNavClick(item.href, e)}
-                  data-selected={activePage === item.href.replace("#", "") ? "" : undefined}
-                >
-                  {item.label}
-                </TextLink>
-              ))}
+              {navItems.map((item, i) => {
+                const isAboutLink = item.href === "/about";
+                const isSelected = isAboutLink
+                  ? pathname === "/about"
+                  : activePage === item.href.replace("#", "");
+
+                return (
+                  <TextLink
+                    key={i}
+                    href={item.href}
+                    className={styles.navigationPill}
+                    onClick={(e) => handleNavClick(item.href, e)}
+                    data-selected={isSelected ? "" : undefined}
+                  >
+                    {item.label}
+                  </TextLink>
+                );
+              })}
             </Flex>
           </Flex>
         </div>

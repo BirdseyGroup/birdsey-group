@@ -29,6 +29,16 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
   const articlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Kill any existing ScrollTriggers for these elements
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === titleRef.current ||
+        trigger.trigger === articlesRef.current
+      ) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       // Animate title
       gsap.from(titleRef.current, {
@@ -58,7 +68,10 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.refresh();
+    };
   }, []);
 
   return (

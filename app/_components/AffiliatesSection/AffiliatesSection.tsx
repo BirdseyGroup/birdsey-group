@@ -31,6 +31,13 @@ export function AffiliatesSection({
   const logoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Kill any existing ScrollTriggers for logo elements
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (logoRefs.current.includes(trigger.trigger as HTMLDivElement | null)) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       // Set initial state for all logos
       logoRefs.current.forEach((logo) => {
@@ -58,7 +65,10 @@ export function AffiliatesSection({
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.refresh();
+    };
   }, [items.length]);
 
   return (

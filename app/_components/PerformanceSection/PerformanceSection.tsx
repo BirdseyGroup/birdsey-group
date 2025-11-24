@@ -25,6 +25,16 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Kill any existing ScrollTriggers for these elements
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === titleRef.current ||
+        trigger.trigger === statsRef.current
+      ) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       // Animate title
       gsap.from(titleRef.current, {
@@ -54,7 +64,10 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.refresh();
+    };
   }, []);
 
   return (

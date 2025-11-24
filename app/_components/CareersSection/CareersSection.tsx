@@ -22,6 +22,16 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Kill any existing ScrollTriggers for these elements
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === imageRef.current ||
+        trigger.trigger === contentRef.current
+      ) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       // Animate image
       gsap.from(imageRef.current, {
@@ -51,7 +61,10 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.refresh();
+    };
   }, []);
 
   return (
