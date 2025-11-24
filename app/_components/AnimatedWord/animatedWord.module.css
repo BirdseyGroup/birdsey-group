@@ -3,6 +3,8 @@
   z-index: 10;
   pointer-events: none;
   will-change: transform;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .wordImage {
