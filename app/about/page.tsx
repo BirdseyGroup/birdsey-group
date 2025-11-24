@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { Suspense } from "react";
 import { Footer } from "../_components/Footer";
 import { Header } from "../_components/Header";
 import { HeroSection } from "../_components/HeroSection";
@@ -74,11 +75,13 @@ export default async function AboutPage() {
 
       <main className={styles.mainContent}>
         <div className={styles.container}>
-          <TeamSection
-            accordionItems={aboutContent.accordionItems || []}
-            affiliates={affiliates}
-            teamMembers={teamMembers}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <TeamSection
+              accordionItems={aboutContent.accordionItems || []}
+              affiliates={affiliates}
+              teamMembers={teamMembers}
+            />
+          </Suspense>
         </div>
       </main>
 
