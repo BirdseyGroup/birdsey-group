@@ -1,0 +1,31 @@
+{
+  "name": "B. Sandford Birdsey III",
+  "title": "President and CEO",
+  "affiliate": "content/affiliates/birdsey-group.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Mr. Birdsey, President and CEO of The Birdsey Group, LLC, has over 22 years experience in the Commercial Real Estate industry. Prior to establishing Birdsey Group, he was the Senior Managing Director – Capital Markets, and Managing Director – Real Estate Advisory Group for GMACCM/MortgageRamp. He also spent five years as Director of Real Estate with Univest Financial Services, LLC, an international CRE financial services firm. Prior to joining Univest he worked as a senior commercial real estate appraiser with several firms including US Realty Associates and Everson, Huber and Driggers, LLC."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Mr. Birdsey's specific work history includes directing the real estate consulting effort for loan portfolio securitizations totaling over 4,000 properties with over $25 billion in loan value. He has been responsible for all real estate analysis for many seasoned portfolio CMBS transactions and B piece acquisitions for clients such as Blackrock Capital/UBS, Bank of America, Lehman Brothers, Protective Life Insurance, Credit Suisse First Boston, Morgan Stanley, JP Morgan, Goldman Sachs, Midland, JER Investors Trust, Ocwen Financial Corporation and many others. He holds a Bachelors degree from Mercer University and studied management and real estate at Regent College in London England. Mr. Birdsey is a past associate member and former President of the Associate Leadership Committee of the Appraisal Institute. He is also a member of the CRE Finance Council, the Mortgage Bankers Association, and REGA."
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 1
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Steve Williams",
+  "title": "Commercial Managing Director",
+  "affiliate": "content/affiliates/birdsey-commercial.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Steve Williams, Managing Director of Birdsey Group Commercial, has over 25 years of experience in the institutional commercial real estate finance industry. His expertise includes securitized and balance sheet mortgage origination, bridge financing, commercial mortgage banking, real estate credit, portfolio management, underwriting and valuation services. Prior to joining The Birdsey Group, he served in senior roles for VOYA (ING) Investment Management, KeyBank Commercial Mortgage Group, Cantor Commercial Real Estate, JPMorgan Real Estate and Bank of America Real Estate Capital Markets. Mr. Williams is a life-long Atlanta resident and a graduate of The University of the South, in Sewanee, Tennessee."
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 3
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Nicole Gottlieb",
+  "title": "Commercial Site Inspection Manager",
+  "affiliate": "content/affiliates/birdsey-commercial.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 9
+}

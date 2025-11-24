@@ -1,0 +1,22 @@
+{
+  "name": "Tammy Martin",
+  "title": "Executive Assistant",
+  "affiliate": "content/affiliates/birdsey-group.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Birdsey Group Executive Assistant"
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 2
+}

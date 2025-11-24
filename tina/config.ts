@@ -412,6 +412,85 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "affiliate",
+        label: "Affiliates",
+        path: "content/affiliates",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Company Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "slug",
+            label: "Slug",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            ui: {
+              component: "textarea",
+            },
+          },
+        ],
+      },
+      {
+        name: "teamMember",
+        label: "Team Members",
+        path: "content/team",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Job Title",
+            required: true,
+          },
+          {
+            type: "reference",
+            name: "affiliate",
+            label: "Affiliate Company",
+            required: true,
+            collections: ["affiliate"],
+          },
+          {
+            type: "image",
+            name: "photo",
+            label: "Photo",
+          },
+          {
+            type: "rich-text",
+            name: "bio",
+            label: "Biography",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "linkedinUrl",
+            label: "LinkedIn URL",
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Display Order",
+            required: true,
+          },
+        ],
+      },
     ],
   },
 });

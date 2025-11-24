@@ -1,0 +1,22 @@
+{
+  "name": "Corey Cavanaugh",
+  "title": "Vice President of Finance",
+  "affiliate": "content/affiliates/birdsey-group.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "With over a decade of experience in real estate financing and accounting, Corey R. Cavanaugh leads Birdsey Group's accounting function. He is responsible for the company's financial and tax reporting, treasury management, tax strategy and external party relations. Prior to joining Birdsey Group, Mr. Cavanaugh was at Frazier & Deeter in Atlanta, where he provided tax services for clients in the real estate industry. He also served as an Accounting Manager at Seefried Industrial Properties and Novare Group. Mr. Cavanaugh is a licensed Certified Public Accountant and holds a B.B.A in Accounting and Finance from Auburn University."
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 5
+}

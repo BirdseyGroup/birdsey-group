@@ -1,0 +1,22 @@
+{
+  "name": "Russell Foster",
+  "title": "Director",
+  "affiliate": "content/affiliates/birdsey-commercial.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 7
+}

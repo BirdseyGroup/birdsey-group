@@ -1,0 +1,22 @@
+{
+  "name": "Madge W. Adams",
+  "title": "Director of Field Real Estate Services",
+  "affiliate": "content/affiliates/birdsey-group.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Madge Adams is Director of Field Real Estate Services for The Birdsey Group, LLC, focusing on property inspections and market research. She has over 15 years experience in commercial real estate including field inspections, market studies and appraisal. Formerly Ms. Adams worked as a Production Manager in the real estate group of MortgageRamp and was a field analyst and inspection coordinator for Univest Financial Services. She is past director of the Macon/Bibb County Real Estate Association and former president of Career Women's Network. Ms. Adams has a Bachelors and Master of Arts degrees from the University of Georgia and is a past associate member of the Appraisal Institute."
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 6
+}

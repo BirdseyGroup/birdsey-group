@@ -1,0 +1,22 @@
+{
+  "name": "Rebekah Caler",
+  "title": "Commercial Site Inspection Project Manager",
+  "affiliate": "content/affiliates/birdsey-commercial.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 8
+}
