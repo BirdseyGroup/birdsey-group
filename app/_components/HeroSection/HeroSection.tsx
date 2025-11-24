@@ -54,92 +54,120 @@ export function HeroSection({
       }
     });
 
-    const ctx = gsap.context(() => {
-      // Initial fade-in timeline for hero elements
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const createAnimations = () => {
+      const ctx = gsap.context(() => {
+        // Initial fade-in timeline for hero elements
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Set initial states
-      gsap.set(contentRef.current, { opacity: 0 });
-      gsap.set(titleRef.current, { opacity: 0, y: 30 });
-      gsap.set(subtitleRef.current, { opacity: 0, y: 30 });
-      gsap.set(buttonsRef.current, { opacity: 0, y: 30 });
+        // Set initial states
+        gsap.set(contentRef.current, { opacity: 0 });
+        gsap.set(titleRef.current, { opacity: 0, y: 30 });
+        gsap.set(subtitleRef.current, { opacity: 0, y: 30 });
+        gsap.set(buttonsRef.current, { opacity: 0, y: 30 });
 
-      // Sequential fade-in animation
-      tl.to(contentRef.current, {
-        opacity: 1,
-        duration: 1.2,
-        delay: 0.2,
-      })
-        .to(
-          titleRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
-          "-=0.6"
-        )
-        .to(
-          subtitleRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
-          "-=0.4"
-        )
-        .to(
-          buttonsRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
-          "-=0.4"
-        );
-
-      // Create a wrapper timeline for the scroll-triggered fade out
-      const scrollTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top top",
-          end: "+=600",
-          scrub: 1,
-        },
-      });
-
-      // Animate each child element fading out and scaling down
-      scrollTimeline
-        .to(titleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
-        .to(subtitleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
-        .to(buttonsRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
-
-      // Background zoom effect on scroll - zoom in from 110% to 130%
-      if (heroContainerRef.current) {
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-        gsap.fromTo(
-          heroContainerRef.current,
-          {
-            backgroundSize: isMobile ? "cover" : "110%",
-          },
-          {
-            backgroundSize: isMobile ? "cover" : "130%",
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroContainerRef.current,
-              start: "top top",
-              end: "bottom top",
-              scrub: 1,
+        // Sequential fade-in animation
+        tl.to(contentRef.current, {
+          opacity: 1,
+          duration: 1.2,
+          delay: 0.2,
+        })
+          .to(
+            titleRef.current,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
             },
+            "-=0.6"
+          )
+          .to(
+            subtitleRef.current,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+            },
+            "-=0.4"
+          )
+          .to(
+            buttonsRef.current,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+            },
+            "-=0.4"
+          );
+
+        // Create a wrapper timeline for the scroll-triggered fade out
+        const scrollTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top top",
+            end: "+=600",
+            scrub: 1,
+          },
+        });
+
+        // Animate each child element fading out and scaling down
+        scrollTimeline
+          .to(titleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+          .to(subtitleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+          .to(buttonsRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
+
+        // Background zoom effect on scroll - zoom in from 110% to 130%
+        if (heroContainerRef.current) {
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+          gsap.fromTo(
+            heroContainerRef.current,
+            {
+              backgroundSize: isMobile ? "cover" : "110%",
+            },
+            {
+              backgroundSize: isMobile ? "cover" : "130%",
+              ease: "none",
+              scrollTrigger: {
+                trigger: heroContainerRef.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+              },
+            }
+          );
+        }
+      }, contentRef);
+
+      return ctx;
+    };
+
+    let ctx = createAnimations();
+
+    // Handle window resize with debouncing to refresh animations
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        ctx.revert();
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (
+            trigger.trigger === contentRef.current ||
+            trigger.trigger === heroContainerRef.current
+          ) {
+            trigger.kill();
           }
-        );
-      }
-    }, contentRef);
+        });
+        ctx = createAnimations();
+        ScrollTrigger.refresh();
+      }, 250);
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
+      clearTimeout(resizeTimeout);
+      window.removeEventListener("resize", handleResize);
       ctx.revert();
-      // Refresh ScrollTrigger after cleanup
       ScrollTrigger.refresh();
     };
   }, [isSimple]);
