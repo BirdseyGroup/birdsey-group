@@ -88,8 +88,8 @@ export function Header({ navItems }: HeaderProps) {
           <div
             style={{
               position: "relative",
-              width: "99px",
-              height: "40px",
+              width: "119px",
+              height: "48px",
               cursor: "pointer",
             }}
             onClick={handleLogoClick}
