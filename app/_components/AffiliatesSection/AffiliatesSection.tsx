@@ -84,12 +84,19 @@ export function AffiliatesSection({
                 logoRefs.current[i] = el;
               }}
             >
-              <Image
-                src={affiliate.logo}
-                alt={`${affiliate.title} ${affiliate.subtitle}`}
-                fill
-                style={{ objectFit: "contain" }}
-              />
+              <a
+                href={affiliate.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.affiliateLink}
+              >
+                <Image
+                  src={affiliate.logo}
+                  alt={`${affiliate.title} ${affiliate.subtitle}`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </a>
             </div>
           ))}
         </div>
