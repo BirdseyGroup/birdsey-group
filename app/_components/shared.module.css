@@ -51,6 +51,12 @@
   background-color: var(--sds-color-background-brand-default);
 }
 
+@media (max-width: 768px) {
+  .divider {
+    margin: 0 auto;
+  }
+}
+
 .imagePlaceholder {
   width: 100%;
   max-width: 506px;
