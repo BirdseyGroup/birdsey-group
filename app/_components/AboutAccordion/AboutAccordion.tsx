@@ -27,18 +27,24 @@ export function AboutAccordion({ items }: AboutAccordionProps) {
           className={`${styles.accordionItem} ${
             openIndex === index ? styles.open : ""
           }`}
+          onClick={() => toggleItem(index)}
+          role="button"
+          tabIndex={0}
+          aria-expanded={openIndex === index}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleItem(index);
+            }
+          }}
         >
-          <button
-            className={styles.accordionHeader}
-            onClick={() => toggleItem(index)}
-            aria-expanded={openIndex === index}
-          >
+          <div className={styles.accordionHeader}>
             <div className={styles.yellowAccent} aria-hidden="true" />
             <h3 className={styles.accordionTitle}>{item.title}</h3>
             <span className={styles.accordionIcon}>
               {openIndex === index ? "−" : "+"}
             </span>
-          </button>
+          </div>
           <div
             className={styles.accordionContent}
             style={{

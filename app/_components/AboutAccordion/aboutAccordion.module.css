@@ -12,6 +12,11 @@
   border-radius: var(--sds-size-radius-200);
   transition: all 0.3s ease;
   padding: var(--sds-size-space-400);
+  cursor: pointer;
+}
+
+.accordionItem:hover {
+  opacity: 0.9;
 }
 
 .accordionHeader {
@@ -22,13 +27,7 @@
   gap: var(--sds-size-space-400);
   background: none;
   border: none;
-  cursor: pointer;
   text-align: left;
-  transition: opacity 0.2s ease;
-}
-
-.accordionHeader:hover {
-  opacity: 0.8;
 }
 
 .yellowAccent {
