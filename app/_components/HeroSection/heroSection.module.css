@@ -23,6 +23,10 @@
   overflow: hidden;
 }
 
+.heroSimple {
+  padding-bottom: var(--sds-size-space-800);
+}
+
 .heroSimple .heroContent {
   min-height: 400px;
   background-size: cover;
