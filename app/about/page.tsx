@@ -62,7 +62,7 @@ export default async function AboutPage() {
   const navigationContent = globalSettings.navigation;
 
   return (
-    <div className={styles.aboutPage}>
+    <div className={`page-wrapper ${styles.aboutPage}`}>
       <Header navItems={navigationContent?.items || []} />
 
       {aboutContent.hero && (

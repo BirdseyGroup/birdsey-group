@@ -10,7 +10,6 @@ import { HeroSection } from "./_components/HeroSection";
 import { NewsSection } from "./_components/NewsSection";
 import { PerformanceSection } from "./_components/PerformanceSection";
 import { SubHeroSection } from "./_components/SubHeroSection";
-import styles from "./page.module.css";
 
 export default async function HomePage() {
   // Read page content
@@ -34,7 +33,7 @@ export default async function HomePage() {
   const navigationContent = globalSettings.navigation;
 
   return (
-    <div className={styles.birdseyPage}>
+    <div className="page-wrapper">
       <Header navItems={navigationContent?.items || []} />
       <HeroSection
         title={heroContent?.title || ""}

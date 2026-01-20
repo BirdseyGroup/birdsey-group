@@ -15,6 +15,12 @@
   --global-dialog-max-width: 32rem;
   --global-tooltip-max-width: calc(var(--global-dialog-max-width) / 2);
   --global-line-height-body: 1.6;
+  --global-header-height: 90px;
+}
+
+/* Page wrapper with header offset */
+.page-wrapper {
+  padding-top: var(--global-header-height);
 }
 
 .display-none-to-flex {
