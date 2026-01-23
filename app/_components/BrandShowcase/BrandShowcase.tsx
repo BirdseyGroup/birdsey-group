@@ -1,7 +1,9 @@
 "use client";
 
 import { clsx } from "clsx";
-import React, { useEffect, useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useCustomMediaQuery } from "hooks";
 import { AnimatedWord } from "../AnimatedWord";
 import sharedStyles from "../shared.module.css";
 import styles from "./brandShowcase.module.css";
@@ -23,7 +25,39 @@ interface BrandShowcaseProps {
 export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeSlide, setActiveSlide] = React.useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [selectedDot, setSelectedDot] = useState(0);
+
+  // Match the CSS media query breakpoint (768px)
+  const isMobile = useCustomMediaQuery("(max-width: 768px)");
+
+  // Embla carousel for mobile
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+  });
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedDot(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (!emblaApi) return;
+      emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,39 +122,88 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
             </div>
           </div>
 
-          {/* Right Column - Scrolling Content */}
-          <div className={styles.contentColumn}>
-            {items.map((item, index) => (
-              <div
-                key={index}
-                ref={(el) => {
-                  contentRefs.current[index] = el;
-                }}
-                className={styles.contentItem}
-              >
-                <h2
-                  className={clsx(
-                    sharedStyles.subtitle,
-                    sharedStyles.subtitleCentered,
-                    styles.title
-                  )}
+          {/* Right Column - Scrolling Content (Desktop) */}
+          {!isMobile && (
+            <div className={styles.contentColumn}>
+              {items.map((item, index) => (
+                <div
+                  key={index}
+                  ref={(el) => {
+                    contentRefs.current[index] = el;
+                  }}
+                  className={styles.contentItem}
                 >
-                  {item.title}
-                </h2>
-                <h3 className={styles.subtitle}>{item.subtitle}</h3>
-                <div className={sharedStyles.divider} />
-                <p
-                  className={clsx(
-                    sharedStyles.subheading,
-                    sharedStyles.subheadingCentered,
-                    styles.description
-                  )}
-                >
-                  {item.description}
-                </p>
+                  <h2
+                    className={clsx(
+                      sharedStyles.subtitle,
+                      sharedStyles.subtitleCentered,
+                      styles.title
+                    )}
+                  >
+                    {item.title}
+                  </h2>
+                  <h3 className={styles.subtitle}>{item.subtitle}</h3>
+                  <div className={sharedStyles.divider} />
+                  <p
+                    className={clsx(
+                      sharedStyles.subheading,
+                      sharedStyles.subheadingCentered,
+                      styles.description
+                    )}
+                  >
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Mobile Carousel */}
+          {isMobile && (
+            <div className={styles.mobileCarouselWrapper}>
+              <div className={styles.emblaViewport} ref={emblaRef}>
+                <div className={styles.emblaContainer}>
+                  {items.map((item, index) => (
+                    <div key={index} className={styles.emblaSlide}>
+                      <h2
+                        className={clsx(
+                          sharedStyles.subtitle,
+                          sharedStyles.subtitleCentered,
+                          styles.title
+                        )}
+                      >
+                        {item.title}
+                      </h2>
+                      <h3 className={styles.subtitle}>{item.subtitle}</h3>
+                      <div className={sharedStyles.divider} />
+                      <p
+                        className={clsx(
+                          sharedStyles.subheading,
+                          sharedStyles.subheadingCentered,
+                          styles.description
+                        )}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+              <div className={styles.emblaDots}>
+                {items.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={clsx(styles.emblaDot, {
+                      [styles.emblaDotActive]: index === selectedDot,
+                    })}
+                    onClick={() => scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </div>
