@@ -110,10 +110,17 @@ export function HeroSection({
         });
 
         // Animate each child element fading out and scaling down
+        // Use fromTo with explicit start values so scrolling back up restores them
         scrollTimeline
-          .to(titleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
-          .to(subtitleRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
-          .to(buttonsRef.current, { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
+          .fromTo(titleRef.current,
+            { opacity: 1, y: 0, scale: 1 },
+            { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+          .fromTo(subtitleRef.current,
+            { opacity: 1, y: 0, scale: 1 },
+            { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0)
+          .fromTo(buttonsRef.current,
+            { opacity: 1, y: 0, scale: 1 },
+            { opacity: 0, y: -30, scale: 0.8, ease: "none" }, 0);
 
         // Background zoom effect on scroll - zoom in from 110% to 130%
         if (heroContainerRef.current) {
