@@ -89,7 +89,22 @@
   width: 24px;
   height: 2px;
   background-color: var(--text-default-alternative, #ffffff);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburgerOpen .hamburgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Mobile menu */

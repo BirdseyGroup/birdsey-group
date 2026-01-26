@@ -119,9 +119,10 @@ export function Header({ navItems }: HeaderProps) {
               })}
             </Navigation>
             <button
-              className={styles.hamburger}
+              className={`${styles.hamburger} ${mobileMenuOpen ? styles.hamburgerOpen : ""}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
               <span className={styles.hamburgerLine}></span>
               <span className={styles.hamburgerLine}></span>

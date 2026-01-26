@@ -143,9 +143,18 @@ export function HeroSection({
 
     let ctx = createAnimations();
 
+    // Track window width to only respond to actual width changes
+    // (not mobile browser chrome showing/hiding which changes height)
+    let lastWidth = window.innerWidth;
+
     // Handle window resize with debouncing to refresh animations
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      // Only recreate animations if width actually changed
+      if (currentWidth === lastWidth) return;
+      lastWidth = currentWidth;
+
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         ctx.revert();
