@@ -15,9 +15,9 @@
   opacity: 1;
 }
 
-/* Responsive sizing */
+/* Hide on mobile */
 @media (max-width: 768px) {
-  .wordImage {
-    max-width: 200px;
+  .animatedWord {
+    display: none;
   }
 }
