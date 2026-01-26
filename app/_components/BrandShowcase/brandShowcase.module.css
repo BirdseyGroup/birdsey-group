@@ -133,6 +133,9 @@
 /* Mobile Carousel Styles */
 .mobileCarouselWrapper {
   display: none;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .emblaViewport {
@@ -150,8 +153,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--sds-size-space-400);
-  padding: var(--sds-size-space-600);
+  padding: var(--sds-size-space-400);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .emblaDots {
@@ -182,10 +186,21 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  .container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .scrollContainer {
+    overflow: hidden;
+  }
+
   .stickySection {
     grid-template-columns: 1fr;
     gap: var(--sds-size-space-1200);
     padding: var(--sds-size-space-600);
+    min-height: auto;
+    overflow: hidden;
   }
 
   .imageColumn {
@@ -198,6 +213,7 @@
 
   .mobileCarouselWrapper {
     display: block;
+    width: 100%;
   }
 
   .contentItem {

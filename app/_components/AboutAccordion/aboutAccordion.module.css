@@ -3,12 +3,12 @@
   flex-direction: column;
   gap: var(--sds-size-space-400);
   width: 100%;
-  max-width: 400px;
 }
 
 .accordionItem {
   background: var(--sds-color-background-default-default);
-  border: var(--sds-size-stroke-border) solid var(--sds-color-border-default-default);
+  border: var(--sds-size-stroke-border) solid
+    var(--sds-color-border-default-default);
   border-radius: var(--sds-size-radius-200);
   transition: all 0.3s ease;
   padding: var(--sds-size-space-400);
