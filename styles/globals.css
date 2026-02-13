@@ -15,7 +15,7 @@
   --global-dialog-max-width: 32rem;
   --global-tooltip-max-width: calc(var(--global-dialog-max-width) / 2);
   --global-line-height-body: 1.6;
-  --global-header-height: 90px;
+  --global-header-height: 119px;
 }
 
 /* Page wrapper with header offset */

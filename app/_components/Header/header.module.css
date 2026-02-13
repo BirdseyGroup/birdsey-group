@@ -152,8 +152,21 @@
   }
 }
 
+/* Logo */
+.logoWrapper {
+  position: relative;
+  width: 215px;
+  height: 87px;
+  cursor: pointer;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
+  .logoWrapper {
+    width: 143px;
+    height: 58px;
+  }
+
   .desktopNav {
     display: none;
   }

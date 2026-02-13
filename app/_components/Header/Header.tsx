@@ -86,12 +86,7 @@ export function Header({ navItems }: HeaderProps) {
       <Flex container alignPrimary="space-between" alignSecondary="center">
         <FlexItem size="minor">
           <div
-            style={{
-              position: "relative",
-              width: "143px",
-              height: "58px",
-              cursor: "pointer",
-            }}
+            className={styles.logoWrapper}
             onClick={handleLogoClick}
           >
             <Image src="/images/birdsey-logo.svg" alt="Birdsey Group" fill />
