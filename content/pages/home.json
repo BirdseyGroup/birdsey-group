@@ -87,25 +87,25 @@
     "title": "Insights & Recognition.",
     "articles": [
       {
-        "date": "22 OCTOBER 2025",
-        "category": "ARTICLE",
-        "title": "Lorem ipsum dolor sit amet consectetur adipiscing",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "url": "#"
+        "date": "FEBRUARY 2025",
+        "category": "EXECUTION INSIGHT",
+        "title": "Strategic Leadership Appointments Strengthen Birdsey's Execution Capacity",
+        "excerpt": "Birdsey Group continues to strengthen its execution capabilities with the addition of two seasoned leaders to our Atlanta headquarters.",
+        "url": "/insights/strategic-leadership-appointments"
       },
       {
-        "date": "15 OCTOBER 2025",
-        "category": "ARTICLE",
-        "title": "Sed do eiusmod tempor incididunt ut labore",
-        "excerpt": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...",
-        "url": "#"
+        "date": "FEBRUARY 2025",
+        "category": "EXECUTION BRIEF",
+        "title": "What Volatility Really Means for Timelines (and How to Protect Them)",
+        "excerpt": "Higher rates and tighter capital stacks slow deals, but the greatest timeline risk comes from misaligned expectations.",
+        "url": "/insights/what-volatility-means-for-timelines"
       },
       {
-        "date": "08 OCTOBER 2025",
-        "category": "ARTICLE",
-        "title": "Duis aute irure dolor in reprehenderit voluptate",
-        "excerpt": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...",
-        "url": "#"
+        "date": "FEBRUARY 2025",
+        "category": "RELATIONSHIP STANDARD INSIGHT",
+        "title": "Why Relationship-Driven Performance Outperforms Scale",
+        "excerpt": "Large firms rely on systems and silos. Birdsey relies on relationships. Clients know who to call. They get answers fast.",
+        "url": "/insights/relationship-driven-performance"
       }
     ]
   },

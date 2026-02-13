@@ -71,7 +71,7 @@ export function Header({ navItems }: HeaderProps) {
     setActivePage("home");
     setMobileMenuOpen(false);
 
-    if (pathname === "/about") {
+    if (pathname !== "/") {
       router.push("/");
     } else {
       window.scrollTo({

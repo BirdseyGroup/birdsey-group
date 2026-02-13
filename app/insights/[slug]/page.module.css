@@ -1,0 +1,22 @@
+.insightPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  background-color: var(--sds-color-background-default-default);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--sds-size-space-1200) var(--sds-size-space-600);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--sds-size-space-600);
+  }
+}

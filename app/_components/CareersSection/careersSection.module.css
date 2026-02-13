@@ -7,6 +7,11 @@
   background-color: var(--sds-color-background-default-default);
 }
 
+.careers > :global(.flex-container) {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .imageContainer {
   position: relative;
   width: 100%;

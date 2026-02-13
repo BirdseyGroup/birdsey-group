@@ -599,6 +599,64 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "insight",
+        label: "Insights Articles",
+        path: "content/insights",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "slug",
+            label: "URL Slug",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "date",
+            label: "Date",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "excerpt",
+            label: "Excerpt",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Article Body",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Featured Image",
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Display Order",
+          },
+        ],
+      },
     ],
   },
 });

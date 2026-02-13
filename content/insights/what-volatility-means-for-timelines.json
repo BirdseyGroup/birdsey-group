@@ -1,0 +1,120 @@
+{
+  "title": "What Volatility Really Means for Timelines (and How to Protect Them)",
+  "slug": "what-volatility-means-for-timelines",
+  "date": "FEBRUARY 2025",
+  "category": "EXECUTION BRIEF",
+  "excerpt": "Higher rates and tighter capital stacks slow deals, but the greatest timeline risk comes from misaligned expectations.",
+  "body": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Delays compound when communication is reactive instead of proactive."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "At Birdsey, we address this by:"
+          }
+        ]
+      },
+      {
+        "type": "ul",
+        "children": [
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "defining execution checkpoints upfront"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "escalating early when conditions change"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "maintaining transparent weekly reporting"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "closing gaps before they turn into stalls"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Urgency matters."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Accuracy matters more."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Birdsey protects both.",
+            "bold": true
+          }
+        ]
+      }
+    ]
+  },
+  "order": 2
+}
