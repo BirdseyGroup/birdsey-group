@@ -1,4 +1,5 @@
 .article {
+  position: relative;
   padding: var(--sds-size-space-1200) 0;
 }
 
@@ -149,10 +150,10 @@
     font-size: 28px;
   }
 
-  .headerTop {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sds-size-space-400);
+  .shareButton {
+    position: absolute;
+    top: var(--sds-size-space-600);
+    right: 0;
   }
 
   .meta {
