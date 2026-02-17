@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "../../_components/Footer";
 import { Header } from "../../_components/Header";
@@ -8,6 +9,60 @@ import styles from "./page.module.css";
 
 interface InsightPageProps {
   params: Promise<{ slug: string }>;
+}
+
+async function getArticle(slug: string) {
+  const articlePath = path.join(
+    process.cwd(),
+    "content/insights",
+    `${slug}.json`
+  );
+  try {
+    const articleFile = await fs.readFile(articlePath, "utf-8");
+    return JSON.parse(articleFile);
+  } catch {
+    return null;
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: InsightPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getArticle(slug);
+
+  if (!article) return {};
+
+  const url = `https://www.birdseygroup.com/insights/${slug}`;
+
+  return {
+    title: `${article.title} | Birdsey Group`,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url,
+      type: "article",
+      ...(article.image && {
+        images: [
+          {
+            url: `https://www.birdseygroup.com${article.image}`,
+            width: 1200,
+            height: 630,
+            alt: article.title,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      ...(article.image && {
+        images: [`https://www.birdseygroup.com${article.image}`],
+      }),
+    },
+  };
 }
 
 export async function generateStaticParams() {
@@ -25,20 +80,8 @@ export async function generateStaticParams() {
 export default async function InsightPage({ params }: InsightPageProps) {
   const { slug } = await params;
 
-  // Read article content
-  const articlePath = path.join(
-    process.cwd(),
-    "content/insights",
-    `${slug}.json`
-  );
-
-  let article;
-  try {
-    const articleFile = await fs.readFile(articlePath, "utf-8");
-    article = JSON.parse(articleFile);
-  } catch {
-    notFound();
-  }
+  const article = await getArticle(slug);
+  if (!article) notFound();
 
   // Read global settings
   const globalPath = path.join(process.cwd(), "content/global/settings.json");
