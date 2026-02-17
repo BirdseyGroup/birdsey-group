@@ -59,6 +59,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
             date={article.date}
             category={article.category}
             excerpt={article.excerpt}
+            image={article.image}
             body={article.body}
           />
         </div>

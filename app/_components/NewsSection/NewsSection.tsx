@@ -85,7 +85,15 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
             {articles.map((article, i) => (
               <article key={i} className={styles.article}>
                 <a href={article.url} className={styles.articleLink}>
-                  <div className={styles.articleImage} />
+                  {article.image ? (
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className={styles.articleImage}
+                    />
+                  ) : (
+                    <div className={styles.articleImagePlaceholder} />
+                  )}
                   <Flex direction="column" gap="400">
                     <p className={styles.articleDate}>{article.date}</p>
                     <h3 className={styles.articleTitle}>{article.title}</h3>
