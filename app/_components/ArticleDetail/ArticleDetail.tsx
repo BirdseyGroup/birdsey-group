@@ -3,6 +3,11 @@
 import { usePathname } from "next/navigation";
 import styles from "./articleDetail.module.css";
 
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr + "T00:00:00");
+  return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
 interface RichTextNode {
   type: string;
   text?: string;
@@ -102,7 +107,7 @@ export function ArticleDetail({
         <div className={styles.headerTop}>
           <div className={styles.meta}>
             <span className={styles.category}>{category}</span>
-            <span className={styles.date}>{date}</span>
+            <span className={styles.date}>{formatDate(date)}</span>
           </div>
           <button
             onClick={handleLinkedInShare}

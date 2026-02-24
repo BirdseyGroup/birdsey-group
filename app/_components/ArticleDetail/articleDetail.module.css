@@ -60,6 +60,7 @@
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-small);
   color: var(--sds-color-text-default-secondary);
+  text-transform: uppercase;
 }
 
 .title {

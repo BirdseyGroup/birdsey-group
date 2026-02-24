@@ -10,6 +10,11 @@ import styles from "./newsSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr + "T00:00:00");
+  return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
 interface Article {
   date: string;
   category: string;
@@ -95,7 +100,7 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
                     <div className={styles.articleImagePlaceholder} />
                   )}
                   <Flex direction="column" gap="400">
-                    <p className={styles.articleDate}>{article.date}</p>
+                    <p className={styles.articleDate}>{formatDate(article.date)}</p>
                     <h3 className={styles.articleTitle}>{article.title}</h3>
                     <p className={styles.articleExcerpt}>{article.excerpt}</p>
                     <div className={styles.readMoreLink}>Read More</div>

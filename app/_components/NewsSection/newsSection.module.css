@@ -64,6 +64,7 @@
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
   color: var(--sds-color-text-default-default);
+  text-transform: uppercase;
 }
 
 .articleImage {
