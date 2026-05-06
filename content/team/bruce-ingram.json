@@ -1,0 +1,22 @@
+{
+  "name": "Bruce Ingram",
+  "title": "Managing Director",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "/images/team/bruce-ingram.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/bruce-ingram-644b4549/",
+  "order": 1
+}

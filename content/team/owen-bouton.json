@@ -1,0 +1,22 @@
+{
+  "name": "Owen Bouton",
+  "title": "Director",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/owen-bouton.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/owen-bouton-5b9a283/",
+  "order": 7
+}

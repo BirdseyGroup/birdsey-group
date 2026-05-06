@@ -1,0 +1,22 @@
+{
+  "name": "Julia White",
+  "title": "Analyst",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/julia-white.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/juliawhite25/",
+  "order": 10
+}

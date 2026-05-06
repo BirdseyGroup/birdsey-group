@@ -35,43 +35,46 @@ export default async function HomePage() {
   return (
     <div className="page-wrapper">
       <Header navItems={navigationContent?.items || []} />
-      <HeroSection
-        title={heroContent?.title || ""}
-        subtitle={heroContent?.subtitle || ""}
-        primaryButton={heroContent?.primaryButton}
-        secondaryButton={heroContent?.secondaryButton}
-      />
-      <SubHeroSection
-        title={subHeroContent?.title || ""}
-        description={subHeroContent?.description || ""}
-      />
-      <AffiliatesSection
-        sectionTitle={affiliatesContent?.sectionTitle || ""}
-        items={affiliatesContent?.items || []}
-      />
-      <BrandShowcase
-        heading={affiliatesContent?.sectionHeading || ""}
-        items={affiliatesContent?.items || []}
-      />
-      <PerformanceSection
-        title={performanceContent?.title || ""}
-        stats={performanceContent?.stats || []}
-      />
-      <NewsSection
-        title={newsContent?.title || ""}
-        articles={newsContent?.articles || []}
-      />
-      <CareersSection
-        title={careersContent?.title || ""}
-        content={careersContent?.content || ""}
-        email={careersContent?.email || ""}
-      />
-      <ContactSection
-        title={contactContent?.title || ""}
-        formTitle={contactContent?.formTitle || ""}
-        formDescription={contactContent?.formDescription || ""}
-        submitButtonText={contactContent?.submitButtonText || ""}
-      />
+      <main id="main-content">
+        <HeroSection
+          title={heroContent?.title || ""}
+          subtitle={heroContent?.subtitle || ""}
+          primaryButton={heroContent?.primaryButton}
+          secondaryButton={heroContent?.secondaryButton}
+        />
+        <SubHeroSection
+          title={subHeroContent?.title || ""}
+          description={subHeroContent?.description || ""}
+          link={subHeroContent?.link}
+        />
+        <AffiliatesSection
+          sectionTitle={affiliatesContent?.sectionTitle || ""}
+          items={affiliatesContent?.items || []}
+        />
+        <BrandShowcase
+          heading={affiliatesContent?.sectionHeading || ""}
+          items={affiliatesContent?.items || []}
+        />
+        <PerformanceSection
+          title={performanceContent?.title || ""}
+          stats={performanceContent?.stats || []}
+        />
+        <NewsSection
+          title={newsContent?.title || ""}
+          articles={newsContent?.articles || []}
+        />
+        <CareersSection
+          title={careersContent?.title || ""}
+          content={careersContent?.content || ""}
+          email={careersContent?.email || ""}
+        />
+        <ContactSection
+          title={contactContent?.title || ""}
+          formTitle={contactContent?.formTitle || ""}
+          formDescription={contactContent?.formDescription || ""}
+          submitButtonText={contactContent?.submitButtonText || ""}
+        />
+      </main>
       <Footer
         phone={footerContent?.phone || ""}
         email={footerContent?.email || ""}

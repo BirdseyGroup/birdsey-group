@@ -1,0 +1,22 @@
+{
+  "name": "Jacob Wood",
+  "title": "Project Manager",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 14
+}

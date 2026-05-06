@@ -122,13 +122,41 @@
 
 .readMoreIcon {
   position: static;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
+  color: var(--sds-color-text-default-default);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease;
+  transform-origin: bottom left;
 
   @media all and (min-width: 768px) {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: var(--sds-size-space-600);
+    right: var(--sds-size-space-200);
+    transform-origin: top right;
+  }
+}
+
+.readMoreIcon :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.articleLink:hover .readMoreIcon,
+.articleLink:focus-visible .readMoreIcon {
+  transform: scale(1.2) translate(3px, -3px);
+  --icon-color: var(--sds-color-text-brand-secondary, #29305a);
+  color: var(--sds-color-text-brand-secondary, #29305a);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readMoreIcon {
+    transition: color 0.2s ease;
+  }
+  .articleLink:hover .readMoreIcon {
+    transform: none;
   }
 }
 

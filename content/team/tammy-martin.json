@@ -1,8 +1,8 @@
 {
   "name": "Tammy Martin",
-  "title": "Executive Assistant",
-  "affiliate": "content/affiliates/birdsey-group.json",
-  "photo": "",
+  "title": "Director of Administration",
+  "affiliate": "content/affiliates/corporate.json",
+  "photo": "/images/team/tammy-martin.jpeg",
   "bio": {
     "type": "root",
     "children": [
@@ -11,12 +11,12 @@
         "children": [
           {
             "type": "text",
-            "text": "Birdsey Group Executive Assistant"
+            "text": ""
           }
         ]
       }
     ]
   },
-  "linkedinUrl": "",
-  "order": 2
+  "linkedinUrl": "https://www.linkedin.com/in/tammy-martin-a54429100/",
+  "order": 3
 }

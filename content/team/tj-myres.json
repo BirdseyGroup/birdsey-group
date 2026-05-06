@@ -1,0 +1,22 @@
+{
+  "name": "TJ Myres",
+  "title": "Construction Director",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "/images/team/tj-myres.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/tj-myres-46521915/",
+  "order": 2
+}

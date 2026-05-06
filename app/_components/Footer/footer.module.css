@@ -1,5 +1,7 @@
 /* Footer */
-.footer {
+/* Doubled selector outweighs `.section-variant-brand` from the Section
+   primitive, which would otherwise paint this yellow during hydration. */
+.footer.footer {
   background-color: var(--sds-color-background-brand-secondary);
   padding: var(--sds-size-space-1200) var(--sds-size-space-2400);
 }

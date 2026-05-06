@@ -25,8 +25,6 @@ interface TeamMemberModalProps {
 function renderRichText(content: any): React.ReactNode {
   if (!content) return null;
 
-  console.log("renderRichText content:", JSON.stringify(content, null, 2));
-
   // If it's a string, handle it
   if (typeof content === "string") {
     if (content === "[object Object]" || content === "\\[object Object]") {
@@ -40,14 +38,9 @@ function renderRichText(content: any): React.ReactNode {
 
   // Handle TinaCMS rich-text structure (root children)
   if (content.children && Array.isArray(content.children)) {
-    console.log("Processing children:", content.children.length);
-
     return content.children.map((child: any, index: number) => {
       if (!child) return null;
 
-      console.log(`Child ${index}:`, child);
-
-      // Each child should be a paragraph or block-level element
       if (child.type === "p") {
         const plainText = extractPlainText(child);
         // Render blank paragraphs
@@ -137,13 +130,6 @@ export function TeamMemberModal({
   isOpen,
   onClose,
 }: TeamMemberModalProps) {
-  // Debug logging
-  useEffect(() => {
-    if (member && isOpen) {
-      console.log("TeamMemberModal member data:", member);
-    }
-  }, [member, isOpen]);
-
   // Close on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {

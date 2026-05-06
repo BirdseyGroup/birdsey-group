@@ -1,0 +1,22 @@
+{
+  "name": "Gee Aldridge",
+  "title": "Advisor",
+  "affiliate": "content/affiliates/board-of-advisors.json",
+  "photo": "/images/team/gee-aldridge.webp",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/john-aldridge-bab4a5168/",
+  "order": 3
+}

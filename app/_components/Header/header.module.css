@@ -1,5 +1,7 @@
 /* Header */
-.header {
+/* Doubled selector outweighs `.section-variant-brand` from the Section
+   primitive, which would otherwise paint this yellow during hydration. */
+.header.header {
   position: fixed;
   top: 0;
   left: 0;

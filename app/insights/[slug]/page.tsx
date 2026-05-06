@@ -91,11 +91,39 @@ export default async function InsightPage({ params }: InsightPageProps) {
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    ...(article.image && {
+      image: `https://www.birdseygroup.com${article.image}`,
+    }),
+    ...(article.date && { datePublished: article.date }),
+    author: {
+      "@type": "Organization",
+      name: "The Birdsey Group, LLC",
+      url: "https://www.birdseygroup.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "The Birdsey Group, LLC",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.birdseygroup.com/images/birdsey-group-logo.svg",
+      },
+    },
+  };
+
   return (
     <div className={`page-wrapper ${styles.insightPage}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Header navItems={navigationContent?.items || []} />
 
-      <main className={styles.mainContent}>
+      <main id="main-content" className={styles.mainContent}>
         <div className={styles.container}>
           <ArticleDetail
             title={article.title}

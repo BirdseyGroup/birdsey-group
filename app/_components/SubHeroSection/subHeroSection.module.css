@@ -1,4 +1,7 @@
-.subHero {
+/* Doubled selector to outweigh `.section-variant-brand` from the Section
+   primitive (otherwise the brand-default yellow can win the equal-specificity
+   race during hydration). */
+.subHero.subHero {
   background-color: var(--sds-color-background-brand-secondary);
   padding: var(--sds-size-space-2400);
 }
@@ -12,6 +15,34 @@
 
 .subheading {
   color: var(--text-default-alternative, #ffffff);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-size-space-200);
+  margin-top: var(--sds-size-space-600);
+  color: var(--text-default-alternative, #ffffff);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: var(--sds-size-space-100);
+  cursor: pointer;
+  transition: opacity 0.2s ease, gap 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.8;
+  gap: var(--sds-size-space-300);
+}
+
+.linkArrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.link:hover .linkArrow {
+  transform: translateX(2px);
 }
 
 /* Mobile styles */

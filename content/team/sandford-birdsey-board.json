@@ -1,0 +1,22 @@
+{
+  "name": "Sandford Birdsey",
+  "title": "CEO",
+  "affiliate": "content/affiliates/board-of-advisors.json",
+  "photo": "/images/team/sandford-birdsey.jpeg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/sandford-birdsey-7ab26210/",
+  "order": 1
+}

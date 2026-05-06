@@ -1,0 +1,22 @@
+{
+  "name": "Jada Alexis",
+  "title": "Director",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/jada-alexis.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/alexisjada/",
+  "order": 6
+}

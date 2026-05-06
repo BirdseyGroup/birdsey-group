@@ -1,20 +1,46 @@
 import { AllProviders } from "@/lib";
 import type { Metadata } from "next";
+import { Inter, Merriweather } from "next/font/google";
 import "@/styles/globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-merriweather",
+  weight: ["300", "400", "700", "900"],
+  style: ["normal", "italic"],
+});
+
+const SITE_URL = "https://www.birdseygroup.com";
+
 export const metadata: Metadata = {
-  title: "The Birdsey Group, LLC | Real Estate Consulting",
-  description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "The Birdsey Group, LLC | Real Estate Consulting",
+    template: "%s | The Birdsey Group",
+  },
+  description:
+    "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
   icons: {
     icon: [
-      { url: "/images/favicons/favicon16.jpg", sizes: "16x16", type: "image/jpeg" },
-      { url: "/images/favicons/favicon32.jpg", sizes: "32x32", type: "image/jpeg" },
-      { url: "/images/favicons/favicon48.jpg", sizes: "48x48", type: "image/jpeg" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
+    apple: "/favicon.svg",
   },
   openGraph: {
     title: "The Birdsey Group, LLC | Real Estate Consulting",
-    description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+    description:
+      "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+    url: SITE_URL,
+    siteName: "The Birdsey Group",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -24,13 +50,27 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "The Birdsey Group, LLC | Real Estate Consulting",
-    description: "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+    description:
+      "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
     images: ["/images/og-image.jpg"],
   },
+  robots: { index: true, follow: true },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "The Birdsey Group, LLC",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/birdsey-group-logo.svg`,
+  description:
+    "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
+  sameAs: ["https://www.linkedin.com/company/birdsey-group"],
 };
 
 export default function RootLayout({
@@ -39,16 +79,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/images/buildings.jpg"
+          as="image"
+          type="image/jpeg"
+          fetchPriority="high"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <AllProviders>{children}</AllProviders>
       </body>
     </html>

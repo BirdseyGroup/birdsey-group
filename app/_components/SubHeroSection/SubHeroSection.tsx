@@ -4,17 +4,24 @@ import { Flex, FlexItem, Section } from "@/components/layout";
 import { TextSubheading, TextSubtitle } from "@/components/primitives";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import styles from "./subHeroSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface SubHeroLink {
+  text?: string;
+  href?: string;
+}
+
 interface SubHeroSectionProps {
   title: string;
   description: string;
+  link?: SubHeroLink;
 }
 
-export function SubHeroSection({ title, description }: SubHeroSectionProps) {
+export function SubHeroSection({ title, description, link }: SubHeroSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,6 +69,14 @@ export function SubHeroSection({ title, description }: SubHeroSectionProps) {
             <TextSubheading className={styles.subheading}>
               {description}
             </TextSubheading>
+            {link?.href && link?.text && (
+              <Link href={link.href} className={styles.link}>
+                {link.text}
+                <span aria-hidden="true" className={styles.linkArrow}>
+                  →
+                </span>
+              </Link>
+            )}
           </FlexItem>
         </Flex>
       </div>

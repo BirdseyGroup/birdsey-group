@@ -1,0 +1,22 @@
+{
+  "name": "Kelsey Machen",
+  "title": "Director of Vendor Management",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "/images/team/kelsey-machen.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/kelsey-d-707546237/",
+  "order": 3
+}

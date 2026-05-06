@@ -1,0 +1,22 @@
+{
+  "name": "Josh Jones",
+  "title": "Analyst",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "",
+  "order": 11
+}

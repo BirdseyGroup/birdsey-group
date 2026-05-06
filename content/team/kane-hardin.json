@@ -1,0 +1,22 @@
+{
+  "name": "Kane Hardin",
+  "title": "Project Manager",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/kane-hardin-9a472b256/",
+  "order": 10
+}

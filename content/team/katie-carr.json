@@ -1,0 +1,22 @@
+{
+  "name": "Katie Carr",
+  "title": "Director of Field Services",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/katie-carr.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/katie-foster-carr-1131a4b6/",
+  "order": 4
+}

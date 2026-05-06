@@ -630,13 +630,14 @@
   --sds-color-black-100: #3635340d;
   --sds-color-black-200: #3635341a;
 
-  /* Typography overrides for Birdsey */
-  --sds-typography-heading-font-family: "Merriweather", serif;
-  --sds-typography-subtitle-font-family: "Merriweather", serif;
-  --sds-typography-title-hero-font-family: "Merriweather", serif;
-  --sds-typography-title-page-font-family: "Merriweather", serif;
-  --sds-typography-body-font-family: "Inter", sans-serif;
-  --sds-typography-subheading-font-family: "Inter", sans-serif;
+  /* Typography overrides for Birdsey — next/font CSS variables fall back to
+     literal family names (legacy CSS still references "Inter"/"Merriweather"). */
+  --sds-typography-heading-font-family: var(--font-merriweather), "Merriweather", serif;
+  --sds-typography-subtitle-font-family: var(--font-merriweather), "Merriweather", serif;
+  --sds-typography-title-hero-font-family: var(--font-merriweather), "Merriweather", serif;
+  --sds-typography-title-page-font-family: var(--font-merriweather), "Merriweather", serif;
+  --sds-typography-body-font-family: var(--font-inter), "Inter", sans-serif;
+  --sds-typography-subheading-font-family: var(--font-inter), "Inter", sans-serif;
 
   --sds-typography-heading-size-base: 24px;
   --sds-typography-subtitle-size-base: 32px;

@@ -278,6 +278,23 @@ export default defineConfig({
                   component: "textarea",
                 },
               },
+              {
+                type: "object",
+                name: "link",
+                label: "Link",
+                fields: [
+                  {
+                    type: "string",
+                    name: "text",
+                    label: "Text",
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "URL",
+                  },
+                ],
+              },
             ],
           },
           {
@@ -590,6 +607,13 @@ export default defineConfig({
             type: "string",
             name: "linkedinUrl",
             label: "LinkedIn URL",
+          },
+          {
+            type: "boolean",
+            name: "miniBioEnabled",
+            label: "Mini bio enabled",
+            description:
+              "Show a 'Mini bio' link on this card. Leave off until a bio has been written.",
           },
           {
             type: "number",

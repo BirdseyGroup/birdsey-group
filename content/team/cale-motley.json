@@ -1,0 +1,22 @@
+{
+  "name": "Cale Motley",
+  "title": "Vendor Manager",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "/images/team/cale-motley.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/cale-motley-58ab85350/",
+  "order": 5
+}

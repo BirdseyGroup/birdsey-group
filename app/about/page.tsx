@@ -1,12 +1,20 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { ContactSection } from "../_components/ContactSection";
 import { Footer } from "../_components/Footer";
 import { Header } from "../_components/Header";
 import { HeroSection } from "../_components/HeroSection";
 import { TeamSection } from "../_components/TeamSection";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "About Birdsey Group",
+  description:
+    "Many of our clients consider our company as an extension of their own staff. Meet the Birdsey Group team across Corporate, Commercial, Residential, Construction, and Board of Advisors.",
+  alternates: { canonical: "/about" },
+};
 
 export default async function AboutPage() {
   // Read about page content
@@ -74,7 +82,7 @@ export default async function AboutPage() {
         />
       )}
 
-      <main className={styles.mainContent}>
+      <main id="main-content" className={styles.mainContent}>
         <div className={styles.container}>
           <Suspense fallback={<div>Loading...</div>}>
             <TeamSection

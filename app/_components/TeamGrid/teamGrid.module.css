@@ -1,17 +1,19 @@
 .teamGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sds-size-space-600);
+  gap: var(--sds-size-space-800) var(--sds-size-space-600);
   width: 100%;
-  animation: fadeIn 0.3s ease;
+  animation: gridFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes fadeIn {
+@keyframes gridFadeIn {
   from {
     opacity: 0;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -27,45 +29,75 @@
   flex-direction: column;
   gap: var(--sds-size-space-200);
   width: calc((100% - (var(--sds-size-space-600) * 2)) / 3);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
   text-align: left;
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.teamMember:hover {
-  opacity: 0.8;
-  transform: translateY(-4px);
-}
-
-.teamMember:active {
-  transform: translateY(-2px);
+@media (prefers-reduced-motion: reduce) {
+  .teamGrid {
+    animation: none;
+  }
 }
 
 .photoWrapper {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 16px;
+  border-radius: var(--sds-size-radius-400, 16px);
   overflow: hidden;
   background-color: var(--sds-color-background-default-tertiary);
+  position: relative;
+}
+
+.photoWrapperPlaceholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  background: linear-gradient(
+    180deg,
+    #f3f4f7 0%,
+    #e7eaf1 100%
+  );
+}
+
+.placeholderLogo {
+  width: 40%;
+  height: auto;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.teamMember:hover .placeholderLogo {
+  opacity: 0.7;
+  transform: scale(1.04);
 }
 
 .photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.4s ease;
+}
+
+.photoLoaded {
+  opacity: 1;
+}
+
+.teamMember:hover .photoLoaded {
+  transform: scale(1.03);
 }
 
 .memberInfo {
   display: flex;
   flex-direction: column;
   gap: var(--sds-size-space-050);
+  margin-top: var(--sds-size-space-300);
+}
+
+.memberHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sds-size-space-200);
 }
 
 .memberName {
@@ -81,9 +113,84 @@
   margin: 0;
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
-  font-style: italic;
   line-height: 1.4;
+  color: var(--sds-color-text-default-secondary);
+}
+
+.memberActions {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-size-space-400);
+  margin-top: var(--sds-size-space-300);
+}
+
+.viewProfileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-size-space-150);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--sds-color-text-default-default);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.viewProfileLink:hover {
+  color: var(--sds-color-text-brand-default, #1a3a8c);
+  gap: var(--sds-size-space-300);
+}
+
+.viewProfileArrow {
+  display: inline-block;
+  font-size: 0.95em;
+  transition: transform 0.2s ease;
+}
+
+.viewProfileLink:hover .viewProfileArrow {
+  transform: translateX(2px);
+}
+
+.linkedinButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--sds-color-text-default-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.linkedinButton:hover {
+  color: #0a66c2;
+  background-color: rgba(10, 102, 194, 0.08);
+  transform: translateY(-1px);
+}
+
+.miniBioLink {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--sds-color-text-default-default);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.miniBioLink:hover {
+  color: var(--sds-color-text-brand-default, #1a3a8c);
 }
 
 /* Mobile styles */

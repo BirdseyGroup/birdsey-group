@@ -1,0 +1,22 @@
+{
+  "name": "Cannon Crane",
+  "title": "Senior Analyst",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/cannon-crane.jpeg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/cannon-crane-079a0122b/",
+  "order": 9
+}

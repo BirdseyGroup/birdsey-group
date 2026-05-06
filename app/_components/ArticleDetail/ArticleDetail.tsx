@@ -107,7 +107,7 @@ export function ArticleDetail({
         <div className={styles.headerTop}>
           <div className={styles.meta}>
             <span className={styles.category}>{category}</span>
-            <span className={styles.date}>{formatDate(date)}</span>
+            {date && <span className={styles.date}>{formatDate(date)}</span>}
           </div>
           <button
             onClick={handleLinkedInShare}

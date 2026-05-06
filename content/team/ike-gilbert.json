@@ -1,0 +1,22 @@
+{
+  "name": "Ike Gilbert",
+  "title": "Director of Estimating",
+  "affiliate": "content/affiliates/construction.json",
+  "photo": "/images/team/ike-gilbert.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/ikegilbert/",
+  "order": 6
+}

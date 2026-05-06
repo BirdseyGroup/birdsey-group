@@ -1,0 +1,22 @@
+{
+  "name": "Cooper Baker",
+  "title": "Managing Director",
+  "affiliate": "content/affiliates/commercial.json",
+  "photo": "/images/team/cooper-baker.jpg",
+  "bio": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/cooper-baker-9960a713/",
+  "order": 1
+}

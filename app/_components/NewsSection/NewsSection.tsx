@@ -100,7 +100,9 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
                     <div className={styles.articleImagePlaceholder} />
                   )}
                   <Flex direction="column" gap="400">
-                    <p className={styles.articleDate}>{formatDate(article.date)}</p>
+                    {article.date && (
+                      <p className={styles.articleDate}>{formatDate(article.date)}</p>
+                    )}
                     <h3 className={styles.articleTitle}>{article.title}</h3>
                     <p className={styles.articleExcerpt}>{article.excerpt}</p>
                     <div className={styles.readMoreLink}>Read More</div>
