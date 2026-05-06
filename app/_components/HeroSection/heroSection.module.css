@@ -6,9 +6,16 @@
 }
 
 /* Hero Section */
-.hero {
+/* Doubled selector to outweigh `.section-variant-brand` from the Section
+   primitive (otherwise the brand-default yellow can win the equal-specificity
+   race during hydration). */
+.hero.hero {
   background-color: var(--sds-color-background-brand-secondary);
-  padding: 0 var(--sds-size-space-600);
+}
+
+.hero.hero:not(.heroSimple) {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .heroContent {
@@ -23,18 +30,25 @@
   overflow: hidden;
 }
 
-.heroSimple {
-  padding-bottom: var(--sds-size-space-800);
-}
-
 .heroSimple .heroContent {
   min-height: 400px;
   background-size: cover;
+  margin-bottom: var(--sds-size-space-1600);
 }
 
 .heroSimple .heroContentInner {
   min-height: 400px;
   gap: var(--sds-size-space-600);
+}
+
+/* Initial state for simple-hero animation — JS reveals these */
+.heroSimple .heroContentInner {
+  opacity: 0;
+}
+.heroSimple .heroTitle,
+.heroSimple .heroSubtitle {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .heroContent::before {

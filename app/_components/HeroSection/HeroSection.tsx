@@ -41,6 +41,30 @@ export function HeroSection({
   const hasButtons = primaryButton?.text || secondaryButton?.text;
   const isSimple = variant === "simple";
 
+  // Simple-variant hero gets a lighter fade-in (no scroll-triggered effects).
+  useEffect(() => {
+    if (!isSimple || !contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.to(contentRef.current, { opacity: 1, duration: 0.9, delay: 0.15 })
+        .to(
+          titleRef.current,
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.5",
+        )
+        .to(
+          subtitleRef.current,
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.4",
+        );
+    }, contentRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, [isSimple]);
+
   useEffect(() => {
     if (!contentRef.current || isSimple) return;
 
@@ -195,6 +219,8 @@ export function HeroSection({
   return (
     <Section
       variant="brand"
+      paddingTop={isSimple ? "800" : "600"}
+      paddingBottom={isSimple ? "1600" : "600"}
       className={`${styles.hero} ${isSimple ? styles.heroSimple : ""}`}
     >
       <div
