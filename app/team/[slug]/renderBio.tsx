@@ -1,89 +1,93 @@
 import type { ReactNode } from "react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 /**
- * Minimal renderer for the TinaCMS rich-text shape stored in
- * content/team/*.json. Mirrors the helper inside TeamMemberModal so this
- * route can stay a server component.
+ * Renders the bio for a team member. Tina rich-text fields normally store
+ * an AST that <TinaMarkdown> handles natively. Tina sometimes falls back
+ * to writing the value as a plain markdown string (e.g. after a field was
+ * cleared to ""); we parse that case ourselves.
  */
 export function renderTeamBio(content: any): ReactNode {
   if (!content) return null;
 
   if (typeof content === "string") {
     if (!content.trim() || content === "[object Object]") return null;
-    return content
-      .split(/\n\n+/)
-      .map((para, i) => <p key={i}>{para.trim() || " "}</p>);
+    return renderMarkdownBlocks(content);
   }
 
   if (!content.children || !Array.isArray(content.children)) return null;
 
-  // If every paragraph is empty, treat as no bio.
   const hasContent = content.children.some(
     (child: any) => extractPlainText(child).trim().length > 0,
   );
   if (!hasContent) return null;
 
-  return content.children.map((child: any, index: number) => {
-    if (!child) return null;
+  return <TinaMarkdown content={content} />;
+}
 
-    if (
-      child.type === "h1" ||
-      child.type === "h2" ||
-      child.type === "h3"
-    ) {
-      const Tag = child.type as keyof JSX.IntrinsicElements;
-      return <Tag key={index}>{renderInline(child)}</Tag>;
+/* ───────── Markdown-string fallback ───────── */
+
+function renderMarkdownBlocks(text: string): ReactNode {
+  const blocks = text
+    .replace(/\r\n/g, "\n")
+    .split(/\n{2,}/)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  return blocks.map((block, i) => {
+    const lines = block.split("\n").map((l) => l.trim());
+
+    const headingMatch = block.match(/^(#{1,3})\s+(.*)/);
+    if (headingMatch && lines.length === 1) {
+      const level = headingMatch[1].length;
+      const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+      return <Tag key={i}>{renderMarkdownInline(headingMatch[2])}</Tag>;
     }
 
-    if (child.type === "ul" || child.type === "ol") {
-      const ListTag = child.type as keyof JSX.IntrinsicElements;
+    const isList = lines.every((l) => /^[*-]\s+/.test(l));
+    if (isList) {
       return (
-        <ListTag key={index}>
-          {(child.children || []).map((li: any, liIndex: number) => (
-            <li key={liIndex}>{renderInline(li)}</li>
+        <ul key={i}>
+          {lines.map((l, idx) => (
+            <li key={idx}>
+              {renderMarkdownInline(l.replace(/^[*-]\s+/, ""))}
+            </li>
           ))}
-        </ListTag>
+        </ul>
       );
     }
 
-    // Default: paragraph (covers explicit p and untyped text-bearing nodes)
-    if (extractPlainText(child).trim() === "") {
-      return <p key={index}>&nbsp;</p>;
-    }
-    return <p key={index}>{renderInline(child)}</p>;
+    return (
+      <p key={i}>
+        {lines.map((line, idx) => (
+          <span key={idx}>
+            {idx > 0 && <br />}
+            {renderMarkdownInline(line)}
+          </span>
+        ))}
+      </p>
+    );
   });
 }
 
-function renderInline(node: any): ReactNode[] {
-  if (!node) return [];
+function renderMarkdownInline(text: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  const regex = /\*\*([^*]+)\*\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
 
-  if (typeof node.text === "string") {
-    return [applyMarks(node)];
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(<strong key={`b-${key++}`}>{match[1]}</strong>);
+    lastIndex = regex.lastIndex;
   }
-
-  if (!node.children || !Array.isArray(node.children)) return [];
-
-  const out: ReactNode[] = [];
-  node.children.forEach((child: any, index: number) => {
-    if (typeof child.text === "string") {
-      if (child.text === "" && index > 0) {
-        out.push(<br key={`br-${index}`} aria-hidden="true" />);
-      } else if (child.text) {
-        out.push(applyMarks(child, index));
-      }
-    } else {
-      out.push(...renderInline(child));
-    }
-  });
-  return out;
-}
-
-function applyMarks(node: any, key?: number): ReactNode {
-  let element: ReactNode = node.text;
-  if (node.bold) element = <strong key={`b-${key}`}>{element}</strong>;
-  if (node.italic) element = <em key={`i-${key}`}>{element}</em>;
-  if (node.underline) element = <u key={`u-${key}`}>{element}</u>;
-  return element;
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts;
 }
 
 function extractPlainText(node: any): string {
