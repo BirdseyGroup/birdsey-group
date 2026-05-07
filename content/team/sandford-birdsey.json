@@ -11,12 +11,96 @@
         "children": [
           {
             "type": "text",
-            "text": ""
+            "text": "Sandford Birdsey is the founder and CEO of Birdsey Group, where he leads strategy, capital relationships, and execution standards across the firm's commercial, residential, construction, and corporate affiliates."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Over more than three decades in commercial real estate, Sandford has overseen "
+          },
+          {
+            "type": "text",
+            "text": "more than $250 billion in loan balance",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " across single-asset and large-portfolio transactions, working with financial institutions, government agencies, investment banks, rating agencies, and B-piece investors."
+          }
+        ]
+      },
+      {
+        "type": "h3",
+        "children": [
+          {
+            "type": "text",
+            "text": "Areas of focus"
+          }
+        ]
+      },
+      {
+        "type": "ul",
+        "children": [
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Building and scaling the Birdsey Standard across affiliate operations."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Anchoring institutional capital relationships through cycles."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "li",
+            "children": [
+              {
+                "type": "lic",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Mentoring the next generation of Birdsey leadership."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Sandford is based in Atlanta, Georgia, and serves clients nationwide."
           }
         ]
       }
     ]
   },
   "linkedinUrl": "https://www.linkedin.com/in/sandford-birdsey-7ab26210/",
+  "profilePageEnabled": true,
   "order": 1
 }

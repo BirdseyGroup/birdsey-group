@@ -621,6 +621,13 @@ export default defineConfig({
               "Show a 'Mini bio' link on this card. Leave off until a bio has been written.",
           },
           {
+            type: "boolean",
+            name: "profilePageEnabled",
+            label: "Dedicated profile page",
+            description:
+              "Publish a /team/{slug} page for this person. The View Profile card link will route there instead of LinkedIn.",
+          },
+          {
             type: "number",
             name: "order",
             label: "Display Order",

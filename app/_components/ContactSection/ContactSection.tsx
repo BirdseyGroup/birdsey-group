@@ -4,8 +4,8 @@ import { Flex, FlexItem, Section } from "@/components/layout";
 import { Button, Input, Textarea } from "@/components/primitives";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { useFormStatus } from "react-dom";
 import {
   sendContact,
   type ContactFormState,
@@ -47,7 +47,7 @@ export function ContactSection({
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const formElRef = useRef<HTMLFormElement>(null);
-  const [state, formAction] = useFormState(sendContact, initialState);
+  const [state, formAction] = useActionState(sendContact, initialState);
   const [showForm, setShowForm] = useState(true);
 
   useEffect(() => {

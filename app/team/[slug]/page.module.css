@@ -1,0 +1,242 @@
+.profilePage {
+  background-color: var(--sds-color-background-default-default);
+}
+
+.mainContent {
+  padding: var(--sds-size-space-1200) var(--sds-size-space-600)
+    var(--sds-size-space-2400);
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-1200);
+}
+
+.backLink {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-size-space-150);
+  /* Generous hit area so the arrow + text are easy to tap; negative margin
+     keeps the visible label flush with the container edge. */
+  padding: 12px 16px;
+  margin: -12px -16px;
+  border-radius: var(--sds-size-radius-200);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--sds-color-text-default-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--sds-color-text-default-default);
+  background-color: var(--sds-color-background-default-tertiary);
+}
+
+.heroBlock {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--sds-size-space-1200);
+  align-items: center;
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--sds-size-radius-400, 16px);
+  overflow: hidden;
+  background-color: var(--sds-color-background-default-tertiary);
+}
+
+.photoWrapperPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #f3f4f7 0%, #e7eaf1 100%);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.placeholderLogo {
+  width: 40%;
+  height: auto;
+  opacity: 0.55;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-300);
+}
+
+.affiliate {
+  margin: 0;
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sds-color-text-default-secondary);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--sds-typography-family-serif);
+  font-size: var(--sds-typography-heading-size-large);
+  line-height: 1.1;
+  color: var(--sds-color-text-default-default);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  line-height: 1.4;
+  color: var(--sds-color-text-default-secondary);
+}
+
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sds-size-space-200) var(--sds-size-space-600);
+  margin: var(--sds-size-space-300) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+}
+
+.contactList a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+  color: var(--sds-color-text-default-default);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.contactList a:hover {
+  opacity: 0.7;
+}
+
+.linkedinIcon {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-400);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  line-height: 1.6;
+  color: var(--sds-color-text-default-default);
+}
+
+/* Hero intro: photo first, hero text second. CSS keyframes so the page
+   doesn't depend on JS booting before content is visible. */
+@keyframes profileFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadePhoto {
+  opacity: 0;
+  animation: profileFadeUp 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fadeHeroText {
+  opacity: 0;
+  animation: profileFadeUp 0.7s 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Bio: children start hidden, get revealed when the bio enters the viewport
+   (controlled by JS adding `.bioReady` to the parent). Each child uses a
+   stagger delay via :nth-child to cascade. */
+.bio > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bioReady > *:nth-child(1) { transition-delay: 0s; }
+.bioReady > *:nth-child(2) { transition-delay: 0.08s; }
+.bioReady > *:nth-child(3) { transition-delay: 0.16s; }
+.bioReady > *:nth-child(4) { transition-delay: 0.24s; }
+.bioReady > *:nth-child(5) { transition-delay: 0.32s; }
+.bioReady > *:nth-child(6) { transition-delay: 0.4s; }
+.bioReady > *:nth-child(n + 7) { transition-delay: 0.48s; }
+
+.bioReady > * {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadePhoto,
+  .fadeHeroText {
+    opacity: 1;
+    animation: none;
+  }
+  .bio > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.bio :where(h1, h2, h3) {
+  margin: var(--sds-size-space-600) 0 0;
+  font-family: var(--sds-typography-family-serif);
+  color: var(--sds-color-text-default-default);
+}
+
+.bio :where(p) {
+  margin: 0;
+}
+
+.bio :where(ul, ol) {
+  margin: 0;
+  padding-left: var(--sds-size-space-600);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-200);
+}
+
+.bio :where(strong) {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .heroBlock {
+    grid-template-columns: 1fr;
+  }
+
+  .photoWrapper {
+    max-width: 320px;
+    width: 100%;
+  }
+}

@@ -54,6 +54,9 @@ export default async function AboutPage() {
         const fileContent = await fs.readFile(filePath, "utf-8");
         const member = JSON.parse(fileContent);
 
+        // Use the JSON filename as the team-member slug (drives /team/[slug]).
+        member.slug = file.replace(/\.json$/, "");
+
         // Extract slug from affiliate reference path
         // e.g., "content/affiliates/birdsey-group.json" -> "birdsey-group"
         if (member.affiliate && typeof member.affiliate === "string") {
