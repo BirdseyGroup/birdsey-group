@@ -414,6 +414,11 @@ export default defineConfig({
                     required: true,
                   },
                   {
+                    type: "boolean",
+                    name: "hideDate",
+                    label: "Hide date on card",
+                  },
+                  {
                     type: "string",
                     name: "category",
                     label: "Category",

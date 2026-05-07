@@ -53,15 +53,10 @@ export function Header({ navItems }: HeaderProps) {
       const id = href.replace("#", "");
       setActivePage(id);
 
-      // If we're on the about page, navigate to home first
-      if (pathname === "/about") {
-        router.push("/");
-        // Wait for navigation then scroll
-        setTimeout(() => {
-          scrollToSection(id);
-        }, 100);
+      // If we're not already on the homepage, navigate there first
+      if (pathname !== "/") {
+        router.push(`/${href}`);
       } else {
-        // Already on homepage, just scroll
         scrollToSection(id);
       }
     }

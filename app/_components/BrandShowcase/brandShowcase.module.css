@@ -105,32 +105,39 @@
 }
 
 .contentItem {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   gap: var(--sds-size-space-400);
-  padding: var(--sds-size-space-1200) 0;
+  /* Top-anchor content so it sits in the upper portion of the sticky
+     image (not vertically centered against it — that pushed the first
+     card too far down on tall screens). */
+  padding: clamp(140px, calc(96px + 8vw), 260px) 0
+    var(--sds-size-space-1200);
 }
 
-.contentItem :global(.divider) {
-  margin-left: auto;
-  margin-right: auto;
+/* Brand divider sits between subtitle and description; CSS modules scope
+   the shared `.divider` class so :global doesn't match — target via attr. */
+.contentItem [class*="divider"],
+.emblaSlide [class*="divider"] {
+  align-self: center;
 }
 
 .title {
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .subtitle {
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .description {
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 /* Mobile Carousel Styles */

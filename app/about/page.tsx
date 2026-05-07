@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import ReactDOM from "react-dom";
 import { ContactSection } from "../_components/ContactSection";
 import { Footer } from "../_components/Footer";
 import { Header } from "../_components/Header";
@@ -68,6 +69,13 @@ export default async function AboutPage() {
 
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
+
+  if (aboutContent.hero?.backgroundImage) {
+    ReactDOM.preload(aboutContent.hero.backgroundImage, {
+      as: "image",
+      fetchPriority: "high",
+    });
+  }
 
   return (
     <div className={`page-wrapper ${styles.aboutPage}`}>

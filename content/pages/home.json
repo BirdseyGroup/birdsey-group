@@ -91,6 +91,15 @@
     "title": "Insights & Recognition.",
     "articles": [
       {
+        "date": "2026-05-07",
+        "hideDate": true,
+        "category": "INSIGHT",
+        "title": "Execution Is the Standard",
+        "excerpt": "Commercial real estate does not lack intelligence. What it lacks, especially in volatile cycles, is disciplined execution.",
+        "image": "/images/Execution%20Is%20the%20Standard%20QUART.png",
+        "url": "/insights/execution-is-the-standard"
+      },
+      {
         "date": "2026-05-01",
         "category": "RELATIONSHIP STANDARD INSIGHT",
         "title": "Why Relationship-Driven Performance Outperforms Scale",

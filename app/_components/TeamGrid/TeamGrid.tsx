@@ -44,8 +44,6 @@ interface TeamCardProps {
 }
 
 function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <div className={styles.teamMember}>
       <div
@@ -60,8 +58,7 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
             fill
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
             priority={priority}
-            className={`${styles.photo} ${imageLoaded ? styles.photoLoaded : ""}`}
-            onLoad={() => setImageLoaded(true)}
+            className={styles.photo}
           />
         ) : (
           <img

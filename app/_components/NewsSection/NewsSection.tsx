@@ -17,6 +17,7 @@ function formatDate(dateStr: string) {
 
 interface Article {
   date: string;
+  hideDate?: boolean;
   category: string;
   title: string;
   excerpt: string;
@@ -100,7 +101,7 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
                     <div className={styles.articleImagePlaceholder} />
                   )}
                   <Flex direction="column" gap="400">
-                    {article.date && (
+                    {article.date && !article.hideDate && (
                       <p className={styles.articleDate}>{formatDate(article.date)}</p>
                     )}
                     <h3 className={styles.articleTitle}>{article.title}</h3>

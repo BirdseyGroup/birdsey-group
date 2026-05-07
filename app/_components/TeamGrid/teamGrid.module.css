@@ -3,18 +3,6 @@
   flex-wrap: wrap;
   gap: var(--sds-size-space-800) var(--sds-size-space-600);
   width: 100%;
-  animation: gridFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes gridFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .emptyState {
@@ -30,12 +18,7 @@
   gap: var(--sds-size-space-200);
   width: calc((100% - (var(--sds-size-space-600) * 2)) / 3);
   text-align: left;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .teamGrid {
-    animation: none;
-  }
+  position: relative;
 }
 
 .photoWrapper {
@@ -74,15 +57,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.35s ease, transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
-.photoLoaded {
-  opacity: 1;
-}
-
-.teamMember:hover .photoLoaded {
+.teamMember:hover .photo {
   transform: scale(1.03);
 }
 
@@ -139,8 +117,19 @@
   transition: color 0.2s ease, gap 0.2s ease;
 }
 
-.viewProfileLink:hover {
-  color: var(--sds-color-text-brand-default, #1a3a8c);
+/* Stretched link: anchor's ::after expands to cover the whole card,
+   so clicking anywhere on the card triggers the View Profile link.
+   Sibling interactive elements (LinkedIn icon, Mini bio button) sit
+   above this overlay via z-index so they remain independently clickable. */
+.viewProfileLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.teamMember:hover .viewProfileLink,
+.viewProfileLink:focus-visible {
   gap: var(--sds-size-space-300);
 }
 
@@ -150,7 +139,8 @@
   transition: transform 0.2s ease;
 }
 
-.viewProfileLink:hover .viewProfileArrow {
+.teamMember:hover .viewProfileArrow,
+.viewProfileLink:focus-visible .viewProfileArrow {
   transform: translateX(2px);
 }
 
@@ -165,6 +155,8 @@
   cursor: pointer;
   transition: color 0.2s ease, background-color 0.2s ease,
     transform 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .linkedinButton:hover {
@@ -187,10 +179,19 @@
   border-bottom: 1px solid currentColor;
   padding-bottom: 1px;
   transition: color 0.2s ease, opacity 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .miniBioLink:hover {
   color: var(--sds-color-text-brand-default, #1a3a8c);
+}
+
+/* Two-column when the side-by-side accordion + grid layout is tight */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .teamMember {
+    width: calc((100% - var(--sds-size-space-600)) / 2);
+  }
 }
 
 /* Mobile styles */

@@ -74,6 +74,45 @@
   text-transform: none;
 }
 
+.fieldError {
+  margin: calc(var(--sds-size-space-200) * -1) 0 0;
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  color: var(--sds-color-text-danger-default, #b00020);
+}
+
+.formStatus {
+  padding: var(--sds-size-space-400);
+  border-radius: var(--sds-size-radius-200);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  line-height: 1.4;
+}
+
+.formStatusSuccess {
+  background-color: rgba(16, 122, 87, 0.08);
+  color: #0e6b50;
+  border: 1px solid rgba(16, 122, 87, 0.25);
+}
+
+.formStatusError {
+  background-color: rgba(176, 0, 32, 0.06);
+  color: #b00020;
+  border: 1px solid rgba(176, 0, 32, 0.25);
+}
+
+.successPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-300);
+  align-items: flex-start;
+}
+
+.successPanel :global(.button) {
+  width: auto;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .contact {
