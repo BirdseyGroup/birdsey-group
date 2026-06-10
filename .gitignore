@@ -39,3 +39,4 @@ tina/__generated__
 *.sln
 *.sw?
 *storybook.log
+.gstack/
