@@ -2,14 +2,14 @@
   "title": "Home",
   "hero": {
     "title": "The Standard of Excellence in Real Estate Investment Services",
-    "subtitle": "One ecosystem. Trusted Expertise. Results from origination to disposition.",
+    "subtitle": "One Ecosystem. Trusted Expertise. Results from origination to disposition.",
     "primaryButton": {
-      "text": "Explore our expertise",
+      "text": "Explore Our Expertise",
       "href": "#services"
     },
     "secondaryButton": {
-      "text": "Meet the affiliates",
-      "href": "#services"
+      "text": "Meet the Affiliates",
+      "href": "#affiliates"
     }
   },
   "subHero": {
@@ -49,9 +49,9 @@
         "website": "https://birdseyresidential.com/"
       },
       {
-        "title": "Turnkey Residential",
+        "title": "Turnkey",
         "subtitle": "Renovation Contractor",
-        "description": "A turnkey residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
+        "description": "A turnkey commercial and residential renovation contractor with full-time field superintendents in each market to renovate your asset to any finish level, delivering projects on time and on budget.",
         "logo": "/images/affiliate-3.png",
         "slideImage": "/images/teasers/birdsey-construction-management-teaser.jpg",
         "website": "https://birdseyconstruction.com/"
@@ -67,7 +67,7 @@
     ]
   },
   "performance": {
-    "title": "Performance that Build Trust",
+    "title": "Performance that Builds Trust",
     "stats": [
       {
         "value": "$200B+",
@@ -88,7 +88,7 @@
     ]
   },
   "news": {
-    "title": "Insights & Recognition.",
+    "title": "Insights & News",
     "articles": [
       {
         "date": "2026-05-07",

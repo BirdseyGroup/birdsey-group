@@ -54,8 +54,8 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
       const id = href.replace("#", "");
       setActivePage(id);
 
-      // If we're on the about page, navigate to home first
-      if (pathname === "/about") {
+      // If we're not on the homepage (about, team, insights pages), navigate home first
+      if (pathname !== "/") {
         router.push("/");
         // Wait for navigation then scroll
         setTimeout(() => {
@@ -102,7 +102,7 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
             <h3 className={styles.footerHeading}>Contact Us</h3>
             <Flex direction="column" gap="200">
               <TextLink
-                href={`tel:${phone}`}
+                href={`tel:+1${phone.replace(/\D/g, "")}`}
                 className={styles.navigationPill}
               >
                 {phone}
@@ -141,7 +141,23 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
 
         <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
+            <div className={styles.award}>
+              <div className={styles.awardBadge}>
+                <Image
+                  src="/images/Inc500_medallion.jpg"
+                  alt="Inc. 500 — America's Fastest-Growing Private Companies"
+                  width={72}
+                  height={72}
+                  className={styles.awardMedallion}
+                />
+              </div>
+              <p className={`${styles.footerText} ${styles.awardCaption}`}>
+                Recognized as the 6th fastest-growing construction company in
+                the U.S.
+              </p>
+            </div>
             <div
+              className={styles.footerLogo}
               style={{ position: "relative", width: "99px", height: "40px" }}
             >
               <Image
@@ -151,16 +167,12 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
                 style={{ objectFit: "contain" }}
               />
             </div>
-            <p className={styles.footerText}>
-              {copyright.split('\n').map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < copyright.split('\n').length - 1 && <br />}
-                </span>
-              ))}
-            </p>
           </Flex>
         </div>
+      </div>
+
+      <div className={styles.footerBottom}>
+        <p className={styles.footerText}>{copyright.split("\n").join(" ")}</p>
       </div>
     </Section>
   );

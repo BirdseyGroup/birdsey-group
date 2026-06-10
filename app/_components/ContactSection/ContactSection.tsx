@@ -107,12 +107,20 @@ export function ContactSection({
     <Section id="contact" className={styles.contact}>
       <Flex container gap="600">
         <FlexItem size="major">
-          <h2
-            className={`${sharedStyles.sectionTitle} ${styles.contactTitle}`}
-            ref={titleRef}
-          >
-            {title}
-          </h2>
+          <div className={styles.contactIntro}>
+            <img
+              src="/images/birdsey-icon-only.svg"
+              alt=""
+              aria-hidden="true"
+              className={styles.contactWatermark}
+            />
+            <h2
+              className={`${sharedStyles.sectionTitle} ${styles.contactTitle}`}
+              ref={titleRef}
+            >
+              {title}
+            </h2>
+          </div>
         </FlexItem>
         <FlexItem>
           <div className={styles.contactForm} ref={formRef}>

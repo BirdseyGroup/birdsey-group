@@ -58,7 +58,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* Vertical gradient: lighter at the top, deeper toward the bottom where the
+     headline and buttons sit — gives the type strong contrast over the photo. */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
   border-radius: var(--sds-size-radius-400);
   pointer-events: none;
   z-index: 1;

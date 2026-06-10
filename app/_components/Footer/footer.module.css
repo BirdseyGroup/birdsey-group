@@ -62,6 +62,48 @@
   color: var(--sds-color-text-default-tertiary);
 }
 
+/* Inc. 500 award */
+.award {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sds-size-space-300);
+}
+
+/* The asset is a black medallion on white, so present it as an intentional
+   white badge with padding and rounded corners rather than fighting a blend. */
+.awardBadge {
+  display: inline-flex;
+  background-color: #ffffff;
+  border-radius: var(--sds-size-radius-200);
+  padding: var(--sds-size-space-200);
+}
+
+.awardMedallion {
+  display: block;
+  width: 72px;
+  height: 72px;
+}
+
+.awardCaption {
+  max-width: 220px;
+}
+
+/* Extra breathing room above the Birdsey logo. */
+.footerLogo {
+  margin-top: var(--sds-size-space-600);
+}
+
+/* Copyright on its own full-width row at the very bottom. */
+.footerBottom {
+  max-width: 1200px;
+  width: 100%;
+  margin: var(--sds-size-space-800) auto 0;
+  padding-top: var(--sds-size-space-600);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
 .footer .textLinkList {
   gap: var(--sds-size-space-200);
 }

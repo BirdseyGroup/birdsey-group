@@ -82,6 +82,43 @@
   object-fit: contain;
 }
 
+/* "Visit Website" call-to-action — sits centered below each brand's
+   description so it reads as part of the copy, not crammed onto the photo. */
+.visitLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: var(--sds-size-space-200);
+  /* Small margin for separation; the rest of the gap + the sides come from
+     padding so the whole region is a clickable hit target. */
+  margin-top: var(--sds-size-space-300);
+  padding: var(--sds-size-space-300);
+  color: var(--sds-color-text-default-default);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.visitLink svg {
+  transition: transform 0.2s ease;
+}
+
+.visitLink:hover,
+.visitLink:focus-visible {
+  text-decoration: underline;
+}
+
+/* Move only the icon on hover — transform doesn't reflow, so the centered
+   link text stays put. */
+.visitLink:hover svg,
+.visitLink:focus-visible svg {
+  transform: translate(1.5px, -1.5px);
+}
+
 /* Right Column - Scrolling Content */
 .contentColumn {
   position: relative;
@@ -172,7 +209,10 @@
   display: flex;
   justify-content: center;
   gap: var(--sds-size-space-200);
-  margin-top: var(--sds-size-space-600);
+  /* Padding gives the focus ring room so it isn't clipped by the carousel
+     wrapper's overflow:hidden; margin reduced to keep the same visual gap. */
+  margin-top: var(--sds-size-space-400);
+  padding: var(--sds-size-space-200);
 }
 
 .emblaDot {
@@ -187,11 +227,17 @@
 }
 
 .emblaDot:hover {
-  background-color: var(--sds-color-text-secondary-default);
+  background-color: var(--sds-color-text-default-secondary, #757575);
 }
 
-.emblaDotActive {
-  background-color: var(--sds-color-text-default-default);
+.emblaDot:focus-visible {
+  outline: 2px solid var(--sds-color-background-brand-secondary, #29305a);
+  outline-offset: 2px;
+}
+
+.emblaDotActive,
+.emblaDotActive:hover {
+  background-color: var(--sds-color-background-brand-secondary, #29305a);
 }
 
 /* Mobile styles */

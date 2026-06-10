@@ -153,6 +153,29 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                   >
                     {item.description}
                   </p>
+                  <a
+                    href={item.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.visitLink}
+                  >
+                    Visit Website
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M7 17 17 7M9 7h8v8"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
                 </div>
               ))}
             </div>
@@ -185,6 +208,29 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                       >
                         {item.description}
                       </p>
+                      <a
+                        href={item.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.visitLink}
+                      >
+                        Visit Website
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M7 17 17 7M9 7h8v8"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
                     </div>
                   ))}
                 </div>

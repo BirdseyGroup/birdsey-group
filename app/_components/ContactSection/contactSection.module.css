@@ -17,8 +17,42 @@
   align-items: center;
 }
 
+/* Left column: headline sitting over a faint crest watermark so the space
+   no longer reads as empty. */
+.contactIntro {
+  /* Crest is 458x522; derive its scaled height from one shared width so the
+     container can always reserve room for it. */
+  --crest-width: clamp(220px, 24vw, 340px);
+  --crest-height: calc(var(--crest-width) * 522 / 458);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Always taller than the crest, with clear space above and below, so the
+     crest is never clipped as the page resizes. */
+  min-height: calc(var(--crest-height) + 6rem);
+}
+
+.contactWatermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--crest-width);
+  height: auto;
+  opacity: 0.14;
+  /* Neutralize the gold crest to a faint light gray so it reads as a
+     subtle watermark, not a yellow mark. */
+  filter: grayscale(1);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
 .contactTitle {
-  text-align: left;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .contactForm {
@@ -113,6 +147,27 @@
   width: auto;
 }
 
+/* Stack to a single column before the two columns get cramped — below this
+   the heading column shrinks enough to choke the title to one word per line. */
+@media (max-width: 1024px) {
+  .contact :global(.flex-container) {
+    flex-direction: column;
+  }
+
+  .contact :global(.flex-item) {
+    width: 100%;
+  }
+
+  .contactIntro {
+    margin-bottom: var(--sds-size-space-600);
+  }
+
+  .contactForm {
+    max-width: 512px;
+    margin: 0 auto;
+  }
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .contact {
@@ -126,5 +181,10 @@
   .contactForm {
     min-width: 100%;
     max-width: 100%;
+  }
+
+  .contactIntro {
+    /* Shrink the crest on mobile; min-height tracks it via the shared var. */
+    --crest-width: 180px;
   }
 }

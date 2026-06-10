@@ -47,7 +47,9 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  .subHero {
+  /* Doubled to match the base `.subHero.subHero` specificity, otherwise the
+     desktop space-2400 padding wins even on mobile. */
+  .subHero.subHero {
     padding: var(--sds-size-space-1200) var(--sds-size-space-600);
   }
 
