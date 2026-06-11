@@ -56,6 +56,17 @@ show their real status, so nothing is reported as finished before it is.
     addition **of** their real estate deal team" to "a valued addition **to**
     their real estate deal team."
 
+12. ~~**Substitute Sandford's new headshot.**~~ **✅ Done** — New studio headshot
+    saved as `/images/team/sandford-birdsey-2026.jpeg` (renamed to bust browser
+    and CDN caches of the old file) and both his corporate and board entries now
+    point at it.
+
+13. ~~**Switch out Sandford's bio for the new one.**~~ **✅ Done** — Replaced with
+    the QUART brand-aligned website version (operational discipline / Birdsey
+    Standard framing, 25+ years, 4,000+ properties, $25B+ loan value,
+    GMACCM/MortgageRamp and Univest background, industry memberships) in
+    `content/team/sandford-birdsey.json`.
+
 16. ~~**Add the Inc. 500 Award: "Recognized as the 6th fastest-growing
     construction company in the U.S."**~~ **✅ Done** — Added the Inc. 500
     medallion to the footer brand column, presented as a clean white rounded
@@ -67,32 +78,35 @@ show their real status, so nothing is reported as finished before it is.
 
 ## 🚧 Open — awaiting content / assets from Birdsey
 
-12. **Substitute Sandford's new headshot.** — *confirm the correct image and
-    we'll swap it in.*
-
-13. **Switch out Sandford's bio for the new one.** — *need the bio text (the PDF
-    links an external doc).*
-
 14. **Add Cooper Baker's bio.** — *need the bio text.*
 
 15. **Add Troi Russell's bio.** — *need the bio text.*
 
 ---
 
-## 🔌 Open — contact form delivery (items 17 + 18 together)
+## 🔌 In progress — contact form delivery (items 17 + 18 together)
 
-17. **Connect the Contact Us page to the new tracking solution.** The form is
-    fully built. Final step is choosing how inquiries are received/managed —
-    Resend (simple email) vs Forminit (submission dashboard + auto-reply). See
-    `docs/updates.md` for the comparison. — *awaiting your choice.*
+17. **Connect the Contact Us page to the new tracking solution.** **Decision
+    made: Forminit** (submission dashboard + auto-reply; forminit.com, formerly
+    Getform.io). The form UI and validation are fully built and currently
+    deliver via Resend as a stopgap. Remaining steps:
+    - Birdsey/VB creates the Forminit account and a "Contact" form
+      (Free plan = 100 submissions/mo; Pro $19/mo = 3,000/mo).
+    - Set the form to **Protected** mode and share the **Form ID** and
+      **API key** (or invite mark@visualboston.com to the workspace).
+    - Dev: swap the Resend call in `app/_actions/sendContact.ts` for a
+      server-side Forminit submission (`FORMINIT_API_KEY` +
+      `FORMINIT_FORM_ID` env vars in Vercel); configure email notification
+      to mail@birdseygroup.com and the branded auto-reply in the Forminit
+      dashboard. — *blocked only on account credentials.*
 
-18. **Will we need a Captcha?** Depends on item 17: if Forminit, spam filtering
-    is built in and a captcha is likely unnecessary; if Resend, we'll add
-    Cloudflare Turnstile with server-side verification. — *follows the item 17
-    decision.*
+18. **Will we need a Captcha?** **Resolved by the Forminit choice** — spam
+    protection is built in (supports invisible reCAPTCHA v3 / hCaptcha if we
+    ever want an explicit challenge), and our submissions go server-side with
+    the API key, so no separate captcha is planned.
 
 ---
 
-**Summary:** 12 of 18 complete (items 1–11, 16). The remaining 6 are blocked on
-content/assets from Birdsey (12, 13, 14, 15) or a delivery decision (17, 18) —
-not on development.
+**Summary:** 14 of 18 complete (items 1–13, 16). Item 18 is resolved by the
+Forminit decision. The rest are blocked on bio text from Birdsey (14, 15) or
+Forminit account credentials (17) — not on development.

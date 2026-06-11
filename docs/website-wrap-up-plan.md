@@ -25,13 +25,13 @@ Source: `Visual Boston_Website Wrap Up.pdf` (18 items). Status as of this pass.
 
 ## 🚧 Blocked — needs content / assets from client
 
-- [ ] **12.** Sandford's new headshot. Candidate already in repo: `public/images/Sandford Birdsey Headshot.jpeg` — confirm this is the new one, then replace `/images/team/sandford-birdsey.jpeg` (used by `sandford-birdsey.json` + `sandford-birdsey-board.json`).
-- [ ] **13.** Sandford new bio — need the text (PDF links an external doc). → `content/team/sandford-birdsey.json` `bio`.
+- [x] **12.** Sandford's new headshot — new studio shot saved as `/images/team/sandford-birdsey-2026.jpeg` (cache-busting rename), referenced by `sandford-birdsey.json` + `sandford-birdsey-board.json`. The May candidate `public/images/Sandford Birdsey Headshot.jpeg` was superseded and is still tracked in the repo — candidate for deletion.
+- [x] **13.** Sandford new bio — QUART brand-aligned website version applied to `content/team/sandford-birdsey.json` `bio`.
 - [ ] **14.** Cooper Baker bio — currently empty. Need text. → `content/team/cooper-baker.json`.
 - [ ] **15.** Troi Russell bio — currently empty. Need text. → `content/team/troi-russell.json`.
 
-## 🔌 Deferred — contact form backend decision (#17 + #18 together)
+## 🔌 In progress — contact form backend (#17 + #18 together)
 
-Tied to the Resend vs Forminit choice in `docs/updates.md`. User chose **decide later**.
-- [ ] **17.** Connect Contact Us to the "tracking solution" (likely Forminit — submission dashboard + auto-reply).
-- [ ] **18.** Captcha. If Forminit: spam filtering is built in, captcha likely unnecessary. If staying on Resend: add Cloudflare Turnstile with server-side verification in `app/_actions/sendContact.ts`.
+Decision: **Forminit** (forminit.com, formerly Getform.io). Resend stays as the stopgap until the account exists.
+- [ ] **17.** Connect Contact Us to Forminit: account + "Contact" form created by client (Protected mode), then swap the Resend call in `app/_actions/sendContact.ts` for a server-side Forminit submission using `FORMINIT_API_KEY` + `FORMINIT_FORM_ID`. Configure notification email + auto-reply in the Forminit dashboard.
+- [x] **18.** Captcha — resolved by choosing Forminit: built-in spam protection (invisible reCAPTCHA v3 / hCaptcha available), submissions sent server-side; no separate captcha needed.
