@@ -168,7 +168,7 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                       aria-hidden="true"
                     >
                       <path
-                        d="M7 17 17 7M9 7h8v8"
+                        d="M5 12h14M13 6l6 6-6 6"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
@@ -223,7 +223,7 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                           aria-hidden="true"
                         >
                           <path
-                            d="M7 17 17 7M9 7h8v8"
+                            d="M5 12h14M13 6l6 6-6 6"
                             stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
