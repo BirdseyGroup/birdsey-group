@@ -38,6 +38,7 @@ export async function generateMetadata({
   return {
     title: `${article.title} | Birdsey Group`,
     description: article.excerpt,
+    alternates: { canonical: `/insights/${slug}` },
     openGraph: {
       title: article.title,
       description: article.excerpt,

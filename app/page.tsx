@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import { AffiliatesSection } from "./_components/AffiliatesSection";
 import { BrandShowcase } from "./_components/BrandShowcase";
 import { CareersSection } from "./_components/CareersSection";
@@ -10,6 +11,10 @@ import { HeroSection } from "./_components/HeroSection";
 import { NewsSection } from "./_components/NewsSection";
 import { PerformanceSection } from "./_components/PerformanceSection";
 import { SubHeroSection } from "./_components/SubHeroSection";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
   // Read page content
