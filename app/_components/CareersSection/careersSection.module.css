@@ -12,11 +12,14 @@
   margin: 0 auto;
 }
 
+/* Fill the full height of the row (columns stretch by default), so the
+   photo runs the length of the text column instead of sitting as a
+   centered 4:3 box. */
 .imageContainer {
   position: relative;
   width: 100%;
-  min-height: 400px;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 480px;
   border-radius: var(--sds-size-radius-400);
   overflow: hidden;
 }
@@ -57,17 +60,25 @@
   }
 }
 
-@media (max-width: 768px) {
-  .careers {
-    padding: var(--sds-size-space-600);
-
-    :global(.flex-container) {
-      flex-direction: column !important;
-    }
+/* Stack to a single column on tablet and below. */
+@media (max-width: 1024px) {
+  .careers :global(.flex-container) {
+    flex-direction: column !important;
   }
 
+  /* Stacked single column — a fixed crop reads better than a stretched
+     full-height image here. */
   .imageContainer {
     width: 100%;
     max-width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .careers {
+    padding: var(--sds-size-space-600);
   }
 }

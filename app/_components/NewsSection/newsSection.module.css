@@ -60,10 +60,14 @@
   opacity: 0.8;
 }
 
+/* Eyebrow treatment — small, tracked-out, quiet, so the serif title owns
+   the hierarchy. */
 .articleDate {
   font-family: var(--sds-typography-body-font-family);
-  font-size: var(--sds-typography-body-size-medium);
-  color: var(--sds-color-text-default-default);
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  letter-spacing: 0.08em;
+  color: var(--sds-color-text-default-secondary);
   text-transform: uppercase;
 }
 
@@ -98,14 +102,20 @@
   );
   font-size: var(--sds-typography-subtitle-size-base);
   line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--sds-color-text-default-default);
+  /* Keep multi-line titles to a readable measure. */
+  max-width: 36ch;
+  text-wrap: balance;
 }
 
 .articleExcerpt {
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
   line-height: 1.5;
-  color: var(--sds-color-text-default-default);
+  color: var(--sds-color-text-default-secondary);
+  /* Classic reading measure — stops the excerpt running the full 1200px. */
+  max-width: 65ch;
 }
 
 .readMoreLink {
@@ -113,11 +123,13 @@
   align-items: center;
   gap: var(--sds-size-space-200);
   font-family: var(--sds-typography-body-font-family);
-  font-size: var(--sds-typography-body-size-medium);
-  font-weight: 500;
+  font-size: var(--sds-typography-body-size-small,
+    var(--sds-typography-body-size-medium));
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: var(--sds-color-border-brand-secondary);
   text-transform: uppercase;
-  margin-top: var(--sds-size-space-400);
+  margin-top: var(--sds-size-space-200);
 }
 
 .readMoreIcon {

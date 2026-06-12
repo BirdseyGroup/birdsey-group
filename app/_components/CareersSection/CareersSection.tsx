@@ -69,7 +69,7 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
 
   return (
     <Section id="careers" className={styles.careers}>
-      <Flex container gap="1200" alignSecondary="center">
+      <Flex container gap="1200">
         <FlexItem size="major">
           <div className={styles.imageContainer} ref={imageRef}>
             <Image

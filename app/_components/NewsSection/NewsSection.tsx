@@ -100,7 +100,7 @@ export function NewsSection({ title, articles }: NewsSectionProps) {
                   ) : (
                     <div className={styles.articleImagePlaceholder} />
                   )}
-                  <Flex direction="column" gap="400">
+                  <Flex direction="column" gap="300">
                     {article.date && !article.hideDate && (
                       <p className={styles.articleDate}>{formatDate(article.date)}</p>
                     )}
