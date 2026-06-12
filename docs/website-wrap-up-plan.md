@@ -30,8 +30,8 @@ Source: `Visual Boston_Website Wrap Up.pdf` (18 items). Status as of this pass.
 - [ ] **14.** Cooper Baker bio — currently empty. Need text. → `content/team/cooper-baker.json`.
 - [ ] **15.** Troi Russell bio — currently empty. Need text. → `content/team/troi-russell.json`.
 
-## 🔌 In progress — contact form backend (#17 + #18 together)
+## 🔌 Done — contact form backend (#17 + #18 together)
 
-Decision: **Forminit** (forminit.com, formerly Getform.io). Resend stays as the stopgap until the account exists.
-- [ ] **17.** Connect Contact Us to Forminit: account + "Contact" form created by client (Protected mode), then swap the Resend call in `app/_actions/sendContact.ts` for a server-side Forminit submission using `FORMINIT_API_KEY` + `FORMINIT_FORM_ID`. Configure notification email + auto-reply in the Forminit dashboard.
-- [x] **18.** Captcha — resolved by choosing Forminit: built-in spam protection (invisible reCAPTCHA v3 / hCaptcha available), submissions sent server-side; no separate captcha needed.
+Decision: **Forminit** (forminit.com, formerly Getform.io), form `d7bdapw3fcd`.
+- [x] **17.** Contact form submits to Forminit via the `forminit` SDK in **Public** auth mode (Protected/API tokens are Pro-only). Client-side validation kept (required fields, email format, E.164 phone). Success redirects to `/thank-you`. Resend action (`app/_actions/sendContact.ts`) removed. Notification email + auto-reply configured in the Forminit dashboard.
+- [x] **18.** Captcha — Forminit's built-in spam protection + rate limiting on public forms; reCAPTCHA/hCaptcha can be layered in via Forminit if needed.

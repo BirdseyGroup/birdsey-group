@@ -84,26 +84,22 @@ show their real status, so nothing is reported as finished before it is.
 
 ---
 
-## 🔌 In progress — contact form delivery (items 17 + 18 together)
+## 🔌 Done — contact form delivery (items 17 + 18 together)
 
-17. **Connect the Contact Us page to the new tracking solution.** **Decision
-    made: Forminit** (submission dashboard + auto-reply; forminit.com, formerly
-    Getform.io). The form UI and validation are fully built and currently
-    deliver via Resend as a stopgap. Remaining steps:
-    - Birdsey/VB creates the Forminit account and a "Contact" form
-      (Free plan = 100 submissions/mo; Pro $19/mo = 3,000/mo).
-    - Set the form to **Protected** mode and share the **Form ID** and
-      **API key** (or invite mark@visualboston.com to the workspace).
-    - Dev: swap the Resend call in `app/_actions/sendContact.ts` for a
-      server-side Forminit submission (`FORMINIT_API_KEY` +
-      `FORMINIT_FORM_ID` env vars in Vercel); configure email notification
-      to mail@birdseygroup.com and the branded auto-reply in the Forminit
-      dashboard. — *blocked only on account credentials.*
+17. ~~**Connect the Contact Us page to the new tracking solution.**~~ **✅ Done**
+    — Connected to **Forminit** (form `d7bdapw3fcd`) in **Public** auth mode
+    (Protected mode / API tokens require the Pro plan). The form submits from
+    the browser via the `forminit` SDK; client-side validation (required
+    fields, email format, E.164 phone normalization) is preserved, and a
+    successful submission redirects to the new `/thank-you` page (same
+    header/footer). The Resend server action was removed. Configure the email
+    notification to mail@birdseygroup.com and any auto-reply in the Forminit
+    dashboard.
 
-18. **Will we need a Captcha?** **Resolved by the Forminit choice** — spam
-    protection is built in (supports invisible reCAPTCHA v3 / hCaptcha if we
-    ever want an explicit challenge), and our submissions go server-side with
-    the API key, so no separate captcha is planned.
+18. ~~**Will we need a Captcha?**~~ **✅ Resolved** — Forminit's built-in spam
+    protection + rate limiting on public forms covers this for now; invisible
+    reCAPTCHA v3 / hCaptcha can be added through Forminit later if spam shows
+    up.
 
 ---
 

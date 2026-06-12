@@ -46,7 +46,8 @@
   opacity: 0;
 }
 .heroSimple .heroTitle,
-.heroSimple .heroSubtitle {
+.heroSimple .heroSubtitle,
+.heroSimple .heroButtonGroup {
   opacity: 0;
   transform: translateY(20px);
 }

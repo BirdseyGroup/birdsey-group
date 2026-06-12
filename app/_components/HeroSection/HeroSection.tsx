@@ -58,6 +58,13 @@ export function HeroSection({
           { opacity: 1, y: 0, duration: 0.7 },
           "-=0.4",
         );
+      if (buttonsRef.current) {
+        tl.to(
+          buttonsRef.current,
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.4",
+        );
+      }
     }, contentRef);
 
     return () => {

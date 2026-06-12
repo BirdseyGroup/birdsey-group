@@ -124,27 +124,10 @@
   line-height: 1.4;
 }
 
-.formStatusSuccess {
-  background-color: rgba(16, 122, 87, 0.08);
-  color: #0e6b50;
-  border: 1px solid rgba(16, 122, 87, 0.25);
-}
-
 .formStatusError {
   background-color: rgba(176, 0, 32, 0.06);
   color: #b00020;
   border: 1px solid rgba(176, 0, 32, 0.25);
-}
-
-.successPanel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sds-size-space-300);
-  align-items: flex-start;
-}
-
-.successPanel :global(.button) {
-  width: auto;
 }
 
 /* Stack to a single column before the two columns get cramped — below this
