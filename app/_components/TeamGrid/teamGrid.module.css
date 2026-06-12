@@ -102,19 +102,11 @@
   margin-top: var(--sds-size-space-300);
 }
 
+/* Type, spacing, and hover motion come from the shared ArrowLink;
+   the card hover triggers it via the arrowLinkHoverScope class. */
 .viewProfileLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sds-size-space-150);
-  font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-small,
     var(--sds-typography-body-size-medium));
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--sds-color-text-default-default);
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease, gap 0.2s ease;
 }
 
 /* Stretched link: anchor's ::after expands to cover the whole card,
@@ -126,22 +118,6 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.teamMember:hover .viewProfileLink,
-.viewProfileLink:focus-visible {
-  gap: var(--sds-size-space-300);
-}
-
-.viewProfileArrow {
-  display: inline-block;
-  font-size: 0.95em;
-  transition: transform 0.2s ease;
-}
-
-.teamMember:hover .viewProfileArrow,
-.viewProfileLink:focus-visible .viewProfileArrow {
-  transform: translateX(2px);
 }
 
 .linkedinButton {

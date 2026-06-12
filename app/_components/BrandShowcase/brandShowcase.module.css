@@ -83,63 +83,15 @@
 }
 
 /* "Visit Website" call-to-action — sits centered below each brand's
-   description so it reads as part of the copy, not crammed onto the photo. */
+   description so it reads as part of the copy, not crammed onto the photo.
+   Type, spacing, and hover motion come from the shared ArrowLink. */
 .visitLink {
-  display: inline-flex;
-  align-items: center;
   align-self: center;
-  gap: var(--sds-size-space-200);
   /* Small margin for separation; the rest of the gap + the sides come from
      padding so the whole region is a clickable hit target. */
   margin-top: var(--sds-size-space-300);
   padding: var(--sds-size-space-300);
-  color: var(--sds-color-text-default-default);
-  font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Underline as a pseudo-element so it can grow from the left on hover.
-   Inset by the link's own padding so it sits under the label + arrow,
-   not the whole hit target. */
-.visitLink::after {
-  content: "";
-  position: absolute;
-  left: var(--sds-size-space-300);
-  right: var(--sds-size-space-300);
-  bottom: calc(var(--sds-size-space-300) - 4px);
-  height: 1px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-
-.visitLink svg {
-  transition: transform 0.2s ease;
-}
-
-.visitLink:hover::after,
-.visitLink:focus-visible::after {
-  transform: scaleX(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .visitLink::after,
-  .visitLink svg {
-    transition: none;
-  }
-}
-
-/* Move only the icon on hover — transform doesn't reflow, so the centered
-   link text stays put. */
-.visitLink:hover svg,
-.visitLink:focus-visible svg {
-  transform: translateX(2px);
 }
 
 /* Right Column - Scrolling Content */
@@ -190,8 +142,12 @@
   text-align: center;
 }
 
+/* Second line of the card name — part of the same h2 semantically, just
+   rendered smaller on its own line (was a standalone h3). */
 .subtitle {
-  margin: 0;
+  display: block;
+  margin: var(--sds-size-space-200) 0 0;
+  font-size: var(--sds-typography-subtitle-size-small);
   text-align: center;
 }
 

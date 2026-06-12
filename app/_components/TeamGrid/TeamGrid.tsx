@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ArrowLink } from "../ArrowLink";
 import { LinkedInGlyph } from "../LinkedInGlyph";
 import { TeamMemberModal } from "../TeamMemberModal";
 import styles from "./teamGrid.module.css";
@@ -34,7 +35,9 @@ interface TeamCardProps {
 
 function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
   return (
-    <div className={styles.teamMember}>
+    // arrowLinkHoverScope: hovering anywhere on the card triggers the
+    // ArrowLink underline + arrow motion (the card is one big link).
+    <div className={`${styles.teamMember} arrowLinkHoverScope`}>
       <div
         className={`${styles.photoWrapper} ${
           !member.photo ? styles.photoWrapperPlaceholder : ""
@@ -98,7 +101,7 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
               </button>
             )}
             {profileHref && (
-              <a
+              <ArrowLink
                 href={profileHref}
                 {...(isInternalProfile
                   ? {}
@@ -106,10 +109,7 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
                 className={styles.viewProfileLink}
               >
                 View Profile
-                <span aria-hidden="true" className={styles.viewProfileArrow}>
-                  →
-                </span>
-              </a>
+              </ArrowLink>
             )}
           </div>
         );

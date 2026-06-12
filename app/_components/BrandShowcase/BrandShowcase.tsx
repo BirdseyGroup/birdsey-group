@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useCustomMediaQuery } from "hooks";
 import { AnimatedWord } from "../AnimatedWord";
+import { ArrowLink } from "../ArrowLink";
 import sharedStyles from "../shared.module.css";
 import styles from "./brandShowcase.module.css";
 
@@ -141,8 +142,8 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                     )}
                   >
                     {item.title}
+                    <span className={styles.subtitle}>{item.subtitle}</span>
                   </h2>
-                  <h3 className={styles.subtitle}>{item.subtitle}</h3>
                   <div className={sharedStyles.divider} />
                   <p
                     className={clsx(
@@ -153,29 +154,14 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                   >
                     {item.description}
                   </p>
-                  <a
+                  <ArrowLink
                     href={item.website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.visitLink}
                   >
                     Visit Website
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M5 12h14M13 6l6 6-6 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
+                  </ArrowLink>
                 </div>
               ))}
             </div>
@@ -196,8 +182,8 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                         )}
                       >
                         {item.title}
+                        <span className={styles.subtitle}>{item.subtitle}</span>
                       </h2>
-                      <h3 className={styles.subtitle}>{item.subtitle}</h3>
                       <div className={sharedStyles.divider} />
                       <p
                         className={clsx(
@@ -208,29 +194,14 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                       >
                         {item.description}
                       </p>
-                      <a
+                      <ArrowLink
                         href={item.website}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.visitLink}
                       >
                         Visit Website
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M5 12h14M13 6l6 6-6 6"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </a>
+                      </ArrowLink>
                     </div>
                   ))}
                 </div>
