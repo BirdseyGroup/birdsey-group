@@ -128,14 +128,19 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
         <div className={styles.footerColumn}>
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Location</h3>
-            <p className={styles.footerText}>
+            <a
+              href="https://www.google.com/maps/place/3565+Piedmont+Rd+NE+Bldg+4,+Suite+460,+Atlanta,+GA+30305/data=!4m2!3m1!1s0x88f50f6131bfffff:0x6e1e3a3c9654cd9b?sa=X&ved=1t:242&ictx=111"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.footerText} ${styles.addressLink}`}
+            >
               {address.split('\n').map((line, i) => (
                 <span key={i}>
                   {line}
                   {i < address.split('\n').length - 1 && <br />}
                 </span>
               ))}
-            </p>
+            </a>
           </Flex>
         </div>
 
@@ -156,10 +161,7 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
                 the U.S.
               </p>
             </div>
-            <div
-              className={styles.footerLogo}
-              style={{ position: "relative", width: "99px", height: "40px" }}
-            >
+            <div className={styles.footerLogo}>
               <Image
                 src="/images/birdsey-group-logo.svg"
                 alt="Birdsey Group"

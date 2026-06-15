@@ -62,6 +62,17 @@
   color: var(--sds-color-text-default-tertiary);
 }
 
+.addressLink {
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.addressLink:hover {
+  color: var(--sds-color-text-default-secondary);
+  text-decoration: underline;
+}
+
 /* Inc. 500 award */
 .award {
   display: flex;
@@ -91,7 +102,17 @@
 
 /* Extra breathing room above the Birdsey logo. */
 .footerLogo {
+  position: relative;
+  width: 99px;
+  height: 40px;
   margin-top: var(--sds-size-space-600);
+}
+
+@media (min-width: 1024px) {
+  .footerLogo {
+    width: 198px;
+    height: 80px;
+  }
 }
 
 /* Copyright on its own full-width row at the very bottom. */
