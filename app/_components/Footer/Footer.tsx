@@ -5,6 +5,7 @@ import { TextLink } from "@/components/primitives";
 import { useNavigation } from "@/app/_contexts/NavigationContext";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { scrollToSection } from "../scrollToSection";
 import styles from "./footer.module.css";
 
 interface NavItem {
@@ -24,20 +25,6 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
   const { activePage, setActivePage } = useNavigation();
   const router = useRouter();
   const pathname = usePathname();
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 72;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
 
   const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

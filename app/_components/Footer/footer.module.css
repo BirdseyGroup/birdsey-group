@@ -64,13 +64,13 @@
 
 .addressLink {
   display: inline-block;
+  cursor: pointer;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .addressLink:hover {
-  color: var(--sds-color-text-default-secondary);
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
 /* Inc. 500 award */

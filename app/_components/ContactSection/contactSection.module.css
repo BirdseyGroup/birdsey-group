@@ -108,8 +108,21 @@
   text-transform: none;
 }
 
+/* Keep each input and its error message tightly coupled so a validation
+   message only adds its own height (not the form's large flex gap on both
+   sides), preventing the form from jumping in size when errors appear. */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-100);
+  /* The form's Flex aligns items to flex-start, so stretch this group to fill
+     the cross axis; the SDS Input inside is width:100% and fills it. */
+  width: 100%;
+  align-self: stretch;
+}
+
 .fieldError {
-  margin: calc(var(--sds-size-space-200) * -1) 0 0;
+  margin: 0;
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-small,
     var(--sds-typography-body-size-medium));

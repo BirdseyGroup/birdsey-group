@@ -198,57 +198,65 @@ export function ContactSection({
                     <p>{formDescription}</p>
                   </div>
 
-                  <Input
-                    name="fi-sender-fullName"
-                    placeholder="Name"
-                    aria-label="Name"
-                    required
-                    aria-invalid={Boolean(fieldError?.name)}
-                  />
-                  {fieldError?.name && (
-                    <p className={styles.fieldError}>{fieldError.name}</p>
-                  )}
+                  <div className={styles.fieldGroup}>
+                    <Input
+                      name="fi-sender-fullName"
+                      placeholder="Name"
+                      aria-label="Name"
+                      required
+                      aria-invalid={Boolean(fieldError?.name)}
+                    />
+                    {fieldError?.name && (
+                      <p className={styles.fieldError}>{fieldError.name}</p>
+                    )}
+                  </div>
 
-                  <Input
-                    name="fi-sender-phone"
-                    type="tel"
-                    placeholder="Phone"
-                    aria-label="Phone"
-                    required
-                    aria-invalid={Boolean(fieldError?.phone)}
-                  />
-                  {fieldError?.phone && (
-                    <p className={styles.fieldError}>{fieldError.phone}</p>
-                  )}
+                  <div className={styles.fieldGroup}>
+                    <Input
+                      name="fi-sender-phone"
+                      type="tel"
+                      placeholder="Phone"
+                      aria-label="Phone"
+                      required
+                      aria-invalid={Boolean(fieldError?.phone)}
+                    />
+                    {fieldError?.phone && (
+                      <p className={styles.fieldError}>{fieldError.phone}</p>
+                    )}
+                  </div>
 
-                  <Input
-                    name="fi-sender-email"
-                    type="email"
-                    placeholder="Email"
-                    aria-label="Email"
-                    required
-                    aria-invalid={Boolean(fieldError?.email)}
-                  />
-                  {fieldError?.email && (
-                    <p className={styles.fieldError}>{fieldError.email}</p>
-                  )}
+                  <div className={styles.fieldGroup}>
+                    <Input
+                      name="fi-sender-email"
+                      type="email"
+                      placeholder="Email"
+                      aria-label="Email"
+                      required
+                      aria-invalid={Boolean(fieldError?.email)}
+                    />
+                    {fieldError?.email && (
+                      <p className={styles.fieldError}>{fieldError.email}</p>
+                    )}
+                  </div>
 
                   <Input
                     name="fi-sender-company"
-                    placeholder="Company"
-                    aria-label="Company"
+                    placeholder="Company (optional)"
+                    aria-label="Company (optional)"
                   />
 
-                  <Textarea
-                    name="fi-text-comments"
-                    placeholder="Comments"
-                    aria-label="Comments"
-                    required
-                    aria-invalid={Boolean(fieldError?.comments)}
-                  />
-                  {fieldError?.comments && (
-                    <p className={styles.fieldError}>{fieldError.comments}</p>
-                  )}
+                  <div className={styles.fieldGroup}>
+                    <Textarea
+                      name="fi-text-comments"
+                      placeholder="Comments"
+                      aria-label="Comments"
+                      required
+                      aria-invalid={Boolean(fieldError?.comments)}
+                    />
+                    {fieldError?.comments && (
+                      <p className={styles.fieldError}>{fieldError.comments}</p>
+                    )}
+                  </div>
 
                   {state.status === "error" && !state.fieldErrors && (
                     <div
