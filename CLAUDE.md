@@ -98,6 +98,25 @@ const globalSettings = JSON.parse(globalFile);
 
 Content is loaded server-side and passed as props to components. For new pages, follow this pattern.
 
+### Routing and Page Model
+
+The homepage (`app/page.tsx`) is a **single long scroll page** assembled from sections keyed in [content/pages/home.json](content/pages/home.json) (`hero`, `subHero`, `affiliates`, `performance`, `news`, `careers`, `contact`). Each maps to a component in `app/_components/`. The other routes are standalone pages:
+
+- `/about` — driven by [content/pages/about.json](content/pages/about.json)
+- `/insights/[slug]` and `/team/[slug]` — dynamic, reading JSON from `content/insights/` and `content/team/` (also enumerated in [app/sitemap.ts](app/sitemap.ts))
+- `/thank-you` — contact-form success page
+- `/admin` — TinaCMS
+
+Nav items mix two link types: **hash anchors** (`#contact`, `#news`) that scroll within the homepage, and **route links** (`/about`). Both Header and Footer handle this: a hash link on a non-home page first `router.push`es home, then scrolls.
+
+### Navigation and Anchor Scrolling
+
+`NavigationContext` ([app/_contexts/NavigationContext.tsx](app/_contexts/NavigationContext.tsx)) tracks `activePage` for nav highlight state. The header is **fixed** (~119px tall on desktop, shorter on mobile), so in-page anchor scrolling must offset for it. Use the shared helper [app/_components/scrollToSection.ts](app/_components/scrollToSection.ts) — it measures the live header height and adds a gap so the target heading lands below the header. Do not reintroduce a hardcoded header offset. Note: cross-page hash links (`router.push("/#contact")`) fall back to the browser's native hash jump, which does **not** apply this offset.
+
+### Contact Form
+
+`ContactSection` submits directly from the browser via **Forminit** (public auth mode — the form ID is in the component, not a secret). Phone numbers are normalized to E.164 before submit, and on success it `router.push`es to `/thank-you`. Validation errors render inline per-field; each input is wrapped in a `.fieldGroup` so error messages stay tight to their field instead of inflating the form's flex gap.
+
 ## Simple Design System (SDS) Integration
 
 This project is built on Figma's Simple Design System. Key principles:
@@ -150,6 +169,12 @@ Components use CSS modules for styling and follow these conventions:
 - Admin interface accessible at `/admin` route ([app/admin/page.tsx](app/admin/page.tsx))
 - Requires `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` environment variables
 - Content changes through TinaCMS UI update JSON files in `content/` directory
+
+### Dev Server (TinaCMS + Next 16 / Turbopack)
+`npm run dev` runs `next dev` (Next 16, Turbopack) wrapped by `tinacms dev`. CSS-module HMR can get stuck after several rapid edits to the same `.module.css` file — the server keeps serving a stale chunk. If a CSS change isn't reflected, hard-refresh (Cmd+Shift+R); if it persists, restart `npm run dev`. CSS-module class names are hashed in the DOM (e.g. `contactSection-module__hash__field`), which matters when writing selectors for browser-based testing.
+
+### Gotcha: SDS form inputs need a stretching parent
+SDS inputs (`.input`, `.text-area`) are `width: 100%` and rely on their **parent flex container stretching them** to fill width. The form's `Flex` aligns children to `flex-start`, and inputs only go full-width because the SDS rule stretches them as direct children. If you wrap an input in a custom flex container (e.g. to pair it with an error message), that wrapper must set `align-self: stretch` and `width: 100%` or the input collapses to its intrinsic ~219px width. See `.fieldGroup` in [app/_components/ContactSection/contactSection.module.css](app/_components/ContactSection/contactSection.module.css).
 
 ### Storybook Integration
 - Storybook is accessible at `/storybook` in both dev and production
