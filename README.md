@@ -1,24 +1,44 @@
-# VisualBoston Design System
+# Birdsey Group Website
 
-A Next.js-based design system built on Figma's Simple Design System (SDS), utilizing [Code Connect](https://github.com/figma/code-connect) for seamless design-to-code integration.
+Marketing website for the Birdsey Group, a real estate consulting firm. Built with Next.js 16 (App Router) on top of Figma's Simple Design System (SDS), with content managed in [TinaCMS](https://tina.io) and design-to-code wiring via Figma [Code Connect](https://github.com/figma/code-connect).
 
-This design system demonstrates how Figma's Variables, Styles, Components, and Code Connect can be used alongside a Next.js codebase to form a complete picture of a responsive web design system. Built with Next.js 16 App Router, it provides server-side rendering capabilities while maintaining full compatibility with React Aria Components for accessible, production-ready UI components.
+The homepage is a single long scroll page assembled from content sections; About, Insights, and Team are separate routes. All editable copy lives as JSON in [content/](./content/) and is read server-side in React Server Components, so the site builds to static output while remaining editable through the TinaCMS admin.
 
-The system bridges the gaps between design and development by providing best practices for design system implementation, remaining honest about code implications while offering customizability beyond the simple theming layer typical of many code-first component libraries.
-
-Whether you're looking to use this as a foundation for a new project or seeking examples of design system best practices, you'll find tools inside this codebase and design file to guide you in the right direction.
-
-## Resources
-
-- [Storybook](https://figma.github.io/sds/storybook)
-- [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system)
+The SDS, Code Connect, and Figma sync foundations from the original design system are retained — see the [Figma](#figma-auth) and [Scripts](#scripts) sections below.
 
 ## Setup
 
 - `npm i` to install dependencies
-- `npm run app:dev` will run Next.js dev server at [localhost:8000](http://localhost:8000)
-- `npm run storybook` to start Storybook at [localhost:6006](http://localhost:6006)
-- `npm run build` to build both the Next.js app and Storybook
+- Copy [.env.example](./.env.example) to `.env` and fill it in (see [Environment](#environment))
+- `npm run dev` runs **TinaCMS + Next.js** together at [localhost:8000](http://localhost:8000) — use this for normal development so content editing works
+- `npm run app:dev` runs Next.js **only** (no TinaCMS) at [localhost:8000](http://localhost:8000)
+- `npm run storybook` starts Storybook at [localhost:6006](http://localhost:6006)
+- `npm run app:lint` runs ESLint
+- `npm run build` builds TinaCMS, Storybook, and the Next.js app
+
+### Environment
+
+Copy [.env.example](./.env.example) to `.env` and fill in:
+
+- `NEXT_PUBLIC_TINA_CLIENT_ID` / `TINA_TOKEN` — TinaCMS (admin at `/admin`)
+- `TINA_PUBLIC_IS_LOCAL=true` — edit content against local files during development
+- `FIGMA_ACCESS_TOKEN` / `FIGMA_FILE_KEY` — only needed to run the Figma sync [scripts](#scripts)
+
+## Content Management (TinaCMS)
+
+Content is stored as JSON in [content/](./content/) and edited through the TinaCMS admin at `/admin`. Collections are defined in [tina/config.ts](./tina/config.ts):
+
+- `content/global/settings.json` — navigation and footer
+- `content/pages/` — `home.json` (the homepage's section-by-section content) and `about.json`
+- `content/insights/` — articles, rendered at `/insights/[slug]`
+- `content/team/` — staff profiles, rendered at `/team/[slug]`
+- `content/affiliates/` — affiliated companies
+
+Pages read these files with `fs`/`path` at the top of the route component and pass the parsed JSON down as props; follow the same server-side load pattern when adding a page. The contact form (`ContactSection`) submits from the browser via [Forminit](https://forminit.com) and redirects to `/thank-you`.
+
+## Figma & Code Connect
+
+This site is built on Figma's Simple Design System. Tokens, icons, and Code Connect mappings stay in sync with the Figma file via the auth and scripts below. The original SDS [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system) documents the underlying system.
 
 ### Figma Auth
 
@@ -26,10 +46,9 @@ Whether you're looking to use this as a foundation for a new project or seeking 
   - Add Code Connect scope
   - Add File Read, Dev Resources Write, and Variables scopes if you want to use the integrations in [scripts](./scripts/)
   - [More on scopes](https://www.figma.com/developers/api#authentication-scopes)
-- Duplicate [.env-rename](./.env-rename)
-- Rename it to `.env`, it will be ignored from git.
-  - Set `FIGMA_ACCESS_TOKEN=` as your token in `.env`
-  - Set `FIGMA_FILE_KEY=` as your file's key (grab it from the file URL) in `.env`
+- In your `.env` (copied from [.env.example](./.env.example)):
+  - Set `FIGMA_ACCESS_TOKEN=` as your token
+  - Set `FIGMA_FILE_KEY=` as your file's key (grab it from the file URL)
 
 ### Code Connect
 
@@ -68,11 +87,19 @@ This Next.js project follows a structured organization optimized for design syst
 
 ### [app/](./app/)
 
-Next.js App Router pages and layouts. Uses file-based routing with React Server Components and Client Components.
+Next.js App Router pages, layouts, and route handlers. `app/_components/` holds page-specific components (Header, Footer, the homepage section components, ContactSection, etc.); `app/_contexts/` holds app contexts such as `NavigationContext`.
+
+### [content/](./content/)
+
+TinaCMS content as JSON — the source of truth for site copy. See [Content Management](#content-management-tinacms).
+
+### [tina/](./tina/)
+
+TinaCMS configuration ([config.ts](./tina/config.ts)) and generated types.
 
 ### [components/](./components/)
 
-All UI components and utilities, broken down into categories:
+The SDS component library and utilities, broken down into categories:
 
 #### [components/compositions/](./components/compositions/)
 
@@ -161,7 +188,10 @@ Some example integrations are available in `scripts` directory. They may require
 
 - **Next.js 16** - App Router with React Server Components
 - **React 18** - With client and server component patterns
+- **TinaCMS** - JSON-backed content management (`/admin`)
 - **React Aria Components** - Accessible, production-ready UI primitives
+- **Forminit** - Contact form submission
+- **GSAP + Lenis** - Scroll-triggered animation and smooth scrolling
 - **TypeScript** - Type-safe development
 - **Storybook 10** - Component documentation and development
 - **Figma Code Connect** - Design-to-code integration
