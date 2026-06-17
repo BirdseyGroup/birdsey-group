@@ -23,15 +23,33 @@ type ContactFormState =
 
 const initialState: ContactFormState = { status: "idle" };
 
-// Forminit requires E.164 phone numbers (+14049613500). Visitors type
-// US-style numbers, so normalize before submitting.
+// Forminit requires E.164 phone numbers (+14049613500) and validates them
+// with libphonenumber server-side, which rejects unroutable numbers like the
+// reserved 555 range. Visitors type US-style numbers, so normalize and apply
+// basic NANP sanity checks before submitting to avoid a round-trip rejection.
+function isValidNanp(tenDigits: string): boolean {
+  const area = tenDigits.slice(0, 3);
+  const exchange = tenDigits.slice(3, 6);
+  // Area code and exchange must start 2-9 (NANP rule).
+  if (!/^[2-9]/.test(area) || !/^[2-9]/.test(exchange)) return false;
+  // 555 exchange is reserved/fictional (e.g. 555-555-5555).
+  if (exchange === "555") return false;
+  return true;
+}
+
 function toE164(raw: string): string | null {
   const digits = raw.replace(/\D/g, "");
-  if (raw.trim().startsWith("+") && digits.length >= 8 && digits.length <= 15) {
-    return `+${digits}`;
+  // Non-US international numbers: trust the leading + and length.
+  if (raw.trim().startsWith("+") && !digits.startsWith("1")) {
+    return digits.length >= 8 && digits.length <= 15 ? `+${digits}` : null;
   }
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
+  if (digits.length === 10) {
+    return isValidNanp(digits) ? `+1${digits}` : null;
+  }
+  if (digits.length === 11 && digits.startsWith("1")) {
+    const ten = digits.slice(1);
+    return isValidNanp(ten) ? `+${digits}` : null;
+  }
   return null;
 }
 
@@ -144,11 +162,29 @@ export function ContactSection({
 
       if (error) {
         console.error("Forminit error:", error);
-        setState({
-          status: "error",
-          message:
-            "Couldn't send your message. Please try again or email mail@birdseygroup.com.",
-        });
+        // Forminit returns structured per-field validation errors. Surface the
+        // ones we can map back to a field inline; fall back to the generic
+        // banner for anything else (network, rate limit, server errors).
+        const code = (error as { error?: string }).error;
+        if (code === "FI_RULES_PHONE_INVALID") {
+          setState({
+            status: "error",
+            message: "Please correct the highlighted fields.",
+            fieldErrors: { phone: "Enter a valid, reachable phone number" },
+          });
+        } else if (code === "FI_RULES_EMAIL_INVALID") {
+          setState({
+            status: "error",
+            message: "Please correct the highlighted fields.",
+            fieldErrors: { email: "Enter a valid email address" },
+          });
+        } else {
+          setState({
+            status: "error",
+            message:
+              "Couldn't send your message. Please try again or email mail@birdseygroup.com.",
+          });
+        }
         setPending(false);
         return;
       }
@@ -272,8 +308,16 @@ export function ContactSection({
                     size="medium"
                     type="submit"
                     isDisabled={pending}
+                    className={pending ? styles.submitPending : undefined}
                   >
-                    {pending ? "Sending…" : submitButtonText}
+                    {pending ? (
+                      <>
+                        <span className={styles.spinner} aria-hidden="true" />
+                        Sending…
+                      </>
+                    ) : (
+                      submitButtonText
+                    )}
                   </Button>
                 </Flex>
             </form>

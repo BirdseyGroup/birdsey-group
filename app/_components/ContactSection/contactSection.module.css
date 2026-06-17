@@ -106,6 +106,44 @@
 .contactForm :global(.button) {
   width: 100%;
   text-transform: none;
+  transition: background-color 0.2s ease-in-out, filter 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+/* Submitting state: while pending the button is disabled (so it can't be
+   re-submitted), but the SDS default flips it to a grey "disabled" palette,
+   which reads as abrupt and off-brand. Override that to keep the on-brand gold,
+   softened slightly, and let the spinner signal progress instead. Mixing the
+   local (hashed) .submitPending class with the global `.button[data-disabled]`
+   on the same element out-specifies the global disabled rule. */
+.submitPending:global(.button[data-disabled]) {
+  cursor: default;
+  opacity: 0.85;
+  --button-background-color: var(--sds-color-background-brand-default);
+  --button-border-color: var(--sds-color-border-brand-default);
+  --button-color: var(--sds-color-text-default-default);
+}
+
+.spinner {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: contactSpinnerSpin 0.7s linear infinite;
+}
+
+@keyframes contactSpinnerSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.4s;
+  }
 }
 
 /* Keep each input and its error message tightly coupled so a validation
