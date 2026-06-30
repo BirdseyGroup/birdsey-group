@@ -16,7 +16,8 @@
     "script:icons": "cd scripts/icons; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
     "script:icons:rest": "cd scripts/icons; node --env-file=../../.env app.mjs; cd -;",
     "script:tokens": "cd scripts/tokens; node --env-file=../../.env app.mjs --skip-rest-api; cd -;",
-    "script:tokens:rest": "cd scripts/tokens; node --env-file=../../.env app.mjs; cd -;"
+    "script:tokens:rest": "cd scripts/tokens; node --env-file=../../.env app.mjs; cd -;",
+    "script:screenshots": "cd scripts/screenshots; node app.mjs; cd -;"
   },
   "prettier": {
     "plugins": [
@@ -39,6 +40,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^10.0.6",
+    "playwright": "^1.61.1",
     "prettier-plugin-organize-imports": "^3.2.4",
     "react": "^18.2.0",
     "react-aria-components": "^1.10.1",
