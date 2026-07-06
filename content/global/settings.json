@@ -38,7 +38,12 @@
     "footerLinks": [
       { "label": "Privacy Policy", "href": "/privacy" },
       { "label": "Terms of Use", "href": "/terms" },
-      { "label": "Cookie Settings", "href": "#" }
+      { "label": "Cookie Settings", "href": "#", "openCookieSettings": true }
     ]
+  },
+  "cookieBanner": {
+    "message": "We use cookies to operate this site and to understand how it's used. You can accept or decline non-essential cookies at any time.",
+    "acceptLabel": "Accept",
+    "declineLabel": "Decline"
   }
 }

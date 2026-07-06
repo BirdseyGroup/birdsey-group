@@ -140,7 +140,42 @@ export default defineConfig({
                     label: "URL",
                     required: true,
                   },
+                  {
+                    type: "boolean",
+                    name: "openCookieSettings",
+                    label: "Opens cookie settings (instead of linking)",
+                    description:
+                      "If checked, clicking this link reopens the cookie consent banner instead of navigating to the URL above.",
+                  },
                 ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "cookieBanner",
+            label: "Cookie Consent Banner",
+            fields: [
+              {
+                type: "string",
+                name: "message",
+                label: "Message",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "string",
+                name: "acceptLabel",
+                label: "Accept Button Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "declineLabel",
+                label: "Decline Button Label",
+                required: true,
               },
             ],
           },
@@ -942,6 +977,40 @@ export default defineConfig({
             type: "number",
             name: "order",
             label: "Display Order",
+          },
+        ],
+      },
+      {
+        name: "legalPage",
+        label: "Legal Pages",
+        path: "content/legal",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "lastUpdated",
+            label: "Last Updated",
+            description: "Displayed under the title, e.g. \"July 2026\"",
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            required: true,
           },
         ],
       },

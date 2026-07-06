@@ -6,11 +6,16 @@ import { useNavigation } from "@/app/_contexts/NavigationContext";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { scrollToSection } from "../scrollToSection";
+import { OPEN_COOKIE_SETTINGS_EVENT } from "../CookieConsent";
 import styles from "./footer.module.css";
 
 interface NavItem {
   label: string;
   href: string;
+}
+
+interface FooterLink extends NavItem {
+  openCookieSettings?: boolean;
 }
 
 interface FooterProps {
@@ -20,7 +25,7 @@ interface FooterProps {
   copyright: string;
   navItems: NavItem[];
   footerNavExtras?: NavItem[];
-  footerLinks?: NavItem[];
+  footerLinks?: FooterLink[];
 }
 
 export function Footer({ phone, email, address, copyright, navItems, footerNavExtras = [], footerLinks = [] }: FooterProps) {
@@ -159,16 +164,29 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
       </div>
 
       <div className={styles.footerBottom}>
+        <p className={styles.footerText}>{copyright.split("\n").join(" ")}</p>
         {footerLinks.length > 0 && (
           <div className={styles.footerLinkRow}>
-            {footerLinks.map((link, i) => (
-              <a key={i} href={link.href} className={styles.footerBottomLink}>
-                {link.label}
-              </a>
-            ))}
+            {footerLinks.map((link, i) =>
+              link.openCookieSettings ? (
+                <button
+                  key={i}
+                  type="button"
+                  className={styles.footerBottomLink}
+                  onClick={() =>
+                    window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))
+                  }
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a key={i} href={link.href} className={styles.footerBottomLink}>
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
         )}
-        <p className={styles.footerText}>{copyright.split("\n").join(" ")}</p>
       </div>
     </Section>
   );

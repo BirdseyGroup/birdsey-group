@@ -1,0 +1,61 @@
+.title {
+  font-family: var(--sds-typography-title-page-font-family, "Merriweather", serif);
+  font-size: var(--sds-typography-subtitle-size-base);
+  color: var(--sds-color-text-default-default);
+  line-height: 1.25;
+  margin-bottom: var(--sds-size-space-300);
+}
+
+.updated {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small);
+  color: var(--sds-color-text-default-tertiary);
+  margin-bottom: var(--sds-size-space-800);
+}
+
+.richText {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  color: var(--sds-color-text-default-secondary);
+  line-height: 1.75;
+}
+
+.richText h2 {
+  font-family: var(--sds-typography-subtitle-font-family, "Merriweather", serif);
+  font-size: var(--sds-typography-subheading-size-medium);
+  color: var(--sds-color-text-default-default);
+  line-height: 1.3;
+  margin-top: var(--sds-size-space-800);
+  margin-bottom: var(--sds-size-space-300);
+}
+
+.richText h2:first-child {
+  margin-top: 0;
+}
+
+.richText p {
+  margin-bottom: var(--sds-size-space-400);
+}
+
+.richText ul,
+.richText ol {
+  margin: 0 0 var(--sds-size-space-400);
+  padding-left: var(--sds-size-space-600);
+}
+
+.richText li {
+  margin-bottom: var(--sds-size-space-200);
+}
+
+.richText a {
+  color: var(--sds-color-text-default-default);
+  text-decoration: underline;
+}
+
+.richText a:hover {
+  opacity: 0.8;
+}
+
+.richText p:last-child {
+  margin-bottom: 0;
+}

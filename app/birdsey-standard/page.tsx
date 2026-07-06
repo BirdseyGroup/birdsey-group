@@ -5,6 +5,7 @@ import { ContactSection } from "../_components/ContactSection";
 import { Footer } from "../_components/Footer";
 import { Header } from "../_components/Header";
 import { HeroSection } from "../_components/HeroSection";
+import { ScrollReveal } from "../_components/ScrollReveal";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -56,9 +57,9 @@ export default async function BirdseyStandardPage() {
         {/* Intro */}
         {content.intro && (
           <section className={styles.introSection}>
-            <div className={styles.prose}>
+            <ScrollReveal className={styles.prose}>
               <Paragraphs text={content.intro} className={styles.bodyText} />
-            </div>
+            </ScrollReveal>
           </section>
         )}
 
@@ -66,11 +67,11 @@ export default async function BirdseyStandardPage() {
         {content.sections?.map(
           (section: { heading: string; body: string }, i: number) => (
             <section key={i} className={styles.bodySection}>
-              <div className={styles.prose}>
+              <ScrollReveal className={styles.prose}>
                 <h2 className={styles.sectionHeading}>{section.heading}</h2>
 
                 <Paragraphs text={section.body} className={styles.bodyText} />
-              </div>
+              </ScrollReveal>
             </section>
           )
         )}
@@ -79,19 +80,23 @@ export default async function BirdseyStandardPage() {
         {content.principles?.length > 0 && (
           <section className={styles.principlesSection}>
             <div className={styles.prose}>
-              <div className={styles.principlesHeader}>
+              <ScrollReveal className={styles.principlesHeader}>
                 <h2 className={styles.principlesTitle}>{content.principlesTitle}</h2>
 
                 {content.principlesIntro && (
                   <p className={styles.principlesIntro}>{content.principlesIntro}</p>
                 )}
-              </div>
+              </ScrollReveal>
               <div className={styles.principlesGrid}>
                 {content.principles.map((p: { name: string; body: string }, i: number) => (
-                  <div key={i} className={styles.principleCard}>
+                  <ScrollReveal
+                    key={i}
+                    className={styles.principleCard}
+                    delay={Math.min(i * 0.08, 0.32)}
+                  >
                     <h3 className={styles.principleCardName}>{p.name}</h3>
                     <p className={styles.principleCardBody}>{p.body}</p>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
@@ -102,11 +107,11 @@ export default async function BirdseyStandardPage() {
         {content.commitments?.map(
           (c: { heading: string; body: string }, i: number) => (
             <section key={i} className={styles.bodySection}>
-              <div className={styles.prose}>
+              <ScrollReveal className={styles.prose}>
                 <h2 className={styles.sectionHeading}>{c.heading}</h2>
 
                 <Paragraphs text={c.body} className={styles.bodyText} />
-              </div>
+              </ScrollReveal>
             </section>
           )
         )}
@@ -117,11 +122,15 @@ export default async function BirdseyStandardPage() {
             <div className={styles.prose}>
               {content.infoBlocks.map(
                 (b: { heading: string; body: string }, i: number) => (
-                  <div key={i} className={styles.infoBlock}>
+                  <ScrollReveal
+                    key={i}
+                    className={styles.infoBlock}
+                    delay={Math.min(i * 0.08, 0.32)}
+                  >
                     <h3 className={styles.infoBlockHeading}>{b.heading}</h3>
-    
+
                     <Paragraphs text={b.body} className={styles.bodyText} />
-                  </div>
+                  </ScrollReveal>
                 )
               )}
             </div>
@@ -131,10 +140,10 @@ export default async function BirdseyStandardPage() {
         {/* Closing: heading → divider → body */}
         {content.closing && (
           <section className={styles.closingSection}>
-            <div className={styles.prose}>
+            <ScrollReveal className={styles.prose}>
               <h2 className={styles.sectionHeading}>{content.closing.heading}</h2>
               <Paragraphs text={content.closing.body} className={styles.bodyText} />
-            </div>
+            </ScrollReveal>
           </section>
         )}
       </main>

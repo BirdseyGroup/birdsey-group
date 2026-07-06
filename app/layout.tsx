@@ -1,6 +1,9 @@
+import { promises as fs } from "fs";
+import path from "path";
 import { AllProviders } from "@/lib";
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
+import { CookieConsent } from "./_components/CookieConsent";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -73,11 +76,16 @@ const organizationSchema = {
   sameAs: ["https://www.linkedin.com/company/birdsey-group"],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalPath = path.join(process.cwd(), "content/global/settings.json");
+  const globalFile = await fs.readFile(globalPath, "utf-8");
+  const globalSettings = JSON.parse(globalFile);
+  const cookieBanner = globalSettings.cookieBanner;
+
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <head>
@@ -98,6 +106,13 @@ export default function RootLayout({
           Skip to main content
         </a>
         <AllProviders>{children}</AllProviders>
+        {cookieBanner && (
+          <CookieConsent
+            message={cookieBanner.message}
+            acceptLabel={cookieBanner.acceptLabel}
+            declineLabel={cookieBanner.declineLabel}
+          />
+        )}
       </body>
     </html>
   );

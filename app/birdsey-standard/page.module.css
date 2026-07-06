@@ -96,7 +96,7 @@
 
 .principleCard {
   background-color: var(--sds-color-background-default-default);
-  border-radius: var(--sds-size-radius-300);
+  border-radius: var(--sds-size-radius-200);
   padding: var(--sds-size-space-600);
   border: 1px solid var(--sds-color-border-default-default);
 }
@@ -104,7 +104,7 @@
 .principleCardName {
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-small);
-  font-weight: var(--sds-typography-body-font-weight-bold);
+  font-weight: var(--sds-typography-body-font-weight-strong);
   color: var(--sds-color-text-default-default);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -131,7 +131,7 @@
 .infoBlockHeading {
   font-family: var(--sds-typography-body-font-family);
   font-size: var(--sds-typography-body-size-medium);
-  font-weight: var(--sds-typography-body-font-weight-bold);
+  font-weight: var(--sds-typography-body-font-weight-strong);
   color: var(--sds-color-text-default-default);
   margin-bottom: var(--sds-size-space-300);
 }
