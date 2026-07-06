@@ -91,6 +91,8 @@ export default async function InsightPage({ params }: InsightPageProps) {
 
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
+  const footerNavExtras = footerContent?.footerNavExtras || [];
+  const footerLinks = footerContent?.footerLinks || [];
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -143,6 +145,8 @@ export default async function InsightPage({ params }: InsightPageProps) {
         address={footerContent?.address || ""}
         copyright={footerContent?.copyright || ""}
         navItems={navigationContent?.items || []}
+        footerNavExtras={footerNavExtras}
+        footerLinks={footerLinks}
       />
     </div>
   );

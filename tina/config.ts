@@ -102,6 +102,46 @@ export default defineConfig({
                 label: "Copyright Text",
                 required: true,
               },
+              {
+                type: "object",
+                name: "footerNavExtras",
+                label: "Footer Company Links (extras, below main nav)",
+                list: true,
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "URL",
+                    required: true,
+                  },
+                ],
+              },
+              {
+                type: "object",
+                name: "footerLinks",
+                label: "Footer Legal Links (bottom row)",
+                list: true,
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "URL",
+                    required: true,
+                  },
+                ],
+              },
             ],
           },
         ],
@@ -190,11 +230,223 @@ export default defineConfig({
         ],
       },
       {
+        name: "birdseyStandardPage",
+        label: "Birdsey Standard Page",
+        path: "content/pages",
+        match: {
+          include: "birdsey-standard",
+        },
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Page Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero",
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "subtitle",
+                label: "Subtitle",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "intro",
+            label: "Intro Text",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "object",
+            name: "sections",
+            label: "Body Sections",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "principlesTitle",
+            label: "Principles Section Title",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "principlesIntro",
+            label: "Principles Intro",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "object",
+            name: "principles",
+            label: "Principles",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "Name",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "commitments",
+            label: "Commitments",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "infoBlocks",
+            label: "Info Blocks",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "closing",
+            label: "Closing Section",
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "contact",
+            label: "Contact Section",
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "formTitle",
+                label: "Form Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "formDescription",
+                label: "Form Description",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "submitButtonText",
+                label: "Submit Button Text",
+                required: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: "page",
         label: "Pages",
         path: "content/pages",
         match: {
-          exclude: "about",
+          exclude: "{about,birdsey-standard}",
         },
         format: "json",
         fields: [

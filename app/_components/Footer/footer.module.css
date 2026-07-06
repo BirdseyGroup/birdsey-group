@@ -117,7 +117,7 @@
   }
 }
 
-/* Copyright on its own full-width row at the very bottom. */
+/* Copyright and secondary links on their own full-width row at the very bottom. */
 .footerBottom {
   max-width: 1200px;
   width: 100%;
@@ -125,6 +125,25 @@
   padding-top: var(--sds-size-space-600);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
+}
+
+.footerLinkRow {
+  display: flex;
+  justify-content: center;
+  gap: var(--sds-size-space-600);
+  margin-bottom: var(--sds-size-space-300);
+}
+
+.footerBottomLink {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small);
+  color: var(--sds-color-text-default-tertiary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footerBottomLink:hover {
+  opacity: 0.8;
 }
 
 .footer .textLinkList {

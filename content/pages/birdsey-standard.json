@@ -1,0 +1,76 @@
+{
+  "title": "The Birdsey Standard",
+  "hero": {
+    "title": "The Birdsey Standard™",
+    "subtitle": "The Standard Behind Every Relationship"
+  },
+  "intro": "Trust isn't something we ask clients to give us. It's something we earn, through every conversation, every commitment, and every project we take on.\n\nAt Birdsey Group, we believe technical expertise is only part of what creates exceptional outcomes. Clients also deserve confidence that the people guiding their projects will communicate openly, act responsibly, solve problems thoughtfully, and stand behind their commitments.\n\nThat belief has shaped our company from the beginning. It is what we call The Birdsey Standard™.",
+  "sections": [
+    {
+      "heading": "Why The Birdsey Standard Matters",
+      "body": "Commercial real estate is built on relationships. Owners, lenders, investors, contractors, municipalities, vendors, and project teams all depend on one another to deliver successful outcomes. The strongest partnerships aren't built solely on experience or technical expertise. They're built on confidence: that commitments will be honored, that challenges will be addressed honestly, and that communication will stay transparent throughout.\n\nThe Birdsey Standard defines how we earn that confidence every day."
+    },
+    {
+      "heading": "One Standard. Many Specialized Companies.",
+      "body": "Birdsey Group serves as the umbrella organization for a family of specialized companies supporting every stage of the commercial real estate lifecycle. Each company brings focused expertise in its respective discipline, and together they operate under one shared philosophy.\n\nWhether you work with Birdsey Construction, Birdsey Commercial, Birdsey Capital, Birdsey Property Solutions, Birdsey Residential, or another member of the Birdsey family, you can expect the same commitment to professionalism, integrity, and disciplined execution. The Birdsey Standard is the common thread that connects every company, every team member, and every client experience."
+    }
+  ],
+  "principlesTitle": "The Birdsey Standard™",
+  "principlesIntro": "Trust isn't built through a single decision. It's earned through consistent actions over time, guided by five principles that define how we work.",
+  "principles": [
+    {
+      "name": "Quality",
+      "body": "We believe excellence is intentional. Every recommendation, report, project, and client interaction should reflect thoughtful planning, attention to detail, and a commitment to delivering work we're proud to stand behind."
+    },
+    {
+      "name": "Urgency",
+      "body": "Time matters. We respond promptly, communicate proactively, and move projects forward with purpose while maintaining the quality our clients expect. Urgency means being responsive, not rushed."
+    },
+    {
+      "name": "Accountability",
+      "body": "We own our commitments. We accept responsibility for our work, communicate honestly, and follow through on what we promise, because accountability is what creates confidence."
+    },
+    {
+      "name": "Resilience",
+      "body": "Commercial real estate rarely follows a straight line. Markets shift, projects evolve, and challenges emerge along the way. We approach change with adaptability and practical thinking, helping clients navigate uncertainty with confidence."
+    },
+    {
+      "name": "Transparency",
+      "body": "Trust grows when expectations are clear. We believe in honest communication, realistic expectations, and keeping clients informed throughout every engagement, because transparency strengthens every relationship we build."
+    }
+  ],
+  "commitments": [
+    {
+      "heading": "Our Commitment to Clients",
+      "body": "Every project is unique, and every client has different goals, but every engagement begins with the same commitment: to listen carefully, communicate openly, provide thoughtful guidance, and deliver disciplined execution.\n\nOur objective isn't simply to complete projects. It's to become a trusted advisor our clients confidently return to whenever new opportunities or challenges arise."
+    },
+    {
+      "heading": "Our Commitment to Our People",
+      "body": "The Birdsey Standard begins inside our organization. We believe exceptional client experiences are created by exceptional people, so we foster a culture built on collaboration, respect, professional growth, shared accountability, and continuous improvement. When our people succeed, our clients benefit."
+    },
+    {
+      "heading": "Our Commitment to Responsible Business",
+      "body": "Professional integrity extends beyond project delivery. Birdsey Group is committed to protecting confidential information, operating ethically and responsibly, respecting our clients, partners, and communities, making informed and thoughtful decisions, and continuously improving our processes and services.\n\nTechnology and innovation help us work more effectively, but they never replace experienced professionals, sound judgment, or trusted relationships."
+    }
+  ],
+  "infoBlocks": [
+    {
+      "heading": "Protecting Information",
+      "body": "Safeguarding information is part of earning trust. Birdsey Group maintains reasonable administrative, technical, and organizational safeguards designed to protect the information entrusted to us. For additional information about how we collect, use, and safeguard personal information, please review our Privacy Policy."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "We believe information should be accessible to everyone. Birdsey Group is committed to continually improving the accessibility and usability of our website so all visitors can easily learn about our company and services."
+    }
+  ],
+  "closing": {
+    "heading": "Trust Doesn't End When a Project Does",
+    "body": "The projects we complete are important, but the relationships we build matter even more. Our goal has never been simply to finish a project. It's to become the trusted partner clients call again, recommend with confidence, and rely on as markets evolve.\n\nThat philosophy has guided Birdsey Group from the beginning, and it continues to shape every relationship we build.\n\nThat is The Birdsey Standard™."
+  },
+  "contact": {
+    "title": "Let's Move Real Estate Forward.",
+    "formTitle": "Thank you for your interest in Birdsey.",
+    "formDescription": "Please complete the form below, and we will get back with you as soon as possible.",
+    "submitButtonText": "Submit"
+  }
+}

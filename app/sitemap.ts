@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/birdsey-standard`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     ...insightSlugs.map((slug) => ({
       url: `${SITE_URL}/insights/${slug}`,
       lastModified: now,

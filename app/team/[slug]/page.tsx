@@ -122,6 +122,8 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
   const globalSettings = JSON.parse(globalFile);
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
+  const footerNavExtras = footerContent?.footerNavExtras || [];
+  const footerLinks = footerContent?.footerLinks || [];
 
   const affiliateName = await getAffiliateName(member.affiliate);
 
@@ -144,6 +146,8 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
         address={footerContent?.address || ""}
         copyright={footerContent?.copyright || ""}
         navItems={navigationContent?.items || []}
+        footerNavExtras={footerNavExtras}
+        footerLinks={footerLinks}
       />
     </div>
   );

@@ -19,9 +19,11 @@ interface FooterProps {
   address: string;
   copyright: string;
   navItems: NavItem[];
+  footerNavExtras?: NavItem[];
+  footerLinks?: NavItem[];
 }
 
-export function Footer({ phone, email, address, copyright, navItems }: FooterProps) {
+export function Footer({ phone, email, address, copyright, navItems, footerNavExtras = [], footerLinks = [] }: FooterProps) {
   const { activePage, setActivePage } = useNavigation();
   const router = useRouter();
   const pathname = usePathname();
@@ -29,29 +31,25 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
   const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // If it's the About page link
-    if (href === "/about") {
-      setActivePage("about");
-      router.push("/about");
+    // Route link (not a hash anchor)
+    if (!href.startsWith("#")) {
+      const pageKey = href.replace(/^\//, "") || "home";
+      setActivePage(pageKey);
+      router.push(href);
       return;
     }
 
-    // If it's a hash link (section on homepage)
-    if (href.startsWith("#")) {
-      const id = href.replace("#", "");
-      setActivePage(id);
+    // Hash link — scroll to section on homepage
+    const id = href.replace("#", "");
+    setActivePage(id);
 
-      // If we're not on the homepage (about, team, insights pages), navigate home first
-      if (pathname !== "/") {
-        router.push("/");
-        // Wait for navigation then scroll
-        setTimeout(() => {
-          scrollToSection(id);
-        }, 100);
-      } else {
-        // Already on homepage, just scroll
+    if (pathname !== "/") {
+      router.push("/");
+      setTimeout(() => {
         scrollToSection(id);
-      }
+      }, 100);
+    } else {
+      scrollToSection(id);
     }
   };
 
@@ -62,10 +60,10 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
           <Flex direction="column" gap="400">
             <h3 className={styles.footerHeading}>Company</h3>
             <Flex direction="column" gap="200">
-              {navItems.map((item, i) => {
-                const isAboutLink = item.href === "/about";
-                const isSelected = isAboutLink
-                  ? pathname === "/about"
+              {[...navItems, ...footerNavExtras].map((item, i) => {
+                const isRouteLink = !item.href.startsWith("#");
+                const isSelected = isRouteLink
+                  ? pathname === item.href
                   : activePage === item.href.replace("#", "");
 
                 return (
@@ -161,6 +159,15 @@ export function Footer({ phone, email, address, copyright, navItems }: FooterPro
       </div>
 
       <div className={styles.footerBottom}>
+        {footerLinks.length > 0 && (
+          <div className={styles.footerLinkRow}>
+            {footerLinks.map((link, i) => (
+              <a key={i} href={link.href} className={styles.footerBottomLink}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
         <p className={styles.footerText}>{copyright.split("\n").join(" ")}</p>
       </div>
     </Section>

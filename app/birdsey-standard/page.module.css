@@ -1,0 +1,179 @@
+.birdseyStandardPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  background-color: var(--sds-color-background-default-default);
+}
+
+/* Containers */
+.prose {
+  max-width: 780px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--sds-size-space-600);
+}
+
+.wideContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--sds-size-space-600);
+}
+
+/* Sections */
+.introSection {
+  padding: var(--sds-size-space-1200) 0;
+}
+
+.bodySection {
+  /* spacing above comes from .sectionHeading margin-top; spacing below from introSection/principlesSection */
+}
+
+.bodySection + .bodySection {
+  padding-top: var(--sds-size-space-800);
+}
+
+.principlesSection {
+  padding: var(--sds-size-space-1200) 0;
+  background-color: var(--sds-color-background-default-default);
+}
+
+.infoBlocksSection {
+  padding: var(--sds-size-space-1200) 0;
+  background-color: var(--sds-color-background-default-default);
+}
+
+.closingSection {
+  padding-bottom: var(--sds-size-space-1200);
+}
+
+/* Typography */
+.sectionHeading {
+  font-family: var(--sds-typography-subtitle-font-family, "Merriweather", serif);
+  font-size: var(--sds-typography-subtitle-size-base);
+  color: var(--sds-color-text-default-default);
+  line-height: 1.25;
+  margin-top: var(--sds-size-space-1200);
+  margin-bottom: var(--sds-size-space-600);
+}
+
+.bodyText {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  color: var(--sds-color-text-default-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sds-size-space-400);
+}
+
+.bodyText:last-child {
+  margin-bottom: 0;
+}
+
+/* Principles */
+.principlesHeader {
+  margin-bottom: var(--sds-size-space-800);
+}
+
+.principlesTitle {
+  font-family: var(--sds-typography-subtitle-font-family, "Merriweather", serif);
+  font-size: var(--sds-typography-subtitle-size-base);
+  color: var(--sds-color-text-default-default);
+  line-height: 1.25;
+  margin-bottom: var(--sds-size-space-400);
+}
+
+.principlesIntro {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  color: var(--sds-color-text-default-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0;
+}
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sds-size-space-400);
+}
+
+.principleCard {
+  background-color: var(--sds-color-background-default-default);
+  border-radius: var(--sds-size-radius-300);
+  padding: var(--sds-size-space-600);
+  border: 1px solid var(--sds-color-border-default-default);
+}
+
+.principleCardName {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small);
+  font-weight: var(--sds-typography-body-font-weight-bold);
+  color: var(--sds-color-text-default-default);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sds-size-space-300);
+}
+
+.principleCardBody {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-small);
+  color: var(--sds-color-text-default-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Info blocks */
+.infoBlock {
+  margin-bottom: var(--sds-size-space-800);
+}
+
+.infoBlock:last-child {
+  margin-bottom: 0;
+}
+
+.infoBlockHeading {
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  font-weight: var(--sds-typography-body-font-weight-bold);
+  color: var(--sds-color-text-default-default);
+  margin-bottom: var(--sds-size-space-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .introSection {
+    padding: var(--sds-size-space-800) 0;
+  }
+
+  .infoBlocksSection {
+    padding: var(--sds-size-space-800) 0;
+  }
+
+  .principlesSection {
+    padding: var(--sds-size-space-800) 0;
+  }
+
+  .closingSection {
+    padding-bottom: var(--sds-size-space-800);
+  }
+
+  .sectionHeading,
+  .principlesTitle {
+    font-size: 24px;
+    margin-top: var(--sds-size-space-800);
+  }
+
+  .principlesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .principlesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

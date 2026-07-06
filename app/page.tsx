@@ -36,6 +36,8 @@ export default async function HomePage() {
   const contactContent = content.contact;
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
+  const footerNavExtras = footerContent?.footerNavExtras || [];
+  const footerLinks = footerContent?.footerLinks || [];
 
   return (
     <div className="page-wrapper">
@@ -86,6 +88,8 @@ export default async function HomePage() {
         address={footerContent?.address || ""}
         copyright={footerContent?.copyright || ""}
         navItems={navigationContent?.items || []}
+        footerNavExtras={footerNavExtras}
+        footerLinks={footerLinks}
       />
     </div>
   );

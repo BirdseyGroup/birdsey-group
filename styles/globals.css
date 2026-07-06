@@ -61,6 +61,7 @@
 html {
   font-size: 16px;
   background: var(--sds-color-background-brand-secondary);
+  color-scheme: light;
 }
 
 body {

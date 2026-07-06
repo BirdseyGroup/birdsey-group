@@ -72,6 +72,8 @@ export default async function AboutPage() {
 
   const footerContent = globalSettings.footer;
   const navigationContent = globalSettings.navigation;
+  const footerNavExtras = footerContent?.footerNavExtras || [];
+  const footerLinks = footerContent?.footerLinks || [];
 
   if (aboutContent.hero?.backgroundImage) {
     ReactDOM.preload(aboutContent.hero.backgroundImage, {
@@ -120,6 +122,8 @@ export default async function AboutPage() {
         address={footerContent?.address || ""}
         copyright={footerContent?.copyright || ""}
         navItems={navigationContent?.items || []}
+        footerNavExtras={footerNavExtras}
+        footerLinks={footerLinks}
       />
     </div>
   );
