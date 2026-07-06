@@ -78,7 +78,7 @@ export default async function BirdseyStandardPage() {
         {/* Principles */}
         {content.principles?.length > 0 && (
           <section className={styles.principlesSection}>
-            <div className={styles.wideContainer}>
+            <div className={styles.prose}>
               <div className={styles.principlesHeader}>
                 <h2 className={styles.principlesTitle}>{content.principlesTitle}</h2>
 
