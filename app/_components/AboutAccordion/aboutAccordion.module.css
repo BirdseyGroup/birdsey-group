@@ -113,8 +113,8 @@
   margin: 0;
   padding-top: var(--sds-size-space-400);
   padding-bottom: var(--sds-size-space-600);
-  font-size: var(--sds-typography-body-size-default);
-  line-height: var(--sds-typography-body-line-height);
+  font-size: var(--sds-typography-body-size-medium);
+  line-height: 1.7;
   color: var(--sds-color-text-default-secondary);
 }
 

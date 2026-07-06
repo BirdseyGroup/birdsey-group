@@ -44,7 +44,7 @@
 .modalContent {
   background: var(--sds-color-background-default-default, #ffffff);
   border-radius: var(--sds-size-radius-400);
-  box-shadow: var(--sds-effects-shadows-400);
+  box-shadow: var(--sds-effects-shadows-drop-shadow-400);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -139,11 +139,11 @@
 }
 
 .name {
-  font-family: var(--sds-typography-heading-font-family-default);
-  font-size: var(--sds-typography-heading-large-font-size);
-  font-weight: var(--sds-typography-heading-font-weight-bold);
-  line-height: var(--sds-typography-heading-large-line-height);
-  color: var(--sds-color-text-default);
+  font-family: var(--sds-typography-heading-font-family);
+  font-size: var(--sds-typography-heading-size-large);
+  font-weight: var(--sds-typography-heading-font-weight);
+  line-height: 1.2;
+  color: var(--sds-color-text-default-default);
   margin: 0;
 }
 
@@ -181,23 +181,23 @@
 }
 
 .contactButton svg {
-  color: var(--sds-color-text-on-brand);
+  color: var(--sds-color-text-default-default);
 }
 
 /* Job title */
 .title {
-  font-family: var(--sds-typography-body-font-family-default);
-  font-size: var(--sds-typography-body-default-font-size);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
   font-weight: var(--sds-typography-body-font-weight-regular);
-  line-height: var(--sds-typography-body-default-line-height);
-  color: var(--sds-color-text-default);
+  line-height: 1.4;
+  color: var(--sds-color-text-default-secondary);
   margin: 0;
 }
 
 /* Biography */
 .bio {
-  font-family: var(--sds-typography-body-font-family-default);
-  font-size: var(--sds-typography-body-default-font-size);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
   font-weight: var(--sds-typography-body-font-weight-regular);
   line-height: 1.4;
   color: var(--sds-color-text-default-default);
@@ -217,10 +217,10 @@
 }
 
 .noBio {
-  font-family: var(--sds-typography-body-font-family-default);
-  font-size: var(--sds-typography-body-default-font-size);
-  line-height: var(--sds-typography-body-default-line-height);
-  color: var(--sds-color-text-subtle);
+  font-family: var(--sds-typography-body-font-family);
+  font-size: var(--sds-typography-body-size-medium);
+  line-height: 1.4;
+  color: var(--sds-color-text-default-tertiary);
   font-style: italic;
   margin: 0;
 }
@@ -241,6 +241,6 @@
   }
 
   .name {
-    font-size: var(--sds-typography-heading-default-font-size);
+    font-size: var(--sds-typography-heading-size-base);
   }
 }
