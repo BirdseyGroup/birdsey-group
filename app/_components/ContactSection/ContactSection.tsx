@@ -55,16 +55,24 @@ function toE164(raw: string): string | null {
 
 interface ContactSectionProps {
   title: string;
+  titleTinaField?: string;
   formTitle: string;
+  formTitleTinaField?: string;
   formDescription: string;
+  formDescriptionTinaField?: string;
   submitButtonText: string;
+  submitButtonTextTinaField?: string;
 }
 
 export function ContactSection({
   title,
+  titleTinaField,
   formTitle,
+  formTitleTinaField,
   formDescription,
+  formDescriptionTinaField,
   submitButtonText,
+  submitButtonTextTinaField,
 }: ContactSectionProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
@@ -220,6 +228,7 @@ export function ContactSection({
             <h2
               className={`${sharedStyles.sectionTitle} ${styles.contactTitle}`}
               ref={titleRef}
+              data-tina-field={titleTinaField}
             >
               {title}
             </h2>
@@ -230,8 +239,15 @@ export function ContactSection({
             <form ref={formElRef} onSubmit={handleSubmit} noValidate>
                 <Flex direction="column" gap="600">
                   <div className={styles.formHeader}>
-                    <h3 className={styles.formTitle}>{formTitle}</h3>
-                    <p>{formDescription}</p>
+                    <h3
+                      className={styles.formTitle}
+                      data-tina-field={formTitleTinaField}
+                    >
+                      {formTitle}
+                    </h3>
+                    <p data-tina-field={formDescriptionTinaField}>
+                      {formDescription}
+                    </p>
                   </div>
 
                   <div className={styles.fieldGroup}>
@@ -309,6 +325,7 @@ export function ContactSection({
                     type="submit"
                     isDisabled={pending}
                     className={pending ? styles.submitPending : undefined}
+                    data-tina-field={submitButtonTextTinaField}
                   >
                     {pending ? (
                       <>

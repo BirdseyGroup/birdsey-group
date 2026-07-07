@@ -20,10 +20,21 @@ interface Affiliate {
 
 interface BrandShowcaseProps {
   heading: string;
+  headingTinaField?: string;
   items: Affiliate[];
+  itemsTinaFields?: Array<{
+    title?: string;
+    subtitle?: string;
+    description?: string;
+  }>;
 }
 
-export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
+export function BrandShowcase({
+  heading,
+  headingTinaField,
+  items,
+  itemsTinaFields,
+}: BrandShowcaseProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -100,7 +111,12 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
           {/* Left Column - Sticky Images with Heading */}
           <div className={styles.imageColumn}>
             <div className={styles.stickyWrapper}>
-              <h2 className={styles.stickyHeading}>{heading}</h2>
+              <h2
+                className={styles.stickyHeading}
+                data-tina-field={headingTinaField}
+              >
+                {heading}
+              </h2>
               <div className={styles.stickyImageWrapper}>
                 {items.map((item, index) => (
                   <a
@@ -140,9 +156,15 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                       sharedStyles.subtitleCentered,
                       styles.title
                     )}
+                    data-tina-field={itemsTinaFields?.[index]?.title}
                   >
                     {item.title}
-                    <span className={styles.subtitle}>{item.subtitle}</span>
+                    <span
+                      className={styles.subtitle}
+                      data-tina-field={itemsTinaFields?.[index]?.subtitle}
+                    >
+                      {item.subtitle}
+                    </span>
                   </h2>
                   <div className={sharedStyles.divider} />
                   <p
@@ -151,6 +173,7 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                       sharedStyles.subheadingCentered,
                       styles.description
                     )}
+                    data-tina-field={itemsTinaFields?.[index]?.description}
                   >
                     {item.description}
                   </p>
@@ -180,9 +203,15 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                           sharedStyles.subtitleCentered,
                           styles.title
                         )}
+                        data-tina-field={itemsTinaFields?.[index]?.title}
                       >
                         {item.title}
-                        <span className={styles.subtitle}>{item.subtitle}</span>
+                        <span
+                          className={styles.subtitle}
+                          data-tina-field={itemsTinaFields?.[index]?.subtitle}
+                        >
+                          {item.subtitle}
+                        </span>
                       </h2>
                       <div className={sharedStyles.divider} />
                       <p
@@ -191,6 +220,7 @@ export function BrandShowcase({ heading, items }: BrandShowcaseProps) {
                           sharedStyles.subheadingCentered,
                           styles.description
                         )}
+                        data-tina-field={itemsTinaFields?.[index]?.description}
                       >
                         {item.description}
                       </p>

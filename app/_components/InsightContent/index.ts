@@ -1,0 +1,1 @@
+export { InsightContent } from "./InsightContent";

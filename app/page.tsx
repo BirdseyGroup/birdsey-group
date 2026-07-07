@@ -1,96 +1,23 @@
-import { promises as fs } from "fs";
-import path from "path";
 import type { Metadata } from "next";
-import { AffiliatesSection } from "./_components/AffiliatesSection";
-import { BrandShowcase } from "./_components/BrandShowcase";
-import { CareersSection } from "./_components/CareersSection";
-import { ContactSection } from "./_components/ContactSection";
-import { Footer } from "./_components/Footer";
-import { Header } from "./_components/Header";
-import { HeroSection } from "./_components/HeroSection";
-import { NewsSection } from "./_components/NewsSection";
-import { PerformanceSection } from "./_components/PerformanceSection";
-import { SubHeroSection } from "./_components/SubHeroSection";
+import { client } from "@/tina/__generated__/client";
+import { HomePageContent } from "./_components/HomePageContent";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
 export default async function HomePage() {
-  // Read page content
-  const contentPath = path.join(process.cwd(), "content/pages/home.json");
-  const contentFile = await fs.readFile(contentPath, "utf-8");
-  const content = JSON.parse(contentFile);
-
-  // Read global settings
-  const globalPath = path.join(process.cwd(), "content/global/settings.json");
-  const globalFile = await fs.readFile(globalPath, "utf-8");
-  const globalSettings = JSON.parse(globalFile);
-
-  const heroContent = content.hero;
-  const subHeroContent = content.subHero;
-  const affiliatesContent = content.affiliates;
-  const performanceContent = content.performance;
-  const newsContent = content.news;
-  const careersContent = content.careers;
-  const contactContent = content.contact;
-  const footerContent = globalSettings.footer;
-  const navigationContent = globalSettings.navigation;
-  const footerNavExtras = footerContent?.footerNavExtras || [];
-  const footerLinks = footerContent?.footerLinks || [];
+  const homePageResponse = await client.queries.homePage({
+    relativePath: "home.json",
+  });
+  const globalResponse = await client.queries.global({
+    relativePath: "settings.json",
+  });
 
   return (
-    <div className="page-wrapper">
-      <Header navItems={navigationContent?.items || []} />
-      <main id="main-content">
-        <HeroSection
-          title={heroContent?.title || ""}
-          subtitle={heroContent?.subtitle || ""}
-          primaryButton={heroContent?.primaryButton}
-          secondaryButton={heroContent?.secondaryButton}
-        />
-        <SubHeroSection
-          title={subHeroContent?.title || ""}
-          description={subHeroContent?.description || ""}
-          link={subHeroContent?.link}
-        />
-        <AffiliatesSection
-          sectionTitle={affiliatesContent?.sectionTitle || ""}
-          items={affiliatesContent?.items || []}
-        />
-        <BrandShowcase
-          heading={affiliatesContent?.sectionHeading || ""}
-          items={affiliatesContent?.items || []}
-        />
-        <PerformanceSection
-          title={performanceContent?.title || ""}
-          stats={performanceContent?.stats || []}
-        />
-        <NewsSection
-          title={newsContent?.title || ""}
-          articles={newsContent?.articles || []}
-        />
-        <CareersSection
-          title={careersContent?.title || ""}
-          content={careersContent?.content || ""}
-          email={careersContent?.email || ""}
-        />
-        <ContactSection
-          title={contactContent?.title || ""}
-          formTitle={contactContent?.formTitle || ""}
-          formDescription={contactContent?.formDescription || ""}
-          submitButtonText={contactContent?.submitButtonText || ""}
-        />
-      </main>
-      <Footer
-        phone={footerContent?.phone || ""}
-        email={footerContent?.email || ""}
-        address={footerContent?.address || ""}
-        copyright={footerContent?.copyright || ""}
-        navItems={navigationContent?.items || []}
-        footerNavExtras={footerNavExtras}
-        footerLinks={footerLinks}
-      />
-    </div>
+    <HomePageContent
+      homePageResponse={homePageResponse}
+      globalResponse={globalResponse}
+    />
   );
 }

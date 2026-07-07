@@ -4,7 +4,11 @@ import { usePathname } from "next/navigation";
 import styles from "./articleDetail.module.css";
 
 function formatDate(dateStr: string) {
-  const date = new Date(dateStr + "T00:00:00");
+  // A bare "YYYY-MM-DD" needs a time appended so it parses in the local
+  // timezone rather than UTC (which can shift the displayed date by a day).
+  // A `datetime` field's live-edit value already includes a "T", so only
+  // append when it's missing.
+  const date = new Date(dateStr.includes("T") ? dateStr : `${dateStr}T00:00:00`);
   return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
@@ -18,11 +22,16 @@ interface RichTextNode {
 
 interface ArticleDetailProps {
   title: string;
+  titleTinaField?: string;
   date: string;
   category: string;
+  categoryTinaField?: string;
   excerpt: string;
+  excerptTinaField?: string;
   image?: string;
+  imageTinaField?: string;
   body: RichTextNode;
+  bodyTinaField?: string;
 }
 
 function renderNode(node: RichTextNode, index: number): React.ReactNode {
@@ -87,11 +96,16 @@ function renderNode(node: RichTextNode, index: number): React.ReactNode {
 
 export function ArticleDetail({
   title,
+  titleTinaField,
   date,
   category,
+  categoryTinaField,
   excerpt,
+  excerptTinaField,
   image,
+  imageTinaField,
   body,
+  bodyTinaField,
 }: ArticleDetailProps) {
   const pathname = usePathname();
 
@@ -106,7 +120,9 @@ export function ArticleDetail({
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.meta}>
-            <span className={styles.category}>{category}</span>
+            <span className={styles.category} data-tina-field={categoryTinaField}>
+              {category}
+            </span>
             {date && <span className={styles.date}>{formatDate(date)}</span>}
           </div>
           <button
@@ -126,7 +142,9 @@ export function ArticleDetail({
             Share
           </button>
         </div>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title} data-tina-field={titleTinaField}>
+          {title}
+        </h1>
       </header>
 
       {image && (
@@ -134,12 +152,17 @@ export function ArticleDetail({
           src={image}
           alt={title}
           className={styles.featuredImage}
+          data-tina-field={imageTinaField}
         />
       )}
 
       <div className={styles.body}>
-        <p className={styles.excerpt}>{excerpt}</p>
-        {body.children?.map((node, i) => renderNode(node, i))}
+        <p className={styles.excerpt} data-tina-field={excerptTinaField}>
+          {excerpt}
+        </p>
+        <div data-tina-field={bodyTinaField}>
+          {body.children?.map((node, i) => renderNode(node, i))}
+        </div>
       </div>
     </article>
   );

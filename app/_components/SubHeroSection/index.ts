@@ -1,1 +1,1 @@
-export { SubHeroSection } from './SubHeroSection';
+export { SubHeroSection, resolveSubHeroLink } from './SubHeroSection';

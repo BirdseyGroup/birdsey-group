@@ -12,12 +12,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface CareersSectionProps {
   title: string;
+  titleTinaField?: string;
   content: string;
+  contentTinaField?: string;
   email: string;
+  emailTinaField?: string;
   image?: string;
 }
 
-export function CareersSection({ title, content, email }: CareersSectionProps) {
+export function CareersSection({
+  title,
+  titleTinaField,
+  content,
+  contentTinaField,
+  email,
+  emailTinaField,
+}: CareersSectionProps) {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -84,14 +94,23 @@ export function CareersSection({ title, content, email }: CareersSectionProps) {
         <FlexItem size="major">
           <div ref={contentRef}>
             <Flex direction="column" gap="400">
-              <h2 className={sharedStyles.subtitle}>{title}</h2>
+              <h2
+                className={sharedStyles.subtitle}
+                data-tina-field={titleTinaField}
+              >
+                {title}
+              </h2>
               <div className={sharedStyles.divider} />
-              <div className={styles.careersText}>
+              <div className={styles.careersText} data-tina-field={contentTinaField}>
                 {content.split("\n\n").map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
                 <p>
-                  <a href={`mailto:${email}`} className={styles.emailLink}>
+                  <a
+                    href={`mailto:${email}`}
+                    className={styles.emailLink}
+                    data-tina-field={emailTinaField}
+                  >
                     {email}
                   </a>
                 </p>

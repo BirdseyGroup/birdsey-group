@@ -103,14 +103,6 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
               >
                 {email}
               </TextLink>
-              <TextLink
-                href="#contact"
-                className={styles.navigationPill}
-                onClick={(e) => handleNavClick("#contact", e)}
-                data-selected={activePage === "contact" ? "" : undefined}
-              >
-                Contact Form
-              </TextLink>
             </Flex>
           </Flex>
         </div>

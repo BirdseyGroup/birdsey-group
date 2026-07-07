@@ -3,7 +3,6 @@
   "slug": "relationship-driven-performance",
   "date": "2026-05-01",
   "category": "RELATIONSHIP STANDARD INSIGHT",
-  "image": "/images/blog/relationship-driven-performance.jpg",
   "excerpt": "Large firms rely on systems and silos. Birdsey relies on relationships. Clients know who to call. They get answers fast.",
   "body": {
     "type": "root",
@@ -15,7 +14,8 @@
             "type": "text",
             "text": "They know the work won't get lost in layers of process or cross-department handoffs."
           }
-        ]
+        ],
+        "id": "MlVGF-NGCD"
       },
       {
         "type": "p",
@@ -24,7 +24,8 @@
             "type": "text",
             "text": "They know communication will be clear."
           }
-        ]
+        ],
+        "id": "S5dMnCkLsc"
       },
       {
         "type": "p",
@@ -33,7 +34,8 @@
             "type": "text",
             "text": "That familiarity reduces friction, accelerates decisions, and strengthens trust."
           }
-        ]
+        ],
+        "id": "ukfavGRbU-"
       },
       {
         "type": "p",
@@ -42,7 +44,8 @@
             "type": "text",
             "text": "It's not softer than analytics. It's stronger than them."
           }
-        ]
+        ],
+        "id": "_YuOVfJNuH"
       },
       {
         "type": "p",
@@ -51,7 +54,8 @@
             "type": "text",
             "text": "Relationships are operational infrastructure."
           }
-        ]
+        ],
+        "id": "VdU9q4AdkM"
       },
       {
         "type": "p",
@@ -61,9 +65,11 @@
             "text": "And Birdsey treats them that way.",
             "bold": true
           }
-        ]
+        ],
+        "id": "K9klPQgn7F"
       }
     ]
   },
+  "image": "/images/blog/relationship-driven-performance.jpg",
   "order": 3
 }

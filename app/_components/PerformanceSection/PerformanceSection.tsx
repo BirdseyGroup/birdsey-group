@@ -17,10 +17,17 @@ interface Stat {
 
 interface PerformanceSectionProps {
   title: string;
+  titleTinaField?: string;
   stats: Stat[];
+  statsTinaFields?: Array<{ value?: string; label?: string }>;
 }
 
-export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
+export function PerformanceSection({
+  title,
+  titleTinaField,
+  stats,
+  statsTinaFields,
+}: PerformanceSectionProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +80,11 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
   return (
     <Section className={styles.performance}>
       <Flex direction="column" gap="1200" alignSecondary="center">
-        <h2 className={sharedStyles.sectionTitle} ref={titleRef}>
+        <h2
+          className={sharedStyles.sectionTitle}
+          ref={titleRef}
+          data-tina-field={titleTinaField}
+        >
           {title}
         </h2>
         <div className={styles.performanceInner} ref={statsRef}>
@@ -81,13 +92,19 @@ export function PerformanceSection({ title, stats }: PerformanceSectionProps) {
             {stats.map((stat, i) => (
               <FlexItem key={i} className={styles.performanceItem}>
                 <Flex direction="column" gap="400" alignSecondary="center">
-                  <div className={sharedStyles.subtitle}>{stat.value}</div>
+                  <div
+                    className={sharedStyles.subtitle}
+                    data-tina-field={statsTinaFields?.[i]?.value}
+                  >
+                    {stat.value}
+                  </div>
                   <div className={sharedStyles.divider} />
                   <p
                     className={clsx(
                       sharedStyles.subheading,
                       sharedStyles.subheadingUppercase,
                     )}
+                    data-tina-field={statsTinaFields?.[i]?.label}
                   >
                     {stat.label}
                   </p>

@@ -1,0 +1,1 @@
+export { CustomPageContent } from "./CustomPageContent";

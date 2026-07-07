@@ -1,4 +1,5 @@
-import { defineConfig } from "tinacms";
+import { createElement } from "react";
+import { defineConfig, type TinaField } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -6,6 +7,314 @@ const branch =
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
   "main";
+
+// Shows the Insight's thumbnail, title, and a truncated excerpt in the
+// reference picker dropdown, instead of Tina's default of the raw file path.
+const insightOptionComponent = (props: Record<string, unknown>) => {
+  const title =
+    (props?.title as string | undefined) ||
+    (props?._sys as { filename?: string } | undefined)?.filename ||
+    "Untitled";
+  const excerpt = props?.excerpt as string | undefined;
+  const image = props?.image as string | undefined;
+  const truncated =
+    excerpt && excerpt.length > 80
+      ? `${excerpt.slice(0, 80).trimEnd()}…`
+      : excerpt;
+
+  const textColumn = createElement(
+    "div",
+    undefined,
+    createElement("div", undefined, title),
+    truncated
+      ? createElement(
+          "div",
+          { style: { fontSize: "0.8em", color: "#6b7280", marginTop: 2 } },
+          truncated
+        )
+      : undefined
+  );
+
+  if (!image) return textColumn;
+
+  return createElement(
+    "div",
+    { style: { display: "flex", alignItems: "center", gap: 10 } },
+    createElement("img", {
+      src: image,
+      alt: "",
+      style: {
+        width: 40,
+        height: 40,
+        objectFit: "cover",
+        borderRadius: 4,
+        flexShrink: 0,
+      },
+    }),
+    textColumn
+  );
+};
+
+// Shared field shapes for section types that appear both on the Home Page
+// (fixed fields) and as blocks in the flexible Pages collection. Defined
+// once here so the two stay in sync instead of drifting apart.
+const heroSectionFields: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "subtitle",
+    label: "Subtitle",
+    required: true,
+  },
+  {
+    type: "object",
+    name: "primaryButton",
+    label: "Primary Button",
+    fields: [
+      {
+        type: "string",
+        name: "text",
+        label: "Text",
+      },
+      {
+        type: "string",
+        name: "href",
+        label: "Link",
+      },
+    ],
+  },
+  {
+    type: "object",
+    name: "secondaryButton",
+    label: "Secondary Button",
+    fields: [
+      {
+        type: "string",
+        name: "text",
+        label: "Text",
+      },
+      {
+        type: "string",
+        name: "href",
+        label: "Link",
+      },
+    ],
+  },
+];
+
+const subHeroSectionFields: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "description",
+    label: "Description",
+    required: true,
+    ui: {
+      component: "textarea",
+    },
+  },
+  {
+    type: "object",
+    name: "link",
+    label: "Link",
+    description:
+      "Used when \"Link to a Post\" below is left empty — for external links or in-page anchors like #services.",
+    fields: [
+      {
+        type: "string",
+        name: "text",
+        label: "Text",
+      },
+      {
+        type: "string",
+        name: "href",
+        label: "URL",
+      },
+    ],
+  },
+  {
+    type: "reference",
+    name: "postReference",
+    label: "Link to a Post",
+    description:
+      "Optional — pick an Insights article to link to instead of the manual Link above. Takes precedence over Link when set.",
+    collections: ["insight"],
+    ui: { optionComponent: insightOptionComponent },
+  },
+];
+
+const affiliatesSectionFields: TinaField[] = [
+  {
+    type: "string",
+    name: "sectionTitle",
+    label: "Section Title",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "sectionHeading",
+    label: "Services Section Heading",
+    description: "Heading for the scrolling brand showcase (Home Page only).",
+  },
+  {
+    type: "object",
+    name: "items",
+    label: "Affiliate Companies",
+    list: true,
+    fields: [
+      {
+        type: "string",
+        name: "title",
+        label: "Company Title",
+        required: true,
+      },
+      {
+        type: "string",
+        name: "subtitle",
+        label: "Subtitle",
+        required: true,
+      },
+      {
+        type: "string",
+        name: "description",
+        label: "Description",
+        required: true,
+        ui: {
+          component: "textarea",
+        },
+      },
+      {
+        type: "image",
+        name: "logo",
+        label: "Logo Image",
+        required: true,
+      },
+      {
+        type: "image",
+        name: "slideImage",
+        label: "Slide Image",
+        required: true,
+      },
+      {
+        type: "string",
+        name: "website",
+        label: "Website URL",
+        required: true,
+      },
+    ],
+  },
+];
+
+const newsSectionFields: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Section Title",
+    required: true,
+  },
+  {
+    type: "object",
+    name: "articles",
+    label: "Articles",
+    list: true,
+    ui: {
+      itemProps: (item) => ({
+        label:
+          item?.title ||
+          (typeof item?.postReference === "string"
+            ? item.postReference.split("/").pop()?.replace(/\.json$/, "")
+            : undefined) ||
+          "Untitled Article",
+      }),
+    },
+    fields: [
+      {
+        type: "reference",
+        name: "postReference",
+        label: "Insights Article",
+        description:
+          "Pick an Insights article to pull its date/category/title/excerpt/image/link from automatically. Any field filled in manually below overrides that article's value.",
+        collections: ["insight"],
+        ui: { optionComponent: insightOptionComponent },
+      },
+      {
+        type: "string",
+        name: "date",
+        label: "Date",
+      },
+      {
+        type: "boolean",
+        name: "hideDate",
+        label: "Hide date on card",
+      },
+      {
+        type: "string",
+        name: "category",
+        label: "Category",
+      },
+      {
+        type: "string",
+        name: "title",
+        label: "Title",
+      },
+      {
+        type: "string",
+        name: "excerpt",
+        label: "Excerpt",
+        ui: {
+          component: "textarea",
+        },
+      },
+      {
+        type: "image",
+        name: "image",
+        label: "Article Image",
+      },
+      {
+        type: "string",
+        name: "url",
+        label: "Article URL",
+      },
+    ],
+  },
+];
+
+const contactSectionFields: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Section Title",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "formTitle",
+    label: "Form Title",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "formDescription",
+    label: "Form Description",
+    required: true,
+  },
+  {
+    type: "string",
+    name: "submitButtonText",
+    label: "Submit Button Text",
+    required: true,
+  },
+];
 
 export default defineConfig({
   branch,
@@ -477,13 +786,16 @@ export default defineConfig({
         ],
       },
       {
-        name: "page",
-        label: "Pages",
+        name: "homePage",
+        label: "Home Page",
         path: "content/pages",
         match: {
           exclude: "{about,birdsey-standard}",
         },
         format: "json",
+        ui: {
+          router: () => "/",
+        },
         fields: [
           {
             type: "string",
@@ -496,153 +808,19 @@ export default defineConfig({
             type: "object",
             name: "hero",
             label: "Hero Section",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "subtitle",
-                label: "Subtitle",
-                required: true,
-              },
-              {
-                type: "object",
-                name: "primaryButton",
-                label: "Primary Button",
-                fields: [
-                  {
-                    type: "string",
-                    name: "text",
-                    label: "Text",
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "Link",
-                  },
-                ],
-              },
-              {
-                type: "object",
-                name: "secondaryButton",
-                label: "Secondary Button",
-                fields: [
-                  {
-                    type: "string",
-                    name: "text",
-                    label: "Text",
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "Link",
-                  },
-                ],
-              },
-            ],
+            fields: heroSectionFields,
           },
           {
             type: "object",
             name: "subHero",
             label: "Sub Hero Section",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description",
-                required: true,
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "object",
-                name: "link",
-                label: "Link",
-                fields: [
-                  {
-                    type: "string",
-                    name: "text",
-                    label: "Text",
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "URL",
-                  },
-                ],
-              },
-            ],
+            fields: subHeroSectionFields,
           },
           {
             type: "object",
             name: "affiliates",
             label: "Affiliates",
-            fields: [
-              {
-                type: "string",
-                name: "sectionTitle",
-                label: "Section Title",
-                required: true,
-              },
-              {
-                type: "object",
-                name: "items",
-                label: "Affiliate Companies",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "title",
-                    label: "Company Title",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "subtitle",
-                    label: "Subtitle",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "description",
-                    label: "Description",
-                    required: true,
-                    ui: {
-                      component: "textarea",
-                    },
-                  },
-                  {
-                    type: "image",
-                    name: "logo",
-                    label: "Logo Image",
-                    required: true,
-                  },
-                  {
-                    type: "image",
-                    name: "slideImage",
-                    label: "Slide Image",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "website",
-                    label: "Website URL",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+            fields: affiliatesSectionFields,
           },
           {
             type: "object",
@@ -681,65 +859,7 @@ export default defineConfig({
             type: "object",
             name: "news",
             label: "News Section",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Section Title",
-                required: true,
-              },
-              {
-                type: "object",
-                name: "articles",
-                label: "Articles",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "date",
-                    label: "Date",
-                    required: true,
-                  },
-                  {
-                    type: "boolean",
-                    name: "hideDate",
-                    label: "Hide date on card",
-                  },
-                  {
-                    type: "string",
-                    name: "category",
-                    label: "Category",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "title",
-                    label: "Title",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "excerpt",
-                    label: "Excerpt",
-                    required: true,
-                    ui: {
-                      component: "textarea",
-                    },
-                  },
-                  {
-                    type: "image",
-                    name: "image",
-                    label: "Article Image",
-                  },
-                  {
-                    type: "string",
-                    name: "url",
-                    label: "Article URL",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+            fields: newsSectionFields,
           },
           {
             type: "object",
@@ -778,30 +898,85 @@ export default defineConfig({
             type: "object",
             name: "contact",
             label: "Contact Section",
-            fields: [
+            fields: contactSectionFields,
+          },
+        ],
+      },
+      {
+        name: "page",
+        label: "Pages",
+        path: "content/custom-pages",
+        format: "json",
+        ui: {
+          router: ({ document }) => {
+            const url = (document as unknown as { url?: string }).url;
+            return `/${url || document._sys.breadcrumbs.join("/")}`;
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "url",
+            label: "URL",
+            description:
+              'The page\'s live URL path, without a leading slash (e.g. "thanks" for /thanks).',
+            required: true,
+          },
+          {
+            type: "string",
+            name: "metaDescription",
+            label: "Meta Description",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "object",
+            name: "sections",
+            label: "Sections",
+            list: true,
+            templates: [
               {
-                type: "string",
-                name: "title",
-                label: "Section Title",
-                required: true,
+                name: "hero",
+                label: "Hero",
+                // Custom pages get an extra Background Image option on top
+                // of the shared fields — the Home Page hero always uses its
+                // component's built-in default image instead.
+                fields: [
+                  ...heroSectionFields,
+                  {
+                    type: "image",
+                    name: "backgroundImage",
+                    label: "Background Image",
+                  },
+                ],
               },
               {
-                type: "string",
-                name: "formTitle",
-                label: "Form Title",
-                required: true,
+                name: "subHero",
+                label: "Sub Hero",
+                fields: subHeroSectionFields,
               },
               {
-                type: "string",
-                name: "formDescription",
-                label: "Form Description",
-                required: true,
+                name: "affiliates",
+                label: "Affiliates",
+                fields: affiliatesSectionFields,
               },
               {
-                type: "string",
-                name: "submitButtonText",
-                label: "Submit Button Text",
-                required: true,
+                name: "news",
+                label: "News",
+                fields: newsSectionFields,
+              },
+              {
+                name: "contact",
+                label: "Contact",
+                fields: contactSectionFields,
               },
             ],
           },
@@ -924,9 +1099,13 @@ export default defineConfig({
       },
       {
         name: "insight",
-        label: "Insights Articles",
+        label: "Articles",
         path: "content/insights",
         format: "json",
+        ui: {
+          router: ({ document }) =>
+            `/insights/${document._sys.breadcrumbs.join("/")}`,
+        },
         fields: [
           {
             type: "string",
@@ -967,6 +1146,7 @@ export default defineConfig({
             name: "body",
             label: "Article Body",
             required: true,
+            parser: { type: "slatejson" },
           },
           {
             type: "image",
@@ -1011,6 +1191,7 @@ export default defineConfig({
             name: "body",
             label: "Body",
             required: true,
+            parser: { type: "slatejson" },
           },
         ],
       },

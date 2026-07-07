@@ -1,0 +1,16 @@
+{
+  "title": "Test page",
+  "url": "test-page",
+  "metaDescription": "This is a test page",
+  "sections": [
+    {
+      "title": "Hero here!",
+      "subtitle": "Subtitle here!",
+      "primaryButton": {
+        "text": "Click me",
+        "href": "https://visualboston.com"
+      },
+      "_template": "hero"
+    }
+  ]
+}

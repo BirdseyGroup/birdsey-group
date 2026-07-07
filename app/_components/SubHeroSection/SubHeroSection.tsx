@@ -15,13 +15,87 @@ interface SubHeroLink {
   href?: string;
 }
 
-interface SubHeroSectionProps {
+interface SubHeroPostReference {
   title: string;
-  description: string;
-  link?: SubHeroLink;
+  _sys: { filename: string };
 }
 
-export function SubHeroSection({ title, description, link }: SubHeroSectionProps) {
+function filenameToTitle(path: string) {
+  const slug = path.split("/").pop()?.replace(/\.json$/, "") ?? path;
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// A SubHero link can point at a manually-entered URL, or at an Insights
+// article picked via a reference field — the reference wins when set. Shared
+// between the Home Page (app/_components/HomePageContent) and custom Pages
+// blocks (app/_components/PageSections) so both resolve it identically.
+//
+// While actively editing in the live preview, Tina patches a reference
+// field with the raw, unresolved file path (a string) rather than the full
+// referenced document — only a saved-and-requeried page gets the resolved
+// object — so `postReference` here can be either shape.
+export function resolveSubHeroLink({
+  link,
+  postReference,
+  linkTextTinaField,
+  postReferenceTinaField,
+}: {
+  link?: { text?: string | null; href?: string | null } | null;
+  postReference?: SubHeroPostReference | string | null;
+  linkTextTinaField?: string;
+  postReferenceTinaField?: string;
+}): { link?: SubHeroLink; tinaField?: string } {
+  if (typeof postReference === "string") {
+    const filename = postReference.split("/").pop()?.replace(/\.json$/, "");
+    return {
+      link: {
+        text: link?.text || `Read: ${filenameToTitle(postReference)}`,
+        href: filename ? `/insights/${filename}` : undefined,
+      },
+      tinaField: link?.text ? linkTextTinaField : postReferenceTinaField,
+    };
+  }
+
+  if (postReference) {
+    return {
+      link: {
+        text: link?.text || `Read: ${postReference.title}`,
+        href: `/insights/${postReference._sys.filename}`,
+      },
+      tinaField: link?.text ? linkTextTinaField : postReferenceTinaField,
+    };
+  }
+
+  if (link) {
+    return {
+      link: {
+        text: link.text ?? undefined,
+        href: link.href ?? undefined,
+      },
+      tinaField: linkTextTinaField,
+    };
+  }
+
+  return {};
+}
+
+interface SubHeroSectionProps {
+  title: string;
+  titleTinaField?: string;
+  description: string;
+  descriptionTinaField?: string;
+  link?: SubHeroLink;
+  linkTextTinaField?: string;
+}
+
+export function SubHeroSection({
+  title,
+  titleTinaField,
+  description,
+  descriptionTinaField,
+  link,
+  linkTextTinaField,
+}: SubHeroSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,16 +135,27 @@ export function SubHeroSection({ title, description, link }: SubHeroSectionProps
       <div ref={sectionRef}>
         <Flex container gap="600" alignSecondary="center">
           <FlexItem>
-            <TextSubtitle elementType="h2" className={styles.subtitle}>
+            <TextSubtitle
+              elementType="h2"
+              className={styles.subtitle}
+              data-tina-field={titleTinaField}
+            >
               {title}
             </TextSubtitle>
           </FlexItem>
           <FlexItem size="major">
-            <TextSubheading className={styles.subheading}>
+            <TextSubheading
+              className={styles.subheading}
+              data-tina-field={descriptionTinaField}
+            >
               {description}
             </TextSubheading>
             {link?.href && link?.text && (
-              <Link href={link.href} className={styles.link}>
+              <Link
+                href={link.href}
+                className={styles.link}
+                data-tina-field={linkTextTinaField}
+              >
                 {link.text}
                 <span aria-hidden="true" className={styles.linkArrow}>
                   →

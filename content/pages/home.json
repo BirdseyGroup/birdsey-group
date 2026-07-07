@@ -91,29 +91,13 @@
     "title": "Insights & News",
     "articles": [
       {
-        "date": "2026-05-07",
-        "hideDate": true,
-        "category": "INSIGHT",
-        "title": "Execution Is the Standard",
-        "excerpt": "Commercial real estate does not lack intelligence. What it lacks, especially in volatile cycles, is disciplined execution.",
-        "image": "/images/Execution%20Is%20the%20Standard%20QUART.png",
-        "url": "/insights/execution-is-the-standard"
+        "postReference": "content/insights/execution-is-the-standard.json"
       },
       {
-        "date": "2026-05-01",
-        "category": "RELATIONSHIP STANDARD INSIGHT",
-        "title": "Why Relationship-Driven Performance Outperforms Scale",
-        "excerpt": "Large firms rely on systems and silos. Birdsey relies on relationships. Clients know who to call. They get answers fast.",
-        "image": "/images/blog/relationship-driven-performance.jpg",
-        "url": "/insights/relationship-driven-performance"
+        "postReference": "content/insights/relationship-driven-performance.json"
       },
       {
-        "date": "2026-02-18",
-        "category": "EXECUTION INSIGHT",
-        "title": "Strategic Leadership Appointments Strengthen Birdsey's Execution Capacity",
-        "excerpt": "Birdsey Group continues to strengthen its execution capabilities with the addition of two seasoned leaders to our Atlanta headquarters.",
-        "image": "/images/blog/strategic-leadership-appointments.jpg",
-        "url": "/insights/strategic-leadership-appointments"
+        "postReference": "content/insights/strategic-leadership-appointments.json"
       }
     ]
   },

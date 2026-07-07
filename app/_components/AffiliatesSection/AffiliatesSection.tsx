@@ -21,12 +21,16 @@ interface Affiliate {
 
 interface AffiliatesSectionProps {
   sectionTitle: string;
+  sectionTitleTinaField?: string;
   items: Affiliate[];
+  itemsTinaFields?: Array<{ logo?: string }>;
 }
 
 export function AffiliatesSection({
   sectionTitle,
+  sectionTitleTinaField,
   items,
+  itemsTinaFields,
 }: AffiliatesSectionProps) {
   const logoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -74,7 +78,12 @@ export function AffiliatesSection({
   return (
     <Section id="affiliates" className={styles.affiliates}>
       <Flex direction="column" gap="1200" alignSecondary="center">
-        <h2 className={sharedStyles.sectionTitle}>{sectionTitle}</h2>
+        <h2
+          className={sharedStyles.sectionTitle}
+          data-tina-field={sectionTitleTinaField}
+        >
+          {sectionTitle}
+        </h2>
         <div className={styles.affiliatesLogos}>
           {items.map((affiliate, i) => (
             <div
@@ -89,6 +98,7 @@ export function AffiliatesSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.affiliateLink}
+                data-tina-field={itemsTinaFields?.[i]?.logo}
               >
                 <Image
                   src={affiliate.logo}

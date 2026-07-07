@@ -262,21 +262,39 @@
             "text": "The Birdsey Group, LLC"
           },
           {
-            "type": "break"
+            "type": "break",
+            "children": [
+              {
+                "type": "text",
+                "text": ""
+              }
+            ]
           },
           {
             "type": "text",
             "text": "3565 Piedmont Road N.E., Piedmont Center, Building 4, Suite 460"
           },
           {
-            "type": "break"
+            "type": "break",
+            "children": [
+              {
+                "type": "text",
+                "text": ""
+              }
+            ]
           },
           {
             "type": "text",
             "text": "Atlanta, Georgia 30305"
           },
           {
-            "type": "break"
+            "type": "break",
+            "children": [
+              {
+                "type": "text",
+                "text": ""
+              }
+            ]
           },
           {
             "type": "a",
@@ -289,7 +307,13 @@
             ]
           },
           {
-            "type": "break"
+            "type": "break",
+            "children": [
+              {
+                "type": "text",
+                "text": ""
+              }
+            ]
           },
           {
             "type": "text",

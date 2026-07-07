@@ -11,25 +11,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface HeroSectionProps {
   title: string;
+  titleTinaField?: string;
   subtitle: string;
+  subtitleTinaField?: string;
   backgroundImage?: string;
   primaryButton?: {
     text?: string | null;
     href?: string | null;
   } | null;
+  primaryButtonTextTinaField?: string;
   secondaryButton?: {
     text?: string | null;
     href?: string | null;
   } | null;
+  secondaryButtonTextTinaField?: string;
   variant?: "default" | "simple";
 }
 
 export function HeroSection({
   title,
+  titleTinaField,
   subtitle,
+  subtitleTinaField,
   backgroundImage,
   primaryButton,
+  primaryButtonTextTinaField,
   secondaryButton,
+  secondaryButtonTextTinaField,
   variant = "default",
 }: HeroSectionProps) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -236,10 +244,18 @@ export function HeroSection({
         style={heroStyle}
       >
         <div ref={contentRef} className={styles.heroContentInner}>
-          <h1 className={styles.heroTitle} ref={titleRef}>
+          <h1
+            className={styles.heroTitle}
+            ref={titleRef}
+            data-tina-field={titleTinaField}
+          >
             {title}
           </h1>
-          <p className={styles.heroSubtitle} ref={subtitleRef}>
+          <p
+            className={styles.heroSubtitle}
+            ref={subtitleRef}
+            data-tina-field={subtitleTinaField}
+          >
             {subtitle}
           </p>
           {hasButtons && (
@@ -250,6 +266,7 @@ export function HeroSection({
                     variant="primary"
                     size="medium"
                     href={primaryButton.href || undefined}
+                    data-tina-field={primaryButtonTextTinaField}
                   >
                     {primaryButton.text}
                   </Button>
@@ -259,6 +276,7 @@ export function HeroSection({
                     variant="neutral"
                     size="medium"
                     href={secondaryButton.href || undefined}
+                    data-tina-field={secondaryButtonTextTinaField}
                   >
                     {secondaryButton.text}
                   </Button>
