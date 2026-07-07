@@ -38,6 +38,10 @@
     align-items: stretch;
   }
 
+  .message {
+    flex: none;
+  }
+
   .actions {
     justify-content: flex-end;
   }
