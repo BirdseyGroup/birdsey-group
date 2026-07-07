@@ -131,6 +131,7 @@
 
 .mobileNavigationPill[data-selected] {
   border-left-color: var(--sds-color-background-brand-default);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mobileNavigationPill[data-hovered]:not([data-selected]) {
