@@ -80,10 +80,14 @@ export function renderPageSection(section: PageSectionData, key: number) {
     case "PageSectionsAffiliates": {
       // Each item references an Affiliate Company document, expanded to the
       // full record by the generated query. During live editing the value
-      // can briefly be a raw path string until Tina re-expands it; skip those.
+      // can briefly be a raw path string or an unresolved/empty object (e.g.
+      // a just-added row before a company is picked) — skip anything without
+      // the fields the cards render.
       const affiliateItems = (section.items ?? []).flatMap((item) => {
         const company = item?.company;
-        if (!item || !company || typeof company !== "object") return [];
+        if (!item || !company || typeof company !== "object" || !company.logo) {
+          return [];
+        }
         return [{ item, company }];
       });
       return (
