@@ -8,6 +8,13 @@ const branch =
   process.env.HEAD ||
   "main";
 
+// Turns a human-entered value into a URL-safe file name.
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 // Shows the Insight's thumbnail, title, and a truncated excerpt in the
 // reference picker dropdown, instead of Tina's default of the raw file path.
 const insightOptionComponent = (props: Record<string, unknown>) => {
@@ -56,8 +63,8 @@ const insightOptionComponent = (props: Record<string, unknown>) => {
 };
 
 // Shared field shapes for section types that appear both on the Home Page
-// (fixed fields) and as blocks in the flexible Pages collection. Defined
-// once here so the two stay in sync instead of drifting apart.
+// (fixed fields) and as blocks in the flexible Custom Pages collection.
+// Defined once here so the two stay in sync instead of drifting apart.
 const heroSectionFields: TinaField[] = [
   {
     type: "string",
@@ -147,7 +154,7 @@ const subHeroSectionFields: TinaField[] = [
     name: "postReference",
     label: "Link to a Post",
     description:
-      "Optional — pick an Insights article to link to instead of the manual Link above. Takes precedence over Link when set.",
+      "Optional — pick a News article to link to instead of the manual Link above. Takes precedence over Link when set.",
     collections: ["insight"],
     ui: { optionComponent: insightOptionComponent },
   },
@@ -171,6 +178,11 @@ const affiliatesSectionFields: TinaField[] = [
     name: "items",
     label: "Affiliate Companies",
     list: true,
+    ui: {
+      itemProps: (item) => ({
+        label: item?.title || "Affiliate Company",
+      }),
+    },
     fields: [
       {
         type: "string",
@@ -241,9 +253,9 @@ const newsSectionFields: TinaField[] = [
       {
         type: "reference",
         name: "postReference",
-        label: "Insights Article",
+        label: "News Article",
         description:
-          "Pick an Insights article to pull its date/category/title/excerpt/image/link from automatically. Any field filled in manually below overrides that article's value.",
+          "Pick a News article to pull its date/category/title/excerpt/image/link from automatically. Any field filled in manually below overrides that article's value.",
         collections: ["insight"],
         ui: { optionComponent: insightOptionComponent },
       },
@@ -338,14 +350,19 @@ export default defineConfig({
     ? "http://localhost:4001/graphql"
     : undefined,
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
+  // Collection order here is the order shown in the admin sidebar.
   schema: {
     collections: [
       {
-        name: "global",
-        label: "Global Settings",
-        path: "content/global",
+        name: "homePage",
+        label: "Home Page",
+        path: "content/pages",
+        match: {
+          include: "home",
+        },
         format: "json",
         ui: {
+          router: () => "/",
           allowedActions: {
             create: false,
             delete: false,
@@ -353,26 +370,65 @@ export default defineConfig({
         },
         fields: [
           {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
             type: "object",
-            name: "navigation",
-            label: "Navigation",
+            name: "hero",
+            label: "Hero Section",
+            fields: heroSectionFields,
+          },
+          {
+            type: "object",
+            name: "subHero",
+            label: "Sub Hero Section",
+            fields: subHeroSectionFields,
+          },
+          {
+            type: "object",
+            name: "affiliates",
+            label: "Affiliates",
+            fields: affiliatesSectionFields,
+          },
+          {
+            type: "object",
+            name: "performance",
+            label: "Performance Section",
             fields: [
               {
+                type: "string",
+                name: "title",
+                label: "Section Title",
+                required: true,
+              },
+              {
                 type: "object",
-                name: "items",
-                label: "Navigation Items",
+                name: "stats",
+                label: "Statistics",
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label:
+                      item?.value && item?.label
+                        ? `${item.value} ${item.label}`
+                        : item?.label || "Statistic",
+                  }),
+                },
                 fields: [
                   {
                     type: "string",
-                    name: "label",
-                    label: "Label",
+                    name: "value",
+                    label: "Value",
                     required: true,
                   },
                   {
                     type: "string",
-                    name: "href",
-                    label: "Link",
+                    name: "label",
+                    label: "Label",
                     required: true,
                   },
                 ],
@@ -381,112 +437,48 @@ export default defineConfig({
           },
           {
             type: "object",
-            name: "footer",
-            label: "Footer",
+            name: "news",
+            label: "News Section",
+            fields: newsSectionFields,
+          },
+          {
+            type: "object",
+            name: "careers",
+            label: "Careers Section",
             fields: [
               {
                 type: "string",
-                name: "phone",
-                label: "Phone Number",
+                name: "title",
+                label: "Title",
                 required: true,
+              },
+              {
+                type: "string",
+                name: "content",
+                label: "Content",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
               },
               {
                 type: "string",
                 name: "email",
-                label: "Email Address",
+                label: "Careers Email",
                 required: true,
               },
               {
-                type: "string",
-                name: "address",
-                label: "Address",
-                required: true,
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "string",
-                name: "copyright",
-                label: "Copyright Text",
-                required: true,
-              },
-              {
-                type: "object",
-                name: "footerNavExtras",
-                label: "Footer Company Links (extras, below main nav)",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "label",
-                    label: "Label",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "URL",
-                    required: true,
-                  },
-                ],
-              },
-              {
-                type: "object",
-                name: "footerLinks",
-                label: "Footer Legal Links (bottom row)",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "label",
-                    label: "Label",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "href",
-                    label: "URL",
-                    required: true,
-                  },
-                  {
-                    type: "boolean",
-                    name: "openCookieSettings",
-                    label: "Opens cookie settings (instead of linking)",
-                    description:
-                      "If checked, clicking this link reopens the cookie consent banner instead of navigating to the URL above.",
-                  },
-                ],
+                type: "image",
+                name: "image",
+                label: "Section Image",
               },
             ],
           },
           {
             type: "object",
-            name: "cookieBanner",
-            label: "Cookie Consent Banner",
-            fields: [
-              {
-                type: "string",
-                name: "message",
-                label: "Message",
-                required: true,
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "string",
-                name: "acceptLabel",
-                label: "Accept Button Label",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "declineLabel",
-                label: "Decline Button Label",
-                required: true,
-              },
-            ],
+            name: "contact",
+            label: "Contact Section",
+            fields: contactSectionFields,
           },
         ],
       },
@@ -547,6 +539,11 @@ export default defineConfig({
             name: "accordionItems",
             label: "Accordion Sections",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title || "Accordion Section",
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -628,6 +625,11 @@ export default defineConfig({
             name: "sections",
             label: "Body Sections",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.heading || "Body Section",
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -666,6 +668,11 @@ export default defineConfig({
             name: "principles",
             label: "Principles",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.name || "Principle",
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -689,6 +696,11 @@ export default defineConfig({
             name: "commitments",
             label: "Commitments",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.heading || "Commitment",
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -712,6 +724,11 @@ export default defineConfig({
             name: "infoBlocks",
             label: "Info Blocks",
             list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.heading || "Info Block",
+              }),
+            },
             fields: [
               {
                 type: "string",
@@ -786,131 +803,20 @@ export default defineConfig({
         ],
       },
       {
-        name: "homePage",
-        label: "Home Page",
-        path: "content/pages",
-        match: {
-          exclude: "{about,birdsey-standard}",
-        },
-        format: "json",
-        ui: {
-          router: () => "/",
-        },
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "object",
-            name: "hero",
-            label: "Hero Section",
-            fields: heroSectionFields,
-          },
-          {
-            type: "object",
-            name: "subHero",
-            label: "Sub Hero Section",
-            fields: subHeroSectionFields,
-          },
-          {
-            type: "object",
-            name: "affiliates",
-            label: "Affiliates",
-            fields: affiliatesSectionFields,
-          },
-          {
-            type: "object",
-            name: "performance",
-            label: "Performance Section",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Section Title",
-                required: true,
-              },
-              {
-                type: "object",
-                name: "stats",
-                label: "Statistics",
-                list: true,
-                fields: [
-                  {
-                    type: "string",
-                    name: "value",
-                    label: "Value",
-                    required: true,
-                  },
-                  {
-                    type: "string",
-                    name: "label",
-                    label: "Label",
-                    required: true,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            type: "object",
-            name: "news",
-            label: "News Section",
-            fields: newsSectionFields,
-          },
-          {
-            type: "object",
-            name: "careers",
-            label: "Careers Section",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "content",
-                label: "Content",
-                required: true,
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "string",
-                name: "email",
-                label: "Careers Email",
-                required: true,
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Section Image",
-              },
-            ],
-          },
-          {
-            type: "object",
-            name: "contact",
-            label: "Contact Section",
-            fields: contactSectionFields,
-          },
-        ],
-      },
-      {
         name: "page",
-        label: "Pages",
+        label: "Custom Pages",
         path: "content/custom-pages",
         format: "json",
         ui: {
           router: ({ document }) => {
             const url = (document as unknown as { url?: string }).url;
             return `/${url || document._sys.breadcrumbs.join("/")}`;
+          },
+          filename: {
+            slugify: (values) =>
+              slugify(
+                (values?.url as string) || (values?.title as string) || ""
+              ),
           },
         },
         fields: [
@@ -983,43 +889,70 @@ export default defineConfig({
         ],
       },
       {
-        name: "affiliate",
-        label: "Affiliates",
-        path: "content/affiliates",
+        name: "insight",
+        label: "News Articles",
+        path: "content/insights",
         format: "json",
+        ui: {
+          router: ({ document }) =>
+            `/insights/${document._sys.breadcrumbs.join("/")}`,
+          filename: {
+            slugify: (values) => slugify((values?.title as string) || ""),
+            description:
+              "The file name becomes the article's web address: /insights/<file-name>",
+          },
+        },
         fields: [
           {
             type: "string",
-            name: "name",
-            label: "Company Name",
+            name: "title",
+            label: "Title",
             isTitle: true,
             required: true,
           },
           {
             type: "string",
-            name: "shortName",
-            label: "Short Name (for tabs)",
+            name: "date",
+            label: "Date",
             required: true,
           },
           {
             type: "string",
-            name: "slug",
-            label: "Slug",
+            name: "category",
+            label: "Category",
             required: true,
+            options: [
+              "INSIGHT",
+              "EXECUTION INSIGHT",
+              "EXECUTION BRIEF",
+              "RELATIONSHIP STANDARD INSIGHT",
+            ],
           },
           {
             type: "string",
-            name: "description",
-            label: "Description",
+            name: "excerpt",
+            label: "Excerpt",
+            required: true,
             ui: {
               component: "textarea",
             },
           },
           {
+            type: "rich-text",
+            name: "body",
+            label: "Article Body",
+            required: true,
+            parser: { type: "slatejson" },
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Featured Image",
+          },
+          {
             type: "number",
             name: "order",
             label: "Display Order",
-            required: true,
           },
         ],
       },
@@ -1045,7 +978,9 @@ export default defineConfig({
           {
             type: "reference",
             name: "affiliate",
-            label: "Affiliate Company",
+            label: "Team Group",
+            description:
+              "Which About-page tab this person appears under.",
             required: true,
             collections: ["affiliate"],
           },
@@ -1098,65 +1033,45 @@ export default defineConfig({
         ],
       },
       {
-        name: "insight",
-        label: "Articles",
-        path: "content/insights",
+        name: "affiliate",
+        label: "Team Groups (About Page)",
+        path: "content/affiliates",
         format: "json",
-        ui: {
-          router: ({ document }) =>
-            `/insights/${document._sys.breadcrumbs.join("/")}`,
-        },
         fields: [
           {
             type: "string",
-            name: "title",
-            label: "Title",
+            name: "name",
+            label: "Group Name",
             isTitle: true,
             required: true,
           },
           {
             type: "string",
+            name: "shortName",
+            label: "Short Name (for tabs)",
+            required: true,
+          },
+          {
+            type: "string",
             name: "slug",
-            label: "URL Slug",
+            label: "Slug",
+            description:
+              "Must match this entry's file name; used to group team members into About-page tabs.",
             required: true,
           },
           {
             type: "string",
-            name: "date",
-            label: "Date",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "category",
-            label: "Category",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "excerpt",
-            label: "Excerpt",
-            required: true,
+            name: "description",
+            label: "Description",
             ui: {
               component: "textarea",
             },
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Article Body",
-            required: true,
-            parser: { type: "slatejson" },
-          },
-          {
-            type: "image",
-            name: "image",
-            label: "Featured Image",
-          },
-          {
             type: "number",
             name: "order",
             label: "Display Order",
+            required: true,
           },
         ],
       },
@@ -1192,6 +1107,171 @@ export default defineConfig({
             label: "Body",
             required: true,
             parser: { type: "slatejson" },
+          },
+        ],
+      },
+      {
+        name: "global",
+        label: "Global Settings",
+        path: "content/global",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "navigation",
+            label: "Navigation",
+            fields: [
+              {
+                type: "object",
+                name: "items",
+                label: "Navigation Items",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: item?.label || "Navigation Item",
+                  }),
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "Link",
+                    required: true,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "footer",
+            label: "Footer",
+            fields: [
+              {
+                type: "string",
+                name: "phone",
+                label: "Phone Number",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "email",
+                label: "Email Address",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "address",
+                label: "Address",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "string",
+                name: "copyright",
+                label: "Copyright Text",
+                required: true,
+              },
+              {
+                type: "object",
+                name: "footerNavExtras",
+                label: "Footer Company Links (extras, below main nav)",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: item?.label || "Footer Link",
+                  }),
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "URL",
+                    required: true,
+                  },
+                ],
+              },
+              {
+                type: "object",
+                name: "footerLinks",
+                label: "Footer Legal Links (bottom row)",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: item?.label || "Footer Link",
+                  }),
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Label",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "href",
+                    label: "URL",
+                    required: true,
+                  },
+                  {
+                    type: "boolean",
+                    name: "openCookieSettings",
+                    label: "Opens cookie settings (instead of linking)",
+                    description:
+                      "If checked, clicking this link reopens the cookie consent banner instead of navigating to the URL above.",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "cookieBanner",
+            label: "Cookie Consent Banner",
+            fields: [
+              {
+                type: "string",
+                name: "message",
+                label: "Message",
+                required: true,
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "string",
+                name: "acceptLabel",
+                label: "Accept Button Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "declineLabel",
+                label: "Decline Button Label",
+                required: true,
+              },
+            ],
           },
         ],
       },
