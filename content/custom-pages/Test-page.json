@@ -17,6 +17,9 @@
       "description": "Learn how we do xyx",
       "postReference": "content/insights/relationship-driven-performance.json",
       "_template": "subHero"
+    },
+    {
+      "_template": "affiliates"
     }
   ]
 }
