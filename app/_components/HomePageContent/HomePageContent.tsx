@@ -98,6 +98,22 @@ function RenderedHomePage({
       : undefined,
   });
   const affiliates = homePage.affiliates;
+  // Each item is a reference to an Affiliate Company document, expanded to
+  // the full record by the generated query. During live editing the value
+  // can briefly be a raw path string until Tina re-expands it; skip those.
+  const affiliateItems = (affiliates?.items ?? []).flatMap((item) => {
+    const company = item?.company;
+    if (!item || !company || typeof company !== "object") return [];
+    return [{ item, company }];
+  });
+  const affiliateCards = affiliateItems.map(({ company }) => ({
+    title: company.title,
+    subtitle: company.subtitle,
+    description: company.description,
+    logo: company.logo,
+    slideImage: company.slideImage,
+    website: company.website,
+  }));
   const performance = homePage.performance;
   const news = homePage.news;
   const resolvedNewsArticles = (news?.articles ?? [])
@@ -164,9 +180,9 @@ function RenderedHomePage({
           sectionTitleTinaField={
             affiliates ? tinaField(affiliates, "sectionTitle") : undefined
           }
-          items={affiliates?.items?.filter((item) => item != null) ?? []}
-          itemsTinaFields={affiliates?.items?.map((item) => ({
-            logo: item ? tinaField(item, "logo") : undefined,
+          items={affiliateCards}
+          itemsTinaFields={affiliateItems.map(({ item }) => ({
+            logo: tinaField(item, "company"),
           }))}
         />
         <BrandShowcase
@@ -174,11 +190,11 @@ function RenderedHomePage({
           headingTinaField={
             affiliates ? tinaField(affiliates, "sectionHeading") : undefined
           }
-          items={affiliates?.items?.filter((item) => item != null) ?? []}
-          itemsTinaFields={affiliates?.items?.map((item) => ({
-            title: item ? tinaField(item, "title") : undefined,
-            subtitle: item ? tinaField(item, "subtitle") : undefined,
-            description: item ? tinaField(item, "description") : undefined,
+          items={affiliateCards}
+          itemsTinaFields={affiliateItems.map(({ item }) => ({
+            title: tinaField(item, "company"),
+            subtitle: tinaField(item, "company"),
+            description: tinaField(item, "company"),
           }))}
         />
         <PerformanceSection

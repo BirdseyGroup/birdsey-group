@@ -62,6 +62,29 @@ const insightOptionComponent = (props: Record<string, unknown>) => {
   );
 };
 
+// Shows the affiliate company's logo and name in the reference picker
+// dropdown, instead of Tina's default of the raw file path.
+const affiliateCompanyOptionComponent = (props: Record<string, unknown>) => {
+  const name =
+    (props?.name as string | undefined) ||
+    (props?._sys as { filename?: string } | undefined)?.filename ||
+    "Untitled";
+  const logo = props?.logo as string | undefined;
+
+  if (!logo) return name;
+
+  return createElement(
+    "div",
+    { style: { display: "flex", alignItems: "center", gap: 10 } },
+    createElement("img", {
+      src: logo,
+      alt: "",
+      style: { width: 40, height: 40, objectFit: "contain", flexShrink: 0 },
+    }),
+    createElement("div", undefined, name)
+  );
+};
+
 // Shared field shapes for section types that appear both on the Home Page
 // (fixed fields) and as blocks in the flexible Custom Pages collection.
 // Defined once here so the two stay in sync instead of drifting apart.
@@ -177,51 +200,30 @@ const affiliatesSectionFields: TinaField[] = [
     type: "object",
     name: "items",
     label: "Affiliate Companies",
+    description:
+      "Which companies appear in this section, and in what order. Edit a company's logo, text, and links in the Affiliate Companies collection.",
     list: true,
     ui: {
-      itemProps: (item) => ({
-        label: item?.title || "Affiliate Company",
-      }),
+      itemProps: (item) => {
+        const filename =
+          typeof item?.company === "string"
+            ? item.company.split("/").pop()?.replace(/\.json$/, "")
+            : undefined;
+        return {
+          label: filename
+            ? filename.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase())
+            : "Affiliate Company",
+        };
+      },
     },
     fields: [
       {
-        type: "string",
-        name: "title",
-        label: "Company Title",
+        type: "reference",
+        name: "company",
+        label: "Company",
         required: true,
-      },
-      {
-        type: "string",
-        name: "subtitle",
-        label: "Subtitle",
-        required: true,
-      },
-      {
-        type: "string",
-        name: "description",
-        label: "Description",
-        required: true,
-        ui: {
-          component: "textarea",
-        },
-      },
-      {
-        type: "image",
-        name: "logo",
-        label: "Logo Image",
-        required: true,
-      },
-      {
-        type: "image",
-        name: "slideImage",
-        label: "Slide Image",
-        required: true,
-      },
-      {
-        type: "string",
-        name: "website",
-        label: "Website URL",
-        required: true,
+        collections: ["affiliateCompany"],
+        ui: { optionComponent: affiliateCompanyOptionComponent },
       },
     ],
   },
@@ -1028,6 +1030,68 @@ export default defineConfig({
             type: "number",
             name: "order",
             label: "Display Order",
+            required: true,
+          },
+        ],
+      },
+      {
+        name: "affiliateCompany",
+        label: "Affiliate Companies",
+        path: "content/affiliate-companies",
+        format: "json",
+        ui: {
+          filename: {
+            slugify: (values) => slugify((values?.name as string) || ""),
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Company Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Card Title",
+            description:
+              'First line on the brand card, e.g. "Commercial Real Estate".',
+            required: true,
+          },
+          {
+            type: "string",
+            name: "subtitle",
+            label: "Card Subtitle",
+            description: 'Second line on the brand card, e.g. "Debt Products".',
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "image",
+            name: "logo",
+            label: "Logo Image",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "slideImage",
+            label: "Slide Image",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "website",
+            label: "Website URL",
             required: true,
           },
         ],

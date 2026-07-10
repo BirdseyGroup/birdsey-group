@@ -77,18 +77,34 @@ export function renderPageSection(section: PageSectionData, key: number) {
         />
       );
     }
-    case "PageSectionsAffiliates":
+    case "PageSectionsAffiliates": {
+      // Each item references an Affiliate Company document, expanded to the
+      // full record by the generated query. During live editing the value
+      // can briefly be a raw path string until Tina re-expands it; skip those.
+      const affiliateItems = (section.items ?? []).flatMap((item) => {
+        const company = item?.company;
+        if (!item || !company || typeof company !== "object") return [];
+        return [{ item, company }];
+      });
       return (
         <AffiliatesSection
           key={key}
           sectionTitle={section.sectionTitle}
           sectionTitleTinaField={tinaField(section, "sectionTitle")}
-          items={(section.items ?? []).filter((item) => item != null)}
-          itemsTinaFields={section.items?.map((item) => ({
-            logo: item ? tinaField(item, "logo") : undefined,
+          items={affiliateItems.map(({ company }) => ({
+            title: company.title,
+            subtitle: company.subtitle,
+            description: company.description,
+            logo: company.logo,
+            slideImage: company.slideImage,
+            website: company.website,
+          }))}
+          itemsTinaFields={affiliateItems.map(({ item }) => ({
+            logo: tinaField(item, "company"),
           }))}
         />
       );
+    }
     case "PageSectionsNews": {
       const resolvedArticles = (section.articles ?? [])
         .filter((article) => article != null)

@@ -33,9 +33,12 @@ The Birdsey Group website is a Next.js 16 application built on Figma's Simple De
 The site uses TinaCMS for content management with collections defined in [tina/config.ts](tina/config.ts):
 
 - **Global Settings**: Navigation and footer configuration ([content/global/settings.json](content/global/settings.json))
-- **Pages**: Page content organized into sections (hero, affiliates, performance, news, careers, contact)
-- **Affiliates**: Company information for affiliated businesses
-- **Team Members**: Staff profiles with references to affiliate companies
+- **Home / About / Birdsey Standard Page**: Fixed pages in `content/pages/`, each locked to its single JSON file (no create/delete in the admin)
+- **Custom Pages** (`page` collection, `content/custom-pages/`): Flexible pages assembled from section templates, routed by their `url` field via `app/[slug]`
+- **Affiliate Companies** (`affiliateCompany`, `content/affiliate-companies/`): The brand cards (logo, slide image, description, website). The home page's affiliates section holds an ordered list of references to these; `HomePageContent` and `renderPageSection` expand the references into the card shape
+- **Team Groups** (`affiliate` collection, `content/affiliates/`): About-page tab groupings only; each record's `slug` must match its filename. Not the same thing as Affiliate Companies
+- **Team Members**: Staff profiles with a reference to a Team Group
+- **News Articles** (`insight` collection, `content/insights/`): Routing is filename-based (`/insights/<filename>`); there is no slug field
 
 Content is stored as JSON files in the `content/` directory and accessed server-side in React Server Components.
 
