@@ -11,6 +11,12 @@
         "href": "https://visualboston.com"
       },
       "_template": "hero"
+    },
+    {
+      "title": "Placeholder sub hero text",
+      "description": "Learn how we do xyx",
+      "postReference": "content/insights/relationship-driven-performance.json",
+      "_template": "subHero"
     }
   ]
 }
