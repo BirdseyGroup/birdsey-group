@@ -850,10 +850,21 @@ export default defineConfig({
             name: "sections",
             label: "Sections",
             list: true,
+            // Each template sets ui.defaultItem so a freshly added block is
+            // born with its required fields filled in. Tina does not stop a
+            // save when a new block's required fields are empty, and the
+            // GraphQL schema treats them as non-nullable — an empty block
+            // breaks every production build until fixed.
             templates: [
               {
                 name: "hero",
                 label: "Hero",
+                ui: {
+                  defaultItem: {
+                    title: "New hero title",
+                    subtitle: "Add a subtitle",
+                  },
+                },
                 // Custom pages get an extra Background Image option on top
                 // of the shared fields — the Home Page hero always uses its
                 // component's built-in default image instead.
@@ -869,21 +880,46 @@ export default defineConfig({
               {
                 name: "subHero",
                 label: "Sub Hero",
+                ui: {
+                  defaultItem: {
+                    title: "New section title",
+                    description: "Add a description",
+                  },
+                },
                 fields: subHeroSectionFields,
               },
               {
                 name: "affiliates",
                 label: "Affiliates",
+                ui: {
+                  defaultItem: {
+                    sectionTitle: "Our Affiliate Companies",
+                  },
+                },
                 fields: affiliatesSectionFields,
               },
               {
                 name: "news",
                 label: "News",
+                ui: {
+                  defaultItem: {
+                    title: "News",
+                  },
+                },
                 fields: newsSectionFields,
               },
               {
                 name: "contact",
                 label: "Contact",
+                ui: {
+                  defaultItem: {
+                    title: "Contact Us",
+                    formTitle: "Get in Touch",
+                    formDescription:
+                      "Send us a message and we will get back to you shortly.",
+                    submitButtonText: "Submit",
+                  },
+                },
                 fields: contactSectionFields,
               },
             ],
