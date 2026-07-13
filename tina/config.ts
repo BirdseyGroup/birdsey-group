@@ -15,6 +15,14 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+// Turns a kebab-case file name into a readable label ("board-of-advisors"
+// becomes "Board Of Advisors") for list-item labels that only have the
+// referenced document's path to work with.
+const prettifyFilename = (path: string) => {
+  const filename = path.split("/").pop()?.replace(/\.json$/, "") ?? path;
+  return filename.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+};
+
 // Shows the Insight's thumbnail, title, and a truncated excerpt in the
 // reference picker dropdown, instead of Tina's default of the raw file path.
 const insightOptionComponent = (props: Record<string, unknown>) => {
@@ -82,6 +90,17 @@ const affiliateCompanyOptionComponent = (props: Record<string, unknown>) => {
       style: { width: 40, height: 40, objectFit: "contain", flexShrink: 0 },
     }),
     createElement("div", undefined, name)
+  );
+};
+
+// Shows the team group's name in the reference picker dropdown, instead of
+// Tina's default of the raw file path.
+const teamGroupOptionComponent = (props: Record<string, unknown>) => {
+  const sys = props?._sys as { filename?: string } | undefined;
+  return (
+    (props?.name as string | undefined) ||
+    (props?.shortName as string | undefined) ||
+    (sys?.filename ? prettifyFilename(sys.filename) : "Untitled")
   );
 };
 
@@ -204,17 +223,12 @@ const affiliatesSectionFields: TinaField[] = [
       "Which companies appear in this section, and in what order. Edit a company's logo, text, and links in the Affiliate Companies collection.",
     list: true,
     ui: {
-      itemProps: (item) => {
-        const filename =
-          typeof item?.company === "string"
-            ? item.company.split("/").pop()?.replace(/\.json$/, "")
-            : undefined;
-        return {
-          label: filename
-            ? filename.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase())
+      itemProps: (item) => ({
+        label:
+          typeof item?.company === "string" && item.company
+            ? prettifyFilename(item.company)
             : "Affiliate Company",
-        };
-      },
+      }),
     },
     fields: [
       {
@@ -245,8 +259,8 @@ const newsSectionFields: TinaField[] = [
       itemProps: (item) => ({
         label:
           item?.title ||
-          (typeof item?.postReference === "string"
-            ? item.postReference.split("/").pop()?.replace(/\.json$/, "")
+          (typeof item?.postReference === "string" && item.postReference
+            ? prettifyFilename(item.postReference)
             : undefined) ||
           "Untitled Article",
       }),
@@ -1021,6 +1035,7 @@ export default defineConfig({
               "Which About-page tab this person appears under.",
             required: true,
             collections: ["affiliate"],
+            ui: { optionComponent: teamGroupOptionComponent },
           },
           {
             type: "image",
