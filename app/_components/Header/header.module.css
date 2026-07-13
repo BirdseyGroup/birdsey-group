@@ -34,7 +34,10 @@
 }
 
 .header .navigationPill[data-selected] {
-  /* background-color: transparent; */
+  /* Explicit: the global `.navigation-pill[data-selected]` sets a dark
+     brand color at the same specificity as our base rule, so the white
+     must be restated here to not depend on CSS chunk order. */
+  color: var(--text-default-alternative, #ffffff);
 }
 
 .header .navigationPill::after {
@@ -116,7 +119,10 @@
   background-color: var(--sds-color-background-brand-secondary);
 }
 
-.mobileNavigationPill {
+/* Scoped under .header (like .navigationPill above) so these outweigh the
+   global `.navigation-pill` color/background rules regardless of CSS chunk
+   order in the production bundle. */
+.header .mobileNavigationPill {
   width: 100%;
   padding: var(--sds-size-space-300) var(--sds-size-space-400)
     var(--sds-size-space-300) calc(var(--sds-size-space-400) - 3px);
@@ -129,19 +135,20 @@
   transition: background-color 200ms ease-out, border-left-color 200ms ease-out;
 }
 
-.mobileNavigationPill[data-selected] {
+.header .mobileNavigationPill[data-selected] {
   border-left-color: var(--sds-color-background-brand-default);
   background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-default-alternative, #ffffff);
 }
 
-.mobileNavigationPill[data-hovered]:not([data-selected]) {
+.header .mobileNavigationPill[data-hovered]:not([data-selected]) {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Accessibility: Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .header .navigationPill::after,
-  .mobileNavigationPill {
+  .header .mobileNavigationPill {
     animation: none !important;
     transition: none;
   }
@@ -150,7 +157,7 @@
     width: 32px;
   }
 
-  .mobileNavigationPill[data-selected] {
+  .header .mobileNavigationPill[data-selected] {
     border-left-color: var(--sds-color-background-brand-default);
   }
 }
