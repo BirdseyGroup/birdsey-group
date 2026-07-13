@@ -3,20 +3,8 @@
   "title": "Corporate Controller",
   "affiliate": "content/affiliates/corporate.json",
   "photo": "/images/team/hinton-rogers.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Corporate Controller at Birdsey Group, Hinton Rogers supports the financial discipline and operational accountability that keep the organization running with clarity and consistency. His work helps maintain accurate reporting, structured processes, and reliable financial oversight across the Birdsey platform.\n\nHinton’s role reinforces the Birdsey Standard through disciplined execution, transparency, and attention to detail.\n",
   "linkedinUrl": "https://www.linkedin.com/in/hinton-rogers-cpa-5b752414a/",
+  "miniBioEnabled": true,
   "order": 2
 }
