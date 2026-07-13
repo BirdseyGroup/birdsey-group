@@ -3,20 +3,8 @@
   "title": "Senior Advisor - Asset Management",
   "affiliate": "content/affiliates/commercial.json",
   "photo": "/images/team/larry-lagrone.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Senior Advisor of Asset Management at Birdsey Group, Larry LaGrone provides strategic guidance across asset management engagements, helping clients and internal teams maintain clarity, discipline, and informed decision-making throughout the asset lifecycle.\n\nHis work supports the Birdsey Standard through experienced judgment, structured oversight, and a steady focus on protecting value.\n",
   "linkedinUrl": "https://www.linkedin.com/in/larry-lagrone-321455a5/",
+  "miniBioEnabled": true,
   "order": 2
 }
