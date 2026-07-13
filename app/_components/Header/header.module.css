@@ -170,7 +170,11 @@
     height: 58px;
   }
 
-  .desktopNav {
+  /* Doubled selector: the element also carries the global `.navigation`
+     class (display: flex), and CSS chunk order differs between dev and
+     production bundles — equal specificity let the global rule win on
+     deployed builds, showing the desktop nav on phones. */
+  .desktopNav.desktopNav {
     display: none;
   }
 
