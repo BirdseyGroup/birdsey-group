@@ -6,6 +6,16 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,
+    // In Tina Cloud mode (any deployed build), image fields come back as
+    // assets.tina.io URLs rather than the repo-relative paths local dev
+    // uses. next/image refuses remote hosts that are not allowed here.
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.tina.io",
+        pathname: "/**",
+      },
+    ],
   },
   async headers() {
     return [
