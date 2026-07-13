@@ -3,20 +3,8 @@
   "title": "Analyst",
   "affiliate": "content/affiliates/commercial.json",
   "photo": "",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Analyst at Birdsey Group, Josh Jones supports commercial real estate engagements through analysis, documentation, and project coordination. His work helps maintain accuracy, clarity, and structure throughout the due diligence and execution process.\n\nJosh’s role reinforces the Birdsey Standard through quality, accountability, and disciplined support.\n",
   "linkedinUrl": "",
+  "miniBioEnabled": true,
   "order": 11
 }
