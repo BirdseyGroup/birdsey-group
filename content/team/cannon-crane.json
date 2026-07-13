@@ -3,20 +3,8 @@
   "title": "Senior Analyst",
   "affiliate": "content/affiliates/commercial.json",
   "photo": "/images/team/cannon-crane.jpeg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Senior Analyst at Birdsey Group, Cannon Crane supports commercial real estate engagements through analysis, due diligence, and project support. His work helps strengthen the accuracy and clarity of information used throughout the underwriting and advisory process.\n\nCannon’s role reinforces the Birdsey Standard through quality, accountability, and attention to detail.\n",
   "linkedinUrl": "https://www.linkedin.com/in/cannon-crane-079a0122b/",
+  "miniBioEnabled": true,
   "order": 9
 }
