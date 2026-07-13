@@ -3,20 +3,8 @@
   "title": "Director",
   "affiliate": "content/affiliates/commercial.json",
   "photo": "/images/team/kevin-horodas.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Director at Birdsey Group, Kevin Horodas supports commercial real estate engagements through structured analysis, client coordination, and disciplined execution. His role helps ensure projects move forward with clear ownership, timely communication, and attention to the details that influence successful outcomes.\n\nKevin’s work reflects the Birdsey Standard through quality, urgency, and accountability.\n",
   "linkedinUrl": "https://www.linkedin.com/in/khorodas/",
+  "miniBioEnabled": true,
   "order": 5
 }
