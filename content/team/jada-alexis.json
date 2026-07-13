@@ -3,20 +3,8 @@
   "title": "Director",
   "affiliate": "content/affiliates/commercial.json",
   "photo": "/images/team/jada-alexis.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Director at Birdsey Group, Jada Alexis contributes to the execution of commercial real estate engagements through organized oversight, clear communication, and disciplined project support. Her work helps maintain alignment across teams, timelines, and client expectations.\n\nJada’s role reinforces the Birdsey Standard through accountability, transparency, and consistent execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/alexisjada/",
+  "miniBioEnabled": true,
   "order": 6
 }
