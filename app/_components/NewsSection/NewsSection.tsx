@@ -218,12 +218,16 @@ export function NewsSection({
                     >
                       {article.excerpt}
                     </p>
-                    <div className={styles.readMoreLink}>Read More</div>
+                    {/* The icon lives inside the Read More row so it sits
+                        right of the text on mobile; on desktop it positions
+                        absolutely against the card, so nesting is harmless. */}
+                    <div className={styles.readMoreLink}>
+                      Read More
+                      <div className={styles.readMoreIcon}>
+                        <IconArrowUpRight />
+                      </div>
+                    </div>
                   </Flex>
-
-                  <div className={styles.readMoreIcon}>
-                    <IconArrowUpRight />
-                  </div>
                 </a>
               </article>
             ))}
