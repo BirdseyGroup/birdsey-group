@@ -5,6 +5,7 @@
   "photo": "/images/team/darren-kinsey.jpeg",
   "bio": "As Director at Birdsey Group, Darren Kinsey supports commercial real estate engagements with a focus on execution, coordination, and client-ready deliverables. His work helps ensure that projects are managed with clarity, accountability, and the attention to detail required in complex real estate environments.\n\nDarren’s role reflects the Birdsey Standard through quality, transparency, and disciplined execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/darrenkinsey/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 8
 }
