@@ -20,6 +20,9 @@ interface TeamMember {
   miniBioEnabled?: boolean;
   slug?: string;
   profilePageEnabled?: boolean;
+  /** Tina visual-editing pointer to this member's document; clicking the
+      card in the admin preview opens their Team Member form. */
+  tinaField?: string;
 }
 
 interface TeamGridProps {
@@ -37,7 +40,10 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
   return (
     // arrowLinkHoverScope: hovering anywhere on the card triggers the
     // ArrowLink underline + arrow motion (the card is one big link).
-    <div className={`${styles.teamMember} arrowLinkHoverScope`}>
+    <div
+      className={`${styles.teamMember} arrowLinkHoverScope`}
+      data-tina-field={member.tinaField}
+    >
       <div
         className={`${styles.photoWrapper} ${
           !member.photo ? styles.photoWrapperPlaceholder : ""

@@ -507,6 +507,7 @@ export default defineConfig({
         },
         format: "json",
         ui: {
+          router: () => "/about",
           allowedActions: {
             create: false,
             delete: false,
@@ -583,6 +584,12 @@ export default defineConfig({
             name: "teamSectionTitle",
             label: "Team Section Title",
             required: true,
+          },
+          {
+            type: "object",
+            name: "contact",
+            label: "Contact Section",
+            fields: contactSectionFields,
           },
         ],
       },

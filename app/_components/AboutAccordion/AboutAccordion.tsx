@@ -6,6 +6,8 @@ import styles from "./aboutAccordion.module.css";
 interface AccordionItem {
   title: string;
   content: string;
+  titleTinaField?: string;
+  contentTinaField?: string;
 }
 
 interface AboutAccordionProps {
@@ -41,7 +43,12 @@ export function AboutAccordion({ items }: AboutAccordionProps) {
             >
               <div className={styles.accordionHeader}>
                 <div className={styles.yellowAccent} aria-hidden="true" />
-                <h3 className={styles.accordionTitle}>{item.title}</h3>
+                <h3
+                  className={styles.accordionTitle}
+                  data-tina-field={item.titleTinaField}
+                >
+                  {item.title}
+                </h3>
                 <span className={styles.accordionIcon} aria-hidden="true">
                   <span className={styles.iconBar} />
                   <span className={`${styles.iconBar} ${styles.iconBarVertical}`} />
@@ -57,7 +64,7 @@ export function AboutAccordion({ items }: AboutAccordionProps) {
               className={styles.accordionContent}
             >
               <div className={styles.accordionContentInner}>
-                <p>{item.content}</p>
+                <p data-tina-field={item.contentTinaField}>{item.content}</p>
               </div>
             </div>
           </div>

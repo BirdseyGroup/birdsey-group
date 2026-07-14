@@ -10,6 +10,8 @@ import styles from "./teamSection.module.css";
 interface AccordionItem {
   title: string;
   content: string;
+  titleTinaField?: string;
+  contentTinaField?: string;
 }
 
 interface Affiliate {
@@ -24,6 +26,7 @@ interface TeamMember {
   photo?: string;
   order: number;
   affiliate: string;
+  tinaField?: string;
 }
 
 interface TeamSectionProps {
