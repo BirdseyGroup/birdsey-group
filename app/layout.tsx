@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { AllProviders } from "@/lib";
+import { IS_INDEXABLE, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import { CookieConsent } from "./_components/CookieConsent";
@@ -20,8 +21,6 @@ const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   style: ["normal", "italic"],
 });
-
-const SITE_URL = "https://www.birdseygroup.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
       "The Standard of Excellence in Real Estate Investment Services. One ecosystem. Trusted expertise. Results from capital to completion.",
     images: ["/images/og-image.jpg"],
   },
-  robots: { index: true, follow: true },
+  robots: { index: IS_INDEXABLE, follow: IS_INDEXABLE },
 };
 
 const organizationSchema = {

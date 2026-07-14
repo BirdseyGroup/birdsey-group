@@ -93,6 +93,10 @@ function RenderedInsight({
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.birdseygroup.com/insights/${insight._sys.filename}`,
+    },
     headline: insight.title,
     description: insight.excerpt,
     ...(insight.image && {

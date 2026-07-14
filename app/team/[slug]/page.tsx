@@ -127,8 +127,29 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
 
   const affiliateName = await getAffiliateName(member.affiliate);
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.title,
+    url: `https://www.birdseygroup.com/team/${slug}`,
+    worksFor: {
+      "@type": "Organization",
+      name: "The Birdsey Group, LLC",
+      url: "https://www.birdseygroup.com",
+    },
+    ...(member.photo && {
+      image: `https://www.birdseygroup.com${member.photo}`,
+    }),
+    ...(member.linkedinUrl && { sameAs: [member.linkedinUrl] }),
+  };
+
   return (
     <div className={`page-wrapper ${styles.profilePage}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <Header navItems={navigationContent?.items || []} />
 
       <main id="main-content" className={styles.mainContent}>
