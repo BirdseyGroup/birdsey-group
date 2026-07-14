@@ -5,6 +5,7 @@
   "photo": "/images/team/matt-gravely.jpg",
   "bio": "As Director at Birdsey Group, Matt Gravely supports construction-related engagements through project coordination, operational oversight, and disciplined execution. His work helps ensure projects are managed with clear communication, defined ownership, and steady follow-through.\n\nMatt’s role reflects the Birdsey Standard through quality, urgency, and accountability.\n",
   "linkedinUrl": "https://www.linkedin.com/in/matthew-gravely/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 4
 }

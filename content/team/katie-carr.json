@@ -5,6 +5,7 @@
   "photo": "/images/team/katie-carr.jpg",
   "bio": "As Director of Field Services at Birdsey Group, Katie Carr oversees the coordination and execution of field-related services that support underwriting, due diligence, and asset-level decision-making. She helps ensure field work is completed with accuracy, responsiveness, and clear communication.\n\nKatie’s role reinforces the Birdsey Standard through quality execution, accountability, and disciplined coordination.\n",
   "linkedinUrl": "https://www.linkedin.com/in/katie-foster-carr-1131a4b6/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 4
 }

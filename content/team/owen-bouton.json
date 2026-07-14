@@ -5,6 +5,7 @@
   "photo": "/images/team/owen-bouton.jpg",
   "bio": "As Director at Birdsey Group, Owen Bouton supports commercial real estate engagements by helping guide analysis, coordination, and execution across client projects. His work contributes to the structured processes and clear communication that define the Birdsey approach.\n\nOwen’s role strengthens the Birdsey Standard through quality, ownership, and disciplined follow-through.\n",
   "linkedinUrl": "https://www.linkedin.com/in/owen-bouton-5b9a283/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 7
 }
