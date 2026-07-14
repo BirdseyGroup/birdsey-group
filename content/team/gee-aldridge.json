@@ -3,20 +3,8 @@
   "title": "Advisor",
   "affiliate": "content/affiliates/board-of-advisors.json",
   "photo": "/images/team/gee-aldridge.webp",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Advisor to Birdsey Group, Gee Aldridge provides strategic perspective and experienced guidance in support of the organization’s continued growth, operational discipline, and market positioning. His advisory role helps strengthen the leadership perspective behind Birdsey’s work across commercial real estate and related service lines.\n\nGee’s contribution supports the Birdsey Standard through thoughtful counsel, experienced judgment, and a long-view approach to growth.\n",
   "linkedinUrl": "https://www.linkedin.com/in/john-aldridge-bab4a5168/",
+  "miniBioEnabled": true,
   "order": 3
 }
