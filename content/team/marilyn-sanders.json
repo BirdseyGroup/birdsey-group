@@ -3,20 +3,8 @@
   "title": "Account Manager",
   "affiliate": "content/affiliates/construction.json",
   "photo": "",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Account Manager at Birdsey Group, Marilyn Sanders supports client communication, project coordination, and day-to-day account management across construction-related engagements. Her work helps maintain clear expectations, responsive communication, and steady project support.\n\nMarilyn’s role reinforces the Birdsey Standard through transparency, accountability, and client-focused execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/sandersmarilyn/",
+  "miniBioEnabled": true,
   "order": 8
 }
