@@ -3,20 +3,7 @@
   "title": "Senior Advisor - Asset Management",
   "affiliate": "content/affiliates/board-of-advisors.json",
   "photo": "/images/team/larry-lagrone.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "",
   "linkedinUrl": "https://www.linkedin.com/in/larry-lagrone-321455a5/",
   "order": 2
 }
