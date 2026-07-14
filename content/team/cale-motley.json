@@ -3,20 +3,7 @@
   "title": "Vendor Manager",
   "affiliate": "content/affiliates/construction.json",
   "photo": "/images/team/cale-motley.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Vendor Manager at Birdsey Group, Cale Motley supports the coordination and management of vendor relationships across construction-related engagements. His work helps ensure vendor activity is aligned with project needs, quality expectations, and required timelines.\n\nCale’s role reinforces the Birdsey Standard through responsiveness, accountability, and organized execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/cale-motley-58ab85350/",
   "order": 5
 }
