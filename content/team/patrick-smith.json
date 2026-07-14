@@ -3,20 +3,8 @@
   "title": "Project Manager",
   "affiliate": "content/affiliates/construction.json",
   "photo": "",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Project Manager at Birdsey Group, Patrick Smith supports construction-related engagements by coordinating project activity, maintaining communication, and helping ensure timelines and expectations remain clear. His role contributes to the operational discipline that supports strong client outcomes.\n\nPatrick’s work reflects the Birdsey Standard through quality, urgency, and accountability.\n",
   "linkedinUrl": "",
+  "miniBioEnabled": true,
   "order": 11
 }
