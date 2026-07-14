@@ -3,20 +3,8 @@
   "title": "Project Manager",
   "affiliate": "content/affiliates/construction.json",
   "photo": "",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Project Manager at Birdsey Group, Thomas Thornton supports construction-related engagements through project coordination, communication, and execution oversight. His work helps keep stakeholders aligned, project details organized, and timelines moving forward.\n\nThomas’s role reinforces the Birdsey Standard through accountability, transparency, and disciplined follow-through.\n",
   "linkedinUrl": "https://www.linkedin.com/in/thomas-thornton-308296109/",
+  "miniBioEnabled": true,
   "order": 12
 }
