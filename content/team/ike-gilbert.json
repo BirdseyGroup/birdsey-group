@@ -3,20 +3,8 @@
   "title": "Director of Estimating",
   "affiliate": "content/affiliates/construction.json",
   "photo": "/images/team/ike-gilbert.jpg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Director of Estimating at Birdsey Group, Ike Gilbert leads estimating efforts that support construction planning, project evaluation, and informed decision-making. His work helps bring clarity to project scope, cost expectations, and the details that influence execution.\n\nIke’s role strengthens the Birdsey Standard through precision, quality, and disciplined analysis.\n",
   "linkedinUrl": "https://www.linkedin.com/in/ikegilbert/",
+  "profilePageEnabled": true,
   "order": 6
 }
