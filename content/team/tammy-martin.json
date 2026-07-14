@@ -5,6 +5,7 @@
   "photo": "/images/team/tammy-martin.jpeg",
   "bio": "As Director of Administration at Birdsey Group, Tammy Martin supports the internal coordination and operational structure that help the organization function with consistency and professionalism. Her work helps maintain clear processes, responsive communication, and dependable administrative support across the team.\n\nTammy’s leadership strengthens the Birdsey Standard through accountability, organization, and steady execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/tammy-martin-a54429100/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 3
 }
