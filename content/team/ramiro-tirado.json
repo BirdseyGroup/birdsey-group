@@ -5,6 +5,7 @@
   "photo": "",
   "bio": "As Project Manager at Birdsey Group, Ramiro Tirado supports construction-related projects through organized coordination, communication, and execution support. His work helps ensure project expectations are clearly understood and managed with consistency.\n\nRamiro’s role reflects the Birdsey Standard through responsiveness, accountability, and steady execution.\n",
   "linkedinUrl": "",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 13
 }
