@@ -5,6 +5,7 @@
   "photo": "",
   "bio": "As Project Manager at Birdsey Group, Jacob Wood supports construction-related engagements by helping coordinate project activity, maintain communication, and support timely execution. His role contributes to the consistency and accountability required across Birdsey’s construction operations.\n\nJacob’s work reinforces the Birdsey Standard through urgency, resilience, and disciplined project support.\n",
   "linkedinUrl": "",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 14
 }
