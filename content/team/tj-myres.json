@@ -5,6 +5,7 @@
   "photo": "/images/team/tj-myres.jpg",
   "bio": "As Construction Director at Birdsey Group, TJ Myres supports construction project oversight, coordination, and execution across client engagements. His role helps maintain alignment between project expectations, field realities, vendor performance, and delivery timelines.\n\nTJ’s work strengthens the Birdsey Standard through disciplined oversight, responsiveness, and accountable execution.\n",
   "linkedinUrl": "https://www.linkedin.com/in/tj-myres-46521915/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 2
 }
