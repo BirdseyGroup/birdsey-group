@@ -35,9 +35,11 @@
 
 .header .navigationPill[data-selected] {
   /* Explicit: the global `.navigation-pill[data-selected]` sets a dark
-     brand color at the same specificity as our base rule, so the white
-     must be restated here to not depend on CSS chunk order. */
+     brand color AND a gray background at the same specificity as our
+     base rule, so both must be restated here to not depend on CSS
+     chunk order. The active pill shows only the gold underline. */
   color: var(--text-default-alternative, #ffffff);
+  background-color: transparent;
 }
 
 .header .navigationPill::after {
