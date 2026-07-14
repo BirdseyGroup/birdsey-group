@@ -5,6 +5,7 @@
   "photo": "",
   "bio": "As Director of Operations at Birdsey Group, Michael Cole supports the systems, processes, and team coordination that help residential operations run with consistency and accountability. His work helps maintain clear expectations, operational discipline, and reliable execution across the platform.\n\nMichael’s role strengthens the Birdsey Standard through ownership, resilience, and process-driven leadership.\n",
   "linkedinUrl": "https://www.linkedin.com/in/mcole14/",
-  "miniBioEnabled": true,
+  "miniBioEnabled": false,
+  "profilePageEnabled": true,
   "order": 1
 }
