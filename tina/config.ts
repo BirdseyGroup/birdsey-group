@@ -1075,14 +1075,14 @@ export default defineConfig({
             name: "miniBioEnabled",
             label: "Mini bio enabled",
             description:
-              "Show a 'Mini bio' link on this card. Leave off until a bio has been written.",
+              "Show a 'Mini bio' popup link on this card. Ignored when Dedicated profile page is on; the profile page takes over.",
           },
           {
             type: "boolean",
             name: "profilePageEnabled",
             label: "Dedicated profile page",
             description:
-              "Publish a /team/{slug} page for this person. The View Profile card link will route there instead of LinkedIn.",
+              "Publish a /team/{slug} page for this person. The View Profile card link routes there instead of LinkedIn, and replaces the Mini bio popup.",
           },
           {
             type: "number",

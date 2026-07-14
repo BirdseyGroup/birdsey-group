@@ -97,7 +97,9 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
 
         return (
           <div className={styles.memberActions}>
-            {member.miniBioEnabled && (
+            {/* A dedicated profile page supersedes the mini bio popup:
+                showing both confuses editors and visitors alike. */}
+            {member.miniBioEnabled && !isInternalProfile && (
               <button
                 type="button"
                 className={styles.miniBioLink}
