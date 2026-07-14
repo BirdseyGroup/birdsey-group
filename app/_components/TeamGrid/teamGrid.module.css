@@ -159,8 +159,11 @@
   z-index: 1;
 }
 
+/* Match the View Profile (ArrowLink) hover: the text stays dark; the
+   affordance is motion/underline, not a color swap (the brand token this
+   used before resolves near-white on this theme). */
 .miniBioLink:hover {
-  color: var(--sds-color-text-brand-default, #1a3a8c);
+  color: var(--sds-color-text-default-default);
 }
 
 /* Two-column when the side-by-side accordion + grid layout is tight */
