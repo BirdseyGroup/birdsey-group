@@ -3,20 +3,8 @@
   "title": "Quality Assurance Manager",
   "affiliate": "content/affiliates/construction.json",
   "photo": "",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Quality Assurance Manager at Birdsey Group, Chris Peele supports the standards, review processes, and quality controls that help ensure work is completed with accuracy and consistency. His role helps protect client expectations by identifying issues, maintaining accountability, and supporting continuous improvement.\n\nChris’s work reflects the Birdsey Standard through quality, transparency, and disciplined oversight.\n",
   "linkedinUrl": "https://www.linkedin.com/in/chris-peele/",
+  "miniBioEnabled": true,
   "order": 7
 }
