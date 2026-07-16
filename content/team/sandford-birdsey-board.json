@@ -3,20 +3,8 @@
   "title": "CEO",
   "affiliate": "content/affiliates/board-of-advisors.json",
   "photo": "/images/team/sandford-birdsey-2026.jpeg",
-  "bio": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": ""
-          }
-        ]
-      }
-    ]
-  },
+  "bio": "As Founder and Chief Executive Officer of Birdsey Group, Sandford Birdsey is responsible for maintaining the operational discipline that defines the Birdsey Standard across all affiliates. His focus is execution — structured underwriting, defined ownership, early risk escalation, and communication that protects timelines.\n\nWith more than 25 years of experience in commercial mortgage real estate, Sandford has directed consulting and portfolio analysis across more than 4,000 properties representing over $25 billion in loan value. His work has included seasoned CMBS transactions, B-piece acquisitions, and large-scale securitizations, applying disciplined risk management across complex institutional portfolios.\n\nPrior to establishing Birdsey Group, he held executive roles at GMACCM/MortgageRamp and Univest Financial Services, where he led real estate analysis for institutional transactions and portfolio strategies.\n\nUnder his leadership, the Birdsey Standard — Quality, Urgency, Accountability, Resilience, and Transparency — is applied consistently across underwriting, advisory, and asset management functions.\n\nSandford is a past Associate Member and former President of the Associate Leadership Committee of the Appraisal Institute and is a member of the CRE Finance Council, the Mortgage Bankers Association, and REGA.\n",
   "linkedinUrl": "https://www.linkedin.com/in/sandford-birdsey-7ab26210/",
+  "profilePageEnabled": true,
   "order": 1
 }
