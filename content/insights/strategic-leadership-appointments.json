@@ -2,7 +2,6 @@
   "title": "Strategic Leadership Appointments Strengthen Birdsey's Execution Capacity",
   "date": "2026-02-18",
   "category": "EXECUTION INSIGHT",
-  "image": "/images/blog/strategic-leadership-appointments.jpg",
   "excerpt": "Birdsey Group continues to strengthen its execution capabilities with the addition of two seasoned leaders to our Atlanta headquarters. Cooper Baker and Troi Russell join the Birdsey team.",
   "body": {
     "type": "root",
@@ -14,16 +13,18 @@
             "type": "text",
             "text": "These hires reinforce our commitment to disciplined underwriting, tighter client alignment, and the relationship-driven performance our partners expect."
           }
-        ]
+        ],
+        "id": "mUVODhPX6-"
       },
       {
         "type": "p",
         "children": [
           {
             "type": "text",
-            "text": "On January 19, Cooper Baker joined Birdsey as Managing Director & Chief Loan Underwriter, reporting directly to CEO Sandford Birdsey. His background includes advisory work with Fannie Mae and leadership roles at Lima One Capital, Greystone, and Grandbridge Real Estate Capital — experience that reflects the level of precision and accountability required across our underwriting platform."
+            "text": "On January 19, Cooper Baker joined Birdsey as Managing Director, reporting directly to CEO Sandford Birdsey. His background includes advisory work with Fannie Mae and leadership roles at Lima One Capital, Greystone, and Grandbridge Real Estate Capital — experience that reflects the level of precision and accountability required across our underwriting platform."
           }
-        ]
+        ],
+        "id": "uewo2r_93W"
       },
       {
         "type": "p",
@@ -32,7 +33,8 @@
             "type": "text",
             "text": "On February 2, Troi Russell joined as Senior Director of Client Development, reporting to Baker. Her experience at Basis Investment, Capital One, and Spring11 brings additional strength to our client relationship infrastructure. Troi will expand Birdsey's ability to maintain clear communication channels and ensure that clients experience consistency across engagements."
           }
-        ]
+        ],
+        "id": "AEqiE8X293"
       },
       {
         "type": "p",
@@ -41,7 +43,8 @@
             "type": "text",
             "text": "These additions strengthen the Birdsey Standard:"
           }
-        ]
+        ],
+        "id": "q_VEc7gPYJ"
       },
       {
         "type": "p",
@@ -51,7 +54,8 @@
             "text": "Quality. Urgency. Accountability. Resilience. Transparency.",
             "bold": true
           }
-        ]
+        ],
+        "id": "IUIWbG8_lu"
       },
       {
         "type": "p",
@@ -60,9 +64,11 @@
             "type": "text",
             "text": "By expanding leadership capacity in underwriting and client development, Birdsey enhances its ability to deliver disciplined execution at scale and deepens the reliability that our lending and investment partners count on."
           }
-        ]
+        ],
+        "id": "1E5zeuDq0J"
       }
     ]
   },
+  "image": "/images/blog/strategic-leadership-appointments.jpg",
   "order": 1
 }
