@@ -8,7 +8,7 @@
     "app:dev": "next dev -p 8000",
     "app:build": "next build",
     "app:start": "next start",
-    "app:lint": "next lint",
+    "app:lint": "eslint app components lib",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build --output-dir public/storybook --webpack-stats-json",
     "build": "tinacms build && npm run storybook:build && npm run app:build",
