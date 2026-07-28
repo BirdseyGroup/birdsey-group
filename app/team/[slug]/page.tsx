@@ -15,6 +15,7 @@ interface TeamMemberData {
   name: string;
   title: string;
   photo?: string;
+  photoFocalPoint?: string;
   bio?: any;
   email?: string;
   phone?: string;

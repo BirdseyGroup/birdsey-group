@@ -24,6 +24,7 @@ interface TeamMember {
   name: string;
   title: string;
   photo?: string;
+  photoFocalPoint?: string;
   order: number;
   affiliate: string;
   tinaField?: string;

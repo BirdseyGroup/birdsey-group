@@ -9,6 +9,7 @@ import type {
   PageQueryVariables,
 } from "@/tina/__generated__/types";
 import { Footer } from "../Footer";
+import { buildFooterProps } from "../Footer/buildFooterProps";
 import { Header } from "../Header";
 import { renderPageSection, type PageSectionData } from "../PageSections";
 import styles from "./customPageContent.module.css";
@@ -79,16 +80,7 @@ function RenderedCustomPage({
   const navigationItems = (global.navigation?.items ?? []).filter(
     (item) => item != null
   );
-  const footer = global.footer;
-  const footerNavExtras = (footer?.footerNavExtras ?? []).filter(
-    (item) => item != null
-  );
-  const footerLinks = (footer?.footerLinks ?? [])
-    .filter((item) => item != null)
-    .map((item) => ({
-      ...item,
-      openCookieSettings: item.openCookieSettings ?? undefined,
-    }));
+  const footerProps = buildFooterProps(global);
 
   return (
     <div className={`page-wrapper ${styles.customPage}`}>
@@ -108,15 +100,7 @@ function RenderedCustomPage({
         )}
       </main>
 
-      <Footer
-        phone={footer?.phone || ""}
-        email={footer?.email || ""}
-        address={footer?.address || ""}
-        copyright={footer?.copyright || ""}
-        navItems={navigationItems}
-        footerNavExtras={footerNavExtras}
-        footerLinks={footerLinks}
-      />
+      <Footer {...footerProps} />
     </div>
   );
 }

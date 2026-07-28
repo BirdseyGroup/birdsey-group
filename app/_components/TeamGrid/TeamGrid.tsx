@@ -5,12 +5,15 @@ import Image from "next/image";
 import { ArrowLink } from "../ArrowLink";
 import { LinkedInGlyph } from "../LinkedInGlyph";
 import { TeamMemberModal } from "../TeamMemberModal";
+import { photoObjectPosition } from "../photoFocalPoint";
 import styles from "./teamGrid.module.css";
 
 interface TeamMember {
   name: string;
   title: string;
   photo?: string;
+  /** Biases the square crop when the source photo isn't square. */
+  photoFocalPoint?: string;
   order: number;
   affiliate: string;
   bio?: any;
@@ -57,6 +60,7 @@ function TeamCard({ member, onOpenBio, priority = false }: TeamCardProps) {
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
             priority={priority}
             className={styles.photo}
+            style={{ objectPosition: photoObjectPosition(member.photoFocalPoint) }}
           />
         ) : (
           <img
@@ -174,6 +178,7 @@ export function TeamGrid({ members, filterByAffiliate }: TeamGridProps) {
             name: selectedMember.name,
             title: selectedMember.title,
             photo: selectedMember.photo,
+            photoFocalPoint: selectedMember.photoFocalPoint,
             email: selectedMember.email,
             phone: selectedMember.phone,
             linkedIn: selectedMember.linkedinUrl,

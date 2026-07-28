@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { LinkedInGlyph } from "../../_components/LinkedInGlyph";
+import { photoObjectPosition } from "../../_components/photoFocalPoint";
 import { renderTeamBio } from "./renderBio";
 import styles from "./page.module.css";
 
@@ -12,6 +13,8 @@ interface TeamProfileContentProps {
     name: string;
     title: string;
     photo?: string;
+    /** Biases the square crop when the source photo isn't square. */
+    photoFocalPoint?: string;
     bio?: any;
     email?: string;
     phone?: string;
@@ -77,6 +80,9 @@ export function TeamProfileContent({
               sizes="(max-width: 768px) 100vw, 360px"
               priority
               className={styles.photo}
+              style={{
+                objectPosition: photoObjectPosition(member.photoFocalPoint),
+              }}
             />
           ) : (
             <img

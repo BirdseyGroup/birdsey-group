@@ -3,12 +3,15 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { IconX, IconPhone, IconMail, IconLinkedin } from "icons";
+import { photoObjectPosition } from "../photoFocalPoint";
 import styles from "./teamMemberModal.module.css";
 
 interface TeamMember {
   name: string;
   title: string;
   photo?: string;
+  /** Biases the crop when the source photo isn't the frame's ratio. */
+  photoFocalPoint?: string;
   email?: string;
   phone?: string;
   linkedIn?: string;
@@ -187,6 +190,9 @@ export function TeamMemberModal({
                 width={400}
                 height={320}
                 className={styles.photo}
+                style={{
+                  objectPosition: photoObjectPosition(member.photoFocalPoint),
+                }}
               />
             </div>
           )}

@@ -307,6 +307,8 @@ const newsSectionFields: TinaField[] = [
         type: "image",
         name: "image",
         label: "Article Image",
+        description:
+          "Landscape, 4:3, at least 1200 x 900 pixels. It is cropped to fill a small thumbnail on the card, so keep the subject centred and avoid images with text in them.",
       },
       {
         type: "string",
@@ -487,6 +489,8 @@ export default defineConfig({
                 type: "image",
                 name: "image",
                 label: "Section Image",
+                description:
+                  "Landscape, 4:3, at least 1600 x 1200 pixels. It fills a tall column on desktop and a shorter 4:3 box on mobile, cropped from the centre both times, so keep the subject centred.",
               },
             ],
           },
@@ -542,6 +546,8 @@ export default defineConfig({
                 type: "image",
                 name: "backgroundImage",
                 label: "Background Image",
+                description:
+                  "Wide landscape, 16:9, at least 2400 x 1350 pixels. It is cropped to fill the full width of the screen at every size, including narrow phones, so keep important detail near the centre and never use an image with text baked into it.",
               },
             ],
           },
@@ -895,6 +901,8 @@ export default defineConfig({
                     type: "image",
                     name: "backgroundImage",
                     label: "Background Image",
+                    description:
+                      "Wide landscape, 16:9, at least 2400 x 1350 pixels. It is cropped to fill the full width of the screen at every size, including narrow phones, so keep important detail near the centre and never use an image with text baked into it.",
                   },
                 ],
               },
@@ -1007,6 +1015,8 @@ export default defineConfig({
             type: "image",
             name: "image",
             label: "Featured Image",
+            description:
+              "Landscape, 16:9, at least 1600 x 900 pixels. It runs the full width of the article and is cropped from the centre, so keep the subject centred.",
           },
           {
             type: "number",
@@ -1048,6 +1058,22 @@ export default defineConfig({
             type: "image",
             name: "photo",
             label: "Photo",
+            description:
+              "Upload a SQUARE photo, 1200 x 1200 pixels, head centred with a little space above the hair. The site crops every team photo to a square, so a square upload is the only shape that appears exactly as you see it here. Tall portraits get their tops and bottoms cut off.",
+          },
+          {
+            type: "string",
+            name: "photoFocalPoint",
+            label: "Photo Crop Position",
+            description:
+              "Only needed when the photo is not square. Choose which part of the image the square crop keeps. Use Upper or Top if the person's head is being cut off.",
+            options: [
+              { value: "top", label: "Top" },
+              { value: "upper", label: "Upper (best for most headshots)" },
+              { value: "center", label: "Center (default)" },
+              { value: "lower", label: "Lower" },
+              { value: "bottom", label: "Bottom" },
+            ],
           },
           {
             type: "rich-text",
@@ -1138,12 +1164,16 @@ export default defineConfig({
             type: "image",
             name: "logo",
             label: "Logo Image",
+            description:
+              "Transparent PNG or SVG, roughly 4:3 landscape, at least 800 pixels wide. It is scaled to fit inside its box rather than cropped, so nothing is cut off, but a solid white background will show as a white rectangle.",
             required: true,
           },
           {
             type: "image",
             name: "slideImage",
             label: "Slide Image",
+            description:
+              "Square, 1:1, at least 1200 x 1200 pixels. It is scaled to fit inside a square frame rather than cropped, so a non-square image will sit letterboxed with empty space either side.",
             required: true,
           },
           {

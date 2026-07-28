@@ -12,6 +12,7 @@ import styles from "./footer.module.css";
 interface NavItem {
   label: string;
   href: string;
+  tinaField?: string;
 }
 
 interface FooterLink extends NavItem {
@@ -20,15 +21,31 @@ interface FooterLink extends NavItem {
 
 interface FooterProps {
   phone: string;
+  phoneTinaField?: string;
   email: string;
+  emailTinaField?: string;
   address: string;
+  addressTinaField?: string;
   copyright: string;
+  copyrightTinaField?: string;
   navItems: NavItem[];
   footerNavExtras?: NavItem[];
   footerLinks?: FooterLink[];
 }
 
-export function Footer({ phone, email, address, copyright, navItems, footerNavExtras = [], footerLinks = [] }: FooterProps) {
+export function Footer({
+  phone,
+  phoneTinaField,
+  email,
+  emailTinaField,
+  address,
+  addressTinaField,
+  copyright,
+  copyrightTinaField,
+  navItems,
+  footerNavExtras = [],
+  footerLinks = [],
+}: FooterProps) {
   const { activePage, setActivePage } = useNavigation();
   const router = useRouter();
   const pathname = usePathname();
@@ -78,6 +95,7 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
                     className={styles.navigationPill}
                     onClick={(e) => handleNavClick(item.href, e)}
                     data-selected={isSelected ? "" : undefined}
+                    data-tina-field={item.tinaField}
                   >
                     {item.label}
                   </TextLink>
@@ -94,12 +112,14 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
               <TextLink
                 href={`tel:+1${phone.replace(/\D/g, "")}`}
                 className={styles.navigationPill}
+                data-tina-field={phoneTinaField}
               >
                 {phone}
               </TextLink>
               <TextLink
                 href={`mailto:${email}`}
                 className={styles.navigationPill}
+                data-tina-field={emailTinaField}
               >
                 {email}
               </TextLink>
@@ -115,6 +135,7 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.footerText} ${styles.addressLink}`}
+              data-tina-field={addressTinaField}
             >
               {address.split('\n').map((line, i) => (
                 <span key={i}>
@@ -156,7 +177,9 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
       </div>
 
       <div className={styles.footerBottom}>
-        <p className={styles.footerText}>{copyright.split("\n").join(" ")}</p>
+        <p className={styles.footerText} data-tina-field={copyrightTinaField}>
+          {copyright.split("\n").join(" ")}
+        </p>
         {footerLinks.length > 0 && (
           <div className={styles.footerLinkRow}>
             {footerLinks.map((link, i) =>
@@ -165,6 +188,7 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
                   key={i}
                   type="button"
                   className={styles.footerBottomLink}
+                  data-tina-field={link.tinaField}
                   onClick={() =>
                     window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))
                   }
@@ -172,7 +196,12 @@ export function Footer({ phone, email, address, copyright, navItems, footerNavEx
                   {link.label}
                 </button>
               ) : (
-                <a key={i} href={link.href} className={styles.footerBottomLink}>
+                <a
+                  key={i}
+                  href={link.href}
+                  className={styles.footerBottomLink}
+                  data-tina-field={link.tinaField}
+                >
                   {link.label}
                 </a>
               )

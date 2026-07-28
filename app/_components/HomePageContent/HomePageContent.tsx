@@ -13,6 +13,7 @@ import { BrandShowcase } from "../BrandShowcase";
 import { CareersSection } from "../CareersSection";
 import { ContactSection } from "../ContactSection";
 import { Footer } from "../Footer";
+import { buildFooterProps } from "../Footer/buildFooterProps";
 import { Header } from "../Header";
 import { HeroSection } from "../HeroSection";
 import { NewsSection, resolveNewsArticle } from "../NewsSection";
@@ -136,16 +137,7 @@ function RenderedHomePage({
   const navigationItems = (global.navigation?.items ?? []).filter(
     (item) => item != null
   );
-  const footer = global.footer;
-  const footerNavExtras = (footer?.footerNavExtras ?? []).filter(
-    (item) => item != null
-  );
-  const footerLinks = (footer?.footerLinks ?? [])
-    .filter((item) => item != null)
-    .map((item) => ({
-      ...item,
-      openCookieSettings: item.openCookieSettings ?? undefined,
-    }));
+  const footerProps = buildFooterProps(global);
 
   return (
     <div className="page-wrapper">
@@ -245,15 +237,7 @@ function RenderedHomePage({
           }
         />
       </main>
-      <Footer
-        phone={footer?.phone || ""}
-        email={footer?.email || ""}
-        address={footer?.address || ""}
-        copyright={footer?.copyright || ""}
-        navItems={navigationItems}
-        footerNavExtras={footerNavExtras}
-        footerLinks={footerLinks}
-      />
+      <Footer {...footerProps} />
     </div>
   );
 }

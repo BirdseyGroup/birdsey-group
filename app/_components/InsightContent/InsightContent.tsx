@@ -10,6 +10,7 @@ import type {
 } from "@/tina/__generated__/types";
 import { ArticleDetail } from "../ArticleDetail";
 import { Footer } from "../Footer";
+import { buildFooterProps } from "../Footer/buildFooterProps";
 import { Header } from "../Header";
 import styles from "./insightContent.module.css";
 
@@ -79,16 +80,7 @@ function RenderedInsight({
   const navigationItems = (global.navigation?.items ?? []).filter(
     (item) => item != null
   );
-  const footer = global.footer;
-  const footerNavExtras = (footer?.footerNavExtras ?? []).filter(
-    (item) => item != null
-  );
-  const footerLinks = (footer?.footerLinks ?? [])
-    .filter((item) => item != null)
-    .map((item) => ({
-      ...item,
-      openCookieSettings: item.openCookieSettings ?? undefined,
-    }));
+  const footerProps = buildFooterProps(global);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -144,15 +136,7 @@ function RenderedInsight({
         </div>
       </main>
 
-      <Footer
-        phone={footer?.phone || ""}
-        email={footer?.email || ""}
-        address={footer?.address || ""}
-        copyright={footer?.copyright || ""}
-        navItems={navigationItems}
-        footerNavExtras={footerNavExtras}
-        footerLinks={footerLinks}
-      />
+      <Footer {...footerProps} />
     </div>
   );
 }
