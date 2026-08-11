@@ -4,5 +4,6 @@
   "affiliate": "content/affiliates/commercial.json",
   "photo": "/Beberman,-Samantha.jpeg",
   "bio": "",
+  "profilePageEnabled": true,
   "order": 5
 }
