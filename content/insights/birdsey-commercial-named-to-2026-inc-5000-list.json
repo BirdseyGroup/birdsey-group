@@ -66,40 +66,7 @@
         "id": "0GyLjDj6J1",
         "children": [
           {
-            "text": "       Sandford Birdsey, President/CEO of Birdsey Group. “The Birdsey Standard: Quality, ",
-            "bold": true,
-            "italic": true
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "N-GsZaT4eI",
-        "children": [
-          {
-            "text": "       Urgency, Accountability, Resilience and Transparency, shapes how we operate and  ",
-            "bold": true,
-            "italic": true
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "hugspB0Qhg",
-        "children": [
-          {
-            "text": "       treat our clients, and it's what keeps us accountable to ourselves. Growth follows when",
-            "bold": true,
-            "italic": true
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "i21SujFm-D",
-        "children": [
-          {
-            "text": "       we get those things right, year after year.”\n",
+            "text": "       Sandford Birdsey, President/CEO of Birdsey Group. “The Birdsey Standard: Quality, Urgency, Accountability, Resilience and Transparency, shapes how we operate and treat our clients, and it's what keeps us accountable to ourselves. Growth follows when we get those things right, year after year.”\n",
             "bold": true,
             "italic": true
           }
@@ -137,7 +104,7 @@
         "id": "XcixQPE1SI",
         "children": [
           {
-            "text": "“Every company on the Inc. 5000 has a story of perseverance, smart decision making, and a refusal to sit still,” said Mike Hofman, editor-in-chief of Inc. “Their growth reflects more than strong financial performance—it reflects creativity, resilience, and the customer focus required to build companies that make a lasting impact.”"
+            "text": "“Every company on the Inc. 5000 has a story of perseverance, smart decision making, and a refusal to sit still,” said Mike Hofman, editor-in-chief of Inc. “Their growth reflects more than strong financial performance. It reflects creativity, resilience, and the customer focus required to build companies that make a lasting impact.”"
           }
         ]
       },
@@ -208,5 +175,6 @@
       }
     ]
   },
-  "image": "/Birdsey-Commercial-Inc-5000.png"
+  "image": "/Birdsey-Commercial-Inc-5000.png",
+  "order": 1
 }
