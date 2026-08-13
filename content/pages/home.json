@@ -25,16 +25,16 @@
     "sectionHeading": "The Birdsey Family of Brands",
     "items": [
       {
-        "company": "content/affiliate-companies/capital.json"
+        "company": "content/affiliate-companies/commercial.json"
       },
       {
-        "company": "content/affiliate-companies/commercial.json"
+        "company": "content/affiliate-companies/construction.json"
       },
       {
         "company": "content/affiliate-companies/residential.json"
       },
       {
-        "company": "content/affiliate-companies/construction.json"
+        "company": "content/affiliate-companies/capital.json"
       },
       {
         "company": "content/affiliate-companies/property-solutions.json"
