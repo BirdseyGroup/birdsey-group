@@ -52,21 +52,7 @@
         "id": "8g_wJCNrFZ",
         "children": [
           {
-            "text": "\t"
-          },
-          {
-            "text": "\"Three consecutive years of growth speak to consistency more than momentum,” said",
-            "bold": true,
-            "italic": true
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "0GyLjDj6J1",
-        "children": [
-          {
-            "text": "       Sandford Birdsey, President/CEO of Birdsey Group. “The Birdsey Standard: Quality, Urgency, Accountability, Resilience and Transparency, shapes how we operate and treat our clients, and it's what keeps us accountable to ourselves. Growth follows when we get those things right, year after year.”\n",
+            "text": "\"Three consecutive years of growth speak to consistency more than momentum,” said Sandford Birdsey, President/CEO of Birdsey Group. “The Birdsey Standard: Quality, Urgency, Accountability, Resilience and Transparency, shapes how we operate and treat our clients, and it's what keeps us accountable to ourselves. Growth follows when we get those things right, year after year.”\n",
             "bold": true,
             "italic": true
           }
@@ -176,5 +162,5 @@
     ]
   },
   "image": "/Birdsey-Commercial-Inc-5000.png",
-  "order": 32
+  "order": 1
 }
