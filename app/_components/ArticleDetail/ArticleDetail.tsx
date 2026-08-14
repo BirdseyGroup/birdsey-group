@@ -1,6 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import {
+  TinaMarkdown,
+  type Components,
+  type TinaMarkdownContent,
+} from "tinacms/dist/rich-text";
 import styles from "./articleDetail.module.css";
 
 function formatDate(dateStr: string) {
@@ -10,14 +15,6 @@ function formatDate(dateStr: string) {
   // append when it's missing.
   const date = new Date(dateStr.includes("T") ? dateStr : `${dateStr}T00:00:00`);
   return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
-}
-
-interface RichTextNode {
-  type: string;
-  text?: string;
-  bold?: boolean;
-  italic?: boolean;
-  children?: RichTextNode[];
 }
 
 interface ArticleDetailProps {
@@ -30,69 +27,49 @@ interface ArticleDetailProps {
   excerptTinaField?: string;
   image?: string;
   imageTinaField?: string;
-  body: RichTextNode;
+  body: TinaMarkdownContent;
   bodyTinaField?: string;
 }
 
-function renderNode(node: RichTextNode, index: number): React.ReactNode {
-  if (node.type === "text") {
-    let content: React.ReactNode = node.text || "";
-    if (node.bold) {
-      content = <strong key={index}>{content}</strong>;
-    }
-    if (node.italic) {
-      content = <em key={index}>{content}</em>;
-    }
-    return content;
-  }
-
-  const children = node.children?.map((child, i) => renderNode(child, i));
-
-  switch (node.type) {
-    case "p":
-      return (
-        <p key={index} className={styles.paragraph}>
-          {children}
-        </p>
-      );
-    case "h2":
-      return (
-        <h2 key={index} className={styles.heading2}>
-          {children}
-        </h2>
-      );
-    case "h3":
-      return (
-        <h3 key={index} className={styles.heading3}>
-          {children}
-        </h3>
-      );
-    case "ul":
-      return (
-        <ul key={index} className={styles.list}>
-          {children}
-        </ul>
-      );
-    case "ol":
-      return (
-        <ol key={index} className={styles.list}>
-          {children}
-        </ol>
-      );
-    case "li":
-      return <li key={index}>{children}</li>;
-    case "lic":
-      return <>{children}</>;
-    case "blockquote":
-      return (
-        <blockquote key={index} className={styles.blockquote}>
-          {children}
-        </blockquote>
-      );
-    default:
-      return <>{children}</>;
-  }
-}
+// <TinaMarkdown> rather than a hand-rolled walker: the editor's leaf nodes
+// carry no `type` key at all (just `{ text, bold, italic }`), and older
+// articles store them as `{ type: "text", ... }`. TinaMarkdown handles both
+// shapes, plus every block type the rich-text field can produce (h1-h6,
+// links, images, code) rather than only the handful we anticipated.
+// Only `children` is forwarded: the AST nodes also carry `type` and `id`
+// keys, which are invalid DOM attributes if spread onto the element.
+const bodyComponents: Components<Record<never, never>> = {
+  p: (props) => <p className={styles.paragraph}>{props?.children}</p>,
+  h1: (props) => <h1 className={styles.heading1}>{props?.children}</h1>,
+  h2: (props) => <h2 className={styles.heading2}>{props?.children}</h2>,
+  h3: (props) => <h3 className={styles.heading3}>{props?.children}</h3>,
+  h4: (props) => <h4 className={styles.heading4}>{props?.children}</h4>,
+  h5: (props) => <h5 className={styles.heading5}>{props?.children}</h5>,
+  h6: (props) => <h6 className={styles.heading6}>{props?.children}</h6>,
+  ul: (props) => <ul className={styles.list}>{props?.children}</ul>,
+  ol: (props) => <ol className={styles.list}>{props?.children}</ol>,
+  li: (props) => <li>{props?.children}</li>,
+  // Default renders list-item content in a <div>, which breaks the marker
+  // alignment; keep it inline.
+  lic: (props) => <>{props?.children}</>,
+  blockquote: (props) => (
+    <blockquote className={styles.blockquote}>{props?.children}</blockquote>
+  ),
+  a: (props) => (
+    <a
+      className={styles.link}
+      href={props?.url}
+      {...(props?.url?.startsWith("http")
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
+      {props?.children}
+    </a>
+  ),
+  img: (props) => (
+    <img className={styles.bodyImage} src={props?.url} alt={props?.alt ?? ""} />
+  ),
+};
 
 export function ArticleDetail({
   title,
@@ -161,7 +138,7 @@ export function ArticleDetail({
           {excerpt}
         </p>
         <div data-tina-field={bodyTinaField}>
-          {body.children?.map((node, i) => renderNode(node, i))}
+          <TinaMarkdown content={body} components={bodyComponents} />
         </div>
       </div>
     </article>
