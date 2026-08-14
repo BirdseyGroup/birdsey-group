@@ -4,7 +4,7 @@ This guide walks you through adding and editing team member bios on the new site
 
 ## 1. What You'll Need
 
-- **The editor address:** https://birdsey-group-staging.vercel.app/admin
+- **The editor address:** https://birdsey-group.vercel.app/admin
 - **Your login.** You already have an editor account (the same one you've used before). If the login screen appears, sign in and you'll land in the content editor.
 
 Note: the site's address will change when we launch on birdseygroup.com. The editing steps will stay exactly the same.
@@ -54,7 +54,7 @@ If Save is grayed out, a required field is empty. Scroll up and look for a field
 
 ## 5. Check It on the Site
 
-1. Go to https://birdsey-group-staging.vercel.app/about
+1. Go to https://birdsey-group.vercel.app/about
 2. Click the tab for the person's Team Group.
 3. Find their card. If "Mini bio enabled" is on, click **Mini bio** to read the bio exactly as visitors will see it.
 
