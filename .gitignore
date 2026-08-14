@@ -40,3 +40,6 @@ tina/__generated__
 *.sw?
 *storybook.log
 .gstack/
+
+# VisualBoston internal: pricing, estimates, proposals. Never commit.
+_private/
