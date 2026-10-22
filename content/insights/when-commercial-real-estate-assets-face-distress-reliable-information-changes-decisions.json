@@ -77,7 +77,7 @@
         "id": "hd0sxTNNFI",
         "children": [
           {
-            "text": "According to the Mortgage Bankers Association, approximately $875 billion in commercial and multifamily mortgages is scheduled to mature in 2026."
+            "text": "According to the Mortgage Bankers Association*, approximately $875 billion in commercial and multifamily mortgages is scheduled to mature in 2026."
           }
         ]
       },
@@ -595,7 +595,20 @@
         "id": "yuLrDJkDIA",
         "children": [
           {
-            "text": "Troi Russell is Senior Director, Client Development, at Birdsey Commercial. Her background in credit and underwriting spans multiple commercial real estate asset classes. She works with clients to understand evolving requirements and connect them with specialized capabilities throughout the real estate lifecycle."
+            "text": "Troi Russell is Senior Director, Client Development, at Birdsey Commercial. Her background in credit and underwriting spans multiple commercial real estate asset classes. She works with clients to understand evolving requirements and connect them with specialized capabilities throughout the real estate lifecycle.\n\nMortgage Bankers Association Article Reference: "
+          },
+          {
+            "children": [
+              {
+                "text": "https://www.mba.org/news-and-research/newsroom/news/2026/02/09/17-percent-of-commercial-and-multifamily-mortgage-balances-to-mature-in-2026"
+              }
+            ],
+            "type": "a",
+            "url": "https://www.mba.org/news-and-research/newsroom/news/2026/02/09/17-percent-of-commercial-and-multifamily-mortgage-balances-to-mature-in-2026",
+            "id": "ZAouKAVQrl"
+          },
+          {
+            "text": ""
           }
         ]
       }
