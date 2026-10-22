@@ -150,7 +150,14 @@
         "id": "Gu5M10h73K",
         "children": [
           {
-            "text": "In his presentation, “Trust But Verify: An Emerging Confidence Crisis Within Capital Markets,” Donald Sheets addressed the growing mistrust in the market, and the reality that when confidence in information declines, every business decision built on it becomes harder to make."
+            "text": "In his presentation, "
+          },
+          {
+            "text": "Trust But Verify: An Emerging Confidence Crisis Within Capital Markets",
+            "italic": true
+          },
+          {
+            "text": ", Donald Sheets addressed the growing mistrust in the market, and the reality that when confidence in information declines, every business decision built on it becomes harder to make."
           }
         ]
       },
